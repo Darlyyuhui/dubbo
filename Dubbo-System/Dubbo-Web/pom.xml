@@ -1,0 +1,43 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <parent>
+        <artifactId>Dubbo-System</artifactId>
+        <groupId>com.darly.dubbo</groupId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+    <artifactId>Dubbo-Web</artifactId>
+    <packaging>war</packaging>
+    <name>Dubbo-Web Maven Webapp</name>
+
+    <description>主要用于提供dubbo服务，及其他db、spring、springMVC、mybatis等配置。这样设计能够将业务逻辑与数据访问隔离开，同时贴合了spring目标之一，就是允许我们在开发应用的程序时，能够遵循面向对象（OO）原则中的“针对接口编程”，很大程度上达到松耦合</description>
+    <developers>
+        <developer>
+            <name>张宇辉</name>
+            <email>Darlyyuhui@hotmail.com</email>
+        </developer>
+    </developers>
+
+    <dependencies>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>3.8.1</version>
+            <scope>test</scope>
+        </dependency>
+
+         <dependency>
+             <groupId>com.darly.dubbo</groupId>
+             <artifactId>Dubbo-Api</artifactId>
+             <version>1.0-SNAPSHOT</version>
+         </dependency>
+         <dependency>
+             <groupId>com.darly.dubbo</groupId>
+             <artifactId>Dubbo-Service</artifactId>
+             <version>1.0-SNAPSHOT</version>
+         </dependency>
+     </dependencies>
+    <build>
+        <finalName>Dubbo-Web</finalName>
+    </build>
+</project>
