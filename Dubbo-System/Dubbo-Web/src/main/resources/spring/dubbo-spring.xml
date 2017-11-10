@@ -27,4 +27,5 @@
         </property>
     </bean>
     <import resource="classpath:spring/dubbo-mybatis.xml" />
+    <import resource="classpath:dubbo/dubbo-producer.xml" />
 </beans>

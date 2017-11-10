@@ -16,7 +16,6 @@
   <listener>
     <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
   </listener>
-
   <!-- 设置servlet编码开始 -->
   <filter>
     <filter-name>characterEncodingFilter</filter-name>
