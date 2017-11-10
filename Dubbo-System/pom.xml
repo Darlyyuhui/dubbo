@@ -78,6 +78,7 @@
     <module>Dubbo-Api</module>
     <module>Dubbo-Service</module>
     <module>Dubbo-Web</module>
+      <module>Dubbo-Customer</module>
   </modules>
   <dependencies>
     <dependency>

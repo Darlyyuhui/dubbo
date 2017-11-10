@@ -7,12 +7,14 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="Dubbo-Api" />
+        <module name="Dubbo-Customer" />
         <module name="Dubbo-Service" />
         <module name="Dubbo-Web" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="Dubbo-Api" target="1.8" />
+      <module name="Dubbo-Customer" target="1.8" />
       <module name="Dubbo-Service" target="1.8" />
       <module name="Dubbo-System" target="1.8" />
       <module name="Dubbo-Web" target="1.8" />

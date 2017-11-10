@@ -1,8 +1,0 @@
-<component name="ArtifactManager">
-  <artifact type="war" name="Dubbo-Consumer:war">
-    <output-path>$PROJECT_DIR$/target</output-path>
-    <root id="archive" name="Dubbo-Consumer Maven Webapp.war">
-      <element id="artifact" artifact-name="Dubbo-Consumer:war exploded" />
-    </root>
-  </artifact>
-</component>
