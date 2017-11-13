@@ -30,12 +30,6 @@
             <scope>test</scope>
         </dependency>
         <dependency>
-            <groupId>com.darly.dubbo</groupId>
-            <artifactId>Dubbo-Api</artifactId>
-            <version>1.0</version>
-        </dependency>
-
-        <dependency>
             <groupId>com.alibaba</groupId>
             <artifactId>fastjson</artifactId>
             <version>${dep.ver.fastjson}</version>
@@ -111,7 +105,12 @@
             <artifactId>spring-aspects</artifactId>
         </dependency>
         <!-- spring配置 -->
-
+        <!-- jstl for jsp page -->
+        <dependency>
+            <groupId>jstl</groupId>
+            <artifactId>jstl</artifactId>
+        </dependency>
+        <!-- jstl for jsp page -->
         <!-- jackson -->
         <!-- <dependency> -->
         <!-- <groupId>org.codehaus.jackson</groupId> -->

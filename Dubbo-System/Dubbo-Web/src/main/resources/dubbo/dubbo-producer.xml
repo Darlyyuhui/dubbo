@@ -13,14 +13,16 @@
 
     <context:property-placeholder location="classpath:dev/props/dubbo-producer.properties" ignore-unresolvable="true"/>
 
-    <dubbo:application name="dubbo-provider"/>
+    <dubbo:application name="dubbo-provider" logger="log4j"/>
     <dubbo:registry address="${dubbo-registry-address}" protocol="zookeeper"/>
     <dubbo:protocol name="dubbo" port="${dubbo-service-port}" accesslog="true" />
 
-    <dubbo:service interface="com.darly.dubbo.study.api.StudyApi" ref="studyApi"   group="${dubbo-group}" version="${dubbo-version}" timeout="${dubbo-timeout}" />
+    <dubbo:service interface="com.darly.dubbo.study.api.StudyApi" ref="StudyApi"   group="${dubbo-group}" version="${dubbo-version}" timeout="${dubbo-timeout}" />
+    <dubbo:service interface="com.darly.dubbo.security.user.api.UserApi" ref="UserApi" group="${dubbo-group}" version="${dubbo-version}" timeout="${dubbo-timeout}" />
+    <dubbo:service interface="com.darly.dubbo.security.user.api.LoginApi" ref="LoginApi" group="${dubbo-group}" version="${dubbo-version}" timeout="${dubbo-timeout}" />
 
     <!-- 具体的实现bean -->
-    <bean id="studyApi" class="com.darly.dubbo.study.impl.StudyBiz" />
-
-
+    <bean id="StudyApi" class="com.darly.dubbo.study.impl.StudyBiz" />
+    <bean id="UserApi" class="com.darly.dubbo.security.user.impl.UserBiz" />
+    <bean id="LoginApi" class="com.darly.dubbo.security.user.impl.LoginBiz" />
 </beans>
