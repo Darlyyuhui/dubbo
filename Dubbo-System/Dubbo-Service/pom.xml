@@ -111,7 +111,37 @@
             <artifactId>spring-aspects</artifactId>
         </dependency>
         <!-- spring配置 -->
-
+        <!-- Spring Security -->
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-web</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-config</artifactId>
+        </dependency>
+        <!--加密類-->
+        <dependency>
+            <groupId>commons-codec</groupId>
+            <artifactId>commons-codec</artifactId>
+            <version>1.7</version>
+        </dependency>
+        <!-- Spring Security -->
+        <!-- jstl for jsp page -->
+        <dependency>
+            <groupId>jstl</groupId>
+            <artifactId>jstl</artifactId>
+        </dependency>
+        <!-- jstl for jsp page -->
+        <!--缓存管理-->
+        <dependency>
+            <groupId>net.sf.ehcache</groupId>
+            <artifactId>ehcache-core</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>dom4j</groupId>
+            <artifactId>dom4j</artifactId>
+        </dependency>
         <!-- jackson -->
         <!-- <dependency> -->
         <!-- <groupId>org.codehaus.jackson</groupId> -->
@@ -139,22 +169,34 @@
          <!-- jackson -->
 
          <!-- log -->
-         <dependency>
-             <groupId>org.slf4j</groupId>
-             <artifactId>slf4j-api</artifactId>
-         </dependency>
-         <dependency>
-             <groupId>ch.qos.logback</groupId>
-             <artifactId>logback-classic</artifactId>
-         </dependency>
-         <dependency>
-             <groupId>org.slf4j</groupId>
-             <artifactId>log4j-over-slf4j</artifactId>
-         </dependency>
-         <dependency>
-             <groupId>org.slf4j</groupId>
-             <artifactId>jcl-over-slf4j</artifactId>
-         </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-log4j12</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-annotations</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>commons-io</groupId>
+            <artifactId>commons-io</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>log4j-over-slf4j</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>jcl-over-slf4j</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-classic</artifactId>
+        </dependency>
          <!-- log -->
 
          <!-- google -->

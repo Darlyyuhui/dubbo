@@ -58,6 +58,10 @@
             <artifactId>guava</artifactId>
         </dependency>
         <!-- google -->
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>javax.servlet-api</artifactId>
+        </dependency>
 
     </dependencies>
 </project>

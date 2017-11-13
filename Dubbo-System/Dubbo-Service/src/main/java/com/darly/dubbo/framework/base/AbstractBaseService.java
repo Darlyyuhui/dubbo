@@ -1,6 +1,7 @@
 package com.darly.dubbo.framework.base;
 
 import com.darly.dubbo.framework.common.StringDiyUtils;
+import com.darly.dubbo.framework.systemlog.Logger;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
@@ -13,7 +14,7 @@ import java.util.Map;
  * @Description： Service的實現類。
  */
 public abstract class AbstractBaseService<T,S> implements BaseService<T, S> {
-    //protected Logger logger = new Logger(getClass());
+    protected Logger logger = new Logger(getClass());
     /**
      * 子类实现
      * @return the baseMapper

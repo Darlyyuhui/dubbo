@@ -1,8 +1,6 @@
 package com.darly.dubbo.study.api;
 
-import com.darly.dubbo.study.dto.StudyDTO;
-
-import java.util.List;
+import org.springframework.ui.ModelMap;
 
 /**
  * Author : ZhangYuHui
@@ -11,5 +9,7 @@ import java.util.List;
  */
 public interface StudyApi {
 
-    List<StudyDTO> listStudys();
+     String studybuild(ModelMap model);
+
+     String checkjson(ModelMap model);
 }

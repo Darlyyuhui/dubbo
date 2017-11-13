@@ -1,0 +1,490 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.darly.dubbo.security.user.dao.SystemResourceMapper" >
+  <resultMap id="BaseResultMap" type="com.darly.dubbo.security.user.bean.SystemResource" >
+    <id column="ID" property="id" jdbcType="VARCHAR" />
+    <result column="TYPE" property="type" jdbcType="VARCHAR" />
+    <result column="NAME" property="name" jdbcType="VARCHAR" />
+    <result column="LEAF" property="leaf" jdbcType="DECIMAL" />
+    <result column="DISABLED" property="disabled" jdbcType="DECIMAL" />
+    <result column="CODE" property="code" jdbcType="VARCHAR" />
+    <result column="ICON" property="icon" jdbcType="VARCHAR" />
+    <result column="SORT_ORDER" property="sortOrder" jdbcType="DECIMAL" />
+    <result column="CONTENT" property="content" jdbcType="VARCHAR" />
+    <result column="MEMO" property="memo" jdbcType="VARCHAR" />
+    <result column="CREATE_DATE" property="createDate" jdbcType="TIMESTAMP" />
+    <result column="CREATE_BY" property="createBy" jdbcType="VARCHAR" />
+    <result column="UPDATE_BY" property="updateBy" jdbcType="VARCHAR" />
+    <result column="UPDATE_DATE" property="updateDate" jdbcType="TIMESTAMP" />
+    <result column="STATUS" property="status" jdbcType="VARCHAR" />
+    <result column="PARENTID" property="parentid" jdbcType="VARCHAR" />
+    <result column="MODULE_CODE" property="moduleCode" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    ID, TYPE, NAME, LEAF, DISABLED, CODE, ICON, SORT_ORDER, CONTENT, MEMO, CREATE_DATE, 
+    CREATE_BY, UPDATE_BY, UPDATE_DATE, STATUS, PARENTID, MODULE_CODE
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.darly.dubbo.security.user.bean.SystemResourceSearch" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from SYS_RESOURCE
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from SYS_RESOURCE
+    where ID = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from SYS_RESOURCE
+    where ID = #{id,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.darly.dubbo.security.user.bean.SystemResourceSearch" >
+    delete from SYS_RESOURCE
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.darly.dubbo.security.user.bean.SystemResource" useGeneratedKeys="true" keyProperty="id" >
+    insert into SYS_RESOURCE (TYPE, NAME, LEAF, 
+      DISABLED, CODE, ICON, 
+      SORT_ORDER, CONTENT, MEMO, 
+      CREATE_DATE, CREATE_BY, UPDATE_BY, 
+      UPDATE_DATE, STATUS, PARENTID, 
+      MODULE_CODE)
+    values (#{type,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, #{leaf,jdbcType=DECIMAL}, 
+      #{disabled,jdbcType=DECIMAL}, #{code,jdbcType=VARCHAR}, #{icon,jdbcType=VARCHAR}, 
+      #{sortOrder,jdbcType=DECIMAL}, #{content,jdbcType=VARCHAR}, #{memo,jdbcType=VARCHAR}, 
+      #{createDate,jdbcType=TIMESTAMP}, #{createBy,jdbcType=VARCHAR}, #{updateBy,jdbcType=VARCHAR}, 
+      #{updateDate,jdbcType=TIMESTAMP}, #{status,jdbcType=VARCHAR}, #{parentid,jdbcType=VARCHAR}, 
+      #{moduleCode,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.darly.dubbo.security.user.bean.SystemResource">
+    insert into SYS_RESOURCE
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        ID,
+      </if>	
+      <if test="type != null" >
+        TYPE,
+      </if>
+      <if test="name != null" >
+        NAME,
+      </if>
+      <if test="leaf != null" >
+        LEAF,
+      </if>
+      <if test="disabled != null" >
+        DISABLED,
+      </if>
+      <if test="code != null" >
+        CODE,
+      </if>
+      <if test="icon != null" >
+        ICON,
+      </if>
+      <if test="sortOrder != null" >
+        SORT_ORDER,
+      </if>
+      <if test="content != null" >
+        CONTENT,
+      </if>
+      <if test="memo != null" >
+        MEMO,
+      </if>
+      <if test="createDate != null" >
+        CREATE_DATE,
+      </if>
+      <if test="createBy != null" >
+        CREATE_BY,
+      </if>
+      <if test="updateBy != null" >
+        UPDATE_BY,
+      </if>
+      <if test="updateDate != null" >
+        UPDATE_DATE,
+      </if>
+      <if test="status != null" >
+        STATUS,
+      </if>
+      <if test="parentid != null" >
+        PARENTID,
+      </if>
+      <if test="moduleCode != null" >
+        MODULE_CODE,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+       <if test="id != null" >
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null" >
+        #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="leaf != null" >
+        #{leaf,jdbcType=DECIMAL},
+      </if>
+      <if test="disabled != null" >
+        #{disabled,jdbcType=DECIMAL},
+      </if>
+      <if test="code != null" >
+        #{code,jdbcType=VARCHAR},
+      </if>
+      <if test="icon != null" >
+        #{icon,jdbcType=VARCHAR},
+      </if>
+      <if test="sortOrder != null" >
+        #{sortOrder,jdbcType=DECIMAL},
+      </if>
+      <if test="content != null" >
+        #{content,jdbcType=VARCHAR},
+      </if>
+      <if test="memo != null" >
+        #{memo,jdbcType=VARCHAR},
+      </if>
+      <if test="createDate != null" >
+        #{createDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createBy != null" >
+        #{createBy,jdbcType=VARCHAR},
+      </if>
+      <if test="updateBy != null" >
+        #{updateBy,jdbcType=VARCHAR},
+      </if>
+      <if test="updateDate != null" >
+        #{updateDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="parentid != null" >
+        #{parentid,jdbcType=VARCHAR},
+      </if>
+      <if test="moduleCode != null" >
+        #{moduleCode,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.darly.dubbo.security.user.bean.SystemResourceSearch" resultType="java.lang.Integer" >
+    select count(*) from SYS_RESOURCE
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update SYS_RESOURCE
+    <set >
+      <if test="record.id != null" >
+        ID = #{record.id,jdbcType=VARCHAR},
+      </if>
+      <if test="record.type != null" >
+        TYPE = #{record.type,jdbcType=VARCHAR},
+      </if>
+      <if test="record.name != null" >
+        NAME = #{record.name,jdbcType=VARCHAR},
+      </if>
+      <if test="record.leaf != null" >
+        LEAF = #{record.leaf,jdbcType=DECIMAL},
+      </if>
+      <if test="record.disabled != null" >
+        DISABLED = #{record.disabled,jdbcType=DECIMAL},
+      </if>
+      <if test="record.code != null" >
+        CODE = #{record.code,jdbcType=VARCHAR},
+      </if>
+      <if test="record.icon != null" >
+        ICON = #{record.icon,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sortOrder != null" >
+        SORT_ORDER = #{record.sortOrder,jdbcType=DECIMAL},
+      </if>
+      <if test="record.content != null" >
+        CONTENT = #{record.content,jdbcType=VARCHAR},
+      </if>
+      <if test="record.memo != null" >
+        MEMO = #{record.memo,jdbcType=VARCHAR},
+      </if>
+      <if test="record.createDate != null" >
+        CREATE_DATE = #{record.createDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.createBy != null" >
+        CREATE_BY = #{record.createBy,jdbcType=VARCHAR},
+      </if>
+      <if test="record.updateBy != null" >
+        UPDATE_BY = #{record.updateBy,jdbcType=VARCHAR},
+      </if>
+      <if test="record.updateDate != null" >
+        UPDATE_DATE = #{record.updateDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.status != null" >
+        STATUS = #{record.status,jdbcType=VARCHAR},
+      </if>
+      <if test="record.parentid != null" >
+        PARENTID = #{record.parentid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.moduleCode != null" >
+        MODULE_CODE = #{record.moduleCode,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update SYS_RESOURCE
+    set ID = #{record.id,jdbcType=VARCHAR},
+      TYPE = #{record.type,jdbcType=VARCHAR},
+      NAME = #{record.name,jdbcType=VARCHAR},
+      LEAF = #{record.leaf,jdbcType=DECIMAL},
+      DISABLED = #{record.disabled,jdbcType=DECIMAL},
+      CODE = #{record.code,jdbcType=VARCHAR},
+      ICON = #{record.icon,jdbcType=VARCHAR},
+      SORT_ORDER = #{record.sortOrder,jdbcType=DECIMAL},
+      CONTENT = #{record.content,jdbcType=VARCHAR},
+      MEMO = #{record.memo,jdbcType=VARCHAR},
+      CREATE_DATE = #{record.createDate,jdbcType=TIMESTAMP},
+      CREATE_BY = #{record.createBy,jdbcType=VARCHAR},
+      UPDATE_BY = #{record.updateBy,jdbcType=VARCHAR},
+      UPDATE_DATE = #{record.updateDate,jdbcType=TIMESTAMP},
+      STATUS = #{record.status,jdbcType=VARCHAR},
+      PARENTID = #{record.parentid,jdbcType=VARCHAR},
+      MODULE_CODE = #{record.moduleCode,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.darly.dubbo.security.user.bean.SystemResource" >
+    update SYS_RESOURCE
+    <set >
+      <if test="type != null" >
+        TYPE = #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null" >
+        NAME = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="leaf != null" >
+        LEAF = #{leaf,jdbcType=DECIMAL},
+      </if>
+      <if test="disabled != null" >
+        DISABLED = #{disabled,jdbcType=DECIMAL},
+      </if>
+      <if test="code != null" >
+        CODE = #{code,jdbcType=VARCHAR},
+      </if>
+      <if test="icon != null" >
+        ICON = #{icon,jdbcType=VARCHAR},
+      </if>
+      <if test="sortOrder != null" >
+        SORT_ORDER = #{sortOrder,jdbcType=DECIMAL},
+      </if>
+      <if test="content != null" >
+        CONTENT = #{content,jdbcType=VARCHAR},
+      </if>
+      <if test="memo != null" >
+        MEMO = #{memo,jdbcType=VARCHAR},
+      </if>
+      <if test="createDate != null" >
+        CREATE_DATE = #{createDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createBy != null" >
+        CREATE_BY = #{createBy,jdbcType=VARCHAR},
+      </if>
+      <if test="updateBy != null" >
+        UPDATE_BY = #{updateBy,jdbcType=VARCHAR},
+      </if>
+      <if test="updateDate != null" >
+        UPDATE_DATE = #{updateDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="status != null" >
+        STATUS = #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="parentid != null" >
+        PARENTID = #{parentid,jdbcType=VARCHAR},
+      </if>
+      <if test="moduleCode != null" >
+        MODULE_CODE = #{moduleCode,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.darly.dubbo.security.user.bean.SystemResource" >
+    update SYS_RESOURCE
+    set TYPE = #{type,jdbcType=VARCHAR},
+      NAME = #{name,jdbcType=VARCHAR},
+      LEAF = #{leaf,jdbcType=DECIMAL},
+      DISABLED = #{disabled,jdbcType=DECIMAL},
+      CODE = #{code,jdbcType=VARCHAR},
+      ICON = #{icon,jdbcType=VARCHAR},
+      SORT_ORDER = #{sortOrder,jdbcType=DECIMAL},
+      CONTENT = #{content,jdbcType=VARCHAR},
+      MEMO = #{memo,jdbcType=VARCHAR},
+      CREATE_DATE = #{createDate,jdbcType=TIMESTAMP},
+      CREATE_BY = #{createBy,jdbcType=VARCHAR},
+      UPDATE_BY = #{updateBy,jdbcType=VARCHAR},
+      UPDATE_DATE = #{updateDate,jdbcType=TIMESTAMP},
+      STATUS = #{status,jdbcType=VARCHAR},
+      PARENTID = #{parentid,jdbcType=VARCHAR},
+      MODULE_CODE = #{moduleCode,jdbcType=VARCHAR}
+    where ID = #{id,jdbcType=VARCHAR}
+  </update>
+  
+  
+  
+  <select id="getDeskTopMenuByuserId" parameterType="java.lang.String" resultMap="BaseResultMap">
+  	SELECT  <include refid="Base_Column_List" />
+  		FROM SYS_RESOURCE
+	WHERE id IN (SELECT menuid  FROM SYS_USER_DESKTOP_MENU  WHERE userid = #{id})
+  </select>
+  
+  <select id="getMenusByUserId" resultMap="BaseResultMap" parameterType="java.lang.String">
+   SELECT  <include refid="Base_Column_List" />
+    	FROM SYS_RESOURCE res
+   WHERE res.id IN (SELECT resource_id
+                          FROM SYS_ROLE_RESOURCES re
+                         WHERE re.role_id IN (SELECT roleid
+                                                FROM sys_user_role r
+                                               WHERE r.userid = #{0}))
+         AND res.status = 0
+         AND res.TYPE =#{1}
+         AND res.disabled = 0
+   ORDER BY res.sort_order
+  
+  </select>
+  
+  <select id="getLeafMenusByUserId" resultMap="BaseResultMap" parameterType="java.lang.String">
+  	SELECT  <include refid="Base_Column_List" />
+  	<![CDATA[
+    	FROM SYS_RESOURCE res
+	   WHERE res.id IN (SELECT resource_id
+	                          FROM SYS_ROLE_RESOURCES re
+	                         WHERE re.role_id IN (SELECT roleid
+	                                                FROM sys_user_role r
+	                                               WHERE r.userid = #{userid}))
+	         AND res.status = 0
+	         AND res.TYPE = '0'
+	         AND res.disabled = 0
+	         AND res.PARENTID  <> 0
+	   ORDER BY res.sort_order
+   ]]>
+  
+  </select>
+  
+    
+  <select id="getChildMenusByUserId" resultMap="BaseResultMap" parameterType="java.lang.String">
+  SELECT  <include refid="Base_Column_List" />
+    <![CDATA[
+    	 FROM SYS_RESOURCE res
+         WHERE res.status ='0' AND res.type =#{2} AND res.disabled=0 AND parentId =#{1}
+         AND res.id IN
+            (SELECT resource_id FROM SYS_ROLE_RESOURCES re WHERE re.role_id IN
+                    (SELECT  roleid   FROM sys_user_role r WHERE r.userid =#{0}))
+         ORDER BY res.sort_order
+   ]]>
+  </select>  
+  
+  <select id="getChildMenusByUserIdAndParentId" resultMap="BaseResultMap" parameterType="java.lang.String">
+  SELECT  <include refid="Base_Column_List" />
+    <![CDATA[
+    	 FROM SYS_RESOURCE res
+         WHERE res.status ='0' AND res.type = '0' AND res.disabled=0
+         AND res.id IN
+            (SELECT resource_id FROM SYS_ROLE_RESOURCES re WHERE re.role_id IN
+                    (SELECT  roleid   FROM sys_user_role r WHERE r.userid =#{0}))
+         start with res.id= #{1} connect by prior res.id = res.parentid
+         ORDER BY res.sort_order
+   ]]>
+  </select>  
+  
+  <select id="getMenuButtonsByParentId"  parameterType="java.lang.String" resultType="java.lang.String">
+  	SELECT res.code
+	  FROM sys_role_resources re LEFT JOIN sys_resource res
+	       ON (re.resource_id = res.ID)
+	 WHERE re.role_id IN (SELECT roleid
+	                        FROM sys_user_role r
+	                       WHERE r.userid = #{0})
+	   AND res.parentid = #{1}
+	   AND res.TYPE = 1
+  </select>
+  
+  <delete id="deleteResourceByRoleId" parameterType="java.lang.String">
+  	DELETE SYS_ROLE_RESOURCES T WHERE T.ROLE_ID=#{roleid}
+  </delete>
+  
+  <insert id="addRoleResource" parameterType="java.lang.String">
+  	INSERT INTO SYS_ROLE_RESOURCES (RESOURCE_ID, ROLE_ID) VALUES(#{1},#{0})
+  </insert>
+  
+  <select id="getRecordByResIdAndRoleId" resultType="java.lang.Integer" parameterType="java.lang.String">
+    SELECT count(*) FROM SYS_ROLE_RESOURCES WHERE RESOURCE_ID=#{1} and ROLE_ID=#{0}
+  </select>
+</mapper>

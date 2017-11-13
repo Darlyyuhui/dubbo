@@ -53,6 +53,8 @@
     <dep.ver.httpclient>4.5.2</dep.ver.httpclient>
 
     <dep.ver.fastjson>1.2.11</dep.ver.fastjson>
+      <dep.ver.spring.security.version>4.0.0.RELEASE</dep.ver.spring.security.version>
+      <dep.ver.jstl.version>1.2</dep.ver.jstl.version>
 
     <plg.ver.maven-resources-plugin>2.7</plg.ver.maven-resources-plugin>
     <plg.ver.maven-compiler-plugin>2.5.1</plg.ver.maven-compiler-plugin>
@@ -145,6 +147,43 @@
                  <version>${dep.ver.springframework}</version>
              </dependency>
              <!-- spring -->
+            <!-- Spring Security -->
+            <dependency>
+                <groupId>org.springframework.security</groupId>
+                <artifactId>spring-security-web</artifactId>
+                <version>${dep.ver.spring.security.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.security</groupId>
+                <artifactId>spring-security-config</artifactId>
+                <version>${dep.ver.spring.security.version}</version>
+            </dependency>
+            <!--加密類-->
+            <dependency>
+                <groupId>commons-codec</groupId>
+                <artifactId>commons-codec</artifactId>
+                <version>1.7</version>
+            </dependency>
+            <!-- Spring Security -->
+            <!-- jstl for jsp page -->
+            <dependency>
+                <groupId>jstl</groupId>
+                <artifactId>jstl</artifactId>
+                <version>${dep.ver.jstl.version}</version>
+            </dependency>
+            <!-- jstl for jsp page -->
+            <!--缓存管理-->
+            <dependency>
+                <groupId>net.sf.ehcache</groupId>
+                <artifactId>ehcache-core</artifactId>
+                <version>2.6.11</version>
+            </dependency>
+            <dependency>
+                <groupId>dom4j</groupId>
+                <artifactId>dom4j</artifactId>
+                <version>1.6.1</version>
+            </dependency>
+
              <!-- db -->
              <dependency>
                  <groupId>com.alibaba</groupId>
@@ -200,6 +239,21 @@
                  <artifactId>slf4j-api</artifactId>
                  <version>${dep.ver.slf4j}</version>
              </dependency>
+            <dependency>
+                <groupId>org.slf4j</groupId>
+                <artifactId>slf4j-log4j12</artifactId>
+                <version>${dep.ver.slf4j}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.fasterxml.jackson.core</groupId>
+                <artifactId>jackson-annotations</artifactId>
+                <version>2.8.0</version>
+            </dependency>
+            <dependency>
+                <groupId>commons-io</groupId>
+                <artifactId>commons-io</artifactId>
+                <version>2.5</version>
+            </dependency>
              <dependency>
                  <groupId>org.slf4j</groupId>
                  <artifactId>log4j-over-slf4j</artifactId>
