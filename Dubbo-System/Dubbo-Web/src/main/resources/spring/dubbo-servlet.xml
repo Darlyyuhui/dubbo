@@ -20,7 +20,6 @@
     <!-- 相当于注册了DefaultAnnotationHandlerMapping和AnnotationMethodHandlerAdapter两个bean，配置一些messageconverter。即解决了@Controller注解的使用前提配置 -->
 
 
-    <bean id="applicationContext" class="com.darly.dubbo.root.ApplicationContext"/>
     <!--<bean id="applicationContextHolder" class="cn.com.darly.sysbase.framework.base.ApplicationContextHolder"/>-->
 
     <context:component-scan base-package="com.darly.dubbo.*"/>

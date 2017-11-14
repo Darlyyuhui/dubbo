@@ -80,7 +80,7 @@ public enum Browser {
     private Pattern versionRegEx;
 
     private Browser(Manufacturer manufacturer, Browser parent, int versionId, String name, String[] aliases, String[] exclude, BrowserType browserType, RenderingEngine renderingEngine, String versionRegexString) {
-        this.id = (short)((manufacturer.getId() << 8) + (byte)versionId);
+        this.id = (short)((manufacturer.getId() << 8) + (versionId & 0xff));
         this.name = name;
         this.parent = parent;
         this.children = new ArrayList();

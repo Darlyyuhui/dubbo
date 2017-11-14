@@ -25,7 +25,7 @@ public enum Application {
     private final Manufacturer manufacturer;
 
     private Application(Manufacturer manufacturer, int versionId, String name, String[] aliases, ApplicationType applicationType) {
-        this.id = (short)((manufacturer.getId() << 8) + (byte)versionId);
+        this.id = (short)((manufacturer.getId() << 8) + (versionId & 0xff));
         this.name = name;
         this.aliases = aliases;
         this.applicationType = applicationType;

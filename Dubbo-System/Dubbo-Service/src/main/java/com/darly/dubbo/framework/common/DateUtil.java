@@ -1039,7 +1039,7 @@ public class DateUtil {
 	 */
 	public static boolean isGreaterNow(Date date,int interval){
 		Date now = new Date();
-		long inter = 1000*interval;
+		long inter = (long) 1000 * interval;
 		long result = date.getTime()-now.getTime();
 		if(result < 0 || result < inter) return false;
 		else  return true;

@@ -1,5 +1,6 @@
 package com.darly.dubbo.login;
 
+import com.darly.dubbo.cfg.ApplicationConst;
 import com.darly.dubbo.security.user.api.UserApi;
 import com.darly.dubbo.security.user.bean.User;
 import org.springframework.stereotype.Controller;
@@ -27,7 +28,8 @@ public class UserController{
      */
     @RequestMapping(value="/regedit",method = RequestMethod.GET)
     public String forwardLogin(ModelMap model){
-        return userApi.forwardLogin(model);
+        model.putAll(userApi.forwardLogin());
+        return (String) model.get(ApplicationConst.getForwordUrl());
     }
 
     /***
@@ -35,7 +37,8 @@ public class UserController{
      */
     @RequestMapping(value = "/add", method = RequestMethod.POST)
     public String addUser(User user, ModelMap redirectAttributes){
-        return userApi.addUser(user,redirectAttributes);
+        redirectAttributes.putAll(userApi.addUser(user));
+        return (String) redirectAttributes.get(ApplicationConst.getForwordUrl());
     }
     /***
      * 判断编码是否重复

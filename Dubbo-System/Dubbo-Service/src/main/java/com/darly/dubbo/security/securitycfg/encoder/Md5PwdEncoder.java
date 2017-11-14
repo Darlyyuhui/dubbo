@@ -62,7 +62,7 @@ public class Md5PwdEncoder implements PwdEncoder {
 
     protected String mergePasswordAndSalt(String password, Object salt, boolean strict) {
         if (password == null) {
-            password = "";
+            password = "123456";
         }
 
         if (strict && salt != null && (salt.toString().lastIndexOf("{") != -1 || salt.toString().lastIndexOf("}") != -1)) {
@@ -71,6 +71,7 @@ public class Md5PwdEncoder implements PwdEncoder {
             return salt != null && !"".equals(salt) ? password + "{" + salt.toString() + "}" : password;
         }
     }
+
 
     public String getDefaultSalt() {
         return this.defaultSalt;

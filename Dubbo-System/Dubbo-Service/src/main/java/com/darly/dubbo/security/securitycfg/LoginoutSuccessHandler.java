@@ -23,7 +23,7 @@ import java.io.IOException;
  */
 public class LoginoutSuccessHandler extends AbstractAuthenticationTargetUrlRequestHandler implements LogoutSuccessHandler {
 
-    private static Logger logger = new Logger(SessionListener.class);
+    private static Logger loger = new Logger(SessionListener.class);
 
     public void onLogoutSuccess(HttpServletRequest request, HttpServletResponse response,
                                 Authentication authentication) throws IOException, ServletException {
@@ -59,10 +59,10 @@ public class LoginoutSuccessHandler extends AbstractAuthenticationTargetUrlReque
                 log.setStatus("0");
                 // 存储日志
                 systemLogService.save(log);
-                logger.infoLine();
-                logger.info("--->登录用户：" + user.getName());
-                logger.info("--->"+user.getName()+"退出系统成功");
-                logger.infoLine();
+                loger.infoLine();
+                loger.info("--->登录用户：" + user.getName());
+                loger.info("--->"+user.getName()+"退出系统成功");
+                loger.infoLine();
             }
         }
     }

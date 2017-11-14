@@ -9,7 +9,7 @@ import org.springframework.ui.ModelMap;
  */
 public interface StudyApi {
 
-     String studybuild(ModelMap model);
+     ModelMap studybuild();
 
-     String checkjson(ModelMap model);
+     ModelMap checkjson();
 }

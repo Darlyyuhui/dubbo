@@ -1,5 +1,6 @@
 package com.darly.dubbo.jsoncheck;
 
+import com.darly.dubbo.cfg.ApplicationConst;
 import com.darly.dubbo.study.api.StudyApi;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -24,7 +25,8 @@ public class CheckJsonController {
      */
     @RequestMapping(value = {"/checkjson"}, method = RequestMethod.GET)
     public String checkjson(ModelMap model) {
-        return studyApi.checkjson(model);
+        model.putAll(studyApi.checkjson());
+        return (String) model.get(ApplicationConst.getForwordUrl());
     }
 
 }

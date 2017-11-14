@@ -69,7 +69,7 @@ public enum OperatingSystem {
             this.parent.children.add(this);
         }
 
-        this.id = (short)((manufacturer.getId() << 8) + (byte)versionId);
+        this.id = (short)((manufacturer.getId() << 8) + (versionId & 0xff));
         this.name = name;
         this.aliases = aliases;
         this.excludeList = exclude;

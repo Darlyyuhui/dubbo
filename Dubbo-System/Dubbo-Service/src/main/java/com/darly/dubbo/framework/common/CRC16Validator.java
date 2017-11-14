@@ -11,6 +11,10 @@ import org.springframework.util.StringUtils;
  */
 public class CRC16Validator {
 
+    private CRC16Validator(){
+        throw new IllegalStateException("Utility class");
+    }
+
     private static final Logger logger = LoggerFactory.getLogger(CRC16Validator.class);
 
     /***

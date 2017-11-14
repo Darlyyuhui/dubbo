@@ -1,6 +1,7 @@
 package com.darly.dubbo.study;
 
 
+import com.darly.dubbo.cfg.ApplicationConst;
 import com.darly.dubbo.study.api.StudyApi;
 import com.darly.dubbo.study.bean.Study;
 import org.springframework.stereotype.Controller;
@@ -28,7 +29,8 @@ public class StudyController {
      */
     @RequestMapping(value = {"/list"}, method = RequestMethod.GET)
     public String studyBuild(ModelMap modelMap) {
-        return studyApi.studybuild(modelMap);
+        modelMap.putAll(studyApi.studybuild());
+        return (String) modelMap.get(ApplicationConst.getForwordUrl());
     }
 
 

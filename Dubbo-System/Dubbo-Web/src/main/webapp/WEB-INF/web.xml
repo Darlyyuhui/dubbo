@@ -77,7 +77,7 @@
     <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
   </listener>
   <listener>
-    <listener-class>com.darly.dubbo.framework.listener.SystemInitListener</listener-class>
+    <listener-class>com.darly.dubbo.root.ApplicationListener</listener-class>
   </listener>
   <!--Spring Security限制多个用户登录-->
   <listener>

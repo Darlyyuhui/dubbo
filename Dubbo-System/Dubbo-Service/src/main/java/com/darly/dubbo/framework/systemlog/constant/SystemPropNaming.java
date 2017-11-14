@@ -12,7 +12,7 @@ import com.darly.dubbo.framework.common.StringDiyUtils;
  * @Description： 系统常用配置文件名称
  */
 public final class SystemPropNaming {
-	
+	private static final Object lockObj = new Object();
 	 /**
      * 指定配置文件路径
      */
@@ -24,7 +24,7 @@ public final class SystemPropNaming {
 	
 	public static void init()
 	{
-		synchronized("framework_commons_lock")
+		synchronized(lockObj)
 		{
 			CONFIG_ROOT = "";
 			String env = System.getProperty("FRAMEWORK_COMMON_CONFIG_ROOT");
