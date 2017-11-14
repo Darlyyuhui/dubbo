@@ -1,8 +1,5 @@
 package com.darly.dubbo.framework.base;
 
-import com.darly.dubbo.framework.obs.ObsApplication;
-import com.darly.dubbo.framework.obs.SubAbstract;
-import com.darly.dubbo.framework.obs.SubListener;
 import com.darly.dubbo.framework.systemlog.Logger;
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.support.BeanDefinitionRegistry;
@@ -20,13 +17,6 @@ import org.springframework.context.ConfigurableApplicationContext;
 public abstract class ApplicationContextHolder implements ApplicationContextAware {
     protected static Logger log = new Logger(ApplicationContextHolder.class);
     private static ApplicationContext applicationContext;
-
-    protected SubListener showinfo;
-
-    public ApplicationContextHolder() {
-        this.showinfo = new SubAbstract();
-        this.showinfo.addObserver(ObsApplication.getInstance());
-    }
 
     public void setApplicationContext(ApplicationContext context) throws BeansException {
 

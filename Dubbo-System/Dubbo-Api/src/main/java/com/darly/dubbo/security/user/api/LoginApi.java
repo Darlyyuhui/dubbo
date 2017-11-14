@@ -13,40 +13,33 @@ public interface LoginApi {
 
     /**
      * @param error
-     * @param model
      * @return 传递登录信息，跳转登录页面
      */
-    String login(String error, ModelMap model);
+    ModelMap login(String error );
 
     /**
-     * @param model
      * @return 相同用户登录后，踢出前一个登录用户弹出页面
      */
-    String sameuser(ModelMap model);
+    ModelMap sameuser();
 
     /**
-     * @param model
      * @return 用户Session超时页面
      */
-    String timeout(ModelMap model);
+    ModelMap timeout();
 
     /**
-     * @param model
      * @return 用户重新登录页面
      */
-    String forwardLogin(ModelMap model);
+    ModelMap forwardLogin();
 
     /**
-     * @param model
      * @return 跳转首页
      */
-    String index(ModelMap model);
+    ModelMap index();
 
     /**
-     * @param model
-     * @param request
      * @return 登录后 跳转登录主页
      */
-    String home(ModelMap model, HttpServletRequest request);
+    ModelMap home( HttpServletRequest request);
 
 }

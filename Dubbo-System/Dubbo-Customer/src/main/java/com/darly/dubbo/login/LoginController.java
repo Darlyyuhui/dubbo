@@ -23,16 +23,20 @@ public class LoginController{
 
     @RequestMapping(value = {"/login"}, method = RequestMethod.GET)
     public String login(String error,ModelMap model,HttpServletRequest request){
-        return loginApi.login(error,model);
+        model.putAll(loginApi.login(error));
+        return (String) model.get("url");
     }
 
     @RequestMapping({"/sameuser"})
     public String sameuser(ModelMap model) {
-        return loginApi.sameuser(model);
+        model.putAll(loginApi.sameuser());
+        return (String) model.get("url");
     }
+
     @RequestMapping({"/timeout"})
     public String timeout(ModelMap model) {
-        return loginApi.timeout(model);
+        model.putAll(loginApi.timeout());
+        return (String) model.get("url");
     }
 
     /***
@@ -40,12 +44,14 @@ public class LoginController{
      */
     @RequestMapping(value="/forwardLogin/",method = RequestMethod.GET)
     public String forwardLogin(ModelMap model){
-        return loginApi.forwardLogin(model);
+        model.putAll(loginApi.forwardLogin());
+        return (String) model.get("url");
     }
 
     @RequestMapping(value = {"/index"}, method = RequestMethod.GET)
     public String index(ModelMap model, HttpServletRequest request) {
-        return loginApi.index(model);
+        model.putAll(loginApi.index());
+        return (String) model.get("url");
     }
 
     /***
@@ -53,6 +59,7 @@ public class LoginController{
      */
     @RequestMapping(value = {"/home/admin/"}, method = RequestMethod.GET)
     public String home(ModelMap model, HttpServletRequest request){
-        return loginApi.home(model,request);
+        model.putAll(loginApi.home(request));
+        return (String) model.get("url");
     }
 }

@@ -27,7 +27,8 @@ public class UserController{
      */
     @RequestMapping(value="/regedit",method = RequestMethod.GET)
     public String forwardLogin(ModelMap model){
-        return userApi.forwardLogin(model);
+        model.putAll(userApi.forwardLogin());
+        return (String) model.get("url");
     }
 
     /***
@@ -35,7 +36,8 @@ public class UserController{
      */
     @RequestMapping(value = "/add", method = RequestMethod.POST)
     public String addUser(User user, ModelMap redirectAttributes){
-        return userApi.addUser(user,redirectAttributes);
+        redirectAttributes.putAll(userApi.addUser(user));
+        return (String) redirectAttributes.get("url");
     }
     /***
      * 判断编码是否重复

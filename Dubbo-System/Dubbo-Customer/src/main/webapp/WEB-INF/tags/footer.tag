@@ -2,7 +2,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <c:set var="root" value="${pageContext.request.contextPath}" />
 <!-- 引入 背景 -->
-<script color="43, 22, 22" opacity='0.6' zIndex="-2" count="100" src="${root}/ui/js/canvasparticle/canvas.js"></script>
+<script color="43, 22, 22" opacity='0.6' zIndex="-2" count="100" src="${root}/basejs/login/js/canvas.js"></script>
 <style type="text/css">
     #console-container {
         float: left;

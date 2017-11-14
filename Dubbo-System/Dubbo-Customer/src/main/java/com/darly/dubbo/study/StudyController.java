@@ -28,7 +28,8 @@ public class StudyController {
      */
     @RequestMapping(value = {"/list"}, method = RequestMethod.GET)
     public String studyBuild(ModelMap modelMap) {
-        return studyApi.studybuild(modelMap);
+        modelMap.putAll(studyApi.studybuild());
+        return (String) modelMap.get("url");
     }
 
 

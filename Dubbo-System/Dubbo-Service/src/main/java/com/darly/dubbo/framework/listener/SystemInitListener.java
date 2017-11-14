@@ -1,5 +1,8 @@
 package com.darly.dubbo.framework.listener;
 
+import com.darly.dubbo.framework.obs.ObsApplication;
+import com.darly.dubbo.framework.obs.SubAbstract;
+import com.darly.dubbo.framework.obs.SubListener;
 import com.darly.dubbo.framework.systemlog.Logger;
 import com.darly.dubbo.framework.systemlog.constant.Constant;
 import org.apache.commons.lang.StringUtils;
@@ -13,8 +16,15 @@ import javax.servlet.ServletContextListener;
  * 系统启动监听器
  */
 public class SystemInitListener implements ServletContextListener {
-	private static final Logger logger = new Logger(SystemInitListener.class);
-	
+	public static final Logger logger = new Logger(SystemInitListener.class);
+
+    protected SubListener showinfo;
+
+    public SystemInitListener() {
+        this.showinfo = new SubAbstract();
+        this.showinfo.addObserver(ObsApplication.getInstance());
+    }
+
     public void contextDestroyed(ServletContextEvent sce) {
 
     }

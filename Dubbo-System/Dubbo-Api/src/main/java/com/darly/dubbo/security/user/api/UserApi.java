@@ -13,9 +13,9 @@ import javax.servlet.http.HttpServletRequest;
  */
 public interface UserApi {
 
-    String forwardLogin(ModelMap model);
+    ModelMap forwardLogin();
 
-    String addUser(User user, ModelMap redirectAttributes);
+    ModelMap addUser(User user);
 
-    String accountExist(HttpServletRequest req, @RequestParam(value = "account") String account);
+    String  accountExist(HttpServletRequest req, @RequestParam(value = "account") String account);
 }

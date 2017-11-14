@@ -8,9 +8,9 @@
     <link rel="SHORTCUT ICON" href="${root}/images/base/logo.ico"/>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
-    <link href="${root}/ui/css/login/style.css" rel="stylesheet" type="text/css" />
-    <script type="text/javascript" src="${root}/ui/js/jquery/jquery-1.9.1.js"></script>
-    <script type="text/javascript" src="${root}/ui/js/layer/layer.js"></script>
+    <link href="${root}/basejs/login/css/style.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" src="${root}/basejs/login/js/jquery-1.9.1.js"></script>
+    <script type="text/javascript" src="${root}/basejs/login/js/layer.js"></script>
 </head>
 <title>${itmsname}</title>
 <body style="background-color: #e6e6e6;">
@@ -113,7 +113,7 @@
         return "";
     }
 </script>
-<script type="text/javascript" color="0,255,255" opacity='0.6' zIndex="-2" count="100" src="${root}/ui/js/canvasparticle/canvas.js"></script>
+<script type="text/javascript" color="0,255,255" opacity='0.6' zIndex="-2" count="100" src="${root}/basejs/login/js/canvas.js"></script>
 </body>
 
 </html>
