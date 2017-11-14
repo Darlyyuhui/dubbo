@@ -1,5 +1,6 @@
 package com.darly.dubbo.mobile;
 
+import com.darly.dubbo.cfg.ApplicationConst;
 import com.darly.dubbo.mobile.api.MobileLoginApi;
 import com.darly.dubbo.mobile.api.MobileUserApi;
 import com.darly.dubbo.mobile.cfg.MobileBaseController;
@@ -33,7 +34,7 @@ public class MobileController extends MobileBaseController {
     @RequestMapping(value = {"/noright"}, method = RequestMethod.GET)
     public String noRight(ModelMap model) {
         model.putAll(userApi.noRight());
-        return (String) model.get("url");
+        return (String) model.get(ApplicationConst.FORWORD_URL);
     }
     /**
      * @return 前端接口請求用戶

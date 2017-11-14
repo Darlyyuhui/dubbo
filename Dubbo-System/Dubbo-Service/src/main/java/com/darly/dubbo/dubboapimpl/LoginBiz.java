@@ -1,5 +1,6 @@
 package com.darly.dubbo.dubboapimpl;
 
+import com.darly.dubbo.cfg.ApplicationConst;
 import com.darly.dubbo.framework.base.BaseController;
 import com.darly.dubbo.framework.systemlog.resource.MessageResources;
 import com.darly.dubbo.security.securitycfg.UserDetials;
@@ -30,39 +31,39 @@ public class LoginBiz extends BaseController implements LoginApi {
     @Override
     public ModelMap login(String error) {
         ModelMap model = new ModelMap();
-        model.addAttribute("itmsname", applicationName);
+        model.addAttribute(ApplicationConst.APPLICATION_NAME, applicationName);
         logger.info("--->[方法 login 运行中...]");
         if ("true".equals(error)) {
             this.logger.info("用户登陆失败！");
         }
-        model.addAttribute("url","login");
+        model.addAttribute(ApplicationConst.FORWORD_URL,"login");
         return model;
     }
 
     @Override
     public ModelMap sameuser() {
         ModelMap model = new ModelMap();
-        model.addAttribute("itmsname", applicationName);
+        model.addAttribute(ApplicationConst.APPLICATION_NAME, applicationName);
         logger.info("--->[方法 sameuser 运行中...]");
-        model.addAttribute("url","/error/sameuser");
+        model.addAttribute(ApplicationConst.FORWORD_URL,"/error/sameuser");
         return model;
     }
 
     @Override
     public ModelMap timeout() {
         ModelMap model = new ModelMap();
-        model.addAttribute("itmsname", applicationName);
+        model.addAttribute(ApplicationConst.APPLICATION_NAME, applicationName);
         logger.info("--->[方法 timeout 运行中...]");
-        model.addAttribute("url","/error/timeout");
+        model.addAttribute(ApplicationConst.FORWORD_URL,"/error/timeout");
         return model;
     }
 
     @Override
     public ModelMap forwardLogin() {
         ModelMap model = new ModelMap();
-        model.addAttribute("itmsname", applicationName);
+        model.addAttribute(ApplicationConst.APPLICATION_NAME, applicationName);
         logger.info("--->[方法 forwardLogin 运行中...]");
-        model.addAttribute("url","login/relogin");
+        model.addAttribute(ApplicationConst.FORWORD_URL,"login/relogin");
         return model;
     }
 
@@ -70,8 +71,8 @@ public class LoginBiz extends BaseController implements LoginApi {
     public ModelMap index() {
         ModelMap model = new ModelMap();
         setModel(model);
-        model.addAttribute("itmsname", applicationName);
-        model.addAttribute("url","login/index");
+        model.addAttribute(ApplicationConst.APPLICATION_NAME, applicationName);
+        model.addAttribute(ApplicationConst.FORWORD_URL,"login/index");
         return model;
     }
 
@@ -82,7 +83,7 @@ public class LoginBiz extends BaseController implements LoginApi {
         for (int i = 0,len=allPrincipals.size(); i < len; i++) {
             logger.info("--->[已经登录的用户信息：------>]"+allPrincipals.get(i));
         }
-        model.addAttribute("itmsname", applicationName);
+        model.addAttribute(ApplicationConst.APPLICATION_NAME, applicationName);
         boolean isRealse = this.isRealse(request.getSession().getServletContext());
         String resCode = null;
         if (isRealse) {
@@ -100,16 +101,12 @@ public class LoginBiz extends BaseController implements LoginApi {
             model.addAttribute("userName", user.getRealName());
             model.addAttribute("account", user.getId());
             request.getSession().setAttribute("userName", user.getRealName());
-            boolean hasIndex = false;
-            boolean hasWarring = false;
             HttpSession session = request.getSession();
-            session.setAttribute("hasIndex", hasIndex ? "1" : "0");
-            session.setAttribute("hasWarring", hasWarring ? "1" : "0");
             String index = request.getParameter("index");
             if (index != null && index.length() > 0) {
                 session.setAttribute("index", index);
             }
-            model.addAttribute("url","home/admin");
+            model.addAttribute(ApplicationConst.FORWORD_URL,"home/admin");
             return model;
         }
      }

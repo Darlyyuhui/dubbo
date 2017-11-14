@@ -1,5 +1,6 @@
 package com.darly.dubbo.dubboapimpl;
 
+import com.darly.dubbo.cfg.ApplicationConst;
 import com.darly.dubbo.framework.base.BaseController;
 import com.darly.dubbo.framework.cache.BaseCache;
 import com.darly.dubbo.framework.cache.Cache;
@@ -28,10 +29,10 @@ public class StudyBiz extends BaseController implements StudyApi {
         ModelMap model = new ModelMap();
         setModel(model);
         logger.info("--->[方法 studybuild 进入学习功能菜单...]");
-        model.addAttribute("itmsname", applicationName);
+        model.addAttribute(ApplicationConst.APPLICATION_NAME, applicationName);
         List<Study> studies = (List<Study>) cache.get(BaseCache.STUDY_CACHE);
         model.addAttribute("studys", studies);
-        model.addAttribute("url", "study/howtobuildthisnet");
+        model.addAttribute(ApplicationConst.FORWORD_URL, "study/howtobuildthisnet");
         return model;
     }
 
@@ -40,8 +41,8 @@ public class StudyBiz extends BaseController implements StudyApi {
         ModelMap model = new ModelMap();
         setModel(model);
         logger.info("--->[方法 checkjson 进入验证JSON页面...]");
-        model.addAttribute("itmsname", applicationName);
-        model.addAttribute("url", "json/checkjson");
+        model.addAttribute(ApplicationConst.APPLICATION_NAME, applicationName);
+        model.addAttribute(ApplicationConst.FORWORD_URL, "json/checkjson");
         return model;
     }
 }

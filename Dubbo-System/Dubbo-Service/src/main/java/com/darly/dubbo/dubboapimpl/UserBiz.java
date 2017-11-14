@@ -1,5 +1,6 @@
 package com.darly.dubbo.dubboapimpl;
 
+import com.darly.dubbo.cfg.ApplicationConst;
 import com.darly.dubbo.framework.base.BaseController;
 import com.darly.dubbo.framework.common.StringDiyUtils;
 import com.darly.dubbo.framework.common.UuidGenerateUtil;
@@ -28,8 +29,8 @@ public class UserBiz extends BaseController implements UserApi {
     public ModelMap forwardLogin() {
         ModelMap model = new ModelMap();
         setModel(model);
-        model.addAttribute("itmsname", applicationName);
-        model.addAttribute("url","login/adduser");
+        model.addAttribute(ApplicationConst.APPLICATION_NAME, applicationName);
+        model.addAttribute(ApplicationConst.FORWORD_URL,"login/adduser");
         return model;
     }
 
@@ -37,7 +38,7 @@ public class UserBiz extends BaseController implements UserApi {
     public ModelMap addUser(User user) {
         ModelMap model = new ModelMap();
         setModel(model);
-        model.addAttribute("itmsname", applicationName);
+        model.addAttribute(ApplicationConst.APPLICATION_NAME, applicationName);
         if (user.getDisabled() == null) {
             user.setDisabled(false);
         }
@@ -61,7 +62,7 @@ public class UserBiz extends BaseController implements UserApi {
         model.addAttribute("message", "用户添加成功");
         List<User> users = userService.findAll(false);
         model.addAttribute("users", users);
-        model.addAttribute("url","login/userlist");
+        model.addAttribute(ApplicationConst.FORWORD_URL,"login/userlist");
         return model;
     }
 

@@ -1,5 +1,6 @@
 package com.darly.dubbo.dubboapimpl;
 
+import com.darly.dubbo.cfg.ApplicationConst;
 import com.darly.dubbo.framework.base.BaseController;
 import com.darly.dubbo.mobile.api.MobileUserApi;
 import com.darly.dubbo.security.user.bean.User;
@@ -24,9 +25,9 @@ public class MobileUserBiz extends BaseController implements MobileUserApi {
     @Override
     public ModelMap noRight() {
         ModelMap model = new ModelMap();
-        model.addAttribute("itmsname", applicationName);
+        model.addAttribute(ApplicationConst.APPLICATION_NAME, applicationName);
         logger.info("--->[方法 noRight 运行中...]");
-        model.addAttribute("url","error/403");
+        model.addAttribute(ApplicationConst.FORWORD_URL,"error/403");
         return model;
     }
 

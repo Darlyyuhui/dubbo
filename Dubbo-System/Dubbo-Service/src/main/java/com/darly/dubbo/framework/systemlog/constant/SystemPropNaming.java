@@ -24,7 +24,7 @@ public final class SystemPropNaming {
 	
 	public static void init()
 	{
-		synchronized("framework_commons_lock")
+		synchronized(new Object())
 		{
 			CONFIG_ROOT = "";
 			String env = System.getProperty("FRAMEWORK_COMMON_CONFIG_ROOT");
