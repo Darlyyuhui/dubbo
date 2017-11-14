@@ -29,8 +29,8 @@ public class UserBiz extends BaseController implements UserApi {
     public ModelMap forwardLogin() {
         ModelMap model = new ModelMap();
         setModel(model);
-        model.addAttribute(ApplicationConst.APPLICATION_NAME, applicationName);
-        model.addAttribute(ApplicationConst.FORWORD_URL,"login/adduser");
+        model.addAttribute(ApplicationConst.getApplicationName(), applicationName);
+        model.addAttribute(ApplicationConst.getForwordUrl(),"login/adduser");
         return model;
     }
 
@@ -38,7 +38,7 @@ public class UserBiz extends BaseController implements UserApi {
     public ModelMap addUser(User user) {
         ModelMap model = new ModelMap();
         setModel(model);
-        model.addAttribute(ApplicationConst.APPLICATION_NAME, applicationName);
+        model.addAttribute(ApplicationConst.getApplicationName(), applicationName);
         if (user.getDisabled() == null) {
             user.setDisabled(false);
         }
@@ -62,7 +62,7 @@ public class UserBiz extends BaseController implements UserApi {
         model.addAttribute("message", "用户添加成功");
         List<User> users = userService.findAll(false);
         model.addAttribute("users", users);
-        model.addAttribute(ApplicationConst.FORWORD_URL,"login/userlist");
+        model.addAttribute(ApplicationConst.getForwordUrl(),"login/userlist");
         return model;
     }
 

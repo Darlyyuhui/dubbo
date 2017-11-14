@@ -30,7 +30,7 @@ public class StudyController {
     @RequestMapping(value = {"/list"}, method = RequestMethod.GET)
     public String studyBuild(ModelMap modelMap) {
         modelMap.putAll(studyApi.studybuild());
-        return (String) modelMap.get(ApplicationConst.FORWORD_URL);
+        return (String) modelMap.get(ApplicationConst.getForwordUrl());
     }
 
 

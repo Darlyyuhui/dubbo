@@ -26,7 +26,7 @@ public class CheckJsonController {
     @RequestMapping(value = {"/checkjson"}, method = RequestMethod.GET)
     public String checkjson(ModelMap model) {
         model.putAll(studyApi.checkjson());
-        return (String) model.get(ApplicationConst.FORWORD_URL);
+        return (String) model.get(ApplicationConst.getForwordUrl());
     }
 
 }

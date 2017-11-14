@@ -97,7 +97,7 @@
 
         linesDiv.find('.numberedtextarea-number').remove();
 
-        for(i = 1; i<=count; i++) {
+        for(var i = 1; i<=count; i++) {
             var line = $('<div class="numberedtextarea-number numberedtextarea-number-' + i + '">' + i + '</div>').appendTo(linesDiv);
 
             if(i === count) {

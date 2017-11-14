@@ -34,7 +34,7 @@ public class MobileController extends MobileBaseController {
     @RequestMapping(value = {"/noright"}, method = RequestMethod.GET)
     public String noRight(ModelMap model) {
         model.putAll(userApi.noRight());
-        return (String) model.get(ApplicationConst.FORWORD_URL);
+        return (String) model.get(ApplicationConst.getForwordUrl());
     }
     /**
      * @return 前端接口請求用戶

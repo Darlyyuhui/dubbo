@@ -29,10 +29,10 @@ public class StudyBiz extends BaseController implements StudyApi {
         ModelMap model = new ModelMap();
         setModel(model);
         logger.info("--->[方法 studybuild 进入学习功能菜单...]");
-        model.addAttribute(ApplicationConst.APPLICATION_NAME, applicationName);
+        model.addAttribute(ApplicationConst.getApplicationName(), applicationName);
         List<Study> studies = (List<Study>) cache.get(BaseCache.STUDY_CACHE);
         model.addAttribute("studys", studies);
-        model.addAttribute(ApplicationConst.FORWORD_URL, "study/howtobuildthisnet");
+        model.addAttribute(ApplicationConst.getForwordUrl(), "study/howtobuildthisnet");
         return model;
     }
 
@@ -41,8 +41,8 @@ public class StudyBiz extends BaseController implements StudyApi {
         ModelMap model = new ModelMap();
         setModel(model);
         logger.info("--->[方法 checkjson 进入验证JSON页面...]");
-        model.addAttribute(ApplicationConst.APPLICATION_NAME, applicationName);
-        model.addAttribute(ApplicationConst.FORWORD_URL, "json/checkjson");
+        model.addAttribute(ApplicationConst.getApplicationName(), applicationName);
+        model.addAttribute(ApplicationConst.getForwordUrl(), "json/checkjson");
         return model;
     }
 }

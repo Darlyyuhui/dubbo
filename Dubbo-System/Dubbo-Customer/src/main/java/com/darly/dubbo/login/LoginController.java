@@ -25,19 +25,19 @@ public class LoginController{
     @RequestMapping(value = {"/login"}, method = RequestMethod.GET)
     public String login(String error,ModelMap model,HttpServletRequest request){
         model.putAll(loginApi.login(error));
-        return (String) model.get(ApplicationConst.FORWORD_URL);
+        return (String) model.get(ApplicationConst.getForwordUrl());
     }
 
     @RequestMapping({"/sameuser"})
     public String sameuser(ModelMap model) {
         model.putAll(loginApi.sameuser());
-        return (String) model.get(ApplicationConst.FORWORD_URL);
+        return (String) model.get(ApplicationConst.getForwordUrl());
     }
 
     @RequestMapping({"/timeout"})
     public String timeout(ModelMap model) {
         model.putAll(loginApi.timeout());
-        return (String) model.get(ApplicationConst.FORWORD_URL);
+        return (String) model.get(ApplicationConst.getForwordUrl());
     }
 
     /***
@@ -46,13 +46,13 @@ public class LoginController{
     @RequestMapping(value="/forwardLogin/",method = RequestMethod.GET)
     public String forwardLogin(ModelMap model){
         model.putAll(loginApi.forwardLogin());
-        return (String) model.get(ApplicationConst.FORWORD_URL);
+        return (String) model.get(ApplicationConst.getForwordUrl());
     }
 
     @RequestMapping(value = {"/index"}, method = RequestMethod.GET)
     public String index(ModelMap model, HttpServletRequest request) {
         model.putAll(loginApi.index());
-        return (String) model.get(ApplicationConst.FORWORD_URL);
+        return (String) model.get(ApplicationConst.getForwordUrl());
     }
 
     /***
@@ -61,6 +61,6 @@ public class LoginController{
     @RequestMapping(value = {"/home/admin/"}, method = RequestMethod.GET)
     public String home(ModelMap model, HttpServletRequest request){
         model.putAll(loginApi.home(request));
-        return (String) model.get(ApplicationConst.FORWORD_URL);
+        return (String) model.get(ApplicationConst.getForwordUrl());
     }
 }

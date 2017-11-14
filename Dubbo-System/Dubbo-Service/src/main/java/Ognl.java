@@ -9,9 +9,6 @@ import java.util.Map;
  * @Description： <if test="@Ognl@isNotEmpty(mobile)" >mapper裡面出現判斷兑现参数是否为空时需要用到
  */
 public class Ognl {
-    public Ognl() {
-    }
-
     public static boolean isTrue(int a, int b) {
         return a == b;
     }

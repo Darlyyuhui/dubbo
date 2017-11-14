@@ -25,9 +25,9 @@ public class MobileUserBiz extends BaseController implements MobileUserApi {
     @Override
     public ModelMap noRight() {
         ModelMap model = new ModelMap();
-        model.addAttribute(ApplicationConst.APPLICATION_NAME, applicationName);
+        model.addAttribute(ApplicationConst.getApplicationName(), applicationName);
         logger.info("--->[方法 noRight 运行中...]");
-        model.addAttribute(ApplicationConst.FORWORD_URL,"error/403");
+        model.addAttribute(ApplicationConst.getForwordUrl(),"error/403");
         return model;
     }
 
