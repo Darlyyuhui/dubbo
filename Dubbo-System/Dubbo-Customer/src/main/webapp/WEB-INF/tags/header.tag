@@ -29,7 +29,7 @@
                             </a>
                         </li>
                         <li>
-                            <a href="javascript:onindex();">
+                            <a href="javascript:onlandy();">
                                 <span style="font-size:16px">简介</span>
                             </a>
                         </li>
@@ -209,6 +209,9 @@
 
     function oncheckjson() {
         window.location.href = "${root}/checkjson";
+    }
+    function onlandy() {
+        window.location.href = "${root}/landy";
     }
 
     function onsocket() {

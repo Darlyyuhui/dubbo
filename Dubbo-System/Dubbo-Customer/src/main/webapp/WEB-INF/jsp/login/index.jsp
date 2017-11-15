@@ -32,7 +32,24 @@
 <body>
 <tags:header/>
 <div class="container tag-body" >
-    <h3>測試頁面<small>歡迎頁面</small></h3>
+    <div class="row">
+        <!--导航条-->
+        <nav class="navbar navbar-inverse" style="background-color:#696969">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-4 col-sm-6 col-xs-6">
+                        <img style="padding: 4px" src="${root}/images/samply/ic_back_title.png"/>
+                    </div>
+                    <div class="col-md-3 col-sm-6 col-xs-6">
+                        <span style="width: 90%">现场采样</span>
+                    </div>
+                    <div class="col-md-3 col-sm-6 col-xs-6">
+                        <span style="width: 90%">现场采样</span>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </div>
 </div>
 <hr>
 <tags:footer/>

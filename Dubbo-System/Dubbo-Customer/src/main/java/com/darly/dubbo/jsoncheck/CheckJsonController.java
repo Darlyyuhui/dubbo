@@ -29,4 +29,14 @@ public class CheckJsonController {
         return (String) model.get(ApplicationConst.getForwordUrl());
     }
 
+    /**
+     * @param model
+     * @return 进入到Json验证页面
+     */
+    @RequestMapping(value = {"/landy"}, method = RequestMethod.GET)
+    public String landy(ModelMap model) {
+        model.putAll(studyApi.landy());
+        return (String) model.get(ApplicationConst.getForwordUrl());
+    }
+
 }

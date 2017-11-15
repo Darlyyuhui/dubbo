@@ -32,7 +32,7 @@
 <body>
 <tags:header/>
 <div class="container tag-body">
-    <div class="col-md-3">
+    <div class="col-md-3" style="margin-left: -20px;margin-right: -20px">
         <ul class="list-group">
             <li class="list-group-item"><a href="javascript:studyShow(0);">如何建立${itmsname}网站？</a></li>
             <li class="list-group-item"><a href="javascript:studyShow(1);">如何建立缓存机制？</a></li>
