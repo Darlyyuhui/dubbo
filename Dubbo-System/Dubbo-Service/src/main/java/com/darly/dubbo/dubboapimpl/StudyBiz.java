@@ -45,4 +45,14 @@ public class StudyBiz extends BaseController implements StudyApi {
         model.addAttribute(ApplicationConst.getForwordUrl(), "json/checkjson");
         return model;
     }
+
+    @Override
+    public ModelMap landy() {
+        ModelMap model = new ModelMap();
+        setModel(model);
+        logger.info("--->[方法 checkjson 进入验证JSON页面...]");
+        model.addAttribute(ApplicationConst.getApplicationName(), applicationName);
+        model.addAttribute(ApplicationConst.getForwordUrl(), "landy/phoneshow");
+        return model;
+    }
 }
