@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Dubbo-Mobile</string>
+    <string name="font">宋体</string>
+    <string name="deviceType">设备编号：</string>
+    <string name="netnotavailable">未连接网络，请检查网络设置！</string>
+
+
+
+
+</resources>

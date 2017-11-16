@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+
+        <color name="toumingse">#00ff00ff</color>
+        <color name="grey_bg">#DCDCDC</color>
+        <!-- A light Holo shade of blue -->
+        <color name="holo_blue_light">#ff33b5e5</color>
+        <!-- A light Holo shade of gray -->
+        <color name="holo_gray_light">#33999999</color>
+        <!-- A light Holo shade of green -->
+        <color name="holo_green_light">#ff99cc00</color>
+        <!-- A light Holo shade of red -->
+        <color name="holo_red_light">#ffff4444</color>
+        <!-- A dark Holo shade of blue -->
+        <color name="holo_blue_dark">#ff0099cc</color>
+        <!-- A dark Holo shade of green -->
+        <color name="holo_green_dark">#ff669900</color>
+        <!-- A dark Holo shade of red -->
+        <color name="holo_red_dark">#ffcc0000</color>
+        <!-- A Holo shade of purple -->
+        <color name="holo_purple">#ffaa66cc</color>
+        <!-- A light Holo shade of orange -->
+        <color name="holo_orange_light">#ffffbb33</color>
+        <!-- A dark Holo shade of orange -->
+        <color name="holo_orange_dark">#ffff8800</color>
+        <!-- A really bright Holo shade of blue -->
+        <color name="holo_blue_bright">#ff00ddff</color>
+        <!-- A really bright Holo shade of gray -->
+        <color name="holo_gray_bright">#33CCCCCC</color>
+        <color name="police_blue">#ff191d69</color>
+        <color name="sky_blue">#ff6699ff</color>
+        <color name="font_color">#ffcccccc</color>
+        <color name="login_btn_normal">#FF00A5E0</color>
+        <color name="login_btn_pressed">#FFE0A500</color>
+        <color name="actionbar_blue">#ff6699ff</color>
+        <color name="grey_bantouming">#7f808080</color>
+        <color name="blue">#1E90FF</color>
+        <color name="lighter_grey">#D3D3D3</color>
+        <color name="tab_grey">#292421</color> <!-- Tab色 -->
+        <color name="color_ffffff">#ffffff</color>
+        <color name="color_eeeeee">#eeeeee</color>
+        <color name="black">#000000</color>
+        <color name="colordf7b39">#df7b39</color>
+        <color name="red">#FFFF0000</color>
+        <color name="green">#696969</color>
+        <color name="ablue">#006ad6</color>
+        <color name="white">#FFFFFF</color>
+        <color name="orange">#FF9933</color>
+        <color name="gray">#666666</color>
+        <color name="color666666">#666666</color>
+        <color name="color333333">#333333</color>
+        <color name="full_line">#c8c8c8</color>
+        <color name="tabtopview_bg">#eaeaea</color>
+        <color name="transparent_white">#00000000</color>
+        <color name="colordf3939">#df3939</color>
+        <color name="color_e3e3e3">#e3e3e3</color>
+        <color name="colord13030">#d13030 </color>
+        <color name="publish_click">#d8d8d8</color>
+        <color name="frabg">#f8f8f8</color>
+        <color name="color_d1d1d1">#d1d1d1</color>
+        <color name="color_d2d2d2">#d2d2d2</color>
+        <color name="color_b0000000">#b0000000</color>
+        <color name="color999999">#999999</color>
+        <color name="greyback">#e8e8e3</color>
+        <color name="color_5f9012">#5f9012</color>
+        <color name="color_71ac16">#71ac16</color>
+        <color name="color_888888">#888888</color>
+        <color name="key_bg">#51BFFF</color>
+        <color name="transparent">#00000000</color>
+        <color name="full_line_tabbottom">#dcdcdc</color>
+        <color name="background_tab_pressed">#6633B5E5</color>
+        <color name="main_app_color">#ffcf4c29</color>
+        <color name="text_selected">#ffcf4c29</color>
+        <color name="text_over">#ffb9c4cb</color>
+        <color name="text_default">#ff5b656f</color>
+        <color name="text_disabled">#ffa6b3bf</color>
+        <color name="text_header">#ff7e8e9e</color>
+        <color name="text_switch_selected">#ffffff</color>
+        <color name="text_switch">#ff41484f</color>
+        <color name="text_button">#ff41484f</color>
+        <color name="text_button_disabled">#ffa6b3bf</color>
+        <color name="text_button_selected">#ff41484f</color>
+        <color name="text_button_over">#ffcf4c29</color>
+        <color name="numpad_background_bottom">#ffe4edf2</color>
+        <color name="numpad_background_dialer">#ffd8d8d8</color>
+        <color name="numpad_background_top">#ffb1bdc3</color>
+        <color name="missed_calls_background">#ffcf4c29</color>
+        <color name="landscape_background">#CCCCCC</color>
+        <color name="login_edit_text">#2cca8d</color>
+        <color name="text_contrast">#ff000000</color> <!-- If background is white, set to black, else set to white -->
+        <color name="tab_background">#efeff4</color> <!-- If background is white, set to black, else set to white -->
+        <color name="tab_line">#9c9c9c</color> <!-- If background is white, set to black, else set to white -->
+        <color name="color_green">#67BD1E</color>
+
+        <!--index-->
+        <color name="index_line">#e6e6e6</color>
+        <color name="color_login_guide">#c5c4d4</color>
+        <color name="sence_bg">#f2f2f2</color>
+        <color name="titlebar">#2A6463</color>
+
+        <color name="exp_group">#fbf0f0</color>
+        <color name="exp_child">#fdf9f9</color>
+        <color name="exp_back">#fafafa</color>
+        <color name="db_update">#2CC18A</color>
+</resources>

@@ -5,3 +5,7 @@ Dubbo-System/Dubbo-Api/target/
 Dubbo-System/.idea/
 Dubbo-System/target/
 Dubbo-System/.scannerwork/.sonar_lock
+Dubbo-Mobile/.idea/
+zookeeper-3.5.3-beta/log/version-2/log.9db
+zookeeper-3.5.3-beta/log/
+nginxredis/nginx-1.13.6/logs/

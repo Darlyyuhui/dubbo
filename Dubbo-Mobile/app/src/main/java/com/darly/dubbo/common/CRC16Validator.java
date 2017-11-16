@@ -1,9 +1,7 @@
-package com.darly.dubbo.framework.common;
+package com.darly.dubbo.common;
 
-import org.apache.http.NameValuePair;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.util.StringUtils;
+import android.text.TextUtils;
+import android.util.Log;
 
 /**
  * Author : ZhangYuHui
@@ -12,12 +10,9 @@ import org.springframework.util.StringUtils;
  */
 public class CRC16Validator {
 
-    NameValuePair
     private CRC16Validator(){
         throw new IllegalStateException("Utility class");
     }
-
-    private static final Logger logger = LoggerFactory.getLogger(CRC16Validator.class);
 
     /***
      *
@@ -27,18 +22,18 @@ public class CRC16Validator {
      */
     public static boolean isValid(String data, String orilCRC){
     	
-        if(StringUtils.isEmpty(data)) return false;
-        if(StringUtils.isEmpty(orilCRC)) return false;
+        if(TextUtils.isEmpty(data)) return false;
+        if(TextUtils.isEmpty(orilCRC)) return false;
         String crc = getCRC(data.getBytes());
-        logger.debug("系统计算出的crc:"+crc);
+        Log.d("CRC16Validator","系统计算出的crc:"+crc);
         if(crc.length()<orilCRC.length()){
             StringBuilder sb = new StringBuilder();
-            logger.debug("crc位数不一致，正在补0");
+            Log.d("CRC16Validator","crc位数不一致，正在补0");
             for (int i=0;i<orilCRC.length()-crc.length();i++){
                 sb.append("0");
             }
             crc = sb.toString()+crc;
-            logger.debug("补位后的crc码："+crc);
+            Log.d("CRC16Validator","补位后的crc码："+crc);
         }
         return crc.toUpperCase().equals(orilCRC.toUpperCase());
     }
