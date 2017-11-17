@@ -28,10 +28,37 @@
     <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
     <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
     <![endif]-->
+    <script>
+        function getAndroidma() {
+            if("DubboAndroidListener" in window){
+                console.log(1);
+            }
+            DubboAndroidListener.creadt();
+        }
+
+        function setReload(url) {
+            console.log(url);
+            if("DubboAndroidListener" in window){
+                console.log(1);
+            }
+            DubboAndroidListener.reloadUrl(url);
+        }
+        var url = "10.10.15.110/dubbo/index";
+    </script>
 </head>
 <body>
 <tags:header/>
 <div class="container tag-body" >
+    <div >
+        <a href="javascript:window.DubboAndroidListener.goToIndex()">点击退出</a>
+    </div>
+    <div >
+        <a href="javascript:getAndroidma();">点击调用Android代码</a>
+    </div>
+    <div >
+        <a href="javascript:setReload('http://10.10.10.110/dubbo/index')">点击傳遞參數</a>
+    </div>
+
     <div class="row">
         <!--导航条-->
         <nav class="navbar navbar-inverse" style="background-color:#696969">

@@ -1,0 +1,25 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="100dp"
+    android:layout_gravity="center"
+    android:background="#eaeaea" >
+
+    <com.darly.dview.widget.camera.LocalNetWorkView
+        android:id="@+id/iv_photo"
+        android:layout_width="fill_parent"
+        android:layout_height="100dp"
+        android:layout_gravity="center"
+        android:scaleType="centerCrop" />
+
+    <ImageView
+        android:id="@+id/iv_photo_select"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="right|bottom"
+        android:layout_marginBottom="@dimen/margin_padding5"
+        android:layout_marginRight="@dimen/margin_padding15"
+        android:background="@mipmap/selected_check_box"
+        android:visibility="gone" />
+
+</FrameLayout>
