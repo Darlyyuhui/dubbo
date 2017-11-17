@@ -18,9 +18,14 @@ android {
         }
     }
 }
+repositories {
+    flatDir {
+          dirs 'libs'
+    }
+}
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile fileTree(include: ['*.jar'], dir: 'libs')
     compile 'com.android.support:appcompat-v7:26.0.0-alpha1'
     compile 'io.reactivex:rxandroid:1.2.1'
     compile 'io.reactivex:rxjava:1.2.3'
@@ -30,6 +35,6 @@ dependencies {
     compile 'com.squareup.okhttp3:logging-interceptor:3.5.0'
     compile 'com.nostra13.universalimageloader:universal-image-loader:1.9.5'
     compile 'com.github.satyan:sugar:1.5'
-
     compile files('libs/AMap_Location_V3.5.0_20170731.jar')
+    compile(name:'DView-0.0.3', ext:'aar')
 }

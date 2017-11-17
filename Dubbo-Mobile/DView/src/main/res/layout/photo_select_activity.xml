@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent" >
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:background="#eaeaea"
+        android:orientation="vertical" >
+
+        <com.darly.dview.widget.header.TitleView
+            android:id="@+id/tv_comm_title"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content" />
+
+        <GridView
+            android:id="@+id/gv_photos"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:horizontalSpacing="15dp"
+            android:listSelector="@null"
+            android:numColumns="3"
+            android:paddingBottom="50dp"
+            android:paddingLeft="@dimen/margin_padding15"
+            android:paddingRight="@dimen/margin_padding15"
+            android:paddingTop="@dimen/margin_padding10"
+            android:scrollbarStyle="outsideOverlay"
+            android:scrollingCache="false"
+            android:verticalSpacing="15dp" >
+        </GridView>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="50dp"
+        android:layout_alignParentBottom="true"
+        android:background="@mipmap/contact_background"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:paddingBottom="@dimen/margin_padding1"
+        android:paddingLeft="@dimen/margin_padding5"
+        android:paddingRight="@dimen/margin_padding5"
+        android:paddingTop="@dimen/margin_padding1" >
+
+        <Button
+            android:id="@+id/btn_finish"
+            android:layout_width="121dp"
+            android:layout_height="40dp"
+            android:layout_gravity="center"
+            android:background="@drawable/btn_selecter_register"
+            android:text="@string/btn_ok"
+            android:textColor="@color/white"
+            android:textSize="@dimen/textSize18" />
+    </LinearLayout>
+
+</RelativeLayout>

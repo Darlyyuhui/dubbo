@@ -16,6 +16,8 @@ import android.view.WindowManager;
 import com.darly.dubbo.BuildConfig;
 import com.darly.dubbo.common.DLog;
 import com.darly.dubbo.common.image.ImageLoaderUtil;
+import com.darly.dview.DView;
+import com.darly.dview.observer.DesignListener;
 import com.orm.SugarContext;
 
 import java.io.File;
@@ -53,6 +55,8 @@ public class AppApplication extends Application {
         }
         // 日志记录
         DLog.init(BuildConfig.DEBUG, "sampling");
+        DesignListener design = DView.init();
+        design.notifyInit(AppConst.isDebug(),this);
     }
 
     public static AppApplication getInstance() {

@@ -1,0 +1,84 @@
+<resources>
+
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">0dp</dimen>
+    <dimen name="item_height">45dp</dimen>
+    <dimen name="font_size_10">10sp</dimen>
+    <dimen name="font_size_12">12sp</dimen>
+    <dimen name="font_size_14">14sp</dimen>
+    <dimen name="font_size_15">15sp</dimen>
+    <dimen name="font_size_16">16sp</dimen>
+    <dimen name="bottom_tab_padding_drawable">0.0dip</dimen>
+    <dimen name="bottom_tab_padding_up">1.0dip</dimen>
+    <!-- 字体大小 -->
+    <dimen name="textSize36">36.0sp</dimen>
+    <dimen name="textSize22">22.0sp</dimen>
+    <dimen name="textSize20">20.0sp</dimen>
+    <dimen name="textSize18">18.0sp</dimen>
+    <dimen name="textSize17">17.0sp</dimen>
+    <dimen name="textSize16">16.0sp</dimen>
+    <dimen name="textSize15">15.0sp</dimen>
+    <dimen name="textSize14">14.0sp</dimen>
+    <dimen name="textSize13">13.0sp</dimen>
+    <dimen name="textSize12">12.0sp</dimen>
+    <dimen name="textSize11">11.0sp</dimen>
+    <dimen name="textSize10">10.0sp</dimen>
+    <dimen name="textSize44">44.0sp</dimen>
+    <!-- 控件margin/pading的值 -->
+    <dimen name="margin_padding1">1dp</dimen>
+    <dimen name="margin_padding2">2dp</dimen>
+    <dimen name="margin_padding3">3dp</dimen>
+    <dimen name="margin_padding4">4dp</dimen>
+    <dimen name="margin_padding5">5dp</dimen>
+    <dimen name="margin_padding6">6dp</dimen>
+    <dimen name="margin_padding7">7dp</dimen>
+    <dimen name="margin_padding8">8dp</dimen>
+    <dimen name="margin_padding9">9dp</dimen>
+    <dimen name="margin_padding10">10dp</dimen>
+    <dimen name="margin_padding11">11dp</dimen>
+    <dimen name="margin_padding12">12dp</dimen>
+    <dimen name="margin_padding13">13dp</dimen>
+    <dimen name="margin_padding14">14dp</dimen>
+    <dimen name="margin_padding15">15dp</dimen>
+    <dimen name="margin_padding16">16dp</dimen>
+    <dimen name="margin_padding18">18dp</dimen>
+    <dimen name="margin_padding19">19dp</dimen>
+    <dimen name="margin_padding20">20dp</dimen>
+    <dimen name="margin_padding21">21dp</dimen>
+    <dimen name="margin_padding22">22dp</dimen>
+    <dimen name="margin_padding23">23dp</dimen>
+    <dimen name="margin_padding25">25dp</dimen>
+    <dimen name="margin_padding26">26dp</dimen>
+    <dimen name="margin_padding27">27dp</dimen>
+    <dimen name="margin_padding30">30dp</dimen>
+    <dimen name="margin_padding35">35dp</dimen>
+    <dimen name="margin_padding40">40dp</dimen>
+    <dimen name="margin_padding44">44dp</dimen>
+    <dimen name="margin_padding50">50dp</dimen>
+    <dimen name="margin_padding55">55dp</dimen>
+    <dimen name="margin_padding95">95dp</dimen>
+    <dimen name="margin_padding98">98dp</dimen>
+    <dimen name="title_height">48dp</dimen>
+    <dimen name="title_height_44">44dp</dimen>
+    <!-- layout中控件的宽高值 -->
+    <dimen name="layoutSize20">20dp</dimen>
+    <dimen name="layoutSize25">25dp</dimen>
+    <dimen name="layoutSize30">30dp</dimen>
+    <dimen name="layoutSize36">36dp</dimen>
+    <dimen name="layoutSize40">40dp</dimen>
+    <dimen name="layoutSize50">50dp</dimen>
+    <dimen name="layoutSize57">57dp</dimen>
+    <dimen name="layoutSize60">60dp</dimen>
+    <dimen name="layoutSize65">65dp</dimen>
+    <dimen name="layoutSize70">70dp</dimen>
+    <dimen name="layoutSize86">86dp</dimen>
+    <dimen name="layoutSize88">88dp</dimen>
+    <dimen name="view_height40">40dp</dimen>
+    <dimen name="progressbarSize40">40dp</dimen>
+    <dimen name="progressbarSize20">20dp</dimen>
+    <dimen name="imageSize18">18dp</dimen>
+    <dimen name="imageSize23">23dp</dimen>
+    <dimen name="imageSize16">16dp</dimen>
+
+</resources>

@@ -1,6 +1,5 @@
 package com.darly.dubbo.framework.common;
 
-import org.apache.http.NameValuePair;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.util.StringUtils;
@@ -12,7 +11,6 @@ import org.springframework.util.StringUtils;
  */
 public class CRC16Validator {
 
-    NameValuePair
     private CRC16Validator(){
         throw new IllegalStateException("Utility class");
     }

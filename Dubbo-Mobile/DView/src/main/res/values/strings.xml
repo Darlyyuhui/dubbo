@@ -1,0 +1,28 @@
+<resources>
+    <string name="tools">常用工具</string>
+
+    <!--Camera-->
+    <string name="textviewtime">时间</string>
+    <string name="fileWriteError">文件写入失败！</string>
+    <string name="sdCardOut">SD卡被拨出，数据无法存储！</string>
+    <string name="focusFailed">对焦失败，请重试！</string>
+    <string name="font">宋体</string>
+    <string name="deviceType">编号：</string>
+    <string name="ok">确认</string>
+    <string name="taking_pictures">拍照</string>
+    <string name="photo_albums_select">从相册选取</string>
+    <string name="btn_ok">完成(0)</string>
+    <string name="publish_my_album">我的相册</string>
+    <!-- popwindows -->
+    <string name="photo">拍照</string>
+    <string name="grapht">从相册中选取</string>
+    <string name="consel">取消</string>
+    <string name="subment">提交</string>
+
+    <!-- XListView -->
+    <string name="xlistview_header_hint_normal">下拉刷新</string>mine_login_hine1
+    <string name="xlistview_header_hint_ready">释放刷新数据</string>
+    <string name="xlistview_header_hint_loading">加载中&#8230;</string>
+    <string name="xlistview_footer_hint_normal">查看更多</string>
+    <string name="xlistview_footer_hint_ready">释放载入更多</string>
+</resources>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="transparent">#00000000</color>
+<!--Camera-->
+    <color name="publish_click">#d8d8d8</color>
+    <color name="transparent_white">#00000000</color>
+    <color name="color666666">#666666</color>
+    <!-- popwindows -->
+    <color name="pop_back">#7a000000</color>
+    <color name="color_1">#ff0000</color>
+    <color name="color_2">#ff0000</color>
+    <color name="color_3">#ff0000</color>
+    <color name="set_list_line">#888888</color>
+    <color name="bg_white">#FFf8f8f8</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="edit_save_btn_color_disable">#ffa8c6ed</color>
+
+    <!--xListView-->
+    <color name="color_eeeeee">#eeeeee</color>
+
+    <color name="red">#CDAA7D</color>
+    <color name="green">#45CD87</color>
+    <color name="blue">#ff169aff</color>
+</resources>

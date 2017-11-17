@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/color_eeeeee"
+    android:gravity="bottom" >
+
+    <RelativeLayout
+        android:id="@+id/xlinearlayout_header_content"
+        android:layout_width="fill_parent"
+        android:layout_height="@dimen/layoutSize50" >
+
+        <TextView
+            android:id="@+id/xlinearlayout_header_hint_textview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="@string/xlistview_header_hint_normal" />
+
+        <FrameLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="@dimen/margin_padding20"
+            android:layout_toLeftOf="@id/xlinearlayout_header_hint_textview" >
+
+            <ImageView
+                android:id="@+id/xlinearlayout_header_arrow"
+                android:layout_width="@dimen/imageSize16"
+                android:layout_height="@dimen/imageSize23"
+                android:src="@mipmap/xlistview_arrow_dowm" />
+
+            <ProgressBar
+                android:id="@+id/xlinearlayout_header_progressbar"
+                android:layout_width="@dimen/progressbarSize20"
+                android:layout_height="@dimen/progressbarSize20"
+                android:indeterminateDrawable="@drawable/progress_style"
+                android:indeterminateDuration="1800"
+                android:visibility="gone" />
+
+            <ImageView
+                android:id="@+id/xlinearlayout_refresh_complete"
+                android:layout_width="@dimen/imageSize18"
+                android:layout_height="@dimen/imageSize18"
+                android:src="@mipmap/set_success"
+                android:visibility="gone" />
+        </FrameLayout>
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="1.0px"
+            android:layout_alignParentBottom="true"
+            android:background="@mipmap/dashed_line" />
+    </RelativeLayout>
+
+</LinearLayout>
