@@ -29,8 +29,7 @@ public class AbstractDesigner implements DesignListener {
         Enumeration enumd = this.vector.elements();
         while(enumd.hasMoreElements()) {
             ObserverListener observerListener = (ObserverListener)enumd.nextElement();
-            observerListener.isDebug(debug);
-            observerListener.initConfig(context);
+            observerListener.initConfig(debug,context);
         }
     }
 }

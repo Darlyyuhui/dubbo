@@ -12,7 +12,7 @@ import android.view.View;
 import android.view.animation.AnimationUtils;
 
 import com.darly.dview.R;
-import com.darly.dview.observer.SystemCfg;
+import com.darly.dview.common.SCfg;
 
 
 /**
@@ -70,8 +70,8 @@ public class CircleProgress extends View {
 
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
-        int width = SystemCfg.getWidth() / 10;
-        int height =SystemCfg.getWidth() / 10;
+        int width = SCfg.getWidth() / 10;
+        int height = SCfg.getWidth() / 10;
         mViewSize = Math.min(width, height);
         setMeasuredDimension(mViewSize, mViewSize);
         mCenter.set(mViewSize / 2, mViewSize / 2);

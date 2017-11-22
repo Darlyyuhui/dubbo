@@ -8,7 +8,5 @@ import android.content.Context;
  */
 public interface ObserverListener {
 
-    void isDebug(boolean isDebug);
-
-    void initConfig(Context context);
+    void initConfig(boolean isDebug,Context context);
 }

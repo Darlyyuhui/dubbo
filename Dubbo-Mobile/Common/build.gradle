@@ -1,0 +1,45 @@
+apply plugin: 'com.android.library'
+apply plugin: 'maven'
+def MAVEN_LOCAL_PATH= 'http://193.169.100.100:8081/nexus/content/repositories/thirdparty/'
+def ARTIFACT_ID = 'common'
+def VERSION_NAME = '1.0.0'
+def GROUP_ID = 'com.darly.common'
+def ACCOUNT = 'admin'
+def PASSWORD = 'admin123'
+
+android {
+    compileSdkVersion 26
+    buildToolsVersion "26.0.1"
+
+    defaultConfig {
+        minSdkVersion 15
+        targetSdkVersion 26
+        versionCode 1
+        versionName "1.0"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+}
+
+uploadArchives{
+    repositories{
+        mavenDeployer{
+            repository(url:MAVEN_LOCAL_PATH){
+                authentication(userName:ACCOUNT,password:PASSWORD)
+            }
+            pom.project{
+                groupId GROUP_ID
+                artifactId ARTIFACT_ID
+                version VERSION_NAME
+                packaging 'aar'
+            }
+        }
+    }
+}

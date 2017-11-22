@@ -47,7 +47,7 @@ import android.widget.ScrollView;
 import android.widget.Toast;
 
 import com.darly.dview.R;
-import com.darly.dview.observer.SystemCfg;
+import com.darly.dview.common.SCfg;
 import com.darly.dview.widget.camera.util.ImageUtils;
 import com.darly.dview.widget.camera.util.MDate;
 
@@ -151,7 +151,11 @@ public class CameraActivity extends Activity {
                 }
                 try {
                     callbackTimes = 0;
-                    camera.autoFocus(new TPcallback());
+                    if (SCfg.isDebug()) {
+                        camera.takePicture(new shutterCallback(), null, picture);//使用电脑虚拟机进行拍照
+                    } else {
+                        camera.autoFocus(new TPcallback());
+                    }
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
@@ -429,29 +433,29 @@ public class CameraActivity extends Activity {
                                             w = l.width;
                                             h = l.height;
                                             parameters.setPictureSize(w, h);
-                                            SystemCfg.setVioPicHight(h);
-                                            SystemCfg.setVioPicWidth(w);
+                                            SCfg.setVioPicHight(h);
+                                            SCfg.setVioPicWidth(w);
                                             break;
                                         }
                                     }
                                 }
                             } else {
-                                w = SystemCfg.getVioPicWidth();
-                                h = SystemCfg.getVioPicHight();
+                                w = SCfg.getVioPicWidth();
+                                h = SCfg.getVioPicHight();
                                 parameters.setPictureSize(w, h);
                             }
 
-                            parameters.setFlashMode(SystemCfg.getFlashModes());
+                            parameters.setFlashMode(SCfg.getFlashModes());
                             list = parameters.getSupportedPreviewSizes();
                             if (list.get(0).width > list.get(list.size() - 1).width) {
                                 parameters.setPreviewSize(list.get(0).width, list.get(0).height);
                             } else {
                                 parameters.setPreviewSize(list.get(list.size() - 1).width, list.get(list.size() - 1).height);
                             }
-                            parameters.setWhiteBalance(SystemCfg.getWhiteBalance());
-                            parameters.setSceneMode(SystemCfg.getSceneModes());
-                            if (SystemCfg.getExposureCompensation() != 10)
-                                parameters.setExposureCompensation(SystemCfg.getExposureCompensation());
+                            parameters.setWhiteBalance(SCfg.getWhiteBalance());
+                            parameters.setSceneMode(SCfg.getSceneModes());
+                            if (SCfg.getExposureCompensation() != 10)
+                                parameters.setExposureCompensation(SCfg.getExposureCompensation());
                             parameters.setJpegQuality(70); // ͼƬ����
 
                             if (CameraActivity.this.getResources().getConfiguration().orientation != Configuration.ORIENTATION_LANDSCAPE) {

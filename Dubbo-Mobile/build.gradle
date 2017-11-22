@@ -15,8 +15,12 @@ buildscript {
 allprojects {
     repositories {
         jcenter()
+        maven {
+            url "http://193.169.100.100:8081/nexus/content/repositories/thirdparty/"
+        }
     }
 }
+
 
 task clean(type: Delete) {
     delete rootProject.buildDir

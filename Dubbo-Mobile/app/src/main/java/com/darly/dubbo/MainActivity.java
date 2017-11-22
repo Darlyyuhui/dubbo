@@ -8,9 +8,8 @@ import android.widget.Button;
 
 import com.darly.dubbo.base.AppConst;
 import com.darly.dubbo.base.BaseActivity;
-import com.darly.dubbo.binder.ContentBinder;
-import com.darly.dubbo.binder.ViewsBinder;
-import com.darly.dubbo.common.DLog;
+import com.darly.dview.framework.ContentBinder;
+import com.darly.dview.framework.ViewsBinder;
 import com.darly.dview.widget.camera.OwnerPhotoPop;
 import com.darly.dview.widget.header.TitleView;
 
