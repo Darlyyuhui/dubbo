@@ -5,8 +5,8 @@ import android.content.Intent;
 import android.webkit.JavascriptInterface;
 import android.webkit.WebView;
 
+import com.darly.common.DLog;
 import com.darly.dubbo.base.BaseWebView;
-import com.darly.dubbo.common.DLog;
 
 /**
  * Created by Darly on 2017/11/17.

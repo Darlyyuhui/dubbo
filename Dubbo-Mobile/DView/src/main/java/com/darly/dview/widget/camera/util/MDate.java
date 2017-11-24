@@ -4,6 +4,12 @@ import android.annotation.SuppressLint;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+/**
+ * 日期工具类
+ * @author  Darly/张宇辉/2017/11/23 14:50
+ * @version  1.0/com.darly.dview.widget.camera.util
+ * Copyright (c) 2017 Organization D.L. zhangyuhui All rights reserved.
+ */
 
 @SuppressLint("SimpleDateFormat")
 public class MDate {

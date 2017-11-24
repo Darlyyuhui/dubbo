@@ -1,24 +1,19 @@
 package com.darly.dubbo;
 
 import android.annotation.SuppressLint;
-import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.KeyEvent;
-import android.webkit.JavascriptInterface;
 import android.webkit.WebChromeClient;
 import android.webkit.WebResourceError;
 import android.webkit.WebResourceRequest;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
+import com.darly.common.DLog;
 import com.darly.dubbo.base.BaseWebView;
-import com.darly.dubbo.binder.ContentBinder;
-import com.darly.dubbo.binder.ViewsBinder;
-import com.darly.dubbo.common.DLog;
-
-import java.util.HashMap;
+import com.darly.dview.framework.ContentBinder;
+import com.darly.dview.framework.ViewsBinder;
 
 /**
  * Created by Darly on 2017/11/16.

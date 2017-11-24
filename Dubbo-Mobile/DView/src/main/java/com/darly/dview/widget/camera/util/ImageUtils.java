@@ -13,10 +13,16 @@ import android.hardware.Camera;
 
 
 import com.darly.dview.R;
-import com.darly.dview.observer.SystemCfg;
+import com.darly.dview.common.SCfg;
 
 import java.io.File;
 import java.io.FileOutputStream;
+/**
+ * 工具类
+ * @author  Darly/张宇辉/2017/11/23 14:50
+ * @version  1.0/com.darly.dview.widget.camera.util
+ * Copyright (c) 2017 Organization D.L. zhangyuhui All rights reserved.
+ */
 
 public class ImageUtils {
 
@@ -56,7 +62,7 @@ public class ImageUtils {
 
 		Paint textpaint = new Paint();
 		textpaint.setColor(Color.RED);
-		textpaint.setTextSize(SystemCfg.getTextSize());
+		textpaint.setTextSize(SCfg.getTextSize());
 		String texttype = mContext.getResources().getString(R.string.font);
 		Typeface typeface = Typeface.create(texttype, Typeface.BOLD_ITALIC);
 
@@ -65,10 +71,10 @@ public class ImageUtils {
 
 		mcanvas.drawBitmap(bm, 0, 0, null);
 
-		mcanvas.drawText(time, 10, SystemCfg.getTextSize() + 40, textpaint);
-		mcanvas.drawText(road, 10, SystemCfg.getTextSize() + 80, textpaint);
-		mcanvas.drawText(code, 10, SystemCfg.getTextSize() + 120, textpaint);
-		mcanvas.drawText(mContext.getResources().getString(R.string.deviceType) + SystemCfg.getAccount(), 10, SystemCfg.getTextSize() + 200, textpaint);
+		mcanvas.drawText(time, 10, SCfg.getTextSize() + 40, textpaint);
+		mcanvas.drawText(road, 10, SCfg.getTextSize() + 80, textpaint);
+		mcanvas.drawText(code, 10, SCfg.getTextSize() + 120, textpaint);
+		mcanvas.drawText(mContext.getResources().getString(R.string.deviceType) + SCfg.getAccount(), 10, SCfg.getTextSize() + 200, textpaint);
 		mcanvas.save(Canvas.ALL_SAVE_FLAG);
 		mcanvas.restore();
 
@@ -88,7 +94,7 @@ public class ImageUtils {
 
 		Paint textpaint = new Paint();
 		textpaint.setColor(Color.RED);
-		textpaint.setTextSize(SystemCfg.getTextSize());
+		textpaint.setTextSize(SCfg.getTextSize());
 		String texttype = mContext.getResources().getString(R.string.font);
 		Typeface typeface = Typeface.create(texttype, Typeface.BOLD_ITALIC);
 
@@ -97,11 +103,11 @@ public class ImageUtils {
 
 		mcanvas.drawBitmap(bm, 0, 0, null);
 
-		mcanvas.drawText(time, 10, SystemCfg.getTextSize() + 40, textpaint);
-		mcanvas.drawText(yjxh, 10, SystemCfg.getTextSize() + 80, textpaint);
-		mcanvas.drawText(hphm, 10, SystemCfg.getTextSize() + 120, textpaint);
-		mcanvas.drawText(bllx, 10, SystemCfg.getTextSize() + 160, textpaint);
-//		mcanvas.drawText(mContext.getResources().getString(R.string.deviceType) + SystemCfg.getAccount(mContext), 10, SystemCfg.getTextSize(mContext) + 200, textpaint);
+		mcanvas.drawText(time, 10, SCfg.getTextSize() + 40, textpaint);
+		mcanvas.drawText(yjxh, 10, SCfg.getTextSize() + 80, textpaint);
+		mcanvas.drawText(hphm, 10, SCfg.getTextSize() + 120, textpaint);
+		mcanvas.drawText(bllx, 10, SCfg.getTextSize() + 160, textpaint);
+//		mcanvas.drawText(mContext.getResources().getString(R.string.deviceType) + SCfg.getAccount(mContext), 10, SCfg.getTextSize(mContext) + 200, textpaint);
 		mcanvas.save(Canvas.ALL_SAVE_FLAG);
 		mcanvas.restore();
 

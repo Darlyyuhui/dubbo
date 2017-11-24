@@ -8,12 +8,12 @@ import android.util.AttributeSet;
 import android.widget.LinearLayout;
 
 /**
- * Created by Zhangyuhui/Darly on 2017/5/19.
- * Copyright by [Zhangyuhui/Darly]
- * ©2017 XunXiang.Company. All rights reserved.
- *
- * @TODO:边缘凹凸的卡劵效果View
+ * 边缘凹凸的卡劵效果View
+ * @author  Darly/张宇辉/2017/11/23 14:49
+ * @version  1.0/com.darly.dview.widget.coupon
+ * Copyright (c) 2017 Organization D.L. zhangyuhui All rights reserved.
  */
+
 public class CouponDisplayView extends LinearLayout {
     private Paint mPaint;
     /**

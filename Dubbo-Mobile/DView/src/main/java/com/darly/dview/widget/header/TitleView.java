@@ -11,14 +11,13 @@ import android.widget.TextView;
 
 import com.darly.dview.R;
 
-
 /**
- * @package: com.xiangxun.widget
- * @ClassName: TitleView.java
- * @Description: 自定义title
- * @author: HanGJ
- * @date: 2015-7-27 上午10:32:22
+ * 自定义标题栏控件
+ * @author  Darly/张宇辉/2017/11/23 14:49
+ * @version  1.0/com.darly.dview.widget.header
+ * Copyright (c) 2017 Organization D.L. zhangyuhui All rights reserved.
  */
+
 public class TitleView extends FrameLayout {
     // 中间title内容
     private TextView title_view_operation_text;
@@ -109,7 +108,7 @@ public class TitleView extends FrameLayout {
     /**
      * 返回按钮设置背景 无监听事件
      *
-     * @param drawable
+     * @param drawable 图片
      */
     public void setLeftBackOneListener(int drawable) {
         title_view_back_img.setImageResource(drawable);
@@ -119,7 +118,7 @@ public class TitleView extends FrameLayout {
     /**
      * 打印/识别
      *
-     * @param listener
+     * @param listener 监听
      */
     public void setRightViewLeftOneListener(OnClickListener listener) {
         title_view_operation_imageview.setVisibility(View.VISIBLE);

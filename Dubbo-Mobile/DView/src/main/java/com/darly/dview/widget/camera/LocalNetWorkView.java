@@ -7,15 +7,13 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import android.util.AttributeSet;
 import android.widget.ImageView;
-
-
 /**
- * @package: com.huatek.api.common
- * @ClassName: LocalNetWorkView
- * @Description: 加载本地图片自定义视图
- * @author: aaron_han
- * @data: 2015-1-16 下午4:56:44
+ * 加载本地图片自定义视图
+ * @author  Darly/张宇辉/2017/11/23 14:51
+ * @version  1.0/com.darly.dview.widget.camera
+ * Copyright (c) 2017 Organization D.L. zhangyuhui All rights reserved.
  */
+
 public class LocalNetWorkView extends ImageView {
 	public String filePath;// 本地路径
 	public String url;
@@ -23,17 +21,10 @@ public class LocalNetWorkView extends ImageView {
 	public boolean isFlag = false;
 	public boolean isInWindow = false;
 
-	/**
-	 * @param context
-	 */
 	public LocalNetWorkView(Context context) {
 		super(context);
 	}
 
-	/**
-	 * @param context
-	 * @param attrs
-	 */
 	public LocalNetWorkView(Context context, AttributeSet attrs) {
 		super(context, attrs);
 	}

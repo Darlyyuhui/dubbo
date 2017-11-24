@@ -8,15 +8,13 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.darly.dview.R;
-
-
 /**
- * @package: com.xiangxun.device.view
- * @ClassName: XListViewFooter.java
- * @Description: XListView's footer
- * @author: HanGJ
- * @date: 2015-10-12 下午2:15:25
+ * XListViewFooter.java
+ * @author  Darly/张宇辉/2017/11/23 14:45
+ * @version  1.0/com.darly.dview.widget.xlistView
+ * Copyright (c) 2017 Organization D.L. zhangyuhui All rights reserved.
  */
+
 public class XListViewFooter extends LinearLayout {
 	public final static int STATE_NORMAL = 0;
 	public final static int STATE_READY = 1;

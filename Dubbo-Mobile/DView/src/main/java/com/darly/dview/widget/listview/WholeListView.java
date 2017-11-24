@@ -3,10 +3,13 @@ package com.darly.dview.widget.listview;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.widget.ListView;
-
 /**
- * @author zhangyh2 a 上午11:07:02 TODO
+ * ListView布满屏幕
+ * @author  Darly/张宇辉/2017/11/23 14:48
+ * @version  1.0/com.darly.dview.widget.listview
+ * Copyright (c) 2017 Organization D.L. zhangyuhui All rights reserved.
  */
+
 public class WholeListView extends ListView {
 
 	public WholeListView(Context context) {

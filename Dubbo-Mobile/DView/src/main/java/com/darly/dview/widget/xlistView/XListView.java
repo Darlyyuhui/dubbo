@@ -18,15 +18,14 @@ import android.widget.Scroller;
 
 import com.darly.dview.R;
 
-
 /**
- * @package: com.xiangxun.device.view
- * @ClassName: XListView.java
- * @Description: An ListView support (a) Pull down to refresh, (b) Pull up to load more.
+ * An ListView support (a) Pull down to refresh, (b) Pull up to load more.
  * 		Implement IXListViewListener, and see stopRefresh() / stopLoadMore().
- * @author: HanGJ
- * @date: 2015-10-12 下午2:13:50
+ * @author  Darly/张宇辉/2017/11/23 14:45
+ * @version  1.0/com.darly.dview.widget.xlistView
+ * Copyright (c) 2017 Organization D.L. zhangyuhui All rights reserved.
  */
+
 public class XListView extends ListView implements OnScrollListener {
 
 	private float mLastY = -1; // save event y
@@ -67,9 +66,6 @@ public class XListView extends ListView implements OnScrollListener {
 	private final static float OFFSET_RADIO = 1.8f; // support iOS like pull
 													// feature.
 
-	/**
-	 * @param context
-	 */
 	public XListView(Context context) {
 		super(context);
 		initWithContext(context);
@@ -143,7 +139,7 @@ public class XListView extends ListView implements OnScrollListener {
 	/**
 	 * enable or disable pull down refresh feature.
 	 * 
-	 * @param enable
+	 * @param enable    判断
 	 */
 	public void setPullRefreshEnable(boolean enable) {
 		mEnablePullRefresh = enable;
@@ -157,7 +153,7 @@ public class XListView extends ListView implements OnScrollListener {
 	/**
 	 * enable or disable pull up load more feature.
 	 * 
-	 * @param enable
+	 * @param enable 判断
 	 */
 	public void setPullLoadEnable(boolean enable) {
 		mEnablePullLoad = enable;
@@ -250,11 +246,6 @@ public class XListView extends ListView implements OnScrollListener {
 		}
 	}
 
-	/**
-	 * set last refresh time
-	 * 
-	 * @param time
-	 */
 	// public void setRefreshTime(String time) {
 	// mHeaderTimeView.setText(time);
 	// }
@@ -420,6 +411,9 @@ public class XListView extends ListView implements OnScrollListener {
 
 	/**
 	 * 根据手机的分辨率从 dp 的单位 转成为 px(像素)
+	 * @param context    引用类
+	 * @param dpValue	dp值
+	 * @return	int
 	 */
 	private int dip2px(Context context, float dpValue) {
 		final float scale = context.getResources().getDisplayMetrics().density;
@@ -428,9 +422,9 @@ public class XListView extends ListView implements OnScrollListener {
 	/**
 	 * 将sp值转换为px值，保证文字大小不变
 	 *
-	 * @param spValue
-	 * @param fontScale （DisplayMetrics类中属性scaledDensity）
-	 * @return
+	 * @param context    引用类
+	 * @param spValue	sp值
+	 * @return	int
 	 */
 	public static int sp2px(Context context, float spValue) {
 		final float fontScale = context.getResources().getDisplayMetrics().scaledDensity;

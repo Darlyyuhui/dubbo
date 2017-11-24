@@ -50,9 +50,9 @@ public class StudyBiz extends BaseController implements StudyApi {
     public ModelMap landy() {
         ModelMap model = new ModelMap();
         setModel(model);
-        logger.info("--->[方法 checkjson 进入验证JSON页面...]");
+        logger.info("--->[方法 landy 进入Nginx+Ftp 完成静态页面...]");
         model.addAttribute(ApplicationConst.getApplicationName(), applicationName);
-        model.addAttribute(ApplicationConst.getForwordUrl(), "landy/phoneshow");
+        model.addAttribute(ApplicationConst.getForwordUrl(), "study/nginxftp");
         return model;
     }
 }

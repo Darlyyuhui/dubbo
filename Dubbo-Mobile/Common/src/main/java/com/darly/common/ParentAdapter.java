@@ -1,0 +1,61 @@
+package com.darly.common;
+
+import android.content.Context;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+
+import java.util.List;
+
+/**
+ * 总适配器，其他单适配器斗继承此类，缩减代码
+ * @author Darly/张宇辉/2017/11/23 14:18
+ * @version 1.0/com.darly.common
+ */
+public abstract class ParentAdapter<T> extends BaseAdapter {
+	protected List<T> data;
+	protected int resID;
+	protected Context context;
+
+	public ParentAdapter(List<T> data, int resID, Context context) {
+		super();
+		this.data = data;
+		this.resID = resID;
+		this.context = context;
+	}
+
+	public void setData(List<T> data) {
+		this.data = data;
+		notifyDataSetChanged();
+	}
+
+	@Override
+	public int getCount() {
+		// TODO Auto-generated method stub
+		return data == null ? 0 : data.size();
+	}
+
+	@Override
+	public T getItem(int position) {
+		// TODO Auto-generated method stub
+		return data == null ? null : data.get(position);
+	}
+
+	@Override
+	public long getItemId(int position) {
+		// TODO Auto-generated method stub
+		return position;
+	}
+
+	@Override
+	public View getView(int position, View convertView, ViewGroup parent) {
+		// TODO Auto-generated method stub
+		return HockView(position, convertView, parent, resID, context,
+				getItem(position));
+	}
+
+	public abstract View HockView(int position, View view, ViewGroup parent,
+								  int resID, Context context, T t);
+
+
+}

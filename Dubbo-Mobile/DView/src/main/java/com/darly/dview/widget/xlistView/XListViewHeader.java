@@ -14,14 +14,13 @@ import android.widget.TextView;
 
 import com.darly.dview.R;
 
-
 /**
- * @package: com.xiangxun.device.view
- * @ClassName: XListViewHeader.java
- * @Description: XListView's header
- * @author: HanGJ
- * @date: 2015-10-12 下午2:15:39
+ * XListView's header
+ * @author  Darly/张宇辉/2017/11/23 14:45
+ * @version  1.0/com.darly.dview.widget.xlistView
+ * Copyright (c) 2017 Organization D.L. zhangyuhui All rights reserved.
  */
+
 public class XListViewHeader extends LinearLayout {
 	private LinearLayout mContainer;
 	private ImageView mArrowImageView;
@@ -46,10 +45,6 @@ public class XListViewHeader extends LinearLayout {
 		initView(context);
 	}
 
-	/**
-	 * @param context
-	 * @param attrs
-	 */
 	public XListViewHeader(Context context, AttributeSet attrs) {
 		super(context, attrs);
 		setClickable(false);

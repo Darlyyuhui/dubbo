@@ -40,6 +40,7 @@
             <li class="list-group-item"><a href="javascript:studyShow(3);">如何进行接口调用？</a></li>
             <li class="list-group-item"><a href="javascript:studyShow(4);">WebSocket建立机制？</a></li>
             <li class="list-group-item"><a href="javascript:studyShow(5);">Redis+Spring Security？</a></li>
+            <li class="list-group-item"><a href="javascript:studyShow(6);">Android控件集合演示</a></li>
         </ul>
     </div>
     <div class="col-md-9">
@@ -61,6 +62,9 @@
         <div id="study-5" style="display: none">
             ${studys.get(5).remark}
         </div>
+        <div id="study-6" style="display: none">
+            ${studys.get(6).remark}
+        </div>
     </div>
 </div>
 <hr>
@@ -78,6 +82,7 @@
             document.getElementById("study-3").style.display="none";
             document.getElementById("study-4").style.display="none";
             document.getElementById("study-5").style.display="none";
+            document.getElementById("study-6").style.display="none";
         }else if (num == 1){
             document.getElementById("study-0").style.display="none";
             document.getElementById("study-1").style.display="inline";
@@ -85,6 +90,7 @@
             document.getElementById("study-3").style.display="none";
             document.getElementById("study-4").style.display="none";
             document.getElementById("study-5").style.display="none";
+            document.getElementById("study-6").style.display="none";
         }else if (num == 2){
             document.getElementById("study-0").style.display="none";
             document.getElementById("study-1").style.display="none";
@@ -92,6 +98,7 @@
             document.getElementById("study-3").style.display="none";
             document.getElementById("study-4").style.display="none";
             document.getElementById("study-5").style.display="none";
+            document.getElementById("study-6").style.display="none";
         }else if (num == 3){
             document.getElementById("study-0").style.display="none";
             document.getElementById("study-1").style.display="none";
@@ -99,6 +106,7 @@
             document.getElementById("study-3").style.display="inline";
             document.getElementById("study-4").style.display="none";
             document.getElementById("study-5").style.display="none";
+            document.getElementById("study-6").style.display="none";
         }else if (num == 4){
             document.getElementById("study-0").style.display="none";
             document.getElementById("study-1").style.display="none";
@@ -106,6 +114,7 @@
             document.getElementById("study-3").style.display="none";
             document.getElementById("study-4").style.display="inline";
             document.getElementById("study-5").style.display="none";
+            document.getElementById("study-6").style.display="none";
         }else if (num == 5){
             document.getElementById("study-0").style.display="none";
             document.getElementById("study-1").style.display="none";
@@ -113,8 +122,25 @@
             document.getElementById("study-3").style.display="none";
             document.getElementById("study-4").style.display="none";
             document.getElementById("study-5").style.display="inline";
+            document.getElementById("study-6").style.display="none";
+        }else if (num == 6){
+            document.getElementById("study-0").style.display="none";
+            document.getElementById("study-1").style.display="none";
+            document.getElementById("study-2").style.display="none";
+            document.getElementById("study-3").style.display="none";
+            document.getElementById("study-4").style.display="none";
+            document.getElementById("study-5").style.display="none";
+            document.getElementById("study-6").style.display="inline";
         }
     }
+
+    function forcommonApiDoc() {
+        top.location = "${root}/apidoc/commonapi/index.html"
+    }
+    function fordviewApiDoc() {
+        top.location = "${root}/apidoc/dviewapi/index.html"
+    }
 </script>
+
 </body>
 </html>

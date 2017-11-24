@@ -13,11 +13,13 @@ import android.widget.Toast;
 
 import com.darly.dview.R;
 import com.darly.dview.widget.camera.util.ImageUtils;
-
-
 /**
- * Created by Darly on 2017/9/13.
+ * 自定义的POP窗口
+ * @author  Darly/张宇辉/2017/11/23 14:51
+ * @version  1.0/com.darly.dview.widget.camera
+ * Copyright (c) 2017 Organization D.L. zhangyuhui All rights reserved.
  */
+
 public class OwnerPhotoPop extends PopupWindow {
 
     /**
@@ -97,9 +99,10 @@ public class OwnerPhotoPop extends PopupWindow {
         setOutsideTouchable(true);
         setContentView(view);
     }
-    /**
-     * @param v 下午3:15:27
-     * @author Zhangyuhui TODO 展示POP
+    /**展示POP
+     * @param v 控件
+     * @param size 大小
+     * @param path 路径
      */
     public void show(View v, int size, String path) {
         this.size = size;

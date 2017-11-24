@@ -11,13 +11,9 @@ import android.hardware.Camera;
 import android.os.Handler;
 import android.os.Message;
 import android.telephony.TelephonyManager;
-import android.view.WindowManager;
 
-import com.darly.dubbo.BuildConfig;
-import com.darly.dubbo.common.DLog;
-import com.darly.dubbo.common.image.ImageLoaderUtil;
+import com.darly.common.Common;
 import com.darly.dview.DView;
-import com.darly.dview.observer.DesignListener;
 import com.orm.SugarContext;
 
 import java.io.File;
@@ -48,15 +44,9 @@ public class AppApplication extends Application {
     public void onCreate() {
         sApplication = this;
         super.onCreate();
-        // 网络对象初始化
-        ImageLoaderUtil.init(this);
-        if (SystemCfg.getWidth(this) == 0 || SystemCfg.getHeight(this) == 0) {
-            calculate();
-        }
-        // 日志记录
-        DLog.init(BuildConfig.DEBUG, "sampling");
-        DesignListener design = DView.init();
-        design.notifyInit(AppConst.isDebug(),this);
+        DView.init().notifyInit(AppConst.isDebug(),this);
+        Common.init().init(this,"object_share");
+        Common.init().initDlog(AppConst.isDebug(), "appName");
     }
 
     public static AppApplication getInstance() {
@@ -71,14 +61,6 @@ public class AppApplication extends Application {
 
     public void setCamera(Camera camera) {
         mCamera = camera;
-    }
-
-    public String getUserName() {
-        return SystemCfg.getUserName(getInstance());
-    }
-
-    public String getUserId() {
-        return SystemCfg.getUserId(getInstance());
     }
 
 
@@ -107,16 +89,6 @@ public class AppApplication extends Application {
         }
     };
 
-
-    /**
-     * 计算屏幕宽高以及后续辅助参数。都可以在这里进行完善
-     */
-    private void calculate() {
-        WindowManager wm = (WindowManager) getInstance()
-                .getSystemService(Context.WINDOW_SERVICE);
-        SystemCfg.setWidth(getInstance(), wm.getDefaultDisplay().getWidth());
-        SystemCfg.setHeight(getInstance(), wm.getDefaultDisplay().getHeight());
-    }
 
 
     public static void createFiles() {

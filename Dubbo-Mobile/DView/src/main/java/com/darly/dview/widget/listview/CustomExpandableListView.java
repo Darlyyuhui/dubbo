@@ -6,12 +6,12 @@ import android.view.View;
 import android.widget.ExpandableListView;
 
 /**
- * Created by Zhangyuhui/Darly on 2017/6/7.
- * Copyright by [Zhangyuhui/Darly]
- * ©2017 XunXiang.Company. All rights reserved.
- *
- * @TODO:铺满控件的多级选择列表
+ * 铺满控件的多级选择列表
+ * @author  Darly/张宇辉/2017/11/23 14:47
+ * @version  1.0/com.darly.dview.widget.listview
+ * Copyright (c) 2017 Organization D.L. zhangyuhui All rights reserved.
  */
+
 public class CustomExpandableListView extends ExpandableListView {
 
     public CustomExpandableListView(Context context) {
