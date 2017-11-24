@@ -32,14 +32,13 @@ import java.io.File;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
-
 /**
- * @package: com.xiangxun.activity
- * @ClassName: PhotoSelectActivity.java
- * @Description: 图片选择器
- * @author: HanGJ
- * @date: 2015-8-24 下午2:53:41
+ *  图片选择器
+ * @author  Darly/张宇辉/2017/11/23 14:52
+ * @version  1.0/com.darly.dview.widget.camera
+ * Copyright (c) 2017 Organization D.L. zhangyuhui All rights reserved.
  */
+
 public class PhotoSelectActivity extends Activity{
     private TitleView titleView;
     private GridView mGvPhotos = null;
@@ -116,12 +115,8 @@ public class PhotoSelectActivity extends Activity{
         getImages();
     }
 
-    /**
-     * @throws
-     * @Title:
-     * @Description: 查询vio文件夹下的所有照片
-     * @param:
-     * @return: void
+    /**查询vio文件夹下的所有照片
+     * @param file    文件
      */
     public void query(File file) {
         if (file.exists()) {

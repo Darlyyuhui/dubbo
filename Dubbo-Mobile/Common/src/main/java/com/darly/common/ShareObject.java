@@ -13,7 +13,9 @@ import java.io.ObjectOutputStream;
 import java.io.StreamCorruptedException;
 
 /**
- * @author zhangyh2 ShareObject $ 下午3:31:38 TODO 对象缓存机制
+ * 保存对象到SharedPreferences中，进行缓存
+ * @author Darly/张宇辉/2017/11/23 14:18
+ * @version 1.0/com.darly.common
  */
 public class ShareObject {
 
@@ -56,12 +58,9 @@ public class ShareObject {
         return sp.getInt(key,df);
     }
 
-    /**
-     * desc:保存对象
-     *
-     * @param key
+    /**保存对象
+     * @param key 保存的标签
      * @param obj 要保存的对象，只能保存实现了serializable的对象
-     *            modified:
      */
     public static void putValue(String key, Object obj) {
         try {
@@ -83,11 +82,9 @@ public class ShareObject {
         }
     }
 
-    /**
-     * desc:将数组转为16进制
-     *
-     * @param bArray
-     * @return modified:
+    /**将数组转为16进制
+     * @param bArray 字节数组
+     * @return String
      */
     public static String bytesToHexString(byte[] bArray) {
         if (bArray == null) {
@@ -108,11 +105,9 @@ public class ShareObject {
     }
 
 
-    /**
-     * desc:获取保存的Object对象
-     *
-     * @param key
-     * @return modified:
+    /**获取保存的Object对象
+     * @param key 对象标签
+     * @return Object
      */
     public static Object getValue(String key) {
         try {
@@ -147,12 +142,9 @@ public class ShareObject {
 
     }
 
-    /**
-     * desc:将16进制的数据转为数组
-     * <p>创建人：聂旭阳 , 2014-5-25 上午11:08:33</p>
-     *
-     * @param data
-     * @return modified:
+    /**将16进制的数据转为数组
+     * @param data 原数据
+     * @return byte[]
      */
     public static byte[] StringToBytes(String data) {
         String hexString = data.toUpperCase().trim();
@@ -186,9 +178,8 @@ public class ShareObject {
     }
 
 
-    /**
-     * @param key 下午3:19:50
-     * @author zhangyh2 ShareObject.java TODO移除某项
+    /**移除某项
+     * @param key 对象标签
      */
     public static void remove(String key) {
         SharedPreferences sp = context.getSharedPreferences(getInstance().getFileName(),

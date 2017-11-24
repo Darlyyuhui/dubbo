@@ -15,16 +15,15 @@ import android.util.Log;
 import android.view.animation.AccelerateDecelerateInterpolator;
 import android.widget.ImageView;
 
-
 /**
- * Created by Zhangyuhui/Darly on 2017/6/1.
- * Copyright by [Zhangyuhui/Darly]
- * ©2017 XunXiang.Company. All rights reserved.
- *
- * @TODO: 2d平滑变化的显示图片的ImageView
+ * 2d平滑变化的显示图片的ImageView
  * 仅限于用于:从一个ScaleType==CENTER_CROP的ImageView，切换到另一个ScaleType=
  * FIT_CENTER的ImageView，或者反之 (当然，得使用同样的图片最好)
+ * @author  Darly/张宇辉/2017/11/23 14:49
+ * @version  1.0/com.darly.dview.widget.image
+ * Copyright (c) 2017 Organization D.L. zhangyuhui All rights reserved.
  */
+
 public class SmoothImageView extends ImageView {
 
 
@@ -79,7 +78,8 @@ public class SmoothImageView extends ImageView {
     /**
      * 获取状态栏高度
      *
-     * @return
+     * @param context    引用类
+     * @return int
      */
     public static int getStatusBarHeight(Context context) {
         Class<?> c = null;

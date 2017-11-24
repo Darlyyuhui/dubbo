@@ -8,9 +8,10 @@ import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
 /**
- * Author:Created by zhangyh2 on 2016/12/8 at 14:53.
- * Copyright (c) 2016 Organization Rich-Healthcare(D.L.) zhangyh2 All rights reserved.
- * TODO:
+ * 针对注解映射初始化的类，使用前必须先在Activity中进行初始化
+ * @author  Darly/张宇辉/2017/11/23 14:40
+ * @version  1.0/com.darly.dview.framework
+ * Copyright (c) 2017 Organization D.L. zhangyuhui All rights reserved.
  */
 
 public class InitBinder {
@@ -28,6 +29,8 @@ public class InitBinder {
 
     /**
      * setContentView的注解处理
+     * @param hander    Handler类
+     * @param finder    Finder类
      */
     public static void InjectContentView(Object hander, ViewsFinder finder) {
 
@@ -54,6 +57,8 @@ public class InitBinder {
 
     /**
      * findViewById的注解处理
+     * @param hander    Handler类
+     * @param finder    Finder类
      */
     public static void InjectViews(Object hander, ViewsFinder finder) {
         //获取Activity类

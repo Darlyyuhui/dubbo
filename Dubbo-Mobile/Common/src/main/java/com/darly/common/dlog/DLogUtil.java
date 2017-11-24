@@ -2,9 +2,10 @@ package com.darly.common.dlog;
 
 import android.text.TextUtils;
 import android.util.Log;
-
 /**
- * Created by zhaokaiqiang on 15/12/11.
+ * 日志工具类
+ * @author Darly/张宇辉/2017/11/23 14:18
+ * @version 1.0/com.darly.common
  */
 public class DLogUtil {
 

@@ -18,14 +18,11 @@ import android.widget.ScrollView;
 import android.widget.TextView;
 
 import com.darly.dview.R;
-
-
 /**
- * @package: com.xiangxun.device.view
- * @ClassName: XLinearLayout.java
- * @Description: ListView、GridView和ScrollView统一上拉下拉刷新
- * @author: HanGJ
- * @date: 2015-10-12 下午2:13:29
+ * ListView、GridView和ScrollView统一上拉下拉刷新
+ * @author  Darly/张宇辉/2017/11/23 14:45
+ * @version  1.0/com.darly.dview.widget.xlistView
+ * Copyright (c) 2017 Organization D.L. zhangyuhui All rights reserved.
  */
 
 public class XLinearLayout extends LinearLayout {
@@ -236,7 +233,8 @@ public class XLinearLayout extends LinearLayout {
 
 	/**
 	 * 是否应该到了父View，即PullToRefreshView滑动
-	 * @param deltaY deltaY > 0 是向下运动,deltaY < 0是向上运动
+	 * @param deltaY <a>deltaY /> 0 是向下运动,deltaY /< 0是向上运动</a>
+	 * @return boolean
 	 */
 	private boolean isRefreshViewScroll(int deltaY) {
 		if (mHeaderState == REFRESHING || mFooterState == REFRESHING) {
@@ -292,7 +290,7 @@ public class XLinearLayout extends LinearLayout {
 
 	/**
 	 * header 准备刷新,手指移动过程,还没有释放
-	 * @param deltaY手指滑动的距离
+	 * @param deltaY	手指滑动的距离
 	 */
 	private void headerPrepareToRefresh(int deltaY) {
 		int newTopMargin = changingHeaderViewTopMargin(deltaY);
@@ -330,6 +328,8 @@ public class XLinearLayout extends LinearLayout {
 
 	/**
 	 * 修改Header view top margin的值
+	 * @param deltaY    距离
+	 * @return	int
 	 */
 	private int changingHeaderViewTopMargin(int deltaY) {
 		LayoutParams params = (LayoutParams) mHeaderView.getLayoutParams();
@@ -380,7 +380,7 @@ public class XLinearLayout extends LinearLayout {
 
 	/**
 	 * 设置header view的topMargin的值
-	 * @param topMargin为0时说明header view 刚好完全显示出来； 为-mHeaderViewHeight时说明完全隐藏。
+	 * @param topMargin	为0时说明header view 刚好完全显示出来； 为-mHeaderViewHeight时说明完全隐藏。
 	 */
 	private void setHeaderTopMargin(int topMargin) {
 		LayoutParams params = (LayoutParams) mHeaderView.getLayoutParams();

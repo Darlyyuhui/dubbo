@@ -59,6 +59,9 @@
         <a href="javascript:setReload('http://10.10.10.110/dubbo/index')">点击傳遞參數</a>
     </div>
 
+    <div align="center">
+        <a href="${root}/commonapi/index.html">连接Common APIDoc</a>
+    </div>
     <div class="row">
         <!--导航条-->
         <nav class="navbar navbar-inverse" style="background-color:#696969">

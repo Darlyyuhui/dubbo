@@ -8,13 +8,10 @@ import android.widget.BaseAdapter;
 import java.util.List;
 
 /**
-* @ClassName: ParentAdapter
-* @Description: TODO(总适配器，其他单适配器斗继承此类，缩减代码)
-* @author 张宇辉 zhangyuhui@octmami.com
-* @date 2014年12月30日 下午2:38:00
-*
-* @param <T>
-*/ 
+ * 总适配器，其他单适配器斗继承此类，缩减代码
+ * @author Darly/张宇辉/2017/11/23 14:18
+ * @version 1.0/com.darly.common
+ */
 public abstract class ParentAdapter<T> extends BaseAdapter {
 	protected List<T> data;
 	protected int resID;

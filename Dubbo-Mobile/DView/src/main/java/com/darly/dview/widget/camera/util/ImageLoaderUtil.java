@@ -21,20 +21,22 @@ import com.nostra13.universalimageloader.core.listener.ImageLoadingListener;
 
 /**
  * @author zhangyh2 ImageLoaderUtil 下午2:50:09 TODO
- *         呼出Imageloader图片加载类，防止耦合过多。替换不方便。 单例一个图片加载类 多线程安全单例模式实例三(使用双重同步锁)
- *         图片工具
+ *
  */
+/**
+ * 呼出Imageloader图片加载类，防止耦合过多。替换不方便。 单例一个图片加载类 多线程安全单例模式实例三(使用双重同步锁)
+ *         图片工具
+ * @author  Darly/张宇辉/2017/11/23 14:50
+ * @version  1.0/com.darly.dview.widget.camera.util
+ * Copyright (c) 2017 Organization D.L. zhangyuhui All rights reserved.
+ */
+
 public class ImageLoaderUtil{
 
     private static ImageLoaderUtil instance = null;
 
     private Context context;
 
-    /**
-     * 下午2:51:19
-     *
-     * @author zhangyh2
-     */
     private ImageLoaderUtil(Context context) {
         // TODO Auto-generated constructor stub
         this.context = context;
@@ -55,9 +57,6 @@ public class ImageLoaderUtil{
     }
 
 
-    /**
-     * @return the instance
-     */
     public static ImageLoaderUtil getInstance() {
         if (instance == null) {
             Log.i("", "[工具类没有进行初始化使用，会出现异常]");
@@ -70,10 +69,7 @@ public class ImageLoaderUtil{
         return instance;
     }
 
-    /**
-     * 上午10:44:40
-     *
-     * @author Zhangyuhui AppStack.java TODO初始化单例模式下的ImageLoader
+    /**初始化单例模式下的ImageLoader
      */
     private void initImageLoader() {
         // TODO Auto-generated method stub
@@ -106,9 +102,7 @@ public class ImageLoaderUtil{
     }
 
     /**
-     * 下午2:50:09
-     *
-     * @author zhangyh2 TODO 圆角加载
+     * 下午2:50:09圆角加载
      */
     @SuppressWarnings("deprecation")
     private DisplayImageOptions getOptions() {
@@ -127,9 +121,7 @@ public class ImageLoaderUtil{
     }
 
     /**
-     * 下午2:50:57
-     *
-     * @author zhangyh2 TODO正常加载
+     * 下午2:50:57正常加载
      */
     @SuppressWarnings("deprecation")
     private DisplayImageOptions getOptions(int r) {
@@ -146,10 +138,9 @@ public class ImageLoaderUtil{
         return options;
     }
 
-    /**
-     * 下午3:02:41
-     *
-     * @author zhangyh2 TODO 图片圆角进行加载，调用此方法直接传入图片控件和图片地址，直接将图片放入对应位置
+    /**图片圆角进行加载，调用此方法直接传入图片控件和图片地址，直接将图片放入对应位置
+     * @param url    路径
+     * @param iv    控件
      */
     public void loadImage(String url, ImageView iv) {
         ImageLoader.getInstance().displayImage(url, iv, getOptions());

@@ -8,14 +8,13 @@ import android.view.WindowManager;
 import android.widget.TextView;
 
 import com.darly.dview.R;
-
-
 /**
- * @author zhangyh2
- *         ShowLoading
- *         下午2:44:57
- *         TODO 加载数据的等候旋转
+ * 加载数据的等候旋转
+ * @author  Darly/张宇辉/2017/11/23 14:46
+ * @version  1.0/com.darly.dview.widget.loading
+ * Copyright (c) 2017 Organization D.L. zhangyuhui All rights reserved.
  */
+
 public class ShowLoading extends Dialog {
     protected Context context;
 

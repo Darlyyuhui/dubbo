@@ -13,9 +13,10 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 /**
- * Author:Created by zhangyh2 on 2016/12/8 at 14:43.
- * Copyright (c) 2016 Organization Rich-Healthcare(D.L.) zhangyh2 All rights reserved.
- * TODO:我们首先要声明一个@interface，也就是注解类：
+ * 我们首先要声明一个@interface，也就是注解类：注解控件
+ * @author  Darly/张宇辉/2017/11/23 14:41
+ * @version  1.0/com.darly.dview.framework
+ * Copyright (c) 2017 Organization D.L. zhangyuhui All rights reserved.
  */
 
 @Target(ElementType.FIELD)//表示用在字段s上

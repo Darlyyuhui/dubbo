@@ -7,16 +7,21 @@ import javax.crypto.Cipher;
 import javax.crypto.spec.SecretKeySpec;
 
 /**
- * @Author: Darly Fronch（张宇辉）
- * @Date：Create in 2017/9/5 16:17
- * @Modified By：Darly Fronch（张宇辉）
- * @Description：
+ * 对用户输入信息进行解码编码操作类
+ * @author Darly/张宇辉/2017/11/23 14:18
+ * @version 1.0/com.darly.common
  */
 public class DeEncryptUtil {
-    private static String strDefaultKey = "darlyyuhui@hotmail.com";
+    private static String strDefaultKey = "darlyyuhuihotmail.com";
     private Cipher encryptCipher;
     private Cipher decryptCipher;
 
+    /**
+     * 将字节数组转换为字符串信息
+     * @param arrB 输入值
+     * @return String
+     * @throws Exception 异常
+     */
     public static String byteArr2HexStr(byte[] arrB) throws Exception {
         int iLen = arrB.length;
         StringBuffer sb = new StringBuffer(iLen * 2);
@@ -36,6 +41,12 @@ public class DeEncryptUtil {
         return sb.toString();
     }
 
+    /**
+     * 将字符串转换为字节数组信息
+     * @param strIn 输入值
+     * @return byte[]
+     * @throws Exception 异常
+     */
     public static byte[] hexStr2ByteArr(String strIn) throws Exception {
         byte[] arrB = strIn.getBytes();
         int iLen = arrB.length;

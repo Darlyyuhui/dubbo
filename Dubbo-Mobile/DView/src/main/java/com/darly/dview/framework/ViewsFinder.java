@@ -6,11 +6,11 @@ import android.preference.Preference;
 import android.preference.PreferenceActivity;
 import android.preference.PreferenceGroup;
 import android.view.View;
-
 /**
- * Author:Created by zhangyh2 on 2016/12/8 at 16:44.
- * Copyright (c) 2016 Organization Rich-Healthcare(D.L.) zhangyh2 All rights reserved.
- * TODO:
+ * 映射查询类，直接针对findviewbyid进行拦截
+ * @author  Darly/张宇辉/2017/11/23 14:42
+ * @version  1.0/com.darly.dview.framework
+ * Copyright (c) 2017 Organization D.L. zhangyuhui All rights reserved.
  */
 
 public class ViewsFinder {

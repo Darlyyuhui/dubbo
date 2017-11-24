@@ -13,11 +13,13 @@ import android.view.animation.AnimationUtils;
 
 import com.darly.dview.R;
 import com.darly.dview.common.SCfg;
-
-
 /**
- * @TODO：加载中的自定义圆圈展示控件
+ * 加载中的自定义圆圈展示控件
+ * @author  Darly/张宇辉/2017/11/23 14:46
+ * @version  1.0/com.darly.dview.widget.loading
+ * Copyright (c) 2017 Organization D.L. zhangyuhui All rights reserved.
  */
+
 public class CircleProgress extends View {
     private static final int COLOR_NUM = 3;
     private int[] COLORS;

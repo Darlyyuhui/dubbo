@@ -36,20 +36,16 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /**
- * @package: com.huatek.api.utils
- * @ClassName: Tools
- * @Description: 工具类
- * @author: aaron_han
- * @data: 2015-07-16 下午5:03:23
+ *  验证工具类
+ *  @author Darly/张宇辉/2017/11/23 14:18
+ * @version 1.0/com.darly.common
  */
 @SuppressLint("SimpleDateFormat")
 public class Tools {
 
-    /**
-     * @param IDStr
-     * @return
-     * @throws ParseException
-     * @Description: 校验驾驶证号合法性
+    /**校验驾驶证号合法性
+     * @param IDStr 原数据
+     * @return boolean
      */
     public static boolean isIDCardValidate(String IDStr) {
         String[] ValCodeArr = {"1", "0", "x", "9", "8", "7", "6", "5", "4",
@@ -141,9 +137,7 @@ public class Tools {
         return true;
     }
 
-    /**
-     * 功能：设置地区编码
-     *
+    /**设置地区编码
      * @return Hashtable 对象
      */
     @SuppressWarnings({"rawtypes", "unchecked"})
@@ -188,10 +182,10 @@ public class Tools {
     }
 
     /**
-     * 验证日期字符串是否是YYYY-MM-DD格式
      *
-     * @param str
-     * @return
+     *验证日期字符串是否是YYYY-MM-DD格式
+     * @param str 原数据
+     * @return boolean
      */
     private static boolean isDataFormat(String str) {
         boolean flag = false;
@@ -206,7 +200,10 @@ public class Tools {
         return flag;
     }
 
-    // 判断字符串是否为邮件格式
+    /**判断字符串是否为邮件格式
+     * @param email 原数据
+     * @return boolean
+     */
     public static boolean isEmail(String email) {
         String str = "^([a-zA-Z0-9_\\-\\.]+)@((\\[[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.)|(([a-zA-Z0-9\\-]+\\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\\]?)$";
         Pattern p = Pattern.compile(str);
@@ -336,14 +333,12 @@ public class Tools {
         return formatter.format(Long.valueOf(dateTime) * 1000);
     }
 
-    /**
-     * 设置前景色
-     *
+    /**设置前景色
      * @param str   目标字符串
      * @param start 开始位置
      * @param end   结束位置
      * @param color 颜色值 如Color.BLACK
-     * @return
+     * @return SpannableString
      */
     public static SpannableString getForegroundColorSpan(String str, int start, int end, int color) {
         SpannableString ss = new SpannableString(str);
@@ -357,40 +352,41 @@ public class Tools {
         return mTelephonyMgr.getDeviceId();
     }
 
-    /**
-     * 根据手机的分辨率从 dp 的单位 转成为 px(像素)
+    /**根据手机的分辨率从 dp 的单位 转成为 px(像素)
+     *  @param context 引用类
+     * @param dpValue 传入dip参数
+     * @return int
      */
     public static int dip2px(Context context, float dpValue) {
         final float scale = context.getResources().getDisplayMetrics().density;
         return (int) (dpValue * scale + 0.5f);
     }
-
+    /**根据手机的分辨率从  px(像素) 的单位 转成为dp
+     *  @param context 引用类
+     * @param px 传入参数
+     * @return int
+     */
     public static int Px2Dp(Context context, float px) {
         final float scale = context.getResources().getDisplayMetrics().density;
         return (int) (px / scale + 0.5f);
     }
 
-    /**
-     * 将sp值转换为px值，保证文字大小不变
-     *
-     * @param spValue
-     * @param fontScale （DisplayMetrics类中属性scaledDensity）
-     * @return
+    /**将sp值转换为px值，保证文字大小不变
+     *  @param context 引用类
+     * @param spValue 传入参数
+     * @return int
      */
     public static int sp2px(Context context, float spValue) {
         final float fontScale = context.getResources().getDisplayMetrics().scaledDensity;
         return (int) (spValue * fontScale + 0.5f);
     }
 
-    /**
-     * 设置字体大小，用px
-     *
-     * @param context
+    /**设置字体大小，用px
      * @param str     目标字符串
      * @param start   开始位置
      * @param end     结束位置
      * @param pxSize  像素大小
-     * @return
+     * @return SpannableString
      */
     public static SpannableString getSizeSpanUsePx(String str, int start, int end, int pxSize) {
         SpannableString ss = new SpannableString(str);
@@ -422,14 +418,11 @@ public class Tools {
         return pixel;
     }
 
-    /**
-     * @throws
-     * @Title:
-     * @Description:递归统计文件夹大小
-     * @param: @param f
-     * @param: @return
-     * @param: @throws Exception
-     * @return: long
+    /**递归统计文件夹大小
+
+     * @param  f 文件参数
+     * @return long
+     * @throws Exception 异常
      */
     public static long getFileSize(File f) throws Exception {
         long size = 0;
@@ -470,13 +463,10 @@ public class Tools {
         return sb.delete(0, sb.length());
     }
 
-    /**
-     * @return
-     * @throws
-     * @Title:
-     * @Description: 计算总页数
-     * @param: @param result
-     * @return: void
+    /**计算总页数
+
+     * @param  k 原数据
+     * @return void
      */
     public static int getTotalPage(int k) {
         float i = (float) (k / 10.0);
@@ -630,13 +620,10 @@ public class Tools {
         return !s.matches("[\\u4E00-\\u9FA5A-Za-z]+");
     }
 
-    /**
-     * @throws
-     * @Title:
-     * @Description: 没有一个汉字和字母
-     * @param: @param s
-     * @param: @return
-     * @return: boolean
+    /**没有一个汉字和字母
+
+     * @param  s 原数据
+     * @return boolean
      */
     public static boolean iSnullityString(String s) {
         int size = s.length();
@@ -689,11 +676,9 @@ public class Tools {
         return null;
     }
 
-    /**
-     * 获取当前ip地址
-     *
-     * @param context
-     * @return
+    /**获取当前ip地址
+     * @param context 引用类
+     * @return String
      */
     public static String getLocalIpAddress(Context context) {
         try {
@@ -707,10 +692,10 @@ public class Tools {
     }
 
     /**
-     * 将ip的整数形式转换成ip形式
      *
-     * @param ipInt
-     * @return
+     *将ip的整数形式转换成ip形式
+     * @param ipInt 原始值
+     * @return String
      */
     public static String int2ip(int ipInt) {
         StringBuilder sb = new StringBuilder();

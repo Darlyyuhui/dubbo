@@ -7,10 +7,10 @@ import com.darly.common.BuildConfig;
 import com.darly.common.DLog;
 import com.darly.common.ShareObject;
 import com.darly.common.ToastApp;
-
 /**
- * Created by Darly on 2017/11/22.
- * @TODO: 對封裝后的工具使用Image進行初始化
+ * 對封裝后的工具使用Image進行初始化。
+ * @author Darly/张宇辉/2017/11/23 14:18
+ * @version 1.0/com.darly.common
  */
 public class InitCfg implements ObserverListener{
 

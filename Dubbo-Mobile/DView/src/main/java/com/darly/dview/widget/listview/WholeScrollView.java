@@ -6,12 +6,12 @@ import android.view.MotionEvent;
 import android.widget.ScrollView;
 
 /**
- * Created by Zhangyuhui/Darly on 2017/5/26.
- * Copyright by [Zhangyuhui/Darly]
- * ©2017 XunXiang.Company. All rights reserved.
- *
- * @TODO: ScrollView滑动重写
+ *  ScrollView滑动重写
+ * @author  Darly/张宇辉/2017/11/23 14:48
+ * @version  1.0/com.darly.dview.widget.listview
+ * Copyright (c) 2017 Organization D.L. zhangyuhui All rights reserved.
  */
+
 public class WholeScrollView extends ScrollView {
     // 滑动距离及坐标
     private float xDistance, yDistance, xLast, yLast;

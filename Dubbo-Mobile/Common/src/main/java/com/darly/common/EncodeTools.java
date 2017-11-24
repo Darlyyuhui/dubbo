@@ -7,15 +7,18 @@ import java.security.MessageDigest;
 import java.util.Locale;
 
 /**
- * @package: com.huatek.api.utils
- * @ClassName: EncodeTools
- * @Description: url签名工具
- * @author: aaron_han
- * @data: 2015-1-16 下午5:01:52
+ * url签名工具
+ * @author Darly/张宇辉/2017/11/23 14:18
+ * @version 1.0/com.darly.common
  */
 public class EncodeTools {
 	public static String UCENTER_KEY = "58dfae3488089cf63608b005a9973dfd";
 
+	/**
+	 * 将连接进行UTF8转码
+	 * @param text 原数据
+	 * @return String
+	 */
 	public static String Utf8URLencode(String text) {
 		StringBuffer result = new StringBuffer();
 		for (int i = 0; i < text.length(); i++) {
@@ -46,11 +49,9 @@ public class EncodeTools {
 
 	/**
 	 * 产生 sign 值，将所有参数值拼接后 获取其 MD5 值，同时由于中文的原因，所以先进行 encode 函数
-	 * 
-	 * @param url
-	 * @param key
-	 *            常量
-	 * @return
+	 * @param url 原数据
+	 * @param key 常量
+	 * @return String
 	 */
 
 	public static String getSign(String url, String key) {
@@ -92,24 +93,12 @@ public class EncodeTools {
 		if (text.contains("\u002B")) {
 			text = text.replace("+", "%20");
 		}
-
-		/**
-		 * 1. + %2B 2. %20 3. / %2F 4. ? %3F 5. % %25 6. # %23 7. & %26 8. = %3D
-		 * 
-		 * 点的转义： . ==> u002E 美元符号的转义： $ ==> u0024 乘方符号的转义： ^ ==> u005E 左大括号的转义：
-		 * { ==> u007B 左方括号的转义： [ ==> u005B 左圆括号的转义： ( ==> u0028 竖线的转义： | ==>
-		 * u007C 右圆括号的转义： ) ==> u0029 星号的转义： * ==> u002A 加号的转义： + ==> u002B
-		 * 问号的转义： ? ==> u003F 反斜杠的转义： \ ==> u005C
-		 */
-
 		return postfix + getMD5(text);
 	}
 
-	/**
-	 * 无签名标识的Url
-	 * 
-	 * @param url
-	 * @return
+	/**无签名标识的Url
+	 * @param url 原数据
+	 * @return String
 	 */
 	public static String getEnUrl(String url) {
 		return url;
@@ -117,10 +106,8 @@ public class EncodeTools {
 
 	/**
 	 * 有签名标识的Url
-	 * 
-	 * @param url
-	 * @param key
-	 * @return
+	 * @param url 原数据
+	 * @return String
 	 */
 	public static String getEnUrlSign(String url) {
 		return url + getSign(url, UCENTER_KEY);
@@ -154,16 +141,11 @@ public class EncodeTools {
 		return hexValue.toString();
 	}
 
-	/**
-	 * 对登录数据进行加密，格式为：loginName=xxx\tpwd=yyy
-	 * 
-	 * @param content
-	 *            要加密的字符串
-	 * @param key
-	 *            默认为 ""
-	 * @param expiry
-	 *            默认为 "0"
-	 * @return
+	/**对登录数据进行加密，格式为：loginName=xxx\tpwd=yyy
+	 * @param content 要加密的字符串
+	 * @param key 默认为 ""
+	 * @param expiry  默认为 "0"
+	 * @return String
 	 */
 	public static String encode(String content, String key, String expiry) {
 		int cKeyLen = 4;

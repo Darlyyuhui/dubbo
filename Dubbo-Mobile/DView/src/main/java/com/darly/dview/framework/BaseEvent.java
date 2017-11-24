@@ -6,10 +6,12 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 /**
- * Author:Created by zhangyh2 on 2016/12/8 at 15:28.
- * Copyright (c) 2016 Organization Rich-Healthcare(D.L.) zhangyh2 All rights reserved.
- * TODO:
+ * 映射主体类，@interface 类型，进行注解回调
+ * @author  Darly/张宇辉/2017/11/23 14:37
+ * @version  1.0/com.darly.dview.framework
+ * Copyright (c) 2017 Organization D.L. zhangyuhui All rights reserved.
  */
+
 @Target(ElementType.ANNOTATION_TYPE)
 @Retention(RetentionPolicy.RUNTIME)
 public @interface BaseEvent {

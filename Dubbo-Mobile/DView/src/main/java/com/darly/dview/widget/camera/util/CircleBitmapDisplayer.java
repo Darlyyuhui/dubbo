@@ -6,14 +6,13 @@ import com.nostra13.universalimageloader.core.assist.LoadedFrom;
 import com.nostra13.universalimageloader.core.display.BitmapDisplayer;
 import com.nostra13.universalimageloader.core.imageaware.ImageAware;
 import com.nostra13.universalimageloader.core.imageaware.ImageViewAware;
-
 /**
- * Created With Android Studio
- * User @47
- * Date 2014-07-27
- * Time 20:55
  * 显示原型图片的ImageLoader使用的显示器图片工具
+ * @author  Darly/张宇辉/2017/11/23 14:50
+ * @version  1.0/com.darly.dview.widget.camera.util
+ * Copyright (c) 2017 Organization D.L. zhangyuhui All rights reserved.
  */
+
 public class CircleBitmapDisplayer implements BitmapDisplayer {
 
     protected final int margin;

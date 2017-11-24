@@ -6,9 +6,10 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 /**
- * Author:Created by zhangyh2 on 2016/12/8 at 14:50.
- * Copyright (c) 2016 Organization Rich-Healthcare(D.L.) zhangyh2 All rights reserved.
- * TODO:
+ * Activity绑定Layout注解类
+ * @author  Darly/张宇辉/2017/11/23 14:40
+ * @version  1.0/com.darly.dview.framework
+ * Copyright (c) 2017 Organization D.L. zhangyuhui All rights reserved.
  */
 @Target(ElementType.TYPE)
 @Retention(RetentionPolicy.RUNTIME)

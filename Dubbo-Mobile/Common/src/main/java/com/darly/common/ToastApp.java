@@ -5,10 +5,9 @@ import android.view.Gravity;
 import android.widget.Toast;
 
 /**
- * @author 张宇辉 zhangyuhui@octmami.com
- * @ClassName: ToastApp
- * @Description: TODO(Toast统一管理类)
- * @date 2014年10月24日 下午3:08:55
+ * Toast 实现全局工具类
+ * @author Darly/张宇辉/2017/11/23 14:18
+ * @version 1.0/com.darly.common
  */
 public class ToastApp {
 
@@ -39,9 +38,6 @@ public class ToastApp {
     public void setContext(Context cxt) {
         ToastApp.context = cxt;
     }
-    /**
-     * @auther Darly Fronch 2015 下午2:25:56 TODO显示Toast
-     */
     public static void showToast(Context context, String msg) {
         if (!getInstance().isShow())
             return;
@@ -94,9 +90,6 @@ public class ToastApp {
         toast.show();
     }
 
-    /**
-     * @auther Darly Fronch 2015 下午2:25:56 TODO显示Toast
-     */
     public static void mustShow(Context context, String msg) {
         if (toast == null) {
             toast = Toast.makeText(context, msg, TOASTTIME);

@@ -13,7 +13,11 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-
+/**
+ * 网络工具类
+ * @author Darly/张宇辉/2017/11/23 14:18
+ * @version 1.0/com.darly.common
+ */
 public class NetUtils {
 	public static final String SUCCESS = "success";
 	public static final String FAILED = "failed";

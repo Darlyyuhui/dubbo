@@ -4,9 +4,9 @@ import android.text.TextUtils;
 import android.util.Log;
 
 /**
- * Author : ZhangYuHui
- * Date : 2017/10/20
- * TODO : 用于CRC校验码计算
+ * 用于CRC校验码计算
+ * @author Darly/张宇辉/2017/11/23 14:18
+ * @version 1.0/com.darly.common
  */
 public class CRC16Validator {
 
@@ -15,10 +15,10 @@ public class CRC16Validator {
     }
 
     /***
-     *
+     *判断是否数据一致
      * @param data 原始数据
      * @param orilCRC  原始的CRC码
-     * @return
+     * @return boolean
      */
     public static boolean isValid(String data, String orilCRC){
     	
@@ -40,9 +40,9 @@ public class CRC16Validator {
 
 
     /***
-     * 计算CRC数据校验码
-     * @param data
-     * @return
+     *  计算CRC数据校验码
+     * @param data 原始数据
+     * @return String
      */
     public static String getCRC(byte[] data) {
         int high;

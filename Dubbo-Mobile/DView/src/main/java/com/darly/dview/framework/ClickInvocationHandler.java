@@ -6,11 +6,11 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * Author:Created by zhangyh2 on 2016/12/8 at 15:39.
- * Copyright (c) 2016 Organization Rich-Healthcare(D.L.) zhangyh2 All rights reserved.
- * TODO:
+ * 拦截点击事件效果
+ * @author  Darly/张宇辉/2017/11/23 14:39
+ * @version  1.0/com.darly.dview.framework
+ * Copyright (c) 2017 Organization D.L. zhangyuhui All rights reserved.
  */
-
 public class ClickInvocationHandler implements InvocationHandler {
 
     //    拦截的方法名列表
@@ -37,6 +37,8 @@ public class ClickInvocationHandler implements InvocationHandler {
 
     /**
      * 向拦截列表里添加拦截的方法
+     * @param name      名称
+     * @param method    方法
      */
     public void add(String name, Method method) {
         map.put(name, method);

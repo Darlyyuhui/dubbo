@@ -60,10 +60,13 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
 /**
- * @author sunhaifeng
+ * 调用Camera的UI界面
+ * @author  Darly/张宇辉/2017/11/23 14:51
+ * @version  1.0/com.darly.dview.widget.camera
+ * Copyright (c) 2017 Organization D.L. zhangyuhui All rights reserved.
  */
+
 public class CameraActivity extends Activity {
     private SharedPreferences mysp = null;
     private Button btnexit;
@@ -598,7 +601,9 @@ public class CameraActivity extends Activity {
 
     /**
      * 设置相机焦距
-     **/
+     *
+     * @param mValue    距离
+     * */
     private void setZoom(int mValue) {
         Camera.Parameters mParams = camera.getParameters();
         mParams.setZoom(mValue);
@@ -609,6 +614,7 @@ public class CameraActivity extends Activity {
      * 计算两点之间的距离
      *
      * @param event
+     * @return float
      */
     private float spacing(MotionEvent event) {
         float x = event.getX(0) - event.getX(1);

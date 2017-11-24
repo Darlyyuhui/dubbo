@@ -3,10 +3,9 @@ package com.darly.common.dlog.klog;
 import android.util.Log;
 
 import com.darly.common.DLog;
-
-
-/**
- * Created by zhaokaiqiang on 15/11/18.
+/**基础日志类。
+ * @author Darly/张宇辉/2017/11/23 14:18
+ * @version 1.0/com.darly.common
  */
 public class BaseLog {
 

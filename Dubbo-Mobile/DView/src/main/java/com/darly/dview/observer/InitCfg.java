@@ -5,11 +5,13 @@ import android.view.WindowManager;
 
 import com.darly.dview.common.SCfg;
 import com.darly.dview.widget.camera.util.ImageLoaderUtil;
-
 /**
- * Created by Darly on 2017/11/22.
- * @TODO: 對封裝后的工具使用Image進行初始化
+ * 對封裝后的工具使用Image進行初始化
+ * @author  Darly/张宇辉/2017/11/23 14:44
+ * @version  1.0/com.darly.dview.observer
+ * Copyright (c) 2017 Organization D.L. zhangyuhui All rights reserved.
  */
+
 public class InitCfg implements ObserverListener{
 
     private static InitCfg instance = null;
@@ -34,6 +36,7 @@ public class InitCfg implements ObserverListener{
 
     /**
      * 计算屏幕宽高以及后续辅助参数。都可以在这里进行完善
+     * @param context    引用类
      */
     private void calculate(Context context) {
         WindowManager wm = (WindowManager) context

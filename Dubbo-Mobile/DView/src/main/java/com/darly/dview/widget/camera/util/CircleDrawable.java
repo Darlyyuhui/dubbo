@@ -10,10 +10,13 @@ import android.graphics.PixelFormat;
 import android.graphics.Rect;
 import android.graphics.Shader;
 import android.graphics.drawable.Drawable;
-
 /**
- * @author zhangyh2 CircleDrawable 下午2:01:44 TODO 主用类图片工具
+ * 主用类图片工具
+ * @author  Darly/张宇辉/2017/11/23 14:50
+ * @version  1.0/com.darly.dview.widget.camera.util
+ * Copyright (c) 2017 Organization D.L. zhangyuhui All rights reserved.
  */
+
 public class CircleDrawable extends Drawable {
     public static final String TAG = "CircleDrawable";
 

@@ -17,6 +17,12 @@ import com.darly.dview.common.SCfg;
 
 import java.io.File;
 import java.io.FileOutputStream;
+/**
+ * 工具类
+ * @author  Darly/张宇辉/2017/11/23 14:50
+ * @version  1.0/com.darly.dview.widget.camera.util
+ * Copyright (c) 2017 Organization D.L. zhangyuhui All rights reserved.
+ */
 
 public class ImageUtils {
 

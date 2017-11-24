@@ -4,6 +4,11 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.util.Log;
 
+/**
+ * 系统参数设置类，包括相机参数和设备宽高参数等。
+ * @author  Darly/张宇辉/2017/11/23 14:35
+ * @version  1.0/com.darly.dview.common
+ */
 
 public class SCfg {
 
@@ -45,17 +50,11 @@ public class SCfg {
         mysp.edit().putInt("textsize", textsize).commit();
     }
 
-    /**
-     * 账户
-     */
     public static void setAccount( String acc) {
        
         mysp.edit().putString("account", acc).commit();
     }
 
-    /**
-     * 账户
-     */
     public static String getAccount() {
        
         return mysp.getString("account", "");

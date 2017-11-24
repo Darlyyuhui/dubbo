@@ -36,11 +36,9 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /**
- * @package: com.huatek.api.utils
- * @ClassName: Utils
- * @Description: 工具集合
- * @author: aaron_han
- * @data: 2015-07-26 下午6:22:13
+ *  工具类
+ *  @author Darly/张宇辉/2017/11/23 14:18
+ * @version 1.0/com.darly.common
  */
 @SuppressLint("NewApi")
 public class Utils {
@@ -80,21 +78,18 @@ public class Utils {
         tv.getPaint().setAntiAlias(true);// 抗锯齿
     }
 
-    /**
-     * @param pic  原字符串
-     * @param str1 插入的字符串
-     * @return
+    /** 匹配插入的字符串
+     *@param pic  原字符串
+     *@param str1 插入的字符串
+     *@return String
      */
     public static String getInsert(String pic, String str1) {
         StringBuffer s1 = new StringBuffer(pic); // 原字符串
         String hh = s1.substring(s1.lastIndexOf("."));
-        System.out.println("ppp==" + hh);
         Pattern p = Pattern.compile(hh); // 插入位置
         Matcher m = p.matcher(s1.toString());
-
         if (m.find()) {
             s1.insert((m.start() + 0), str1); // 插入字符串
-
         }
         return s1.toString();
     }
@@ -153,13 +148,10 @@ public class Utils {
         return copyIsFinish;
     }
 
-    /**
-     * @throws
-     * @Title:
-     * @Description: 对象转换为字节
-     * @param: @param obj
-     * @param: @return
-     * @return: byte[]
+    /** 对象转换为字节
+
+     *@param   obj 对象
+     *@return byte[]
      */
     public static byte[] jserialize(Object obj) {
         ObjectOutputStream oos = null;
@@ -182,13 +174,10 @@ public class Utils {
         return null;
     }
 
-    /**
-     * @throws
-     * @Title:
-     * @Description: 字节转换为对象
-     * @param: @param bits
-     * @param: @return
-     * @return: Object
+    /**字节转换为对象
+
+     *@param  bits 字节数组
+     *@return Object
      */
     public static Object jdeserialize(byte[] bits) {
         ObjectInputStream ois = null;
@@ -210,13 +199,10 @@ public class Utils {
         return null;
     }
 
-    /**
-     * @throws
-     * @Title:
-     * @Description: 对象转字符串
-     * @param: @param obj
-     * @param: @return
-     * @return: String
+    /** 对象转字符串
+
+     *@param   obj 对象
+     *@return String
      */
     public static String object2String(Object obj) {
         ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
@@ -240,13 +226,9 @@ public class Utils {
         return str;
     }
 
-    /**
-     * @throws
-     * @Title:
-     * @Description: 字符串转对象
-     * @param: @param str
-     * @param: @return
-     * @return: Object
+    /** 字符串转对象
+     *@param   str 原数据
+     *@return Object
      */
     public static Object string2Object(String str) {
         byte[] mobileBytes = Base64.decode(str.getBytes(), Base64.DEFAULT);
@@ -279,14 +261,11 @@ public class Utils {
         return obj;
     }
 
-    /**
-     * @throws
-     * @Title:
-     * @Description: 分钟 小时倒计时
-     * @param: @param currentTimeMillis
-     * @param: @param itemtime
-     * @param: @return
-     * @return: String
+    /** 分钟 小时倒计时
+
+     *@param   currentTimeMillis 现在时间
+     *@param   itemtime 时刻
+     *@return String
      */
     @SuppressLint("SimpleDateFormat")
     public static String showTime(long currentTimeMillis, long itemtime) {
@@ -364,9 +343,7 @@ public class Utils {
         }
     }
 
-    /**
-     * 秒转化为小时分钟
-     */
+    // 秒转化为小时分钟
     public static String ssToHHmmss(int s) {
         int N = s / 3600;
         s = s % 3600;
@@ -382,13 +359,10 @@ public class Utils {
         }
     }
 
-    /**
-     * @throws
-     * @Title:
-     * @Description: 隐藏输入法
-     * @param: @param act
-     * @param: @param view
-     * @return: void
+    /**隐藏输入法
+
+     *@param   act 元活动
+     *@param  view 控件
      */
     public static void hideSoftInputFromWindow(Activity act, View view) {
         InputMethodManager imm = (InputMethodManager) act.getApplicationContext().getSystemService(Context.INPUT_METHOD_SERVICE);
@@ -410,9 +384,8 @@ public class Utils {
         }
     }
 
-    /**
-     * 保留一位小数
-     */
+
+    //保留一位小数
     public static String decimalFormatNoe(float scale) {
         DecimalFormat fnum = new DecimalFormat("##0.0");
         return fnum.format(scale);
@@ -476,13 +449,10 @@ public class Utils {
         return s;
     }
 
-    /**
-     * @throws
-     * @Title:
-     * @Description:浏览网页
-     * @param: @param act
-     * @param: @param phone
-     * @return: void
+    /** 浏览网页
+
+     *@param   act 活动
+     *@param  url 连接
      */
     public static void browseWebpage(Activity act, String url) {
         if (TextUtils.isEmpty(url)) {
@@ -495,13 +465,10 @@ public class Utils {
         act.startActivity(intent);
     }
 
-    /**
-     * @throws
-     * @Title:
-     * @Description:发送短信
-     * @param: @param act
-     * @param: @param phone
-     * @return: void
+    /** 发送短信
+
+     *@param  act 活动
+     *@param  phone 手机号
      */
     public static void sendMsg(Activity act, String phone) {
         Uri uri = Uri.parse("smsto:".concat(phone));
@@ -510,12 +477,9 @@ public class Utils {
         act.startActivity(it);
     }
 
-    /**
-     * @throws
-     * @Title:
-     * @Description: 滚动聚焦
-     * @param: @param view
-     * @return: void
+    /** 滚动聚焦
+
+     *@param   view 布局
      */
     public static void getFocusable(View view) {
         view.setFocusable(true);
@@ -523,15 +487,12 @@ public class Utils {
         view.requestFocus();
     }
 
-    /**
-     * @throws
-     * @Title:
-     * @Description: 格式化
-     * @param: @param context
-     * @param: @param res
-     * @param: @param obj
-     * @param: @return
-     * @return: String
+    /** 格式化
+
+     *@param  context 引用
+     *@param   res 输入
+     *@param   obj 对象
+     *@return String
      */
     public static String getFormatString(Context context, int res, Object... obj) {
         return String.format(context.getString(res), obj);
@@ -539,13 +500,11 @@ public class Utils {
 
     private static final int UNCONSTRAINED = -1;
 
-    /**
-     * @param options
-     * @param minSideLength
-     * @param maxNumOfPixels
-     * @return 动态计算出图片的inSampleSize
-     * @Description:
-     * @return: int
+    /** 动态计算出图片的inSampleSize
+     *@param   options 设置
+     *@param   minSideLength 最小
+     *@param   maxNumOfPixels 最大
+     *@return int
      */
     public static int computeSampleSize(BitmapFactory.Options options, int minSideLength, int maxNumOfPixels) {
         int initialSize = computeInitialSampleSize(options, minSideLength, maxNumOfPixels);
