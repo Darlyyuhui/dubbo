@@ -32,6 +32,7 @@ public class LoginBiz extends BaseController implements LoginApi {
     public ModelMap login(String error) {
         ModelMap model = new ModelMap();
         model.addAttribute(ApplicationConst.getApplicationName(), applicationName);
+        model.addAttribute(ApplicationConst.getResourceUrl(), resourceUrl);
         logger.info("--->[方法 login 运行中...]");
         if ("true".equals(error)) {
             this.logger.info("用户登陆失败！");
@@ -44,6 +45,7 @@ public class LoginBiz extends BaseController implements LoginApi {
     public ModelMap sameuser() {
         ModelMap model = new ModelMap();
         model.addAttribute(ApplicationConst.getApplicationName(), applicationName);
+        model.addAttribute(ApplicationConst.getResourceUrl(), resourceUrl);
         logger.info("--->[方法 sameuser 运行中...]");
         model.addAttribute(ApplicationConst.getForwordUrl(),"/error/sameuser");
         return model;
@@ -53,6 +55,7 @@ public class LoginBiz extends BaseController implements LoginApi {
     public ModelMap timeout() {
         ModelMap model = new ModelMap();
         model.addAttribute(ApplicationConst.getApplicationName(), applicationName);
+        model.addAttribute(ApplicationConst.getResourceUrl(), resourceUrl);
         logger.info("--->[方法 timeout 运行中...]");
         model.addAttribute(ApplicationConst.getForwordUrl(),"/error/timeout");
         return model;
@@ -62,6 +65,7 @@ public class LoginBiz extends BaseController implements LoginApi {
     public ModelMap forwardLogin() {
         ModelMap model = new ModelMap();
         model.addAttribute(ApplicationConst.getApplicationName(), applicationName);
+        model.addAttribute(ApplicationConst.getResourceUrl(), resourceUrl);
         logger.info("--->[方法 forwardLogin 运行中...]");
         model.addAttribute(ApplicationConst.getForwordUrl(),"login/relogin");
         return model;
@@ -72,7 +76,18 @@ public class LoginBiz extends BaseController implements LoginApi {
         ModelMap model = new ModelMap();
         setModel(model);
         model.addAttribute(ApplicationConst.getApplicationName(), applicationName);
+        model.addAttribute(ApplicationConst.getResourceUrl(), resourceUrl);
         model.addAttribute(ApplicationConst.getForwordUrl(),"login/index");
+        return model;
+    }
+
+    @Override
+    public ModelMap map() {
+        ModelMap model = new ModelMap();
+        setModel(model);
+        model.addAttribute(ApplicationConst.getApplicationName(), applicationName+"地图模块");
+        model.addAttribute(ApplicationConst.getResourceUrl(), resourceUrl);
+        model.addAttribute(ApplicationConst.getForwordUrl(),"map/map");
         return model;
     }
 
@@ -84,6 +99,7 @@ public class LoginBiz extends BaseController implements LoginApi {
             logger.info("--->[已经登录的用户信息：------>]"+allPrincipals.get(i));
         }
         model.addAttribute(ApplicationConst.getApplicationName(), applicationName);
+        model.addAttribute(ApplicationConst.getResourceUrl(), resourceUrl);
         boolean isRealse = this.isRealse(request.getSession().getServletContext());
         String resCode = null;
         if (isRealse) {

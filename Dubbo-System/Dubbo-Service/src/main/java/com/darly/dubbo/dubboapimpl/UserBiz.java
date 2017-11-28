@@ -30,6 +30,7 @@ public class UserBiz extends BaseController implements UserApi {
         ModelMap model = new ModelMap();
         setModel(model);
         model.addAttribute(ApplicationConst.getApplicationName(), applicationName);
+        model.addAttribute(ApplicationConst.getResourceUrl(), resourceUrl);
         model.addAttribute(ApplicationConst.getForwordUrl(),"login/adduser");
         return model;
     }
@@ -39,6 +40,7 @@ public class UserBiz extends BaseController implements UserApi {
         ModelMap model = new ModelMap();
         setModel(model);
         model.addAttribute(ApplicationConst.getApplicationName(), applicationName);
+        model.addAttribute(ApplicationConst.getResourceUrl(), resourceUrl);
         if (user.getDisabled() == null) {
             user.setDisabled(false);
         }

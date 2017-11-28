@@ -13,6 +13,7 @@ import android.os.Message;
 import android.telephony.TelephonyManager;
 
 import com.darly.common.Common;
+import com.darly.dubbo.common.LocationTools;
 import com.darly.dview.DView;
 import com.orm.SugarContext;
 
@@ -47,6 +48,7 @@ public class AppApplication extends Application {
         DView.init().notifyInit(AppConst.isDebug(),this);
         Common.init().init(this,"object_share");
         Common.init().initDlog(AppConst.isDebug(), "appName");
+        LocationTools.init(this);
     }
 
     public static AppApplication getInstance() {

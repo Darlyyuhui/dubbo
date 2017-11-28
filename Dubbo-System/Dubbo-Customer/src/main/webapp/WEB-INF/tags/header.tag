@@ -19,7 +19,7 @@
                 <div class="collapse navbar-collapse pull-right" id="bs-example-navbar-collapse-1">
                     <ul class="nav navbar-nav">
                         <li>
-                            <a href="javascript:onindex();">
+                            <a href="javascript:onmap();">
                                 <span style="font-size:16px">首页</span>
                             </a>
                         </li>
@@ -52,7 +52,7 @@
                                 </li>
                                 <li class="dropdown">
                                     <i data-toggle="dropdown" class="dropdown-toggle" style="background-color: transparent">
-                                        <img class="img-circle" style="width: 42px;height: 42px" src="${root}/images/login/ic_user.png"/>
+                                        <img class="img-circle" style="width: 42px;height: 42px" src="${resourceUrl}/images/login/ic_user.png"/>
                                         <span class="user-info" style="font-size:16px;color:#cccfd3">
                                             <small style="padding-top:15px">欢迎你,</small>
                                                 ${userName }
@@ -205,6 +205,9 @@
 <script>
     function onindex() {
         window.location.href = "${root}/index";
+    }
+    function onmap() {
+        window.location.href = "${root}/map";
     }
 
     function oncheckjson() {

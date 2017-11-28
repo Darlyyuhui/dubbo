@@ -30,4 +30,13 @@ public class SubAbstract implements SubListener {
         }
     }
 
+    @Override
+    public void initResource(String resourceUrl) {
+        Enumeration enumd = this.vector.elements();
+        while(enumd.hasMoreElements()) {
+            ObsListener observerListener = (ObsListener)enumd.nextElement();
+            observerListener.obsInitResource(resourceUrl);
+        }
+    }
+
 }

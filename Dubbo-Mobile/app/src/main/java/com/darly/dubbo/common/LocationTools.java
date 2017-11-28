@@ -90,17 +90,12 @@ public class LocationTools implements AMapLocationListener {
         if (amapLocation != null) {
             if (amapLocation.getErrorCode() == 0) {
                 //定位成功回调信息，设置相关消息
-                if (TextUtils.isEmpty(amapLocation.getAddress())) {
-                    DLog.i("定位成功" + amapLocation.getAddress());
-                    start();
-                } else {
                     //请求列表
                     if (listener != null) {
                         DLog.i("定位成功" + amapLocation.getAddress());
                         listener.locationSuccess(amapLocation);
                     }
                     mlocationClient.stopLocation();
-                }
             } else {
                 ToastApp.showToast("请链接网络或者打开GPS进行定位");
                 if (listener != null) {

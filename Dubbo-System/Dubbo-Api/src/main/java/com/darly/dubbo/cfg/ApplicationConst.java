@@ -15,6 +15,13 @@ public class ApplicationConst {
      */
     private static  String forwordUrl= "url_forword";
 
+    /**
+     * 靜態資源文件路徑
+     */
+    private static  String resourceUrl= "resourceUrl";
+
+
+
     private ApplicationConst(){
         throw new IllegalStateException("Utility class");
     }
@@ -25,5 +32,9 @@ public class ApplicationConst {
 
     public static String getForwordUrl() {
         return forwordUrl;
+    }
+
+    public static String getResourceUrl() {
+        return resourceUrl;
     }
 }

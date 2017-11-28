@@ -2,7 +2,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <c:set var="root" value="${pageContext.request.contextPath}" />
 <!-- 引入 背景 -->
-<script color="43, 22, 22" opacity='0.6' zIndex="-2" count="100" src="${root}/basejs/login/js/canvas.js"></script>
+<script color="43, 22, 22" opacity='0.6' zIndex="-2" count="100" src="${resourceUrl}/basejs/login/js/canvas.js"></script>
 <style type="text/css">
     #console-container {
         float: left;
@@ -21,7 +21,7 @@
     <div class="row footer-top">
         <div class="col-sm-6">
             <h4>
-                <img src="${root}/images/login/ic_darly_logo.png" style="width: 140px">
+                <img src="${resourceUrl}/images/login/ic_darly_logo.png" style="width: 140px">
             </h4>
             <p>本网站所列开源项目的中文版文档全部由国内成员翻译整理，并全部遵循 <a href="http://creativecommons.org/licenses/by/3.0/" target="_blank">CC BY 3.0</a>协议发布。</p>
         </div>

@@ -13,15 +13,15 @@
 <html lang="zh-CN">
 <head>
     <!--標題欄圖標-->
-    <link rel="SHORTCUT ICON" href="${root}/images/base/logo.ico"/>
+    <link rel="SHORTCUT ICON" href="${resourceUrl}/images/base/logo.ico"/>
     <meta charset="utf-8">
     <%--<meta http-equiv="X-UA-Compatible" content="IE=edge">--%>
     <%--<meta name="viewport" content="width=device-width, initial-scale=1.0">--%>
     <%--<!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->--%>
     <%--<title>${itmsname}</title>--%>
     <%--<!-- 引入 Bootstrap -->--%>
-    <%--<link href="${root}/basejs/bootstrap/ace/css/bootstrap.min.css" rel="stylesheet">--%>
-    <%--<link href="${root}/basejs/bootstrap/ace/css/site.min.css" rel="stylesheet">--%>
+    <%--<link href="${resourceUrl}/basejs/bootstrap/ace/css/bootstrap.min.css" rel="stylesheet">--%>
+    <%--<link href="${resourceUrl}/basejs/bootstrap/ace/css/site.min.css" rel="stylesheet">--%>
     <%--<!-- HTML5 Shim 和 Respond.js 用于让 IE8 支持 HTML5元素和媒体查询 -->--%>
     <%--<!-- 注意： 如果通过 file://  引入 Respond.js 文件，则该文件无法起效果 -->--%>
     <%--<!--[if lt IE 9]>--%>
@@ -33,12 +33,12 @@
     <!-- CSS
         ================================================== -->
     <!-- Bootstrap 3-->
-    <link href="${root}/landy/css/bootstrap.min.css" rel="stylesheet" media="screen">
+    <link href="${resourceUrl}/landy/css/bootstrap.min.css" rel="stylesheet" media="screen">
     <!-- Google Fonts -->
     <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900,200italic,300italic,400italic,600italic,700italic,900italic|Roboto+Condensed:300italic,400italic,700italic,400,300,700' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Roboto+Condensed:300italic,400italic,700italic,400,300,700' rel='stylesheet' type='text/css'>
     <!-- Template Styles -->
-    <link href="${root}/landy/css/style.css" rel="stylesheet" media="screen">
+    <link href="${resourceUrl}/landy/css/style.css" rel="stylesheet" media="screen">
 
 </head>
 <body>
@@ -92,13 +92,13 @@
                             <!-- Wrapper for slides -->
                             <div class="carousel-inner">
                                 <div class="item active">
-                                    <img src="${root}/landy/img/screenshots/app-1.png" alt="App Screen 1">
+                                    <img src="${resourceUrl}/landy/img/screenshots/app-1.png" alt="App Screen 1">
                                 </div>
                                 <div class="item">
-                                    <img src="${root}/landy/img/screenshots/app-2.png" alt="App Screen 2">
+                                    <img src="${resourceUrl}/landy/img/screenshots/app-2.png" alt="App Screen 2">
                                 </div>
                                 <div class="item">
-                                    <img src="${root}/landy/img/screenshots/app-3.png" alt="App Screen 3">
+                                    <img src="${resourceUrl}/landy/img/screenshots/app-3.png" alt="App Screen 3">
                                 </div>
 
                             </div>
@@ -156,7 +156,7 @@
                                     </div>
                                     <div class="col-sm-12 col-md-5">
                                         <div class="app-screenshot">
-                                            <img src="${root}/landy/img/screenshots/app-1.png" class="img-responsive" alt="App Screen 1">
+                                            <img src="${resourceUrl}/landy/img/screenshots/app-1.png" class="img-responsive" alt="App Screen 1">
                                         </div>
                                     </div>
                                 </div>
@@ -169,7 +169,7 @@
                                     </div>
                                     <div class="col-sm-12 col-md-5">
                                         <div class="app-screenshot">
-                                            <img src="${root}/landy/img/screenshots/app-2.png" class="img-responsive" alt="App Screen 2">
+                                            <img src="${resourceUrl}/landy/img/screenshots/app-2.png" class="img-responsive" alt="App Screen 2">
                                         </div>
                                     </div>
                                 </div>
@@ -182,7 +182,7 @@
                                     </div>
                                     <div class="col-sm-12 col-md-5">
                                         <div class="app-screenshot">
-                                            <img src="${root}/landy/img/screenshots/app-3.png" class="img-responsive" alt="App Screen 3">
+                                            <img src="${resourceUrl}/landy/img/screenshots/app-3.png" class="img-responsive" alt="App Screen 3">
                                         </div>
                                     </div>
                                 </div>
@@ -277,16 +277,16 @@
     <%--<hr>--%>
     <%--<tags:footer/>--%>
     <%--<!-- jQuery (Bootstrap 的 JavaScript 插件需要引入 jQuery) -->--%>
-    <%--<script src="${root}/basejs/bootstrap/ace/js/jquery.js"></script>--%>
+    <%--<script src="${resourceUrl}/basejs/bootstrap/ace/js/jquery.js"></script>--%>
     <%--<!-- 包括所有已编译的插件 -->--%>
-    <%--<script src="${root}/basejs/bootstrap/ace/js/bootstrap.min.js"></script>--%>
+    <%--<script src="${resourceUrl}/basejs/bootstrap/ace/js/bootstrap.min.js"></script>--%>
 
     <!-- JAVASCRIPT
             ================================================== -->
-    <script src="${root}/landy/js/jquery.js"></script>
-    <script src="${root}/landy/js/bootstrap.min.js"></script>
-    <script src="${root}/landy/js/animatescroll.js"></script>
-    <script src="${root}/landy/js/scripts.js"></script>
-    <script src="${root}/landy/js/retina.min.js"></script>
+    <script src="${resourceUrl}/landy/js/jquery.js"></script>
+    <script src="${resourceUrl}/landy/js/bootstrap.min.js"></script>
+    <script src="${resourceUrl}/landy/js/animatescroll.js"></script>
+    <script src="${resourceUrl}/landy/js/scripts.js"></script>
+    <script src="${resourceUrl}/landy/js/retina.min.js"></script>
 </body>
 </html>

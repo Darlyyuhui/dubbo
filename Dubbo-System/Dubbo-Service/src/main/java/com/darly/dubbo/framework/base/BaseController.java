@@ -21,6 +21,8 @@ import java.util.Map;
  */
 public class BaseController {
     public String applicationName = ObsApplication.getInstance().getApplicationName();
+    public String resourceUrl = ObsApplication.getInstance().getResourceUrl();
+
     public Logger logger = new Logger(getClass());
 
 

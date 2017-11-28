@@ -35,6 +35,6 @@ dependencies {
     compile 'com.squareup.okhttp3:logging-interceptor:3.5.0'
     compile 'com.github.satyan:sugar:1.5'
     compile files('libs/AMap_Location_V3.5.0_20170731.jar')
-    compile group: 'com.darly.dview', name: 'dview', version: '1.0.2'
-    compile group: 'com.darly.common', name: 'common', version: '1.0.0'
+    compile 'com.darly.dview:dview:1.0.0'
+    compile 'com.darly.common:common:1.0.0'
 }
