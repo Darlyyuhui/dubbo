@@ -14,7 +14,7 @@ import com.darly.dview.widget.camera.OwnerPhotoPop;
 import com.darly.dview.widget.header.TitleView;
 
 @ContentBinder(R.layout.activity_main)
-public class MainActivity extends BaseActivity implements OnClickListener{
+public class MainActivity extends BaseActivity implements OnClickListener {
 
     @ViewsBinder(R.id.id_title)
     TitleView title;

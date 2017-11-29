@@ -4,7 +4,6 @@ import android.content.Context;
 import android.content.SharedPreferences;
 
 
-
 public class SystemCfg {
     private static SharedPreferences mysp = null;
     private static final String PREFERENCE_NAME = "xxsyscfg";

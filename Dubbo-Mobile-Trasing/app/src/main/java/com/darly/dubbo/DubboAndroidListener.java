@@ -13,7 +13,6 @@ import com.darly.dubbo.common.LocationTools;
 import com.darly.dubbo.common.LocationTools.LocationToolsListener;
 import com.darly.dview.widget.camera.OwnerPhotoPop;
 import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
 
 /**
  * Created by Darly on 2017/11/17.

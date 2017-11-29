@@ -1,7 +1,6 @@
 package com.darly.dubbo;
 
 import android.annotation.SuppressLint;
-import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
@@ -25,7 +24,7 @@ import java.util.List;
  */
 @SuppressLint("JavascriptInterface")
 @ContentBinder(R.layout.activity_html)
-public class HtmlWebView extends BaseWebView  {
+public class HtmlWebView extends BaseWebView {
     private String start  = "http://10.10.15.110:8082/dubbo/index";
     @ViewsBinder(R.id.id_web_html)
     WebView webView;

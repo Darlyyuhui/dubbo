@@ -14,7 +14,6 @@ import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
 
-
 import com.darly.common.DLog;
 import com.darly.dubbo.R;
 import com.darly.dview.framework.InitBinder;
