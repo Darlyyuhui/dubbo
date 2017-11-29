@@ -9,5 +9,8 @@ Dubbo-Mobile/.idea/
 zookeeper-3.5.3-beta/log/version-2/log.9db
 zookeeper-3.5.3-beta/log/
 nginxredis/nginx-1.13.6/logs/
+<<<<<<< HEAD
 Dubbo-Maven/
 Dubbo-Mobile-Trasing/.idea/
+=======
+>>>>>>> parent of 538a6a1... {修改静态形位置}

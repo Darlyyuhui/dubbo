@@ -1,7 +1,10 @@
 package com.darly.dubbo;
 
 import android.annotation.SuppressLint;
+<<<<<<< HEAD:Dubbo-Mobile-Trasing/app/src/main/java/com/darly/dubbo/HtmlWebView.java
 import android.content.Intent;
+=======
+>>>>>>> parent of 538a6a1... {修改静态形位置}:Dubbo-Mobile/app/src/main/java/com/darly/dubbo/HtmlWebView.java
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.view.KeyEvent;
@@ -15,29 +18,28 @@ import com.darly.common.DLog;
 import com.darly.dubbo.base.BaseWebView;
 import com.darly.dview.framework.ContentBinder;
 import com.darly.dview.framework.ViewsBinder;
-import com.darly.dview.widget.camera.OwnerPhotoPop;
-
-import java.util.List;
 
 /**
  * Created by Darly on 2017/11/16.
  */
 @SuppressLint("JavascriptInterface")
 @ContentBinder(R.layout.activity_html)
+<<<<<<< HEAD:Dubbo-Mobile-Trasing/app/src/main/java/com/darly/dubbo/HtmlWebView.java
 public class HtmlWebView extends BaseWebView {
     private String start  = "http://10.10.15.110:8082/dubbo/index";
+=======
+public class HtmlWebView extends BaseWebView  {
+    private String start  = "http://10.10.15.110/dubbo/index";
+>>>>>>> parent of 538a6a1... {修改静态形位置}:Dubbo-Mobile/app/src/main/java/com/darly/dubbo/HtmlWebView.java
     @ViewsBinder(R.id.id_web_html)
     WebView webView;
     private boolean isPageLoaded;
 
-    private OwnerPhotoPop pop;
-
     @Override
     protected void initView(Bundle savedInstanceState) {
         setWebSet(webView);
-        pop= new OwnerPhotoPop(this);
         // js调用安卓方法
-        DubboAndroidListener listener = new DubboAndroidListener(this,webView,pop);
+        DubboAndroidListener listener = new DubboAndroidListener(this,webView);
         webView.addJavascriptInterface(listener, "DubboAndroidListener");
         webView.loadUrl(start);
         //webView.loadUrl("javascript:shareCheck('" + true + "')");
@@ -106,21 +108,5 @@ public class HtmlWebView extends BaseWebView {
             }
         }
         return false;
-    }
-
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if (resultCode == 1){
-
-        }else {
-
-        }
-        if (resultCode == -1 && requestCode == 99) {
-            List<String> photos = (List<String>) data.getSerializableExtra("album_picture");
-            String video = data.getStringExtra("path");
-        } else if (resultCode == -1 && requestCode == 1) {
-            List<String> photos = (List<String>) data.getSerializableExtra("camera_picture");
-        }
     }
 }

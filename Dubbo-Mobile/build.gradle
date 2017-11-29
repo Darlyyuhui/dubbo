@@ -7,10 +7,15 @@ buildscript {
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:2.1.0'
+<<<<<<< HEAD
+=======
+
+>>>>>>> parent of 538a6a1... {修改静态形位置}
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
     }
 }
+
 allprojects {
     repositories {
         maven {
@@ -21,10 +26,13 @@ allprojects {
     }
 }
 
+<<<<<<< HEAD
 //Gradle缓存更新时间
 //configurations.all {
 //    resolutionStrategy.cacheChangingModulesFor(0, 'seconds')
 //}
+=======
+>>>>>>> parent of 538a6a1... {修改静态形位置}
 
 task clean(type: Delete) {
     delete rootProject.buildDir

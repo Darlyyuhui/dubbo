@@ -1,4 +1,11 @@
 apply plugin: 'com.android.library'
+apply plugin: 'maven'
+def MAVEN_LOCAL_PATH= 'http://193.169.100.100:8081/nexus/content/repositories/thirdparty/'
+def ARTIFACT_ID = 'dview'
+def VERSION_NAME = '1.0.2'
+def GROUP_ID = 'com.darly.dview'
+def ACCOUNT = 'admin'
+def PASSWORD = 'admin123'
 
 android {
     compileSdkVersion 26
@@ -8,7 +15,7 @@ android {
         minSdkVersion 15
         targetSdkVersion 26
         versionCode 1
-        versionName "1.0.0"
+        versionName "1.0"
     }
     buildTypes {
         release {
@@ -23,4 +30,18 @@ dependencies {
     compile 'com.nostra13.universalimageloader:universal-image-loader:1.9.5'
 }
 
-apply from:'maven-dview-aar.gradle'
+uploadArchives{
+    repositories{
+        mavenDeployer{
+            repository(url:MAVEN_LOCAL_PATH){
+                authentication(userName:ACCOUNT,password:PASSWORD)
+            }
+            pom.project{
+                groupId GROUP_ID
+                artifactId ARTIFACT_ID
+                version VERSION_NAME
+                packaging 'aar'
+            }
+        }
+    }
+}

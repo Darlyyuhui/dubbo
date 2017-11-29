@@ -70,7 +70,7 @@ public class ShowLoading extends Dialog {
     /**
      * 给Dialog设置提示信息
      *
-     * @param message 传递的字符串
+     * @param message
      */
     public void setMessage(CharSequence message) {
         if (message != null && message.length() > 0) {

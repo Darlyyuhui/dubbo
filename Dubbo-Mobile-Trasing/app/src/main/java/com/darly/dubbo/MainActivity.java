@@ -47,7 +47,7 @@ public class MainActivity extends BaseActivity implements OnClickListener {
                 startActivity(new Intent(this,HtmlWebView.class));
                 break;
             case com.darly.dview.R.id.title_view_operation_imageview_right:
-                pop.show(view, 3,3, AppConst.getVido().concat("tour"),false);
+                pop.show(view, 3, AppConst.getVido().concat("tour"));
                 break;
             default:
                 break;
