@@ -8,4 +8,5 @@ package com.darly.dubbo.framework.obs;
 public interface ObsListener {
     void obsApplicationName(String name);
 
+    void initSource(String url);
 }

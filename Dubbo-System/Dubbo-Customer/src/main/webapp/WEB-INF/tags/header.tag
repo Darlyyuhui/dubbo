@@ -52,7 +52,7 @@
                                 </li>
                                 <li class="dropdown">
                                     <i data-toggle="dropdown" class="dropdown-toggle" style="background-color: transparent">
-                                        <img class="img-circle" style="width: 42px;height: 42px" src="${root}/images/login/ic_user.png"/>
+                                        <img class="img-circle" style="width: 42px;height: 42px" src="${sourceUrl}/images/login/ic_user.png"/>
                                         <span class="user-info" style="font-size:16px;color:#cccfd3">
                                             <small style="padding-top:15px">欢迎你,</small>
                                                 ${userName }

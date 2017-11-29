@@ -11,6 +11,10 @@ public class ApplicationConst {
      */
     private static  String applicationName= "itmsname";
     /**
+     * 静态资源提取参数
+     */
+    private static  String sourceUrl= "sourceUrl";
+    /**
      * 跳转页面的URL跳转参数
      */
     private static  String forwordUrl= "url_forword";
@@ -25,5 +29,9 @@ public class ApplicationConst {
 
     public static String getForwordUrl() {
         return forwordUrl;
+    }
+
+    public static String getSourceUrl() {
+        return sourceUrl;
     }
 }

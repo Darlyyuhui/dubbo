@@ -5,12 +5,12 @@
 <html>
 <head>
     <!--標題欄圖標-->
-    <link rel="SHORTCUT ICON" href="${root}/images/base/logo.ico"/>
+    <link rel="SHORTCUT ICON" href="${sourceUrl}/images/base/logo.ico"/>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
-    <link href="${root}/basejs/login/css/style.css" rel="stylesheet" type="text/css" />
-    <script type="text/javascript" src="${root}/basejs/login/js/jquery-1.9.1.js"></script>
-    <script type="text/javascript" src="${root}/basejs/login/js/layer.js"></script>
+    <link href="${sourceUrl}/basejs/login/css/style.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" src="${sourceUrl}/basejs/login/js/jquery-1.9.1.js"></script>
+    <script type="text/javascript" src="${sourceUrl}/basejs/login/js/layer.js"></script>
 </head>
 <title>${itmsname}</title>
 <body style="background-color: #e6e6e6;">
@@ -25,11 +25,11 @@
         <form action="j_spring_security_check" method="post" id="loginForm" >
             <div class="con">
 				<span class="sp">
-					<img src="${root}/images/login/user.png" width="25px" height="25px" />
+					<img src="${sourceUrl}/images/login/user.png" width="25px" height="25px" />
                     <input name="j_username" type="text"  id="user_name" placeholder="用户账号" value=""/>
 				</span>
                 <span class="sp">
-					<img src="${root}/images/login/pass.png" width="25px" height="25px" />
+					<img src="${sourceUrl}/images/login/pass.png" width="25px" height="25px" />
 					<input name="j_password" type="password"  id="user_pwd" placeholder="密码" onpaste="return false" onfocus="this.type='password'" autocomplete="off"/>
 				</span>
                     <span class="login" onclick="Login()">登 录</span>
@@ -113,7 +113,7 @@
         return "";
     }
 </script>
-<script type="text/javascript" color="0,255,255" opacity='0.6' zIndex="-2" count="100" src="${root}/basejs/login/js/canvas.js"></script>
+<script type="text/javascript" color="0,255,255" opacity='0.6' zIndex="-2" count="100" src="${sourceUrl}/basejs/login/js/canvas.js"></script>
 </body>
 
 </html>

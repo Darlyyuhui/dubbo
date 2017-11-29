@@ -16,5 +16,7 @@ public class ApplicationListener extends SystemInitListener {
         logger.info(getClass().getSimpleName() + "[系统<" + name + ">启动完成]");
         //设置系统参数
         showinfo.notifyApplicationName(name);
+
+        showinfo.iniStaticSource("http://192.168.255.130/resourse/");
     }
 }

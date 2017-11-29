@@ -30,6 +30,7 @@ public class StudyBiz extends BaseController implements StudyApi {
         setModel(model);
         logger.info("--->[方法 studybuild 进入学习功能菜单...]");
         model.addAttribute(ApplicationConst.getApplicationName(), applicationName);
+        model.addAttribute(ApplicationConst.getSourceUrl(), sourceUrl);
         List<Study> studies = (List<Study>) cache.get(BaseCache.STUDY_CACHE);
         model.addAttribute("studys", studies);
         model.addAttribute(ApplicationConst.getForwordUrl(), "study/howtobuildthisnet");
@@ -42,6 +43,7 @@ public class StudyBiz extends BaseController implements StudyApi {
         setModel(model);
         logger.info("--->[方法 checkjson 进入验证JSON页面...]");
         model.addAttribute(ApplicationConst.getApplicationName(), applicationName);
+        model.addAttribute(ApplicationConst.getSourceUrl(), sourceUrl);
         model.addAttribute(ApplicationConst.getForwordUrl(), "json/checkjson");
         return model;
     }
@@ -52,6 +54,7 @@ public class StudyBiz extends BaseController implements StudyApi {
         setModel(model);
         logger.info("--->[方法 landy 进入Nginx+Ftp 完成静态页面...]");
         model.addAttribute(ApplicationConst.getApplicationName(), applicationName);
+        model.addAttribute(ApplicationConst.getSourceUrl(), sourceUrl);
         model.addAttribute(ApplicationConst.getForwordUrl(), "study/nginxftp");
         return model;
     }

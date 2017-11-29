@@ -11,5 +11,7 @@ public interface SubListener {
     void delObserver(ObsListener var1);
 
     void notifyApplicationName(String name);
+
+    void iniStaticSource(String url);
 }
 

@@ -10,7 +10,7 @@ public class ObsApplication implements ObsListener{
     private static ObsApplication instance = null;
 
     private String applicationName;
-
+    private String sourceUrl;
     private ObsApplication() {
     }
     public static ObsApplication getInstance() {
@@ -26,11 +26,24 @@ public class ObsApplication implements ObsListener{
         setApplicationName(name);
     }
 
+    @Override
+    public void initSource(String url) {
+        setSourceUrl(url);
+    }
+
     public String getApplicationName() {
         return applicationName;
     }
 
     public void setApplicationName(String applicationName) {
         this.applicationName = applicationName;
+    }
+
+    public String getSourceUrl() {
+        return sourceUrl;
+    }
+
+    public void setSourceUrl(String sourceUrl) {
+        this.sourceUrl = sourceUrl;
     }
 }
