@@ -36,6 +36,10 @@ public interface LoginApi {
      * @return 跳转首页
      */
     ModelMap index();
+    /**
+     * @return 跳轉到地圖頁面
+     */
+    ModelMap map();
 
     /**
      * @return 登录后 跳转登录主页

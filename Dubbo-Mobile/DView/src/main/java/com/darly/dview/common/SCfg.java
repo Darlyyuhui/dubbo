@@ -17,7 +17,7 @@ public class SCfg {
 
     public static void init(Context context) {
         mysp = context.getSharedPreferences(PREFERENCE_NAME, Context.MODE_PRIVATE);
-        Log.i("SCfg","初始化完成.."+mysp);
+        Log.i("SCfg","初始化.."+mysp);
     }
 
     public static void setVioPicWidth( int w) {
@@ -95,25 +95,25 @@ public class SCfg {
         return mysp.getString("flashmodes", "auto");
     }
 
-    //手机宽度保存
+    //设置屏幕宽度
     public static void setWidth(int w) {
        
         mysp.edit().putInt("phoneWidth", w).commit();
     }
 
-    //手机宽度获取
+    //获取屏幕宽度
     public static int getWidth() {
        
         return mysp.getInt("phoneWidth", 0);
     }
 
-    //手机高度保存
+    //设置屏幕高度
     public static void setHeight(int h) {
        
         mysp.edit().putInt("phoneHeight", h).commit();
     }
 
-    //手机高度获取
+    //获取屏幕高度
     public static int getHeight() {
        
         return mysp.getInt("phoneHeight", 0);

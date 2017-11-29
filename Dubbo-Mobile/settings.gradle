@@ -1,1 +1,1 @@
-include ':app', ':DView', ':Common'
+include ':DView', ':Common'

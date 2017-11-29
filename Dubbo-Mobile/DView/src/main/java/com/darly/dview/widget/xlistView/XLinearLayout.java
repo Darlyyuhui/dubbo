@@ -233,7 +233,7 @@ public class XLinearLayout extends LinearLayout {
 
 	/**
 	 * 是否应该到了父View，即PullToRefreshView滑动
-	 * @param deltaY <a>deltaY /> 0 是向下运动,deltaY /< 0是向上运动</a>
+	 * @param deltaY 0 是向下运动
 	 * @return boolean
 	 */
 	private boolean isRefreshViewScroll(int deltaY) {

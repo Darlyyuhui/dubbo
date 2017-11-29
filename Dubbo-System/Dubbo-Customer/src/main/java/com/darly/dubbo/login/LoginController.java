@@ -55,6 +55,12 @@ public class LoginController{
         return (String) model.get(ApplicationConst.getForwordUrl());
     }
 
+    @RequestMapping(value = {"/map"}, method = RequestMethod.GET)
+    public String map(ModelMap model, HttpServletRequest request) {
+        model.putAll(loginApi.map());
+        return (String) model.get(ApplicationConst.getForwordUrl());
+    }
+
     /***
      * 登錄后跳轉首頁
      */
