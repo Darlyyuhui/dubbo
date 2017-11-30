@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.darly.dubbo.security.user.dao.UserRoleMapper" >
+  
+  <resultMap id="BaseResultMap" type="com.darly.dubbo.security.user.bean.UserRole" >
+  	 <result column="USERID" property="userId" jdbcType="VARCHAR" />
+     <result column="ROLEID" property="roleId" jdbcType="VARCHAR" />
+  </resultMap>
+  
+  <insert id="save" parameterType="com.darly.dubbo.security.user.bean.UserRole">
+  	 INSERT INTO SYS_USER_ROLE(ROLEID,USERID) values(#{roleId},#{userId})
+  </insert>
+  
+  <delete id="batchDeleteByUsers" parameterType="java.lang.String">
+  	  DELETE FROM SYS_USER_ROLE
+  	  where USERID in
+  	  <foreach collection="records" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+      </foreach>
+  </delete>
+  
+  <delete id="batchDeleteByRoles" parameterType="java.lang.String">
+  	  DELETE FROM SYS_USER_ROLE
+  	  where ROLEID in
+  	  <foreach collection="records" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+      </foreach>
+  </delete>
+  
+  
+  <select id="getUserByRoleId" resultType="com.darly.dubbo.security.user.bean.User" parameterType="java.lang.String">
+  	select  *  from  SYS_USER t where T.ID in(
+    	select  userid from  SYS_USER_ROLE u where U.ROLEID =#{roleid} 
+	)
+  </select>
+  
+  
+  <select id="getRolesByUserId" resultType="com.darly.dubbo.security.user.bean.Role" parameterType="java.lang.String">
+     select * from sys_role t where T.ID in(
+        select  roleid from  SYS_USER_ROLE u where U.userid =#{userid}
+    )
+  </select>
+  
+</mapper>
