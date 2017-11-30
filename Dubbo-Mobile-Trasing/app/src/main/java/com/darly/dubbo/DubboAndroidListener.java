@@ -7,20 +7,31 @@ import android.webkit.WebView;
 
 import com.amap.api.location.AMapLocation;
 import com.darly.common.DLog;
+import com.darly.common.Tools;
+import com.darly.common.Utils;
 import com.darly.dubbo.base.AppConst;
 import com.darly.dubbo.base.BaseWebView;
+import com.darly.dubbo.base.SystemCfg;
 import com.darly.dubbo.common.LocationTools;
 import com.darly.dubbo.common.LocationTools.LocationToolsListener;
+import com.darly.dview.common.SCfg;
 import com.darly.dview.widget.camera.OwnerPhotoPop;
 import com.google.gson.Gson;
 
+import java.util.List;
+
 /**
- * Created by Darly on 2017/11/17.
+ * 
+ * Copyright (c) 2017 Organization D.L. zhangyuhui All rights reserved.
+ * @author  Darly/张宇辉/2017/11/30 9:06
+ * @version  1.0/com.darly.dubbo
  */
+
 public class DubboAndroidListener implements LocationToolsListener {
 
     private WebView webView;
     private BaseWebView context;
+    private String localKey = "http://file/";
 
     private OwnerPhotoPop pop;
 
@@ -46,6 +57,7 @@ public class DubboAndroidListener implements LocationToolsListener {
         webView.loadUrl("javascript:locationSuccess('" + json+ "')");
     }
 
+
     @Override
     public void locationFail() {
 
@@ -59,6 +71,10 @@ public class DubboAndroidListener implements LocationToolsListener {
         pop.show(webView, 0,4, AppConst.getVido().concat("tour"),false);
     }
 
+    public void cameraSuccess(List<String> url) {
+        //添加图片路径，并且进行大小分配展示
+        webView.loadUrl("javascript:cameraSuccess('"+localKey + url.get(0)+"','"+ Tools.Px2Dp(context,SCfg.getWidth()/4)+"','"+ Tools.Px2Dp(context,SCfg.getWidth()/4)+ "')");
+    }
     /**
      * JS调用的方法
      */
@@ -103,5 +119,7 @@ public class DubboAndroidListener implements LocationToolsListener {
             context.finish();
     }
 
-
+    public String getLocalKey() {
+        return localKey;
+    }
 }

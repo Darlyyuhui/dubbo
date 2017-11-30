@@ -20,8 +20,14 @@ import java.util.Map;
  * @Description：
  */
 public class BaseController {
-    public String applicationName = ObsApplication.getInstance().getApplicationName();
-    public String resourceUrl = ObsApplication.getInstance().getResourceUrl();
+    public static String applicationName = ObsApplication.getInstance().getApplicationName();
+    public  static String resourceUrl = ObsApplication.getInstance().getResourceUrl();
+
+
+    public static void refreshPar(){
+        applicationName = ObsApplication.getInstance().getApplicationName();
+        resourceUrl = ObsApplication.getInstance().getResourceUrl();
+    }
 
     public Logger logger = new Logger(getClass());
 
