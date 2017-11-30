@@ -38,5 +38,14 @@ public class CheckJsonController {
         model.putAll(studyApi.landy());
         return (String) model.get(ApplicationConst.getForwordUrl());
     }
+    /**
+     * @param model
+     * @return 进入到Json验证页面
+     */
+    @RequestMapping(value = {"/gradle"}, method = RequestMethod.GET)
+    public String gradle(ModelMap model) {
+        model.putAll(studyApi.gradle());
+        return (String) model.get(ApplicationConst.getForwordUrl());
+    }
 
 }

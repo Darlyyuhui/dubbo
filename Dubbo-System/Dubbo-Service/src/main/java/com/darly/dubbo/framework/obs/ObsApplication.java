@@ -1,5 +1,7 @@
 package com.darly.dubbo.framework.obs;
 
+import com.darly.dubbo.framework.base.BaseController;
+
 /**
  * Author : ZhangYuHui
  * Date : 2017/10/17

@@ -7,7 +7,7 @@
         <nav class="navbar navbar-inverse" style="background-color:#696969">
             <div class="container-fluid">
                 <div class="navbar-header">
-                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
@@ -28,10 +28,23 @@
                                 <span style="font-size:16px">JSON验证</span>
                             </a>
                         </li>
-                        <li>
-                            <a href="javascript:onlandy();">
-                                <span style="font-size:16px">简介</span>
+                        <li class="dropdown">
+                            <a data-toggle="dropdown" class="dropdown-toggle" >
+                                <span style="font-size:16px">引导</span>
                             </a>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <a href="javascript:onlandy();">
+                                        <span style="font-size:16px">Nginx静态服务器建立</span>
+                                    </a>
+                                </li>
+                                <li class="divider"></li>
+                                <li>
+                                    <a href="javascript:onGradleAar();">
+                                        <span style="font-size:16px">Android Gradle上传aar</span>
+                                    </a>
+                                </li>
+                            </ul>
                         </li>
                         <li>
                             <a href="javascript:showSecondMenu();">
@@ -215,6 +228,9 @@
     }
     function onlandy() {
         window.location.href = "${root}/landy";
+    }
+    function onGradleAar() {
+        window.location.href = "${root}/gradle";
     }
 
     function onsocket() {

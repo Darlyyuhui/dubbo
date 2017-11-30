@@ -1,15 +1,14 @@
 package com.darly.dubbo.root;
 
-import com.darly.dubbo.framework.listener.SystemInitListener;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.context.annotation.ImportResource;
+import com.darly.dubbo.framework.base.ApplicationContextHolder;
+import com.darly.dubbo.framework.base.BaseController;
 
 /**
  * Author : ZhangYuHui
  * Date : 2017/11/13
  * TODO :
  */
-public class ApplicationListener extends SystemInitListener {
+public class ApplicationContext extends ApplicationContextHolder {
 
     /**
      * #项目名称
@@ -20,11 +19,12 @@ public class ApplicationListener extends SystemInitListener {
      */
     private String resourceUrl = "http://10.10.15.110:8111/resource";
 
-    public ApplicationListener() {
+    public ApplicationContext() {
         super();
-        logger.info(getClass().getSimpleName() + "[系统<" + applicationName + ">启动完成]");
+        log.info(getClass().getSimpleName() + "[系统<" + applicationName + ">启动完成]");
         //设置系统参数
         showinfo.notifyApplicationName(applicationName);
         showinfo.initResource(resourceUrl);
+        BaseController.refreshPar();
     }
 }

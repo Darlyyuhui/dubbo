@@ -12,7 +12,12 @@ import com.darly.dview.framework.ContentBinder;
 import com.darly.dview.framework.ViewsBinder;
 import com.darly.dview.widget.camera.OwnerPhotoPop;
 import com.darly.dview.widget.header.TitleView;
-
+/**
+ * 
+ * Copyright (c) 2017 Organization D.L. zhangyuhui All rights reserved.
+ * @author  Darly/张宇辉/2017/11/30 9:06
+ * @version  1.0/com.darly.dubbo
+ */
 @ContentBinder(R.layout.activity_main)
 public class MainActivity extends BaseActivity implements OnClickListener {
 

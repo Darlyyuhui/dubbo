@@ -16,4 +16,6 @@ public interface StudyApi {
      ModelMap checkjson();
 
     ModelMap landy();
+
+    ModelMap gradle();
 }

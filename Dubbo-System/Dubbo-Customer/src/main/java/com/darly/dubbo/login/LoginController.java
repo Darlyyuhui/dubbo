@@ -2,6 +2,7 @@ package com.darly.dubbo.login;
 
 import com.darly.dubbo.cfg.ApplicationConst;
 import com.darly.dubbo.security.user.api.LoginApi;
+import com.darly.dubbo.security.user.api.SecurityApi;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -21,6 +22,16 @@ public class LoginController{
 
     @Autowired
     LoginApi loginApi;
+
+    @Autowired
+    SecurityApi securityApi;
+
+    @RequestMapping(value = {"/j_spring_security_check"}, method = RequestMethod.GET)
+    public String login(ModelMap model,String j_username,String j_password){
+        model.putAll(securityApi.checkloginuser(j_username,j_password));
+        return (String) model.get(ApplicationConst.getForwordUrl());
+    }
+
 
     @RequestMapping(value = {"/login"}, method = RequestMethod.GET)
     public String login(String error,ModelMap model,HttpServletRequest request){

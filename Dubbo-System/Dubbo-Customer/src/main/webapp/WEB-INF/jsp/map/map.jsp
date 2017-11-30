@@ -45,12 +45,15 @@
         <div class="box">
             <div id="container1"></div>
         </div>
-        <div >
-            <a href="${resourceUrl}/samply/samply.html">跳转进入采样页面</a>
+        <div style="padding: 10px" >
+            <button onclick="onSamp()">跳转进入采样页面</button>
         </div>
     </div>
 
 <script type="text/javascript">
+    function onSamp() {
+        top.location.href = "${resourceUrl}/samply/samply.html";
+    }
     var points = [{
         id: 1,
         lng: 118.096525,

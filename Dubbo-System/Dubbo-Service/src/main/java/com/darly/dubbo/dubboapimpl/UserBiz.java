@@ -29,7 +29,7 @@ public class UserBiz extends BaseController implements UserApi {
     public ModelMap forwardLogin() {
         ModelMap model = new ModelMap();
         setModel(model);
-        model.addAttribute(ApplicationConst.getApplicationName(), applicationName);
+        model.addAttribute(ApplicationConst.getApplicationName(), "新增用户");
         model.addAttribute(ApplicationConst.getResourceUrl(), resourceUrl);
         model.addAttribute(ApplicationConst.getForwordUrl(),"login/adduser");
         return model;
@@ -39,7 +39,7 @@ public class UserBiz extends BaseController implements UserApi {
     public ModelMap addUser(User user) {
         ModelMap model = new ModelMap();
         setModel(model);
-        model.addAttribute(ApplicationConst.getApplicationName(), applicationName);
+        model.addAttribute(ApplicationConst.getApplicationName(), "用户列表");
         model.addAttribute(ApplicationConst.getResourceUrl(), resourceUrl);
         if (user.getDisabled() == null) {
             user.setDisabled(false);

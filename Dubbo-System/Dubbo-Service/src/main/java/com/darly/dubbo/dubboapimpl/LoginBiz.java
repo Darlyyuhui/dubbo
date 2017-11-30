@@ -44,7 +44,7 @@ public class LoginBiz extends BaseController implements LoginApi {
     @Override
     public ModelMap sameuser() {
         ModelMap model = new ModelMap();
-        model.addAttribute(ApplicationConst.getApplicationName(), applicationName);
+        model.addAttribute(ApplicationConst.getApplicationName(), "异地登录");
         model.addAttribute(ApplicationConst.getResourceUrl(), resourceUrl);
         logger.info("--->[方法 sameuser 运行中...]");
         model.addAttribute(ApplicationConst.getForwordUrl(),"/error/sameuser");
@@ -54,7 +54,7 @@ public class LoginBiz extends BaseController implements LoginApi {
     @Override
     public ModelMap timeout() {
         ModelMap model = new ModelMap();
-        model.addAttribute(ApplicationConst.getApplicationName(), applicationName);
+        model.addAttribute(ApplicationConst.getApplicationName(), "登录超时");
         model.addAttribute(ApplicationConst.getResourceUrl(), resourceUrl);
         logger.info("--->[方法 timeout 运行中...]");
         model.addAttribute(ApplicationConst.getForwordUrl(),"/error/timeout");
