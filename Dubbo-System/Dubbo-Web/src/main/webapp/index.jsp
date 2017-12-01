@@ -2,6 +2,8 @@
 <%@page import="com.darly.dubbo.root.ApplicationContext" %>
 <html>
 <head>
+    <!--標題欄圖標-->
+    <link rel="SHORTCUT ICON" href=<%=ApplicationContext.getResourceUrl()%>+"/images/base/logo.ico"/>
     <title><%=ApplicationContext.getApplicationName()%></title>
 </head>
 <body>

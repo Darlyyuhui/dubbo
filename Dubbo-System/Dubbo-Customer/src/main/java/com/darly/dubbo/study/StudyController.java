@@ -2,6 +2,7 @@ package com.darly.dubbo.study;
 
 
 import com.darly.dubbo.cfg.ApplicationConst;
+import com.darly.dubbo.security.BaseSecurityController;
 import com.darly.dubbo.study.api.StudyApi;
 import com.darly.dubbo.study.bean.Study;
 import org.springframework.stereotype.Controller;
@@ -19,7 +20,7 @@ import java.util.List;
  */
 @Controller
 @RequestMapping({"build"})
-public class StudyController {
+public class StudyController extends BaseSecurityController{
 
     @Resource
     StudyApi studyApi;
@@ -29,6 +30,7 @@ public class StudyController {
      */
     @RequestMapping(value = {"/list"}, method = RequestMethod.GET)
     public String studyBuild(ModelMap modelMap) {
+        hasUser(modelMap);
         modelMap.putAll(studyApi.studybuild());
         return (String) modelMap.get(ApplicationConst.getForwordUrl());
     }

@@ -10,12 +10,6 @@ import javax.servlet.http.HttpServletRequest;
  * TODO :
  */
 public interface LoginApi {
-
-
-    /**
-     * @return 传递参数到后端进行判断
-     */
-    ModelMap checkloginuser(String username,String password,String address,String session);
     /**
      * @param error
      * @return 传递登录信息，跳转登录页面

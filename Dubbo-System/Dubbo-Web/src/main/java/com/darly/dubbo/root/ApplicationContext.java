@@ -31,4 +31,8 @@ public class ApplicationContext extends ApplicationContextHolder {
     public static String getApplicationName() {
         return applicationName;
     }
+
+    public static String getResourceUrl() {
+        return resourceUrl;
+    }
 }

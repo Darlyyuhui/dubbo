@@ -27,17 +27,9 @@ public class LoginController extends BaseSecurityController {
 
     @Autowired
     LoginApi loginApi;
-
-    public String login(ModelMap model,String j_username,String j_password,HttpServletRequest request){
-        HttpSession session = request.getSession(false);
-        String sessions = (session != null) ? session.getId() : null;
-        model.putAll(loginApi.checkloginuser(j_username,j_password,request.getRemoteAddr(),sessions));
-        return (String) model.get(ApplicationConst.getForwordUrl());
-    }
-
-
     @RequestMapping(value = {"/login"}, method = RequestMethod.GET)
     public String login(String error,ModelMap model,HttpServletRequest request){
+        hasUser(model);
         model.putAll(loginApi.login(error));
         return (String) model.get(ApplicationConst.getForwordUrl());
     }
@@ -50,6 +42,7 @@ public class LoginController extends BaseSecurityController {
 
     @RequestMapping({"/timeout"})
     public String timeout(ModelMap model) {
+        hasUser(model);
         model.putAll(loginApi.timeout());
         return (String) model.get(ApplicationConst.getForwordUrl());
     }
@@ -59,18 +52,21 @@ public class LoginController extends BaseSecurityController {
      */
     @RequestMapping(value="/forwardLogin/",method = RequestMethod.GET)
     public String forwardLogin(ModelMap model){
+        hasUser(model);
         model.putAll(loginApi.forwardLogin());
         return (String) model.get(ApplicationConst.getForwordUrl());
     }
 
     @RequestMapping(value = {"/index"}, method = RequestMethod.GET)
     public String index(ModelMap model, HttpServletRequest request) {
+        hasUser(model);
         model.putAll(loginApi.index());
         return (String) model.get(ApplicationConst.getForwordUrl());
     }
 
     @RequestMapping(value = {"/map"}, method = RequestMethod.GET)
     public String map(ModelMap model, HttpServletRequest request) {
+        hasUser(model);
         model.putAll(loginApi.map());
         return (String) model.get(ApplicationConst.getForwordUrl());
     }
