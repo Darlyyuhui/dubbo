@@ -13,7 +13,6 @@
     <param-name>contextConfigLocation</param-name>
     <param-value>
       classpath*:spring/dubbo-spring.xml,
-      classpath*:spring/dubbo-security.xml,
       classpath*:echa/dubbo-ehcache.xml,
       classpath*:spring/dubbo-servlet.xml
     </param-value>
@@ -58,19 +57,6 @@
     <url-pattern>/</url-pattern>
   </servlet-mapping>
   <!-- 设置servlet编码开始 -->
-
-  <!-- Spring Security -->
-  <filter>
-    <filter-name>springSecurityFilterChain</filter-name>
-    <filter-class>org.springframework.web.filter.DelegatingFilterProxy
-    </filter-class>
-  </filter>
-  <filter-mapping>
-    <filter-name>springSecurityFilterChain</filter-name>
-    <url-pattern>/*</url-pattern>
-  </filter-mapping>
-
-
   <listener>
     <listener-class>org.springframework.web.util.Log4jConfigListener</listener-class>
   </listener>
@@ -92,4 +78,10 @@
   <listener>
     <listener-class>org.springframework.web.context.request.RequestContextListener</listener-class>
   </listener>
+
+
+  <welcome-file-list>
+    <welcome-file>index.jsp</welcome-file>
+  </welcome-file-list>
+
 </web-app>

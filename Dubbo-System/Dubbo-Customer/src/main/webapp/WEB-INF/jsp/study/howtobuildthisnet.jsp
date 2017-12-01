@@ -34,7 +34,7 @@
 <div class="container tag-body">
     <div class="col-md-3" style="margin-left: -20px;margin-right: -20px">
         <ul class="list-group">
-            <li class="list-group-item"><a href="javascript:studyShow(0);">如何建立${itmsname}网站？</a></li>
+            <li class="list-group-item"><a href="javascript:studyShow(0);">如何建立${itmstitle}网站？</a></li>
             <li class="list-group-item"><a href="javascript:studyShow(1);">如何建立缓存机制？</a></li>
             <li class="list-group-item"><a href="javascript:studyShow(2);">如何关联数据库？</a></li>
             <li class="list-group-item"><a href="javascript:studyShow(3);">如何进行接口调用？</a></li>
@@ -76,6 +76,7 @@
 <script>
     function studyShow(num) {
         if (num == 0){
+            document.title = "如何建立${itmstitle}网站？";
             document.getElementById("study-0").style.display="inline";
             document.getElementById("study-1").style.display="none";
             document.getElementById("study-2").style.display="none";
@@ -84,6 +85,7 @@
             document.getElementById("study-5").style.display="none";
             document.getElementById("study-6").style.display="none";
         }else if (num == 1){
+            document.title = "如何建立缓存机制？";
             document.getElementById("study-0").style.display="none";
             document.getElementById("study-1").style.display="inline";
             document.getElementById("study-2").style.display="none";
@@ -92,6 +94,7 @@
             document.getElementById("study-5").style.display="none";
             document.getElementById("study-6").style.display="none";
         }else if (num == 2){
+            document.title = "如何关联数据库？";
             document.getElementById("study-0").style.display="none";
             document.getElementById("study-1").style.display="none";
             document.getElementById("study-2").style.display="inline";
@@ -100,6 +103,7 @@
             document.getElementById("study-5").style.display="none";
             document.getElementById("study-6").style.display="none";
         }else if (num == 3){
+            document.title = "如何进行接口调用？";
             document.getElementById("study-0").style.display="none";
             document.getElementById("study-1").style.display="none";
             document.getElementById("study-2").style.display="none";
@@ -108,6 +112,7 @@
             document.getElementById("study-5").style.display="none";
             document.getElementById("study-6").style.display="none";
         }else if (num == 4){
+            document.title = "WebSocket建立机制？";
             document.getElementById("study-0").style.display="none";
             document.getElementById("study-1").style.display="none";
             document.getElementById("study-2").style.display="none";
@@ -116,6 +121,7 @@
             document.getElementById("study-5").style.display="none";
             document.getElementById("study-6").style.display="none";
         }else if (num == 5){
+            document.title = "Redis+Spring Security？";
             document.getElementById("study-0").style.display="none";
             document.getElementById("study-1").style.display="none";
             document.getElementById("study-2").style.display="none";
@@ -124,6 +130,7 @@
             document.getElementById("study-5").style.display="inline";
             document.getElementById("study-6").style.display="none";
         }else if (num == 6){
+            document.title = "Android控件集合演示";
             document.getElementById("study-0").style.display="none";
             document.getElementById("study-1").style.display="none";
             document.getElementById("study-2").style.display="none";

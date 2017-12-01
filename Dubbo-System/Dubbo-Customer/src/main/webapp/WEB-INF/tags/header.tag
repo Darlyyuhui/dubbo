@@ -13,7 +13,7 @@
                         <span class="icon-bar"></span>
                     </button>
 
-                    <a class="navbar-brand" href="javascript:onindex();">${itmsname}</a>
+                    <a class="navbar-brand" href="javascript:onindex();">${itmstitle}</a>
                 </div>
 
                 <div class="collapse navbar-collapse pull-right" id="bs-example-navbar-collapse-1">

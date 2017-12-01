@@ -34,7 +34,6 @@ public interface UserService extends BaseService<User,UserSearch> {
      */
     User findUserByLoginName(String userName);
 
-
     /***
      * 通过用户Id获取其角色
      */

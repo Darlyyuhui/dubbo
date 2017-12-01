@@ -15,19 +15,25 @@
 
     <dubbo:application name="dubbo-provider" logger="log4j"/>
     <dubbo:registry address="${dubbo-registry-address}" protocol="zookeeper"/>
-    <dubbo:protocol name="dubbo" port="${dubbo-service-port}" accesslog="true" />
+    <dubbo:protocol name="dubbo" port="${dubbo-service-port}" accesslog="true"/>
 
-    <dubbo:service interface="com.darly.dubbo.study.api.StudyApi" ref="StudyApi"   group="${dubbo-group}" version="${dubbo-version}" timeout="${dubbo-timeout}" />
-    <dubbo:service interface="com.darly.dubbo.security.user.api.UserApi" ref="UserApi" group="${dubbo-group}" version="${dubbo-version}" timeout="${dubbo-timeout}" />
-    <dubbo:service interface="com.darly.dubbo.security.user.api.LoginApi" ref="LoginApi" group="${dubbo-group}" version="${dubbo-version}" timeout="${dubbo-timeout}" />
-    <dubbo:service interface="com.darly.dubbo.mobile.api.MobileLoginApi" ref="MobileLoginApi" group="${dubbo-group}" version="${dubbo-version}" timeout="${dubbo-timeout}" />
-    <dubbo:service interface="com.darly.dubbo.mobile.api.MobileUserApi" ref="MobileUserApi" group="${dubbo-group}" version="${dubbo-version}" timeout="${dubbo-timeout}" />
-    <dubbo:service interface="com.darly.dubbo.security.user.api.SecurityApi" ref="SecurityApi" group="${dubbo-group}" version="${dubbo-version}" timeout="${dubbo-timeout}" />
+    <dubbo:service interface="com.darly.dubbo.study.api.StudyApi" ref="StudyApi" group="${dubbo-group}"
+                   version="${dubbo-version}" timeout="${dubbo-timeout}"/>
+    <dubbo:service interface="com.darly.dubbo.security.user.api.UserApi" ref="UserApi" group="${dubbo-group}"
+                   version="${dubbo-version}" timeout="${dubbo-timeout}"/>
+    <dubbo:service interface="com.darly.dubbo.security.user.api.LoginApi" ref="LoginApi" group="${dubbo-group}"
+                   version="${dubbo-version}" timeout="${dubbo-timeout}"/>
+    <dubbo:service interface="com.darly.dubbo.mobile.api.MobileLoginApi" ref="MobileLoginApi" group="${dubbo-group}"
+                   version="${dubbo-version}" timeout="${dubbo-timeout}"/>
+    <dubbo:service interface="com.darly.dubbo.mobile.api.MobileUserApi" ref="MobileUserApi" group="${dubbo-group}"
+                   version="${dubbo-version}" timeout="${dubbo-timeout}"/>
+    <dubbo:service interface="com.darly.dubbo.security.securitycfg.SecurityApi" ref="SecurityApi" group="${dubbo-group}"
+                   version="${dubbo-version}" timeout="${dubbo-timeout}"/>
     <!-- 具体的实现bean -->
-    <bean id="StudyApi" class="com.darly.dubbo.dubboapimpl.StudyBiz" />
-    <bean id="UserApi" class="com.darly.dubbo.dubboapimpl.UserBiz" />
-    <bean id="LoginApi" class="com.darly.dubbo.dubboapimpl.LoginBiz" />
-    <bean id="MobileUserApi" class="com.darly.dubbo.dubboapimpl.MobileUserBiz" />
-    <bean id="MobileLoginApi" class="com.darly.dubbo.dubboapimpl.MobileLoginBiz" />
-    <bean id="SecurityApi" class="com.darly.dubbo.root.SecurityChecked" />
+    <bean id="StudyApi" class="com.darly.dubbo.dubboapimpl.StudyBiz"/>
+    <bean id="UserApi" class="com.darly.dubbo.dubboapimpl.UserBiz"/>
+    <bean id="LoginApi" class="com.darly.dubbo.dubboapimpl.LoginBiz"/>
+    <bean id="MobileUserApi" class="com.darly.dubbo.dubboapimpl.MobileUserBiz"/>
+    <bean id="MobileLoginApi" class="com.darly.dubbo.dubboapimpl.MobileLoginBiz"/>
+    <bean id="SecurityApi" class="com.darly.dubbo.dubboapimpl.SecurityBiz"/>
 </beans>

@@ -22,14 +22,14 @@ public class CacheFactory {
     @PostConstruct
     public void initCache() {
         if (log.isDebugEnabled()) {
-            log.info("------>Start the data cache service......");
-            log.info("------>Pre-cache memory（free/total）:" + String.valueOf(this.getMemorySize("free")) + " M/ " + this.getMemorySize("total") + " M");
+            log.info("------>系统初始化缓存服务......");
+            log.info("------>内存占用率:" + String.valueOf(this.getMemorySize("free")) + " M/ " + this.getMemorySize("total") + " M");
         }
 
         this.initItems();
         if (log.isDebugEnabled()) {
-            log.info("------>After memory memory（free/total）:" + String.valueOf(this.getMemorySize("free")) + " M/ " + this.getMemorySize("total") + " M");
-            log.info("------>The data cache service ends......");
+            log.info("------>内存占用率:" + String.valueOf(this.getMemorySize("free")) + " M/ " + this.getMemorySize("total") + " M");
+            log.info("------>系统缓存初始化完成......");
         }
 
     }

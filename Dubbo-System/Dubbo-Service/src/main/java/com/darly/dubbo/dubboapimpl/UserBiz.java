@@ -7,7 +7,6 @@ import com.darly.dubbo.framework.common.UuidGenerateUtil;
 import com.darly.dubbo.security.user.api.UserApi;
 import com.darly.dubbo.security.user.bean.User;
 import com.darly.dubbo.security.user.service.UserService;
-import org.springframework.security.authentication.encoding.Md5PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.ModelMap;
 
@@ -28,8 +27,8 @@ public class UserBiz extends BaseController implements UserApi {
     @Override
     public ModelMap forwardLogin() {
         ModelMap model = new ModelMap();
-        setModel(model);
-        model.addAttribute(ApplicationConst.getApplicationName(), "新增用户");
+        model.addAttribute(ApplicationConst.getApplicationName(), applicationName);
+        model.addAttribute(ApplicationConst.getPageTitle(), "新增用户");
         model.addAttribute(ApplicationConst.getResourceUrl(), resourceUrl);
         model.addAttribute(ApplicationConst.getForwordUrl(),"login/adduser");
         return model;
@@ -38,17 +37,17 @@ public class UserBiz extends BaseController implements UserApi {
     @Override
     public ModelMap addUser(User user) {
         ModelMap model = new ModelMap();
-        setModel(model);
-        model.addAttribute(ApplicationConst.getApplicationName(), "用户列表");
+        model.addAttribute(ApplicationConst.getApplicationName(), applicationName);
+        model.addAttribute(ApplicationConst.getPageTitle(), "用户列表");
         model.addAttribute(ApplicationConst.getResourceUrl(), resourceUrl);
         if (user.getDisabled() == null) {
             user.setDisabled(false);
         }
         user.setId(UuidGenerateUtil.getUUIDLong());
         //对密码进行md5加密
-        Md5PasswordEncoder encoder = new Md5PasswordEncoder();
-        String pwd = encoder.encodePassword(user.getPwd(), user.getName());
-        user.setPwd(pwd);
+//        Md5PasswordEncoder encoder = new Md5PasswordEncoder();
+//        String pwd = encoder.encodePassword(user.getPwd(), user.getName());
+        user.setPwd(user.getPwd());
         //对IP控制规则进行赋值
         if (StringDiyUtils.isNotEmpty(user.getIprule1()) && StringDiyUtils.isNotEmpty(user.getIprule2()) && StringDiyUtils.isNotEmpty(user.getIprule3()) && StringDiyUtils.isNotEmpty(user.getIprule4())) {
             String iprule = user.getIprule1() + "." + user.getIprule2() + "." + user.getIprule3() + "." + user.getIprule4();

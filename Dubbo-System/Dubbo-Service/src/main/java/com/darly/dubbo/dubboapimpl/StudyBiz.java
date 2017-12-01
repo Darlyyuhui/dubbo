@@ -27,9 +27,9 @@ public class StudyBiz extends BaseController implements StudyApi {
     @Override
     public ModelMap studybuild() {
         ModelMap model = new ModelMap();
-        setModel(model);
         logger.info("--->[方法 studybuild 进入学习功能菜单...]");
-        model.addAttribute(ApplicationConst.getApplicationName(), "服务端建立简介");
+        model.addAttribute(ApplicationConst.getApplicationName(), applicationName);
+        model.addAttribute(ApplicationConst.getPageTitle(), "如何建立"+applicationName+"网站？");
         model.addAttribute(ApplicationConst.getResourceUrl(), resourceUrl);
         List<Study> studies = (List<Study>) cache.get(BaseCache.STUDY_CACHE);
         model.addAttribute("studys", studies);
@@ -40,9 +40,9 @@ public class StudyBiz extends BaseController implements StudyApi {
     @Override
     public ModelMap checkjson() {
         ModelMap model = new ModelMap();
-        setModel(model);
         logger.info("--->[方法 checkjson 进入验证JSON页面...]");
-        model.addAttribute(ApplicationConst.getApplicationName(), "Json验证页面");
+        model.addAttribute(ApplicationConst.getApplicationName(), applicationName);
+        model.addAttribute(ApplicationConst.getPageTitle(), "Json验证页面");
         model.addAttribute(ApplicationConst.getResourceUrl(), resourceUrl);
         model.addAttribute(ApplicationConst.getForwordUrl(), "study/checkjson");
         return model;
@@ -51,9 +51,9 @@ public class StudyBiz extends BaseController implements StudyApi {
     @Override
     public ModelMap landy() {
         ModelMap model = new ModelMap();
-        setModel(model);
         logger.info("--->[方法 landy 进入Nginx+Ftp 完成静态页面...]");
-        model.addAttribute(ApplicationConst.getApplicationName(), "Nginx Ftp静态服务器");
+        model.addAttribute(ApplicationConst.getApplicationName(), applicationName);
+        model.addAttribute(ApplicationConst.getPageTitle(), "Nginx Ftp静态服务器");
         model.addAttribute(ApplicationConst.getResourceUrl(), resourceUrl);
         model.addAttribute(ApplicationConst.getForwordUrl(), "study/nginxftp");
         return model;
@@ -62,9 +62,9 @@ public class StudyBiz extends BaseController implements StudyApi {
     @Override
     public ModelMap gradle() {
         ModelMap model = new ModelMap();
-        setModel(model);
         logger.info("--->[方法 gradle 进入Android Gradle 私服上传aar 完成静态页面...]");
-        model.addAttribute(ApplicationConst.getApplicationName(), "Android Gradle 上传aar");
+        model.addAttribute(ApplicationConst.getApplicationName(), applicationName);
+        model.addAttribute(ApplicationConst.getPageTitle(), "Android Gradle 上传aar");
         model.addAttribute(ApplicationConst.getResourceUrl(), resourceUrl);
         model.addAttribute(ApplicationConst.getForwordUrl(), "study/gradle");
         return model;

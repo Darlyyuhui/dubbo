@@ -1,12 +1,9 @@
 package com.darly.dubbo.security.securitycfg;
 
-import com.darly.dubbo.framework.base.ApplicationContextHolder;
 import com.darly.dubbo.framework.common.DateUtil;
 import com.darly.dubbo.framework.common.UuidGenerateUtil;
-import com.darly.dubbo.framework.common.useragent.UserAgent;
 import com.darly.dubbo.framework.systemlog.Logger;
 import com.darly.dubbo.security.system.bean.SystemLog;
-import com.darly.dubbo.security.system.service.SystemLogService;
 import com.darly.dubbo.security.user.bean.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationListener;
@@ -14,10 +11,7 @@ import org.springframework.security.authentication.AbstractAuthenticationToken;
 import org.springframework.security.authentication.event.AuthenticationSuccessEvent;
 import org.springframework.security.core.session.SessionRegistry;
 import org.springframework.security.web.authentication.WebAuthenticationDetails;
-import org.springframework.web.context.request.RequestContextHolder;
-import org.springframework.web.context.request.ServletRequestAttributes;
 
-import javax.servlet.http.HttpServletRequest;
 import java.net.UnknownHostException;
 
 /**
@@ -34,6 +28,9 @@ public class LoginSuccessListener implements ApplicationListener<AuthenticationS
 
     @Autowired
     private SessionRegistry sessionRegistry;//这个类会自动注入 不用我们自己去手动注入
+
+    @Autowired
+    SecurityApi api;
     /**
      * 登录成功后事件处理
      */
@@ -55,13 +52,7 @@ public class LoginSuccessListener implements ApplicationListener<AuthenticationS
                 ipAddress = inet.getHostAddress();
             userInfo.setIpAddress(ipAddress);
         }
-
-        //用戶登錄成功，統計在線用戶
-        HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest();
-        //添加在线用户个数
-        SessionListener.addOnlineUser(request.getSession());
         SystemLog log = new SystemLog();
-
         // 记录在线用户信息
         User user = new User();
         user.setName(userInfo.getUsername());
@@ -78,10 +69,7 @@ public class LoginSuccessListener implements ApplicationListener<AuthenticationS
         log.setCreateDate(DateUtil.now());
         log.setCreateBy(userInfo.getAccount());
         log.setStatus("0");
-        UserAgent userAgent = UserAgent.parseUserAgentString(request.getHeader("User-Agent"));
-        log.setBrowser(userAgent.getBrowser().getName()+userAgent.getOperatingSystem().getName());
-        SystemLogService systemLogService = (SystemLogService) ApplicationContextHolder.getBean("systemLogServiceImplementer");
-        systemLogService.save(log);
+        api.saveLog(log);
         logger.infoLine();
         logger.info("--->登录用户："+ user.getName());
         logger.info("--->"+user.getName()+"登录系统成功");

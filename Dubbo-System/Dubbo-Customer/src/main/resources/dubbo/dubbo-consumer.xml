@@ -30,7 +30,7 @@
     <dubbo:reference id="MobileLoginApi" interface="com.darly.dubbo.mobile.api.MobileLoginApi"
                      group="${dubbo-service-group}" version="${dubbo-service-version}"
                      check="false" />
-    <dubbo:reference id="SecurityApi" interface="com.darly.dubbo.security.user.api.SecurityApi"
+    <dubbo:reference id="SecurityApi" interface="com.darly.dubbo.security.securitycfg.SecurityApi"
                      group="${dubbo-service-group}" version="${dubbo-service-version}"
                      check="false" />
 </beans>

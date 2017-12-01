@@ -6,7 +6,6 @@ import com.darly.dubbo.framework.base.Page;
 import com.darly.dubbo.framework.common.DateUtil;
 import com.darly.dubbo.framework.common.StringDiyUtils;
 import com.darly.dubbo.framework.systemlog.constant.FORMAT;
-import com.darly.dubbo.security.securitycfg.UserDetials;
 import com.darly.dubbo.security.system.bean.SystemLog;
 import com.darly.dubbo.security.system.bean.SystemLogSearch;
 import com.darly.dubbo.security.system.dao.SystemLogMapper;
@@ -70,11 +69,6 @@ public class SystemLogServiceImplementer extends AbstractBaseService<SystemLog,S
         search.setOrderByClause("OPERATION_TIME desc");
         Page page = selectByExample(search, pageNo, pageSize);
         return page;
-    }
-
-    @Override
-    public SystemLog getLastLogInfo(UserDetials operator) {
-        return systemLogMapper.selectLastLogUser(operator.getAccount(),DateUtil.formatDate(FORMAT.DATETIME.DEFAULT,operator.getLoginTime()));
     }
 
     @Override
