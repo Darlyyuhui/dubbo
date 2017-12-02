@@ -1,12 +1,11 @@
 package com.darly.dubbo.security.securitycfg;
 
-import com.darly.dubbo.framework.base.ApplicationContextHolder;
 import com.darly.dubbo.framework.common.DateUtil;
 import com.darly.dubbo.framework.common.UuidGenerateUtil;
 import com.darly.dubbo.framework.systemlog.Logger;
 import com.darly.dubbo.security.system.bean.SystemLog;
-import com.darly.dubbo.security.system.service.SystemLogService;
 import com.darly.dubbo.security.user.bean.User;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContext;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
@@ -26,6 +25,9 @@ import javax.servlet.http.HttpSessionListener;
 public class SessionListener implements HttpSessionListener {
 
     private static Logger logger = new Logger(SessionListener.class);
+
+    @Autowired
+    SecurityApi api;
     /**
      * 实现HttpSessionListener接口，完成session创建事件控制 说明：此时的Session状态为无效会话，
      * 只有用户成功登录系统后才将此Session写入EAHTTPSESSION表作为有效SESSION来管理
@@ -74,7 +76,6 @@ public class SessionListener implements HttpSessionListener {
             SecurityContext securityContext = (SecurityContext) context;
             UserDetials operatorDetails = (UserDetials) securityContext.getAuthentication().getPrincipal();
             if (operatorDetails != null) {
-                SystemLogService systemLogService = (SystemLogService) ApplicationContextHolder.getBean("systemLogServiceImplementer");
                 SystemLog log = new SystemLog();
                 // 记录在线用户信息
                 User user = new User();
@@ -93,7 +94,7 @@ public class SessionListener implements HttpSessionListener {
                 log.setCreateBy(operatorDetails.getAccount());
                 log.setStatus("0");
                 // 存储日志
-                systemLogService.save(log);
+                api.saveLog(log);
                 logger.infoLine();
                 logger.info("--->登录用户：" + user.getName());
                 logger.info("--->"+user.getName()+"退出系统成功");

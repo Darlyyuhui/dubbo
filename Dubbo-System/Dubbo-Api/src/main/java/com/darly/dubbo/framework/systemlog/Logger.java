@@ -5,9 +5,6 @@ import com.darly.dubbo.framework.systemlog.constant.Constant;
 import com.darly.dubbo.framework.systemlog.constant.PltMessage;
 import com.darly.dubbo.framework.systemlog.constant.SystemPropNaming;
 import com.darly.dubbo.framework.systemlog.resource.MessageResources;
-import net.sf.json.JSONArray;
-import net.sf.json.JSONException;
-import net.sf.json.JSONObject;
 import org.apache.log4j.BasicConfigurator;
 import org.apache.log4j.Level;
 import org.apache.log4j.Priority;
@@ -1133,27 +1130,27 @@ public class Logger {
 	 * @Author: Darly Fronch（张宇辉）
 	 * @Description： 輸出JSON
 	 */
-	public void json(String json) {
-		String message;
-		try {
-			if (json.startsWith("{")) {
-				JSONObject jsonObject = JSONObject.fromObject(json);
-				message = jsonObject.toString(4);
-			} else if (json.startsWith("[")) {
-				JSONArray jsonArray = JSONArray.fromObject(json);
-				message = jsonArray.toString(4);
-			} else {
-				message = json;
-			}
-		} catch (JSONException e) {
-			message = json;
-		}
-		message = "\n" + message;
-		String[] lines = message.split("\n");
-		for (String line : lines) {
-			apacheLogger.debug( "║ " + line);
-		}
-	}
+//	public void json(String json) {
+//		String message;
+//		try {
+//			if (json.startsWith("{")) {
+//				JSONObject jsonObject = JSONObject.fromObject(json);
+//				message = jsonObject.toString(4);
+//			} else if (json.startsWith("[")) {
+//				JSONArray jsonArray = JSONArray.fromObject(json);
+//				message = jsonArray.toString(4);
+//			} else {
+//				message = json;
+//			}
+//		} catch (JSONException e) {
+//			message = json;
+//		}
+//		message = "\n" + message;
+//		String[] lines = message.split("\n");
+//		for (String line : lines) {
+//			apacheLogger.debug( "║ " + line);
+//		}
+//	}
 	// //////////////////////////////////////////////////////////////////////////////
 
 	/**

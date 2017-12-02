@@ -9,7 +9,11 @@ public class ApplicationConst {
     /**
      * 系统名称提取参数
      */
-    private static  String applicationName= "itmsname";
+    private static  String applicationName= "itmstitle";
+    /**
+     * 页面内容标题
+     */
+    private static  String pageTitle= "itmsname";
     /**
      * 跳转页面的URL跳转参数
      */
@@ -36,5 +40,9 @@ public class ApplicationConst {
 
     public static String getResourceUrl() {
         return resourceUrl;
+    }
+
+    public static String getPageTitle() {
+        return pageTitle;
     }
 }

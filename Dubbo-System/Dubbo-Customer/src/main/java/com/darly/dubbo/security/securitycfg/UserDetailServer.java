@@ -1,7 +1,6 @@
 package com.darly.dubbo.security.securitycfg;
 
 import com.darly.dubbo.security.user.bean.User;
-import com.darly.dubbo.security.user.service.UserService;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -21,14 +20,15 @@ import java.util.Set;
 @Service
 public class UserDetailServer implements UserDetailsService {
     @Resource
-    UserService userService;
+    SecurityApi api;
     //登陆验证时，通过username获取用户的所有权限信息，
     //并返回User放到spring的全局缓存SecurityContextHolder中，以供授权器使用
+
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        User user = this.userService.findUserByLoginName(username);
+        User user = this.api.findUserByLoginName(username);
         if(user != null){
-            Set<GrantedAuthority> grantedAuths = userService.getRoleListByUser(user.getId());
+            Set<GrantedAuthority> grantedAuths = api.getRoleListByUser(user.getId());
             boolean enabled = true;
             boolean accountNonExpired = true;
             boolean credentialsNonExpired = true;

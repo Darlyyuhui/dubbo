@@ -38,14 +38,14 @@ public class CacheManagerFactoryBean implements FactoryBean<CacheManager>, Initi
     }
 
     public void afterPropertiesSet() throws Exception {
-        logger.info("------>Initializing EHCache CacheManager");
+        logger.info("------>缓存初始化中...");
         Configuration config = null;
         if (this.configLocation != null) {
             config = ConfigurationFactory.parseConfiguration(this.configLocation.getInputStream());
             if (this.diskStoreLocation != null) {
                 DiskStoreConfiguration dc = new DiskStoreConfiguration();
                 String path = ResourceUtils.getFile(this.diskStoreLocation).getAbsolutePath();
-                logger.info("------>cache path :" + path);
+                logger.info("------>缓存路径:" + path);
                 dc.setPath(path);
 
                 try {
@@ -81,7 +81,7 @@ public class CacheManagerFactoryBean implements FactoryBean<CacheManager>, Initi
     }
 
     public void destroy() throws Exception {
-        logger.info("------>Shutting down EHCache CacheManager");
+        logger.info("------>缓存已经关闭");
         this.cacheManager.shutdown();
     }
 }

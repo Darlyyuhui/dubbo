@@ -6,8 +6,6 @@ package com.darly.dubbo.security.user.impl;
 
 import com.darly.dubbo.framework.base.AbstractBaseService;
 import com.darly.dubbo.framework.base.BaseMapper;
-import com.darly.dubbo.framework.common.UuidGenerateUtil;
-import com.darly.dubbo.security.securitycfg.SpringSecurityUtils;
 import com.darly.dubbo.security.user.MenuType;
 import com.darly.dubbo.security.user.bean.SystemResource;
 import com.darly.dubbo.security.user.bean.SystemResourceSearch;
@@ -17,7 +15,10 @@ import com.darly.dubbo.security.user.service.ResourceService;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Iterator;
+import java.util.List;
 
 /**
  * @Author: Darly Fronch（张宇辉）
@@ -225,17 +226,6 @@ public class ResourceServiceImplementer extends AbstractBaseService<SystemResour
                 getButtonsByMenuid(getChildren(systemResource.getId(), MenuType.MODULE), btns);
             }
         }
-    }
-
-    @Override
-    public int save(SystemResource record) {
-        record.setId(UuidGenerateUtil.getUUIDLong());
-        record.setDisabled(false);
-        record.setCreateBy(SpringSecurityUtils.getCurrentUserName());
-        record.setUpdateBy(SpringSecurityUtils.getCurrentUserName());
-        record.setCreateDate(new Date());
-        record.setStatus("0");
-        return systemResourceMapper.insertSelective(record);
     }
 
     @Override

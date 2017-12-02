@@ -4,11 +4,7 @@ import com.darly.dubbo.framework.common.StringDiyUtils;
 import com.darly.dubbo.framework.obs.ObsApplication;
 import com.darly.dubbo.framework.systemlog.Logger;
 import com.darly.dubbo.framework.systemlog.constant.Constant;
-import com.darly.dubbo.security.securitycfg.SpringSecurityUtils;
-import com.darly.dubbo.security.securitycfg.UserDetials;
 import com.google.gson.JsonObject;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
-import org.springframework.ui.ModelMap;
 
 import javax.servlet.ServletContext;
 import java.util.Map;
@@ -30,18 +26,6 @@ public class BaseController {
     }
 
     public Logger logger = new Logger(getClass());
-
-
-    protected  void setModel(ModelMap model){
-        UserDetials user = getCurrentUser();
-        if (user == null) {
-            model.addAttribute("hasUser", false);
-        } else {
-            model.addAttribute("hasUser", true);
-            model.addAttribute("userName", user.getRealName());
-            model.addAttribute("account", user.getId());
-        }
-    }
 
     /***
      * 返回成功的json字符
@@ -78,25 +62,6 @@ public class BaseController {
         return false;
     }
 
-    /***
-     * 获取登陆用户
-     * @return
-     */
-    protected UserDetials getCurrentUser(){
-        return SpringSecurityUtils.getCurrentUser();
-    }
-
-    /***
-     * 获取登陆用户id
-     * @return
-     */
-    protected String getCurrentUserId(){
-        UserDetials userInfo =  getCurrentUser();
-        if(userInfo==null){
-            throw new UsernameNotFoundException("用户不存在");
-        }
-        return userInfo.getId();
-    }
 
     /**
      * 增加对模糊查询参数的修改，用于查询

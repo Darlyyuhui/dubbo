@@ -1,11 +1,10 @@
 package com.darly.dubbo.security.securitycfg;
 
-import com.darly.dubbo.framework.base.ApplicationContextHolder;
 import com.darly.dubbo.framework.common.DateUtil;
 import com.darly.dubbo.framework.common.UuidGenerateUtil;
 import com.darly.dubbo.framework.systemlog.Logger;
 import com.darly.dubbo.security.system.bean.SystemLog;
-import com.darly.dubbo.security.system.service.SystemLogService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationListener;
 import org.springframework.security.authentication.AbstractAuthenticationToken;
 import org.springframework.security.authentication.event.AuthenticationFailureBadCredentialsEvent;
@@ -28,6 +27,9 @@ public class LoginFailureListener implements ApplicationListener<AuthenticationF
     /**
      * 登录失败后事件处理
      */
+
+    @Autowired
+    SecurityApi api;
     public void onApplicationEvent(AuthenticationFailureBadCredentialsEvent authenticationFailureBadCredentialsEvent) {
       
     	logger.info("--->登陆监听器启动......");
@@ -62,8 +64,9 @@ public class LoginFailureListener implements ApplicationListener<AuthenticationF
         log.setStatus("0");
         log.setType(2l);
         log.setLogLevel(2l);
-        SystemLogService systemLogService = (SystemLogService) ApplicationContextHolder.getBean("systemLogServiceImplementer");
-        systemLogService.save(log);
+//        SystemLogService systemLogService = (SystemLogService) ApplicationContextHolder.getBean("systemLogServiceImplementer");
+//        systemLogService.save(log);
+        api.saveLog(log);
         logger.infoLine();
         logger.info("--->登录用户："+ authentication.getName());
         logger.info("--->尝试登录系统失败");

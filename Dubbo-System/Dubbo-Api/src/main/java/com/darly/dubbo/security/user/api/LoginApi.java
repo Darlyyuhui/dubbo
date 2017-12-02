@@ -10,7 +10,6 @@ import javax.servlet.http.HttpServletRequest;
  * TODO :
  */
 public interface LoginApi {
-
     /**
      * @param error
      * @return 传递登录信息，跳转登录页面
@@ -44,6 +43,6 @@ public interface LoginApi {
     /**
      * @return 登录后 跳转登录主页
      */
-    ModelMap home( HttpServletRequest request);
+    ModelMap home();
 
 }

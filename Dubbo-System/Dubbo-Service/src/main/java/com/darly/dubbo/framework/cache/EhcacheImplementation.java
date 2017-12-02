@@ -36,7 +36,7 @@ public class EhcacheImplementation implements Cache {
     }
 
     public void put(String key, Object value) {
-        logger.debug("------>Data has being cached......");
+        logger.debug("------>日期缓存成功......");
         logger.debug("------>key:" + key);
         Element element = new Element(key, value);
 

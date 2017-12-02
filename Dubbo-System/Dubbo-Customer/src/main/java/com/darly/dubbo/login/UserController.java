@@ -1,6 +1,7 @@
 package com.darly.dubbo.login;
 
 import com.darly.dubbo.cfg.ApplicationConst;
+import com.darly.dubbo.security.BaseSecurityController;
 import com.darly.dubbo.security.user.api.UserApi;
 import com.darly.dubbo.security.user.bean.User;
 import org.springframework.stereotype.Controller;
@@ -20,7 +21,7 @@ import javax.servlet.http.HttpServletRequest;
  */
 @Controller
 @RequestMapping("user")
-public class UserController{
+public class UserController extends BaseSecurityController{
     @Resource
     UserApi userApi;
     /***
@@ -28,6 +29,7 @@ public class UserController{
      */
     @RequestMapping(value="/regedit",method = RequestMethod.GET)
     public String forwardLogin(ModelMap model){
+        hasUser(model);
         model.putAll(userApi.forwardLogin());
         return (String) model.get(ApplicationConst.getForwordUrl());
     }
