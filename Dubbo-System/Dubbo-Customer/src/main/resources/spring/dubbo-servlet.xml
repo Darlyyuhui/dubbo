@@ -30,6 +30,14 @@
             <value>.jsp</value>
         </property>
     </bean>
+    <mvc:interceptors>
+        <mvc:interceptor>
+            <mvc:mapping path="/mobile/api/**"/>
+            <ref bean="manageInterceptor"/>
+        </mvc:interceptor>
+    </mvc:interceptors>
+
+    <bean name="manageInterceptor" class="com.darly.dubbo.mobile.cfg.MobileFilter"/>
     <!--<bean id="velocityConfig"-->
     <!--class="org.springframework.web.servlet.view.velocity.VelocityConfigurer">-->
     <!--<property name="resourceLoaderPath" value="/WEB-INF/views/page" />-->

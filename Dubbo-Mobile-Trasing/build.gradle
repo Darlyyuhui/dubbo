@@ -3,6 +3,9 @@
 buildscript {
     repositories {
         jcenter()
+        maven {
+            url "http://193.169.100.100:8081/nexus/content/repositories/thirdparty/"
+        }
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:2.3.0'

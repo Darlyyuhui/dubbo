@@ -1,10 +1,9 @@
-package com.darly.dubbo.retrofit;
+package com.darly.common.retrofit;
 
 
 import android.text.TextUtils;
 
 import com.darly.common.DLog;
-import com.darly.dubbo.base.AppConst;
 
 import java.io.UnsupportedEncodingException;
 import java.lang.reflect.Field;
@@ -20,9 +19,10 @@ import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 /**
- * Author:Created by zhangyh2 on 2016/12/8 at 10:33.
- * Copyright (c) 2016 Organization Rich-Healthcare(D.L.) zhangyh2 All rights reserved.
- * TODO:
+ * 網絡請求封裝類
+ * Copyright (c) 2017 Organization D.L. zhangyuhui All rights reserved.
+ * @author  Darly/张宇辉/2017/12/4 14:44
+ * @version  1.0/com.darly.common.retrofit
  */
 
 public class RxjavaRetrofitRequestUtil {
@@ -32,6 +32,9 @@ public class RxjavaRetrofitRequestUtil {
     private int interSize = 0;
 
     private OkHttpClient.Builder builder;
+
+    private static boolean isDebug;
+    private static String baseUrl;
 
     private RxjavaRetrofitRequestUtil() {
         initClient();
@@ -44,7 +47,7 @@ public class RxjavaRetrofitRequestUtil {
         builder.writeTimeout(REQUEST_TIME, TimeUnit.SECONDS);//设置写的超时时间
         builder.connectTimeout(REQUEST_TIME, TimeUnit.SECONDS);//设置连接超时时间
         //设置请求日志
-        if (AppConst.isDebug()) {
+        if (isDebug) {
             HttpLoggingInterceptor log = new HttpLoggingInterceptor();
             log.setLevel(HttpLoggingInterceptor.Level.HEADERS);
             builder.addInterceptor(log);
@@ -55,9 +58,6 @@ public class RxjavaRetrofitRequestUtil {
     }
 
 
-    /**
-     * @return 启动单例模式，加载进JVM时不进行初始化，调用getInstance（）初始化请求类。
-     */
     public static RxjavaRetrofitRequestUtil getInstance() {
         if (instance == null) {
             synchronized (RxjavaRetrofitRequestUtil.class) {
@@ -69,8 +69,7 @@ public class RxjavaRetrofitRequestUtil {
         return instance;
     }
 
-
-    public HttpRetrofitInterface get() {
+    public <T> T  get(Class<T> t) {
         //清理多余的头文件。
         while (builder.interceptors().size() > 0 && builder.interceptors().size() != interSize) {
             builder.interceptors().remove(builder.interceptors().size() - 1);
@@ -82,13 +81,13 @@ public class RxjavaRetrofitRequestUtil {
                 .client(builder.build())
                 .addConverterFactory(GsonConverterFactory.create())
                 .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
-                .baseUrl(AppConst.getUrlHead())
+                .baseUrl(baseUrl)
                 .build();
-        return retrofit.create(HttpRetrofitInterface.class);
+        return retrofit.create(t);
     }
 
 
-    public HttpRetrofitInterface post() {
+    public <T> T post(Class<T> t) {
         //清理多余的头文件。
         while (builder.interceptors().size() > 0 && builder.interceptors().size() != interSize) {
             builder.interceptors().remove(builder.interceptors().size() - 1);
@@ -100,17 +99,11 @@ public class RxjavaRetrofitRequestUtil {
                 .client(builder.build())
                 .addConverterFactory(GsonConverterFactory.create())
                 .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
-                .baseUrl(AppConst.getUrlHead())
+                .baseUrl(baseUrl)
                 .build();
-        return retrofit.create(HttpRetrofitInterface.class);
+        return retrofit.create(t);
     }
 
-    /**
-     * @param m
-     * @param paramsEncoding
-     * @param <T>
-     * @return 将对象参数集合转换为String参数
-     */
     public static <T> String getParamers(T m, String paramsEncoding) {
         Map<String, String> params = changeTtoMap(m);
         if (TextUtils.isEmpty(paramsEncoding)) {
@@ -176,5 +169,13 @@ public class RxjavaRetrofitRequestUtil {
         } catch (Exception e) {
             return map;
         }
+    }
+
+    public static void setIsDebug(boolean isDebug) {
+        RxjavaRetrofitRequestUtil.isDebug = isDebug;
+    }
+
+    public static void setBaseUrl(String baseUrl) {
+        RxjavaRetrofitRequestUtil.baseUrl = baseUrl;
     }
 }

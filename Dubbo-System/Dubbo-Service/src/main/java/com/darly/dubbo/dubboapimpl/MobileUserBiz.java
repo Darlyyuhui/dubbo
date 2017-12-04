@@ -38,4 +38,9 @@ public class MobileUserBiz extends BaseController implements MobileUserApi {
         logger.info("--->[方法 apiUsers 前端接口請求用戶...]");
         return userService.findAll(false);
     }
+
+    @Override
+    public User login(String account) {
+        return userService.findUserByLoginName(account);
+    }
 }
