@@ -16,4 +16,6 @@ public interface MobileUserApi {
 
     List<User> apiUsers() throws Exception;
 
+    User login(String account);
+
 }

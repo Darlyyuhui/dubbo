@@ -28,6 +28,23 @@ public class MainPresenter {
         biz.onList(new FrameListener<String>() {
             @Override
             public void onSucces(String s) {
+                biz.onStop(loading);
+                ToastApp.showToast(AppApplication.getInstance(),s);
+            }
+
+            @Override
+            public void onFaild(int i, String s) {
+
+            }
+        });
+    }
+
+    public void login(String account, String pwd) {
+        biz.onStart(loading);
+        biz.login(account,pwd,new FrameListener<String>() {
+            @Override
+            public void onSucces(String s) {
+                biz.onStop(loading);
                 ToastApp.showToast(AppApplication.getInstance(),s);
             }
 

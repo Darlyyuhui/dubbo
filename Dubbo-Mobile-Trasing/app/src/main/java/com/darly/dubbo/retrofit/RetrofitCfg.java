@@ -11,10 +11,10 @@ import okhttp3.Request;
 public class RetrofitCfg implements RxobsListener {
     @Override
     public Request.Builder initHeader(Request.Builder builder) {
-        builder.addHeader("account", "account")
-                .addHeader("imei", "imei")
+        builder.addHeader("account", "admin")
+                .addHeader("imei", "123")
                 .addHeader("crc", "crc")
-                .addHeader("pwd", "pwd");
+                .addHeader("pwd", "admin");
         return builder;
     }
 }

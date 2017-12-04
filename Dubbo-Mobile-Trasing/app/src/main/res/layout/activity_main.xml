@@ -17,6 +17,30 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="跳转到HTML页面"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+
+        <TextView
+            android:id="@+id/id_accout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="admin"/>
+        <TextView
+            android:id="@+id/id_pwd"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" android:text="admin"/>
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/id_common_login"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="登錄操作"/>
     <Button
         android:id="@+id/id_common_retrofit"
         android:layout_width="match_parent"

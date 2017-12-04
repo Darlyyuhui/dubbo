@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+import android.widget.TextView;
 
 import com.darly.dubbo.base.AppConst;
 import com.darly.dubbo.base.BaseActivity;
@@ -29,6 +30,12 @@ public class MainActivity extends BaseActivity implements OnClickListener ,MainI
 
     @ViewsBinder(R.id.id_forword_html)
     Button btn;
+    @ViewsBinder(R.id.id_accout)
+    TextView id_accout;
+    @ViewsBinder(R.id.id_pwd)
+    TextView id_pwd;
+    @ViewsBinder(R.id.id_common_login)
+    Button id_common_login;
     @ViewsBinder(R.id.id_common_retrofit)
     Button id_common_retrofit;
 
@@ -50,6 +57,7 @@ public class MainActivity extends BaseActivity implements OnClickListener ,MainI
     @Override
     protected void initListener() {
         btn.setOnClickListener(this);
+        id_common_login.setOnClickListener(this);
         id_common_retrofit.setOnClickListener(this);
     }
 
@@ -58,6 +66,9 @@ public class MainActivity extends BaseActivity implements OnClickListener ,MainI
         switch (view.getId()){
             case R.id.id_forword_html:
                 startActivity(new Intent(this,HtmlWebView.class));
+                break;
+            case R.id.id_common_login:
+                presenter.login(id_accout.getText().toString().trim(),id_pwd.getText().toString().trim());
                 break;
             case R.id.id_common_retrofit:
                 presenter.net();
