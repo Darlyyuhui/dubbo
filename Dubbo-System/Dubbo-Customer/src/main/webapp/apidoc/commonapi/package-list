@@ -2,3 +2,5 @@ com.darly.common
 com.darly.common.dlog
 com.darly.common.dlog.klog
 com.darly.common.observer
+com.darly.common.retrofit
+com.darly.common.retrofit.reobs

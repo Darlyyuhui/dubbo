@@ -1,25 +1,19 @@
 package com.darly.common.retrofit;
 
-import android.nfc.tech.NfcA;
-
-import com.darly.common.NameValuePair;
-import com.darly.common.observer.AbstractDesigner;
-import com.darly.common.observer.DesignListener;
-import com.darly.common.observer.InitCfg;
 import com.darly.common.retrofit.reobs.AbstractRx;
 import com.darly.common.retrofit.reobs.RxListener;
 import com.darly.common.retrofit.reobs.RxobsListener;
-import com.google.gson.reflect.TypeToken;
 
 import java.io.IOException;
-import java.nio.file.attribute.UserPrincipal;
 
 import okhttp3.Interceptor;
 import okhttp3.Request;
 import okhttp3.Response;
-
 /**
- * Created by Administrator on 2016/12/18.
+ * 請求頭封裝類
+ * Copyright (c) 2017 Organization D.L. zhangyuhui All rights reserved.
+ * @author  Darly/张宇辉/2017/12/4 14:43
+ * @version  1.0/com.darly.common.retrofit
  */
 
 public class RxInterceptor  implements Interceptor {
@@ -28,9 +22,6 @@ public class RxInterceptor  implements Interceptor {
     private static int VersionCode;
     private static final String APPSYS_STRING = "Android_";
 
-    /**
-     * @return 启动单例模式，加载进JVM时不进行初始化，调用getInstance（）初始化请求类。
-     */
     public static RxInterceptor getInstance() {
         if (instance == null) {
             synchronized (RxInterceptor.class) {
@@ -51,7 +42,7 @@ public class RxInterceptor  implements Interceptor {
 
 
     private static RxListener listener;
-    public static void  init(Class<? extends RxobsListener> t){
+    public static void  init(RxobsListener t){
         //在這裡對DView中的組件進行初始化變量操作
         listener = new AbstractRx();
         listener.addObserver(t);

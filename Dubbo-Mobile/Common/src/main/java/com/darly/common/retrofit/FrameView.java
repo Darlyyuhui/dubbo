@@ -1,8 +1,12 @@
 package com.darly.common.retrofit;
 
 /**
- * @author zhangyh2 BaseView 上午11:08:37 TODO 基础View层类
+ * 基础View层类
+ * Copyright (c) 2017 Organization D.L. zhangyuhui All rights reserved.
+ * @author  Darly/张宇辉/2017/12/4 14:43
+ * @version  1.0/com.darly.common.retrofit
  */
+
 public interface FrameView {
     /**
      * 用户不可以进行点击操作
