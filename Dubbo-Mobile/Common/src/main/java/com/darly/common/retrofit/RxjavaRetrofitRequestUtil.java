@@ -1,10 +1,9 @@
-package com.darly.dubbo.retrofit;
+package com.darly.common.retrofit;
 
 
 import android.text.TextUtils;
 
 import com.darly.common.DLog;
-import com.darly.dubbo.base.AppConst;
 
 import java.io.UnsupportedEncodingException;
 import java.lang.reflect.Field;
@@ -33,6 +32,9 @@ public class RxjavaRetrofitRequestUtil {
 
     private OkHttpClient.Builder builder;
 
+    private static boolean isDebug;
+    private static String baseUrl;
+
     private RxjavaRetrofitRequestUtil() {
         initClient();
     }
@@ -44,7 +46,7 @@ public class RxjavaRetrofitRequestUtil {
         builder.writeTimeout(REQUEST_TIME, TimeUnit.SECONDS);//设置写的超时时间
         builder.connectTimeout(REQUEST_TIME, TimeUnit.SECONDS);//设置连接超时时间
         //设置请求日志
-        if (AppConst.isDebug()) {
+        if (isDebug) {
             HttpLoggingInterceptor log = new HttpLoggingInterceptor();
             log.setLevel(HttpLoggingInterceptor.Level.HEADERS);
             builder.addInterceptor(log);
@@ -69,8 +71,7 @@ public class RxjavaRetrofitRequestUtil {
         return instance;
     }
 
-
-    public HttpRetrofitInterface get() {
+    public <T> T  get(Class<T> t) {
         //清理多余的头文件。
         while (builder.interceptors().size() > 0 && builder.interceptors().size() != interSize) {
             builder.interceptors().remove(builder.interceptors().size() - 1);
@@ -82,13 +83,13 @@ public class RxjavaRetrofitRequestUtil {
                 .client(builder.build())
                 .addConverterFactory(GsonConverterFactory.create())
                 .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
-                .baseUrl(AppConst.getUrlHead())
+                .baseUrl(baseUrl)
                 .build();
-        return retrofit.create(HttpRetrofitInterface.class);
+        return retrofit.create(t);
     }
 
 
-    public HttpRetrofitInterface post() {
+    public <T> T post(Class<T> t) {
         //清理多余的头文件。
         while (builder.interceptors().size() > 0 && builder.interceptors().size() != interSize) {
             builder.interceptors().remove(builder.interceptors().size() - 1);
@@ -100,9 +101,9 @@ public class RxjavaRetrofitRequestUtil {
                 .client(builder.build())
                 .addConverterFactory(GsonConverterFactory.create())
                 .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
-                .baseUrl(AppConst.getUrlHead())
+                .baseUrl(baseUrl)
                 .build();
-        return retrofit.create(HttpRetrofitInterface.class);
+        return retrofit.create(t);
     }
 
     /**
@@ -176,5 +177,13 @@ public class RxjavaRetrofitRequestUtil {
         } catch (Exception e) {
             return map;
         }
+    }
+
+    public static void setIsDebug(boolean isDebug) {
+        RxjavaRetrofitRequestUtil.isDebug = isDebug;
+    }
+
+    public static void setBaseUrl(String baseUrl) {
+        RxjavaRetrofitRequestUtil.baseUrl = baseUrl;
     }
 }

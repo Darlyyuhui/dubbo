@@ -1,4 +1,4 @@
-package com.darly.dubbo.retrofit;
+package com.darly.common.retrofit;
 
 import android.app.Dialog;
 

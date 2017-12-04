@@ -1,4 +1,4 @@
-package com.darly.dubbo.retrofit;
+package com.darly.common.retrofit;
 
 /**
  * @author zhangyh2 BaseView 上午11:08:37 TODO 基础View层类

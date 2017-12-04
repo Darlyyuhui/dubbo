@@ -1,4 +1,4 @@
-package com.darly.dubbo.retrofit;
+package com.darly.common.retrofit;
 
 /**
  * @author zhangyh2 BaseListener 下午4:10:16 TODO 业务请求对应接口

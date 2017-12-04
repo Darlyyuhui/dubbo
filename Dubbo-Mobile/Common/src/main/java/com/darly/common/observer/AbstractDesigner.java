@@ -2,6 +2,8 @@ package com.darly.common.observer;
 
 import android.content.Context;
 
+import com.darly.common.retrofit.reobs.RxobsListener;
+
 import java.util.Enumeration;
 import java.util.Vector;
 /**
@@ -40,6 +42,15 @@ public class AbstractDesigner implements DesignListener {
         while(enumd.hasMoreElements()) {
             ObserverListener observerListener = (ObserverListener)enumd.nextElement();
             observerListener.initDlog(isDebug,name);
+        }
+    }
+
+    @Override
+    public void initRetrofit(int VersionCode, String baseUrl, RxobsListener cls) {
+        Enumeration enumd = this.vector.elements();
+        while(enumd.hasMoreElements()) {
+            ObserverListener observerListener = (ObserverListener)enumd.nextElement();
+            observerListener.initRetrofit(VersionCode,baseUrl,cls);
         }
     }
 }
