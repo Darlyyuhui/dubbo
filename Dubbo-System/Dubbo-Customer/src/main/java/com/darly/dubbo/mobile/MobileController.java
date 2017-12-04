@@ -94,6 +94,8 @@ public class MobileController extends MobileBaseController {
         sd.setLoginDate(new Date());
         logger.info(request.getContextPath());
         SessionUtil.SESSION_MAP.put(SessionUtil.makeSessionKey(request), sd);
+        //记录用户最后操作时间
+        SessionUtil.LAST_OPERATION_MAP.put(SessionUtil.makeSessionKey(request), new Date());
     }
 
     /**

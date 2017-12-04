@@ -4,7 +4,6 @@ import com.darly.dubbo.framework.systemlog.Logger;
 import com.darly.dubbo.mobile.session.SessionData;
 import com.darly.dubbo.mobile.session.SessionUtil;
 import com.darly.dubbo.security.securitycfg.SpringSecurityUtils;
-import com.darly.dubbo.security.securitycfg.UserDetials;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -22,6 +21,7 @@ import java.util.Map;
 public class MobileFilter extends MobileBaseController implements HandlerInterceptor {
     private Logger logger = new Logger(MobileFilter.class);
 
+    private int time =1000;
     //在请求处理之前执行，该方法主要是用于准备资源数据的，然后可以把它们当做请求属性放到WebRequest中
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
@@ -58,6 +58,13 @@ public class MobileFilter extends MobileBaseController implements HandlerInterce
                 return false;
             }
             //记录用户最后操作时间
+            Date da = SessionUtil.LAST_OPERATION_MAP.get(SessionUtil.makeSessionKey(request));
+            if (da.getTime()+time*1000<System.currentTimeMillis()){
+                resultMap.put(ResponseUtil.RES_KEY_CODE, "201");
+                resultMap.put(ResponseUtil.RES_KEY_DESC, "登录超时，请重新登录");
+                ResponseUtil.printWriteResponse(request.getParameter("callback"), resultMap, response);
+                return false;
+            }
             SessionUtil.LAST_OPERATION_MAP.put(SessionUtil.makeSessionKey(request), new Date());
             return true;
         }

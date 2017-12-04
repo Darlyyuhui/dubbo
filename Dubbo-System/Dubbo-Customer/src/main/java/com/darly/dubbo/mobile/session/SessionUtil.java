@@ -40,15 +40,12 @@ public class SessionUtil {
 
         String account = request.getHeader("account");
         if(account==null||"".equals(account)){
-
             account=request.getParameter("account");
-
         }
         String imei = request.getHeader("imei");
         if(imei==null||"".equals(imei)){
             imei=request.getParameter("imei");
         }
-
         return makeSessionKey(account, imei);
     }
 }
