@@ -5,18 +5,12 @@ import android.content.Intent;
 import android.webkit.JavascriptInterface;
 import android.webkit.WebView;
 
-import com.amap.api.location.AMapLocation;
 import com.darly.common.DLog;
 import com.darly.common.Tools;
 import com.darly.common.Utils;
 import com.darly.dubbo.base.AppConst;
 import com.darly.dubbo.base.BaseWebView;
 import com.darly.dubbo.base.SystemCfg;
-import com.darly.dubbo.common.LocationTools;
-import com.darly.dubbo.common.LocationTools.LocationToolsListener;
-import com.darly.dview.common.SCfg;
-import com.darly.dview.widget.camera.OwnerPhotoPop;
-import com.google.gson.Gson;
 
 import java.util.List;
 
@@ -33,9 +27,7 @@ public class DubboAndroidListener implements LocationToolsListener {
     private BaseWebView context;
     private String localKey = "http://file/";
 
-    private OwnerPhotoPop pop;
-
-    public DubboAndroidListener(Context context, WebView webView, OwnerPhotoPop pop) {
+    public DubboAndroidListener(Context context,WebView webView) {
         this.context = (BaseWebView) context;
         this.webView = webView;
         this.pop = pop;
@@ -80,14 +72,13 @@ public class DubboAndroidListener implements LocationToolsListener {
      */
     @JavascriptInterface
     public void goToIndex() {
-        context.finish();
+       context.finish();
     }
-
     /**
      * JS调用的方法
      */
     @JavascriptInterface
-    public void creadt() {
+    public void creadt(){
         DLog.i("----------creadt>");
     }
 
@@ -96,7 +87,7 @@ public class DubboAndroidListener implements LocationToolsListener {
      */
     @JavascriptInterface
     public void reloadUrl(final String url) {
-        DLog.i("----------reloadUrl>" + url);
+        DLog.i("----------reloadUrl>"+url);
         context.runOnUiThread(new Runnable() {
             @Override
             public void run() {
@@ -114,6 +105,7 @@ public class DubboAndroidListener implements LocationToolsListener {
                              boolean isCloseCurrent) {
         Intent intent = new Intent();
         intent.setClassName(packageName, className);
+
         context.startActivity(intent);
         if (isCloseCurrent)
             context.finish();

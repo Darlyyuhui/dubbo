@@ -1,9 +1,6 @@
 package com.darly.dubbo;
 
 import android.annotation.SuppressLint;
-import android.annotation.TargetApi;
-import android.app.Activity;
-import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Build;
 import android.os.Bundle;
@@ -21,11 +18,6 @@ import com.darly.dview.framework.ContentBinder;
 import com.darly.dview.framework.ViewsBinder;
 import com.darly.dview.widget.camera.OwnerPhotoPop;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.util.List;
 
 /**
  * Copyright (c) 2017 Organization D.L. zhangyuhui All rights reserved.
@@ -35,7 +27,7 @@ import java.util.List;
  */
 @SuppressLint("JavascriptInterface")
 @ContentBinder(R.layout.activity_html)
-public class HtmlWebView extends BaseWebView {
+public class HtmlWebView extends BaseWebView  {
     private String start = "http://10.10.15.110:8082/dubbo/index";
     @ViewsBinder(R.id.id_web_html)
     WebView webView;

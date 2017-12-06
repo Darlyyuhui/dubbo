@@ -103,7 +103,6 @@ public class ImageLoaderUtil{
 
     /**
      * 下午2:50:09圆角加载
-     *  @return DisplayImageOptions
      */
     @SuppressWarnings("deprecation")
     private DisplayImageOptions getOptions() {
@@ -123,8 +122,6 @@ public class ImageLoaderUtil{
 
     /**
      * 下午2:50:57正常加载
-     *  @param r    资源文件
-     *  @return DisplayImageOptions
      */
     @SuppressWarnings("deprecation")
     private DisplayImageOptions getOptions(int r) {

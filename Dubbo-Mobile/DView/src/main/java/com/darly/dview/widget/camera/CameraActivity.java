@@ -88,7 +88,6 @@ public class CameraActivity extends Activity {
     private Sensor mSensor = null;
     private int direction = 0;
     private int mSize;
-    private int totalSize;
     private String filePaths;
     private int callbackTimes;
     private String currentTime;
@@ -132,9 +131,26 @@ public class CameraActivity extends Activity {
         btntack.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (mSize + listPath.size() >= totalSize) {
-                    Toast.makeText(CameraActivity.this,"最多拍摄"+totalSize+"张照片",Toast.LENGTH_SHORT).show();
-                    return;
+                if (getIntent().getAction() != null && getIntent().getAction().equals("publishFourPhotosAccident")) {
+                    if (mSize + listPath.size() >= 10) {
+                        Toast.makeText(CameraActivity.this,"最多拍摄10张照片",Toast.LENGTH_SHORT).show();
+                        return;
+                    }
+                } else if (getIntent().getAction() != null && getIntent().getAction().equals("publishFourPhotos")) {
+                    if (mSize + listPath.size() >= 4) {
+                        Toast.makeText(CameraActivity.this,"最多可拍摄4张照片",Toast.LENGTH_SHORT).show();
+                        return;
+                    }
+                } else if (getIntent().getAction() != null && getIntent().getAction().equals("Sence")) {
+                    if (mSize + listPath.size() >= 4) {
+                        Toast.makeText(CameraActivity.this,"最多可拍摄3张照片",Toast.LENGTH_SHORT).show();
+                        return;
+                    }
+                } else if (getIntent().getAction() != null && getIntent().getAction().equals("publishThreePhotos")) {
+                    if (mSize + listPath.size() >= 3) {
+                        Toast.makeText(CameraActivity.this,"最多可拍摄3张照片",Toast.LENGTH_SHORT).show();
+                        return;
+                    }
                 }
                 try {
                     callbackTimes = 0;
@@ -182,6 +198,13 @@ public class CameraActivity extends Activity {
                     }
                 }
                 intent.putExtra("camera_picture", (Serializable) listPath);
+/*			ImageUtils iu = new ImageUtils(this);
+            for (int i = 0; i < listPath.size(); i++) {
+				File f = new File(listPath.get(i));
+				if (f != null && f.exists() && f.isFile()) {
+					iu.pressText(listPath.get(i), getResources().getString(R.string.textviewtime) + ":" + MDate.getDate(),"","");
+				}
+			}*/
                 intent.putExtra("imgcount", k);
                 setResult(Activity.RESULT_OK, intent);
                 finish();
@@ -271,13 +294,8 @@ public class CameraActivity extends Activity {
 
     public void initData() {
         iu = new ImageUtils(this);
-        //已经有几张图片
         mSize = getIntent().getIntExtra("size", 0);
-        //总共需要几张图片
-        totalSize = getIntent().getIntExtra("totalSize", 0);
-        //保存路径
         filePaths = getIntent().getStringExtra("file");
-        //是否添加水印效果
         logo = getIntent().getBooleanExtra("LOGO", false);
         mysp = getSharedPreferences("xxsyscfg", Context.MODE_PRIVATE);
         openCamera();
@@ -310,23 +328,26 @@ public class CameraActivity extends Activity {
         @Override
         public void run() {
             if (Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED)) {
-                String picpath = filePaths + "/" + MDate.getDateAsFileName() + "-" + Math.round(Math.random() * 8999 + 1000) + ".jpg";
+                String picpath = filePaths + "/vio" + MDate.getDateAsFileName() + "-" + Math.round(Math.random() * 8999 + 1000) + ".jpg";
 
                 File picture = new File(filePaths);
                 if (!picture.exists())
                     picture.mkdirs();
 
                 try {
-                    FileOutputStream fos = new FileOutputStream(picpath);
-                    fos.write(data);
-                    fos.close();
+                    FileOutputStream fos = new FileOutputStream(picpath);// ����ļ������
+                    fos.write(data);// MyUtils.rotataData(data, direction));//
+                    // д���ļ�
+                    fos.close();// �ر��ļ���
                     ExifInterface exifInterface = new ExifInterface(picpath);
                     exifInterface.setAttribute(ExifInterface.TAG_DATETIME, MDate.getDate());
                     exifInterface.saveAttributes();
                     exifInterface = null;
-                    getImageView(picpath);
+                    getImageView(picpath);// ��ȡ��Ƭ
+
                     File file = new File(picpath);
                     if (file.exists()) {
+
                         File f = new File(picpath);
                         //在这里判断是否需要添加水印效果
                         if (f != null && f.exists() && f.isFile() && logo) {
@@ -592,7 +613,7 @@ public class CameraActivity extends Activity {
     /**
      * 计算两点之间的距离
      *
-     * @param event 传递事件
+     * @param event
      * @return float
      */
     private float spacing(MotionEvent event) {
