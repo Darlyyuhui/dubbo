@@ -28,58 +28,15 @@
     <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
     <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
     <![endif]-->
-    <script>
-        function getAndroidma() {
-            if("DubboAndroidListener" in window){
-                console.log(1);
-            }
-            DubboAndroidListener.creadt();
-        }
 
-        function setReload(url) {
-            console.log(url);
-            if("DubboAndroidListener" in window){
-                console.log(1);
-            }
-            DubboAndroidListener.reloadUrl(url);
-        }
-        var url = "10.10.15.110/dubbo/index";
-    </script>
+    <script src="${root}/basejs/echarts.min.js"></script>
+    <!-- 引入 vintage 主题 -->
+    <script src="${root}/basejs/dark.js"></script>
 </head>
 <body>
 <tags:header/>
-<div class="container tag-body" >
-    <div >
-        <a href="javascript:window.DubboAndroidListener.goToIndex()">点击退出</a>
-    </div>
-    <div >
-        <a href="javascript:getAndroidma();">点击调用Android代码</a>
-    </div>
-    <div >
-        <a href="javascript:setReload('http://10.10.10.110/dubbo/index')">点击傳遞參數</a>
-    </div>
-
-    <div align="center">
-        <a href="${resourceUrl}/apidoc/commonapi/index.html">连接Common APIDoc</a>
-    </div>
-    <div class="row">
-        <!--导航条-->
-        <nav class="navbar navbar-inverse" style="background-color:#696969">
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-md-4 col-sm-6 col-xs-6">
-                        <img style="padding: 4px" src="${resourceUrl}/images/samply/ic_back_title.png"/>
-                    </div>
-                    <div class="col-md-3 col-sm-6 col-xs-6">
-                        <span style="width: 90%">现场采样</span>
-                    </div>
-                    <div class="col-md-3 col-sm-6 col-xs-6">
-                        <span style="width: 90%">现场采样</span>
-                    </div>
-                </div>
-            </div>
-        </nav>
-    </div>
+<div class="container tag-body">
+    <div id="main" style="width: 100%;height: 400px"></div>
 </div>
 <hr>
 <tags:footer/>
@@ -87,5 +44,94 @@
 <script src="${resourceUrl}/basejs/bootstrap/ace/js/jquery.js"></script>
 <!-- 包括所有已编译的插件 -->
 <script src="${resourceUrl}/basejs/bootstrap/ace/js/bootstrap.min.js"></script>
+
+<script>
+    // 第二个参数可以指定前面引入的主题
+    var chart = echarts.init(document.getElementById('main'), "dark");
+    var Item = function(){
+        return {
+            name:'',
+            data:[],
+            type: 'bar',
+            animationDelay: function (idx) {
+                return idx * 10 + 100;
+            }
+        }
+    };// series中的每一项为一个item,所有的属性均可以在此处定义
+    var Series = []; // 准备存放图表数据
+    var xAxis = [];
+    var data1 = [];
+    var user = ['all'];
+    var arg = JSON.parse('${xAxisData}');
+    for (var i = 0; i < arg.length; i++) {
+        xAxis.push(arg[i].date)
+        data1.push(arg[i].count)
+    }
+    var users = JSON.parse('${users}');
+    for (var i = 0; i < users.length; i++) {
+        user.push(users[i].operatorId)
+    }
+    var al = new Item();
+    al.name = 'all';
+    al.data = data1;
+    Series.push(al);
+
+    var ausers = JSON.parse('${alluser}');
+    for(var key in ausers[0]){
+        var it = new Item();
+        it.name = key;// 先将每一项填充数据
+        var arr = ausers[0][key];
+
+        for(var z=0;z <xAxis.length;z++){
+            var isok = false;
+            for(var i=0;i <arr.length;i++){
+                if (xAxis[z] == arr[i].date){
+                    it.data.push(arr[i].count)
+                    isok = true;
+                }
+            }
+            if(!isok){
+                it.data.push(0);
+            }
+        }
+        Series.push(it);// 将item放在series中
+    }
+
+    chart.setOption({
+        title: {
+            text: '用户登陆统计'
+        },
+        legend: {
+            data: user,
+            align: 'left'
+        },
+        toolbox: {
+            feature: {
+                magicType: {
+                    type: ['stack', 'tiled']
+                },
+                dataView: {},
+                saveAsImage: {
+                    pixelRatio: 2
+                }
+            }
+        },
+        tooltip: {},
+        xAxis: {
+            data: xAxis,
+            silent: false,
+            splitLine: {
+                show: false
+            }
+        },
+        yAxis: {
+        },
+        series: Series,
+        animationEasing: 'elasticOut',
+        animationDelayUpdate: function (idx) {
+            return idx * 5;
+        }
+    });
+</script>
 </body>
 </html>

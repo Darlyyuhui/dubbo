@@ -8,6 +8,7 @@ import com.darly.dubbo.framework.base.Page;
 import com.darly.dubbo.security.system.bean.SystemLog;
 import com.darly.dubbo.security.system.bean.SystemLogSearch;
 
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -31,4 +32,11 @@ public interface SystemLogService extends BaseService<SystemLog,SystemLogSearch>
      * 获取登陆日志分页数据
      */
     public Page getSystemLogsByCondition(Map<String, Object> map, int pageNo, int pageSize, String sortType);
+
+
+    public List<SystemLog> getUserAccout();
+
+    public List<SystemLog> getAllUserLoginCount();
+
+    public List<SystemLog> getSystemLogsByUser(String account);
 }

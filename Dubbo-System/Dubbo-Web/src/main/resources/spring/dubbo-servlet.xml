@@ -35,8 +35,6 @@
             <value>.jsp</value>
         </property>
     </bean>
-
-
     <!--<bean:interceptors>-->
     <!--<bean:interceptor>-->
     <!--<bean:mapping path="/mobile/api/**"/>-->

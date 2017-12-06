@@ -27,7 +27,8 @@ public class SystemLog  implements Serializable{
     private String endtime;
     private String browser;
 
-
+    private String date;
+    private int count;
     public SystemLog() {
     }
 
@@ -157,5 +158,21 @@ public class SystemLog  implements Serializable{
 
     public void setBrowser(String browser) {
         this.browser = browser;
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
+    }
+
+    public int getCount() {
+        return count;
+    }
+
+    public void setCount(int count) {
+        this.count = count;
     }
 }

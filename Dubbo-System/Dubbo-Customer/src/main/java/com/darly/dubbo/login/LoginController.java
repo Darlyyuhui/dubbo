@@ -2,9 +2,13 @@ package com.darly.dubbo.login;
 
 import com.darly.dubbo.cfg.ApplicationConst;
 import com.darly.dubbo.framework.systemlog.resource.MessageResources;
+import com.darly.dubbo.mobile.api.MobileLoginApi;
+import com.darly.dubbo.mobile.api.MobileUserApi;
 import com.darly.dubbo.security.BaseSecurityController;
 import com.darly.dubbo.security.securitycfg.UserDetials;
+import com.darly.dubbo.security.system.bean.SystemLog;
 import com.darly.dubbo.security.user.api.LoginApi;
+import com.darly.dubbo.security.user.bean.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Controller;
@@ -12,8 +16,10 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.util.List;
 import java.util.Locale;
 
 /**

@@ -172,4 +172,13 @@
 	)g  limit 0,1
    ]]>
 </select>
+<select id="selectUserAccount" resultMap="BaseResultMap" parameterType="java.lang.String">
+    SELECT  OPERATOR_ID  FROM sys_login_log GROUP BY OPERATOR_ID
+</select>
+<select id="selectAllUserLogin" resultMap="BaseResultMap" parameterType="java.lang.String">
+    SELECT DATE_FORMAT(CREATE_DATE,'%Y.%m.%d') as date,COUNT(OPERATOR_ID) as count  FROM sys_login_log WHERE TYPE = '1' group by DATE_FORMAT(OPERATION_TIME,'%y-%m-%d')
+</select>
+<select id="getSystemLogsByUser" resultMap="BaseResultMap" parameterType="java.lang.String">
+    SELECT DATE_FORMAT(CREATE_DATE,'%Y.%m.%d') as date,COUNT(OPERATOR_ID) as count  FROM sys_login_log WHERE OPERATOR_ID = #{0} AND TYPE = '1' group by DATE_FORMAT(OPERATION_TIME,'%y-%m-%d')
+</select>
 </mapper>

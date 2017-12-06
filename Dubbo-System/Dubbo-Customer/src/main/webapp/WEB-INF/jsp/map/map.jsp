@@ -37,6 +37,9 @@
         .list li { height: 34px; line-height: 34px; padding-left: 20px; }
         .list li.active a { color: red; }
     </style>
+    <script src="${root}/basejs/echarts.min.js"></script>
+    <!-- 引入 vintage 主题 -->
+    <script src="${root}/basejs/dark.js"></script>
 </head>
 <body>
 <tags:header/>
@@ -48,8 +51,32 @@
         <div style="padding: 10px" >
             <button onclick="onSamp()">跳转进入采样页面</button>
         </div>
+        <div id="main" style="width: 600px;height:400px;"></div>
     </div>
+<script>
+    // 第二个参数可以指定前面引入的主题
 
+    var option = {
+        title: {
+            text: 'ECharts 入门示例'
+        },
+        tooltip: {},
+        legend: {
+            data:['销量']
+        },
+        xAxis: {
+            data: ["衬衫","羊毛衫","雪纺衫","裤子","高跟鞋","袜子"]
+        },
+        yAxis: {},
+        series: [{
+            name: '销量',
+            type: 'bar',
+            data: [5, 20, 36, 10, 10, 20]
+        }]
+    };
+    var chart = echarts.init(document.getElementById('main'),"dark");
+    chart.setOption(option);
+</script>
 <script type="text/javascript">
     function onSamp() {
         top.location.href = "${resourceUrl}/samply/samply.html";

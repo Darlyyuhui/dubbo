@@ -13,14 +13,17 @@ public class ApplicationContext extends ApplicationContextHolder {
     /**
      * #项目名称
      */
-    private static String applicationName = "全球经济管理系统";
+    private static String applicationName;
     /**
      * #静态文件路径参数
      */
-    private static String resourceUrl = "http://10.10.15.110:8111/resource";
+    private static String resourceUrl;
+
 
     public ApplicationContext() {
         super();
+        applicationName = ApplicationProperties.getValue("producer-application-name", "系统");
+        resourceUrl = ApplicationProperties.getValue("producer-application-url", "http://localhost");
         log.info(getClass().getSimpleName() + "[系统<" + applicationName + ">启动完成]");
         //设置系统参数
         showinfo.notifyApplicationName(applicationName);

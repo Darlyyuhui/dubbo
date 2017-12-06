@@ -37,7 +37,6 @@ public class SessionUtil {
      * @return
      */
     public static String makeSessionKey(HttpServletRequest request) {
-
         String account = request.getHeader("account");
         if(account==null||"".equals(account)){
             account=request.getParameter("account");

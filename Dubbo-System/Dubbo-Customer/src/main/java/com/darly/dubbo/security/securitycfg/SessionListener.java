@@ -2,6 +2,7 @@ package com.darly.dubbo.security.securitycfg;
 
 import com.darly.dubbo.framework.common.DateUtil;
 import com.darly.dubbo.framework.common.UuidGenerateUtil;
+import com.darly.dubbo.framework.common.useragent.UserAgent;
 import com.darly.dubbo.framework.systemlog.Logger;
 import com.darly.dubbo.security.system.bean.SystemLog;
 import com.darly.dubbo.security.user.bean.User;
@@ -93,6 +94,9 @@ public class SessionListener implements HttpSessionListener {
                 log.setCreateDate(DateUtil.now());
                 log.setCreateBy(operatorDetails.getAccount());
                 log.setStatus("0");
+                HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest();
+                UserAgent userAgent = UserAgent.parseUserAgentString(request.getHeader("User-Agent"));
+                log.setBrowser(userAgent.getBrowser().getName()+userAgent.getOperatingSystem().getName());
                 // 存储日志
                 api.saveLog(log);
                 logger.infoLine();

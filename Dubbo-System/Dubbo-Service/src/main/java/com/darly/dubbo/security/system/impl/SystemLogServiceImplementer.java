@@ -14,6 +14,8 @@ import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 import java.text.ParseException;
+import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -69,6 +71,21 @@ public class SystemLogServiceImplementer extends AbstractBaseService<SystemLog,S
         search.setOrderByClause("OPERATION_TIME desc");
         Page page = selectByExample(search, pageNo, pageSize);
         return page;
+    }
+
+    @Override
+    public List<SystemLog> getUserAccout() {
+        return systemLogMapper.selectUserAccount();
+    }
+
+    @Override
+    public List<SystemLog> getAllUserLoginCount() {
+        return systemLogMapper.selectAllUserLogin();
+    }
+
+    @Override
+    public List<SystemLog> getSystemLogsByUser(String account) {
+        return systemLogMapper.getSystemLogsByUser(account);
     }
 
     @Override

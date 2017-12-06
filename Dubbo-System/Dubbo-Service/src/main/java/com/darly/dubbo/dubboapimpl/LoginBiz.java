@@ -2,9 +2,18 @@ package com.darly.dubbo.dubboapimpl;
 
 import com.darly.dubbo.cfg.ApplicationConst;
 import com.darly.dubbo.framework.base.BaseController;
+import com.darly.dubbo.security.system.bean.SystemLog;
+import com.darly.dubbo.security.system.service.SystemLogService;
 import com.darly.dubbo.security.user.api.LoginApi;
+import net.sf.json.JSONArray;
+import net.sf.json.JSONObject;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.ModelMap;
+
+import javax.annotation.Resource;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 /**
  * Author : ZhangYuHui
@@ -13,6 +22,10 @@ import org.springframework.ui.ModelMap;
  */
 @Service
 public class LoginBiz extends BaseController implements LoginApi {
+
+
+    @Resource
+    SystemLogService systemLogService;
 
     @Override
     public ModelMap login(String error) {
@@ -67,9 +80,27 @@ public class LoginBiz extends BaseController implements LoginApi {
         model.addAttribute(ApplicationConst.getApplicationName(), applicationName);
         model.addAttribute(ApplicationConst.getPageTitle(), applicationName);
         model.addAttribute(ApplicationConst.getResourceUrl(), resourceUrl);
+        //在这里添加用户登录统计表操作
+
+        model.addAttribute("xAxisData", objectToJson(systemLogService.getAllUserLoginCount()));
+
+        List<SystemLog> user = systemLogService.getUserAccout();
+        Map<String ,List<SystemLog>> map= new HashMap<String ,List<SystemLog>>();
+        for (SystemLog us:user) {
+            map.put(us.getOperatorId(),systemLogService.getSystemLogsByUser(us.getOperatorId()));
+        }
+        model.addAttribute("users", objectToJson(user));
+        model.addAttribute("alluser", objectToJson(map));
+
         model.addAttribute(ApplicationConst.getForwordUrl(), "login/index");
         return model;
     }
+
+    private String objectToJson(Object t) {
+        JSONArray listArr = JSONArray.fromObject(t);
+        return listArr.toString();
+    }
+
 
     @Override
     public ModelMap map() {

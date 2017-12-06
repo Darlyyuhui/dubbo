@@ -2,6 +2,7 @@ package com.darly.dubbo.security.securitycfg;
 
 import com.darly.dubbo.framework.common.DateUtil;
 import com.darly.dubbo.framework.common.UuidGenerateUtil;
+import com.darly.dubbo.framework.common.useragent.UserAgent;
 import com.darly.dubbo.framework.systemlog.Logger;
 import com.darly.dubbo.security.system.bean.SystemLog;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,7 +11,10 @@ import org.springframework.security.authentication.AbstractAuthenticationToken;
 import org.springframework.security.authentication.event.AuthenticationFailureBadCredentialsEvent;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.web.authentication.WebAuthenticationDetails;
+import org.springframework.web.context.request.RequestContextHolder;
+import org.springframework.web.context.request.ServletRequestAttributes;
 
+import javax.servlet.http.HttpServletRequest;
 import java.net.UnknownHostException;
 
 /**
@@ -64,6 +68,9 @@ public class LoginFailureListener implements ApplicationListener<AuthenticationF
         log.setStatus("0");
         log.setType(2l);
         log.setLogLevel(2l);
+        HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest();
+        UserAgent userAgent = UserAgent.parseUserAgentString(request.getHeader("User-Agent"));
+        log.setBrowser(userAgent.getBrowser().getName()+userAgent.getOperatingSystem().getName());
 //        SystemLogService systemLogService = (SystemLogService) ApplicationContextHolder.getBean("systemLogServiceImplementer");
 //        systemLogService.save(log);
         api.saveLog(log);

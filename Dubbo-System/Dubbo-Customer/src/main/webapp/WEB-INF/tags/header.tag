@@ -101,7 +101,7 @@
         </nav>
     </div>
 
-    <div class="row" style="margin-top: -20px">
+    <div class="row" style="margin-top: -20px;">
         <!--轮播图-->
         <div id="carousel-example-generic" class="carousel slide" data-ride="carousel" data-interval="3000">
             <ol class="carousel-indicators">
