@@ -5,12 +5,16 @@ import android.content.Intent;
 import android.webkit.JavascriptInterface;
 import android.webkit.WebView;
 
+import com.amap.api.location.AMapLocation;
 import com.darly.common.DLog;
 import com.darly.common.Tools;
-import com.darly.common.Utils;
 import com.darly.dubbo.base.AppConst;
 import com.darly.dubbo.base.BaseWebView;
-import com.darly.dubbo.base.SystemCfg;
+import com.darly.dubbo.common.LocationTools;
+import com.darly.dubbo.common.LocationTools.LocationToolsListener;
+import com.darly.dview.common.SCfg;
+import com.darly.dview.widget.camera.OwnerPhotoPop;
+import com.google.gson.Gson;
 
 import java.util.List;
 
@@ -26,8 +30,8 @@ public class DubboAndroidListener implements LocationToolsListener {
     private WebView webView;
     private BaseWebView context;
     private String localKey = "http://file/";
-
-    public DubboAndroidListener(Context context,WebView webView) {
+    private OwnerPhotoPop pop;
+    public DubboAndroidListener(Context context,WebView webView,OwnerPhotoPop pop) {
         this.context = (BaseWebView) context;
         this.webView = webView;
         this.pop = pop;
@@ -65,7 +69,7 @@ public class DubboAndroidListener implements LocationToolsListener {
 
     public void cameraSuccess(List<String> url) {
         //添加图片路径，并且进行大小分配展示
-        webView.loadUrl("javascript:cameraSuccess('"+localKey + url.get(0)+"','"+ Tools.Px2Dp(context,SCfg.getWidth()/4)+"','"+ Tools.Px2Dp(context,SCfg.getWidth()/4)+ "')");
+        webView.loadUrl("javascript:cameraSuccess('"+localKey + url.get(0)+"','"+ Tools.Px2Dp(context, SCfg.getWidth()/4)+"','"+ Tools.Px2Dp(context,SCfg.getWidth()/4)+ "')");
     }
     /**
      * JS调用的方法

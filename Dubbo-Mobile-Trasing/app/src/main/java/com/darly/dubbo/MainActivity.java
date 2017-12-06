@@ -9,7 +9,6 @@ import android.widget.TextView;
 
 import com.darly.dubbo.base.AppConst;
 import com.darly.dubbo.base.BaseActivity;
-import com.darly.dubbo.biz.MainBiz;
 import com.darly.dubbo.biz.MainBiz.MainInterface;
 import com.darly.dubbo.presenter.MainPresenter;
 import com.darly.dview.framework.ContentBinder;
@@ -74,7 +73,7 @@ public class MainActivity extends BaseActivity implements OnClickListener ,MainI
                 presenter.net();
                 break;
             case com.darly.dview.R.id.title_view_operation_imageview_right:
-                pop.show(view, 3, AppConst.getVido().concat("tour"));
+                pop.show(view,0, 3, AppConst.getVido().concat("tour"),false);
                 break;
             default:
                 break;

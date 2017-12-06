@@ -12,7 +12,6 @@ import com.darly.common.DLog;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-import java.io.IOException;
 
 /**
  * @author Darly/张宇辉/2017/11/30 10:46

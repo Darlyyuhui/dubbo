@@ -1,22 +1,20 @@
 package com.darly.dubbo;
 
 import android.annotation.SuppressLint;
-import android.graphics.Bitmap;
-import android.os.Build;
+import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.KeyEvent;
 import android.webkit.WebChromeClient;
-import android.webkit.WebResourceError;
-import android.webkit.WebResourceRequest;
-import android.webkit.WebResourceResponse;
 import android.webkit.WebView;
-import android.webkit.WebViewClient;
 
 import com.darly.common.DLog;
 import com.darly.dubbo.base.BaseWebView;
 import com.darly.dview.framework.ContentBinder;
 import com.darly.dview.framework.ViewsBinder;
 import com.darly.dview.widget.camera.OwnerPhotoPop;
+
+import java.util.List;
 
 
 /**
