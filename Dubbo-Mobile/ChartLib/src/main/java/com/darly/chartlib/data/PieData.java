@@ -1,0 +1,88 @@
+
+package com.darly.chartlib.data;
+
+import com.darly.chartlib.highlight.Highlight;
+import com.darly.chartlib.interfaces.datasets.IPieDataSet;
+
+import java.util.ArrayList;
+import java.util.List;
+
+/**
+ * A PieData object can only represent one DataSet. Unlike all other charts, the
+ * legend labels of the PieChart are created from the x-values array, and not
+ * from the DataSet labels. Each PieData object can only represent one
+ * PieDataSet (multiple PieDataSets inside a single PieChart are not possible).
+ *
+ * Copyright (c) 2017 Organization D.L. zhangyuhui All rights reserved.
+ * @author  Darly/张宇辉/2017/12/7 16:21
+ * @version  1.0/com.darly.chartlib.data.filter
+ */
+public class PieData extends ChartData<IPieDataSet> {
+
+    public PieData() {
+        super();
+    }
+
+    public PieData(IPieDataSet dataSet) {
+        super(dataSet);
+    }
+
+    /**
+     * Sets the PieDataSet this data object should represent.
+     *
+     * @param dataSet
+     */
+    public void setDataSet(IPieDataSet dataSet) {
+        mDataSets.clear();
+        mDataSets.add(dataSet);
+        notifyDataChanged();
+    }
+
+    /**
+     * Returns the DataSet this PieData object represents. A PieData object can
+     * only contain one DataSet.
+     *
+     * @return
+     */
+    public IPieDataSet getDataSet() {
+        return mDataSets.get(0);
+    }
+
+    /**
+     * The PieData object can only have one DataSet. Use getDataSet() method instead.
+     *
+     * @param index
+     * @return
+     */
+    @Override
+    public IPieDataSet getDataSetByIndex(int index) {
+        return index == 0 ? getDataSet() : null;
+    }
+
+    @Override
+    public IPieDataSet getDataSetByLabel(String label, boolean ignorecase) {
+        return ignorecase ? label.equalsIgnoreCase(mDataSets.get(0).getLabel()) ? mDataSets.get(0)
+                : null : label.equals(mDataSets.get(0).getLabel()) ? mDataSets.get(0) : null;
+    }
+
+    @Override
+    public Entry getEntryForHighlight(Highlight highlight) {
+        return getDataSet().getEntryForIndex((int) highlight.getX());
+    }
+
+    /**
+     * Returns the sum of all values in this PieData object.
+     *
+     * @return
+     */
+    public float getYValueSum() {
+
+        float sum = 0;
+
+        for (int i = 0; i < getDataSet().getEntryCount(); i++)
+            sum += getDataSet().getEntryForIndex(i).getY();
+
+
+        return sum;
+    }
+}

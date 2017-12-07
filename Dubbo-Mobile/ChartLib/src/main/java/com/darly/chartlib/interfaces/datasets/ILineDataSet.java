@@ -1,0 +1,107 @@
+package com.darly.chartlib.interfaces.datasets;
+
+import android.graphics.DashPathEffect;
+
+import com.darly.chartlib.data.Entry;
+import com.darly.chartlib.data.LineDataSet;
+import com.darly.chartlib.formatter.IFillFormatter;
+
+/**
+ *
+ * Copyright (c) 2017 Organization D.L. zhangyuhui All rights reserved.
+ * @author  Darly/张宇辉/2017/12/7 16:38
+ * @version  1.0/com.darly.chartlib.interfaces.datasets
+ */
+
+public interface ILineDataSet extends ILineRadarDataSet<Entry> {
+
+    /**
+     * Returns the drawing mode for this line dataset
+     *
+     * @return
+     */
+    LineDataSet.Mode getMode();
+
+    /**
+     * Returns the intensity of the cubic lines (the effect intensity).
+     * Max = 1f = very cubic, Min = 0.05f = low cubic effect, Default: 0.2f
+     *
+     * @return
+     */
+    float getCubicIntensity();
+
+    @Deprecated
+    boolean isDrawCubicEnabled();
+
+    @Deprecated
+    boolean isDrawSteppedEnabled();
+
+    /**
+     * Returns the size of the drawn circles.
+     */
+    float getCircleRadius();
+
+    /**
+     * Returns the hole radius of the drawn circles.
+     */
+    float getCircleHoleRadius();
+
+    /**
+     * Returns the color at the given index of the DataSet's circle-color array.
+     * Performs a IndexOutOfBounds check by modulus.
+     *
+     * @param index
+     * @return
+     */
+    int getCircleColor(int index);
+
+    /**
+     * Returns the number of colors in this DataSet's circle-color array.
+     *
+     * @return
+     */
+    int getCircleColorCount();
+
+    /**
+     * Returns true if drawing circles for this DataSet is enabled, false if not
+     *
+     * @return
+     */
+    boolean isDrawCirclesEnabled();
+
+    /**
+     * Returns the color of the inner circle (the circle-hole).
+     *
+     * @return
+     */
+    int getCircleHoleColor();
+
+    /**
+     * Returns true if drawing the circle-holes is enabled, false if not.
+     *
+     * @return
+     */
+    boolean isDrawCircleHoleEnabled();
+
+    /**
+     * Returns the DashPathEffect that is used for drawing the lines.
+     *
+     * @return
+     */
+    DashPathEffect getDashPathEffect();
+
+    /**
+     * Returns true if the dashed-line effect is enabled, false if not.
+     * If the DashPathEffect object is null, also return false here.
+     *
+     * @return
+     */
+    boolean isDashedLineEnabled();
+
+    /**
+     * Returns the IFillFormatter that is set for this DataSet.
+     *
+     * @return
+     */
+    IFillFormatter getFillFormatter();
+}

@@ -118,6 +118,19 @@ public class LoginBiz extends BaseController implements LoginApi {
         model.addAttribute(ApplicationConst.getApplicationName(), applicationName);
         model.addAttribute(ApplicationConst.getPageTitle(), applicationName);
         model.addAttribute(ApplicationConst.getResourceUrl(), resourceUrl);
+
+        //在这里添加用户登录统计表操作
+
+        model.addAttribute("xAxisData", objectToJson(systemLogService.getAllUserLoginCount()));
+
+        List<SystemLog> user = systemLogService.getUserAccout();
+        Map<String ,List<SystemLog>> map= new HashMap<String ,List<SystemLog>>();
+        for (SystemLog us:user) {
+            map.put(us.getOperatorId(),systemLogService.getSystemLogsByUser(us.getOperatorId()));
+        }
+        model.addAttribute("users", objectToJson(user));
+        model.addAttribute("alluser", objectToJson(map));
+
         model.addAttribute(ApplicationConst.getForwordUrl(), "home/admin");
         return model;
     }

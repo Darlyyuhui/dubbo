@@ -2,13 +2,9 @@ package com.darly.dubbo.login;
 
 import com.darly.dubbo.cfg.ApplicationConst;
 import com.darly.dubbo.framework.systemlog.resource.MessageResources;
-import com.darly.dubbo.mobile.api.MobileLoginApi;
-import com.darly.dubbo.mobile.api.MobileUserApi;
 import com.darly.dubbo.security.BaseSecurityController;
 import com.darly.dubbo.security.securitycfg.UserDetials;
-import com.darly.dubbo.security.system.bean.SystemLog;
 import com.darly.dubbo.security.user.api.LoginApi;
-import com.darly.dubbo.security.user.bean.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Controller;
@@ -16,10 +12,8 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
-import java.util.List;
 import java.util.Locale;
 
 /**
@@ -65,8 +59,19 @@ public class LoginController extends BaseSecurityController {
 
     @RequestMapping(value = {"/index"}, method = RequestMethod.GET)
     public String index(ModelMap model, HttpServletRequest request) {
-        hasUser(model);
         model.putAll(loginApi.index());
+        UserDetials user = getCurrentUser();
+        if (user == null) {
+            model.addAttribute("hasUser", false);
+            logger.info("--->没有登录用户--->[方法 home 运行中...]");
+        } else {
+            logger.info("--->用户" + user.getAccount() + "--->[方法 home 运行中...]");
+            model.addAttribute("hasUser", true);
+            model.addAttribute("userName", user.getRealName());
+            model.addAttribute("account", user.getId());
+            model.addAttribute(ApplicationConst.getForwordUrl(), "home/admin");
+        }
+
         return (String) model.get(ApplicationConst.getForwordUrl());
     }
 
@@ -76,7 +81,6 @@ public class LoginController extends BaseSecurityController {
         model.putAll(loginApi.map());
         return (String) model.get(ApplicationConst.getForwordUrl());
     }
-
     /***
      * 登錄后跳轉首頁
      */

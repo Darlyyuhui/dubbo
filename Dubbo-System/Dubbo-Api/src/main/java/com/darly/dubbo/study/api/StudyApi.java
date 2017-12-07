@@ -17,5 +17,7 @@ public interface StudyApi {
 
     ModelMap landy();
 
+    ModelMap nginxftp();
+
     ModelMap gradle();
 }

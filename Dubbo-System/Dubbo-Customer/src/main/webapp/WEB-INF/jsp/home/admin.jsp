@@ -30,93 +30,292 @@
     <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
     <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
     <![endif]-->
-    <script src="${root}/map/js/jquery.min.js"></script>
-    <script src="http://api.map.baidu.com/api?v=2.0&ak=A1LU7iHS0avqQwPLAxbhKn0UYSQCuRVH"></script>
-    <script src="${root}/map/js/jquery.baiduMap.min.js"></script>
-    <style>
-        .box { width: 100%; height: 600px;}
-        #container1{ width: 100%; height: 100%; }
-        .list li { height: 34px; line-height: 34px; padding-left: 20px; }
-        .list li.active a { color: red; }
-    </style>
+
+    <script src="${root}/basejs/echarts.min.js"></script>
+    <!-- 引入 vintage 主题 -->
+    <script src="${root}/basejs/dark.js"></script>
 </head>
 <body>
 <tags:header/>
 <div class="container tag-body">
-    <div class="box">
-        <div id="container1"></div>
+    <div class="row">
+        <div class="col-md-6">
+            <div id="time" style="width: 100%;height: 400px"></div>
+        </div>
+        <div class="col-md-6">
+            <div id="main" style="width: 100%;height: 400px"></div>
+        </div>
     </div>
-    <div style="padding: 10px" >
-        <button onclick="onSamp()">跳转进入采样页面</button>
-    </div>
+    <p>玩家屬性分部圖</p>
+    <div id="user" style="width: 300px;height: 400px"></div>
 </div>
 
-<script type="text/javascript">
-    function onSamp() {
-        top.location.href = "${resourceUrl}/samply/samply.html";
+<script>
+    // 实时监控
+    var chart = echarts.init(document.getElementById('time'));
+    var data = [];
+    var xdata = [];
+    var count = 100;
+    var now = +new Date()-count*1000;
+    var oneDay = 1*1000;
+    var value = Math.random() * 10;
+    for (var i = 0; i < count; i++) {
+        data.push(randomData());
     }
-    var points = [{
-        id: 1,
-        lng: 118.096525,
-        lat: 24.462602,
-        title: "厦门中山公园",
-        content: ["地址：北京市新建宫门路19号", "电话：010-62881144"]
-    }, {
-        id: 2,
-        lng: 118.095231,
-        lat: 24.461615,
-        title: "厦门实验小学",
-        content: ["地址：北京市后花园风景区", "电话：010-69768087"]
-    }, {
-        id: 3,
-        lng: 118.092644,
-        lat: 24.468522,
-        title: "厦门光明大厦",
-        content: ["地址：北京市东城区景山前街4号", "电话：010-65131892"]
-    }, {
-        id: 4,
-        lng: 118.106586,
-        lat: 24.467207,
-        title: "厦门将军祠",
-        content: ["地址：北京市东城区天坛东里甲1号", "电话：010-67013036"]
-    }, {
-        id: 5,
-        lng: 118.108526,
-        lat: 24.474245,
-        title: "厦门古龙商城",
-        content: ["地址：北京市西城区文津街1号(故宫北)", "电话：010-64040610"]
-    }];
-    var map = new BaiduMap({
-        id: "container1",
-        level: 16, //  选填--地图级别--(默认15)
-        zoom: true, // 选填--是否启用鼠标滚轮缩放功能--(默认false)
-        type: ["地图", "卫星"], // 选填--显示地图类型--(默认不显示)
-        width: 320, // 选填--信息窗口width--(默认自动调整)
-        height: 70, // 选填--信息窗口height--(默认自动调整)
-        titleClass: "title",
-        contentClass: "content",
-        showPanorama: false, // 是否显示全景控件(默认false)
-        showMarkPanorama: true, // 是否显示标注点全景图(默认false)
-        showLabel: false, // 是否显示文本标注(默认false)
-        mapStyle: "normal", // 默认normal,可选dark,light
-        icon: { // 选填--自定义icon图标
-            url: "${root}/map/img/marker2.png",
-            width: 34,
-            height: 94
+    function randomData() {
+        now += oneDay;
+        var nnow = new Date(+now);
+        value = value + Math.random() * 21 - 10;
+        var year = nnow.getFullYear();
+        var month = nnow.getMonth() + 1;
+        var date = nnow.getDate();
+        var hours = nnow.getHours()<10?"0"+nnow.getHours():nnow.getHours();
+        var minutes = nnow.getMinutes()<10?"0"+nnow.getMinutes():nnow.getMinutes();
+        var seconds = nnow.getSeconds()<10?"0"+nnow.getSeconds():nnow.getSeconds();
+        var times = year+"/"+month+"/"+date+" "+ hours+":"+minutes+":"+seconds;
+
+        xdata.push(times);
+        return {
+            name: times,
+            value: [
+                times,
+                Math.round(value)
+            ]
+        }
+    }
+    chart.setOption({
+        title: {
+            text: '实时监控',subtext: '测试一些虚假数据',
+            top: 10,
+            bottom: 10,
+            left: 10
         },
-        centerPoint: { // 中心点经纬度
-            lng: 118.106586,
-            lat: 24.467207
+        tooltip: {
+            trigger: 'axis',
+            formatter: function (params) {
+                params = params[0];
+                var date = new Date(params.name);
+                return date.getHours()+ ':' + date.getMinutes()+ ':' + date.getSeconds() + ' / ' + params.value[1];
+            },
+            axisPointer: {
+                animation: true
+            }
         },
-        index: -1, // 开启对应的信息窗口，默认-1不开启
-        animate: true, // 是否开启坠落动画，默认false
-        points: points, // 标注点--id(唯一标识)
-//        callback: function(id) {
-//            $(".list").find("li").eq(id - 1).addClass("active").siblings().removeClass("active");
-//        }
+        xAxis: {
+            type: 'time',
+            data: [],
+            splitLine: {
+                show: true
+            }
+        },
+        yAxis: {
+            type: 'value',
+            boundaryGap: [0, '100%'],
+            splitLine: {
+                show: true
+            }
+        },
+        series: [{
+            name: '模拟数据',
+            type: 'line',
+            showSymbol: true,
+            hoverAnimation: true,
+            data: data
+        }]
+    });
+
+    setInterval(function () {
+        if (data.length>count){
+            data.shift();
+            xdata.shift();
+        }
+        data.push(randomData());
+        //更新数据
+        var option = chart.getOption();
+        option.xAxis.data = xdata;
+        option.series[0].data = data;
+        chart.setOption(option);
+    }, 1000);
+
+</script>
+<script>
+    // 用户登陆统计
+    var chartMain = echarts.init(document.getElementById('main'));
+    var Item = function(){
+        return {
+            name:'',
+            data:[],
+            type: 'bar',
+            animationDelay: function (idx) {
+                return idx * 10 + 100;
+            }
+        }
+    };// series中的每一项为一个item,所有的属性均可以在此处定义
+    var Series = []; // 准备存放图表数据
+    var xAxis = [];
+    var data1 = [];
+    var user = ['all'];
+    var arg = JSON.parse('${xAxisData}');
+    for (var i = 0; i < arg.length; i++) {
+        xAxis.push(arg[i].date)
+        data1.push(arg[i].count)
+    }
+    var users = JSON.parse('${users}');
+    for (var i = 0; i < users.length; i++) {
+        user.push(users[i].operatorId)
+    }
+    var al = new Item();
+    al.name = 'all';
+    al.data = data1;
+    Series.push(al);
+
+    var ausers = JSON.parse('${alluser}');
+    for(var key in ausers[0]){
+        var it = new Item();
+        it.name = key;// 先将每一项填充数据
+        var arr = ausers[0][key];
+
+        for(var z=0;z <xAxis.length;z++){
+            var isok = false;
+            for(var i=0;i <arr.length;i++){
+                if (xAxis[z] == arr[i].date){
+                    it.data.push(arr[i].count)
+                    isok = true;
+                }
+            }
+            if(!isok){
+                it.data.push(0);
+            }
+        }
+        Series.push(it);// 将item放在series中
+    }
+
+    chartMain.setOption({
+        title: {
+            text: '用户登陆统计',subtext: '查看所有用户登录情况',
+            top: 10,
+            bottom: 10,
+            left: 10
+        },
+        legend: {
+            type: 'scroll',
+            bottom: 10,
+            data: user,
+        },
+        toolbox: {
+            feature: {
+                magicType: {
+                    type: ['stack', 'tiled']
+                },
+                dataView: {},
+                saveAsImage: {
+                    pixelRatio: 2
+                }
+            }
+        },
+        tooltip: {},
+        xAxis: {
+            data: xAxis,
+            silent: true,
+            splitLine: {
+                show: false
+            }
+        },
+        yAxis: {
+            splitLine: {
+                show: true
+            }
+        },
+        series: Series,
+        animationEasing: 'elasticOut',
+        animationDelayUpdate: function (idx) {
+            return idx * 5;
+        }
     });
 </script>
+<script>
+    // 玩家屬性分部圖
+    var legen = [];
+    var serdata = [];
+    var serValue = Math.random()*10;
+    for (var i = 0; i < 10; i++) {
+        var t = serdata[i-1];
+        if (t!=null){
+            serdata.push(dataSer(t.value,i));
+        }else {
+            serdata.push(dataSers());
+        }
+    }
+    console.log(serdata)
+    function dataSers() {
+        //第一组数据
+        var name = "预算&实际";
+        serValue = serValue + Math.random() * 2000 - 10;
+        legen.push(name);
+        return {
+            name: name,
+            value: [
+                Math.round(serValue + Math.random() * 10000 - 10),
+                Math.round(serValue + Math.random() * 10000 - 10),
+                Math.round(serValue + Math.random() * 10000 - 10),
+                Math.round(serValue + Math.random() * 10000 - 10),
+                Math.random()*2,
+                Math.round(serValue + Math.random() * 10000 - 10)
+            ]
+        }
+    }
+    function dataSer(par,sr) {
+        var name = "预算&实际"+sr;
 
+        legen.push(name);
+        return {
+            name: name,
+            value: [
+                Math.round(par[0] + Math.random() *1000),
+                Math.round(par[1] + Math.random() *200),
+                Math.round(par[2] + Math.random() *1000),
+                Math.round(par[3] + Math.random() *300),
+                Math.round(par[4]+ Math.random()*0.1),
+                Math.round(par[5] + Math.random() *100)
+            ]
+        }
+    }
+    var chartMain = echarts.init(document.getElementById('user'));
+    chartMain.setOption({
+        title: {
+            text: '玩家属性'
+        },
+        tooltip: {},
+        legend: {
+            type: 'scroll',
+            bottom: 10,
+            data: legen,
+        },
+        radar: {
+            shape: 'circle',
+            name: {
+                textStyle: {
+                    color: '#fff',
+                    backgroundColor: '#999',
+                    borderRadius: 3,
+                    padding: [3, 5]
+                }
+            },
+            indicator: [
+                { name: '力量', max: 20000},
+                { name: '智力', max: 20000},
+                { name: '敏捷', max: 20000},
+                { name: '体能', max: 20000},
+                { name: '操作性', max: 5},
+                { name: '能量', max: 20000}
+            ]
+        },
+        series: [{
+            type: 'radar',
+            data : serdata
+        }]
+    });
+</script>
 <hr>
 <tags:footer/>
 <!-- jQuery (Bootstrap 的 JavaScript 插件需要引入 jQuery) -->

@@ -20,7 +20,7 @@
                     <ul class="nav navbar-nav">
                         <li>
                             <a href="javascript:onmap();">
-                                <span style="font-size:16px">首页</span>
+                                <span style="font-size:16px">地图展示</span>
                             </a>
                         </li>
                         <li>
@@ -30,11 +30,11 @@
                         </li>
                         <li class="dropdown">
                             <a data-toggle="dropdown" class="dropdown-toggle" >
-                                <span style="font-size:16px">引导</span>
+                                <span style="font-size:16px">辅助说明</span>
                             </a>
                             <ul class="dropdown-menu">
                                 <li>
-                                    <a href="javascript:onlandy();">
+                                    <a href="javascript:onnginxftp();">
                                         <span style="font-size:16px">Nginx静态服务器建立</span>
                                     </a>
                                 </li>
@@ -48,7 +48,7 @@
                         </li>
                         <li>
                             <a href="javascript:showSecondMenu();">
-                                <span style="font-size:16px">教学</span>
+                                <span style="font-size:16px">搭建服务器</span>
                             </a>
                         </li>
                         <c:choose>
@@ -59,8 +59,8 @@
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="javascript:oncheckjson();">
-                                        <span style="font-size:16px">私密頁面</span>
+                                    <a href="javascript:onlandy();">
+                                        <span style="font-size:16px">外接页面</span>
                                     </a>
                                 </li>
                                 <li class="dropdown">
@@ -228,6 +228,9 @@
     }
     function onlandy() {
         window.location.href = "${root}/landy";
+    }
+    function onnginxftp() {
+        window.location.href = "${root}/nginxftp";
     }
     function onGradleAar() {
         window.location.href = "${root}/gradle";

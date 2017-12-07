@@ -45,6 +45,16 @@ public class CheckJsonController extends BaseSecurityController {
      * @param model
      * @return 进入到Json验证页面
      */
+    @RequestMapping(value = {"/nginxftp"}, method = RequestMethod.GET)
+    public String nginxftp(ModelMap model) {
+        hasUser(model);
+        model.putAll(studyApi.nginxftp());
+        return (String) model.get(ApplicationConst.getForwordUrl());
+    }
+    /**
+     * @param model
+     * @return 进入到Json验证页面
+     */
     @RequestMapping(value = {"/gradle"}, method = RequestMethod.GET)
     public String gradle(ModelMap model) {
         hasUser(model);

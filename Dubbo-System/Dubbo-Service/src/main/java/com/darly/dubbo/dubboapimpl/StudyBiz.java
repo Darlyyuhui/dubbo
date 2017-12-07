@@ -49,13 +49,24 @@ public class StudyBiz extends BaseController implements StudyApi {
     }
 
     @Override
-    public ModelMap landy() {
+    public ModelMap nginxftp() {
         ModelMap model = new ModelMap();
         logger.info("--->[方法 landy 进入Nginx+Ftp 完成静态页面...]");
         model.addAttribute(ApplicationConst.getApplicationName(), applicationName);
         model.addAttribute(ApplicationConst.getPageTitle(), "Nginx Ftp静态服务器");
         model.addAttribute(ApplicationConst.getResourceUrl(), resourceUrl);
         model.addAttribute(ApplicationConst.getForwordUrl(), "study/nginxftp");
+        return model;
+    }
+
+    @Override
+    public ModelMap landy() {
+        ModelMap model = new ModelMap();
+        logger.info("--->[方法 landy 进入外接静态页面...]");
+        model.addAttribute(ApplicationConst.getApplicationName(), applicationName);
+        model.addAttribute(ApplicationConst.getPageTitle(), "美好的一天");
+        model.addAttribute(ApplicationConst.getResourceUrl(), resourceUrl);
+        model.addAttribute(ApplicationConst.getForwordUrl(), "landy/phoneshow");
         return model;
     }
 

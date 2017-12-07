@@ -37,6 +37,7 @@
 <tags:header/>
 <div class="container tag-body">
     <div id="main" style="width: 100%;height: 400px"></div>
+
 </div>
 <hr>
 <tags:footer/>
