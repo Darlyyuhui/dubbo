@@ -25,5 +25,6 @@ dependencies {
     compile 'com.github.satyan:sugar:1.5'
     compile 'com.darly.dview:dview:1.0.0'
     compile 'com.darly.common:common:1.0.2'
+    compile 'com.darly.chartlib:chartlib:1.0.0'
     compile files('libs/AMap_Location_V3.5.0_20170731.jar')
 }

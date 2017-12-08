@@ -2,6 +2,7 @@ package com.darly.dubbo.login;
 
 import com.darly.dubbo.cfg.ApplicationConst;
 import com.darly.dubbo.framework.systemlog.resource.MessageResources;
+import com.darly.dubbo.mobile.cfg.ResponseUtil;
 import com.darly.dubbo.security.BaseSecurityController;
 import com.darly.dubbo.security.securitycfg.UserDetials;
 import com.darly.dubbo.security.user.api.LoginApi;
@@ -13,8 +14,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.HashMap;
 import java.util.Locale;
+import java.util.Map;
+
+import static java.lang.Math.sin;
 
 /**
  * @Author: Darly Fronch（张宇辉）
@@ -69,9 +77,8 @@ public class LoginController extends BaseSecurityController {
             model.addAttribute("hasUser", true);
             model.addAttribute("userName", user.getRealName());
             model.addAttribute("account", user.getId());
-            model.addAttribute(ApplicationConst.getForwordUrl(), "home/admin");
+            model.addAttribute(ApplicationConst.getForwordUrl(), "/home/admin");
         }
-
         return (String) model.get(ApplicationConst.getForwordUrl());
     }
 
@@ -81,6 +88,7 @@ public class LoginController extends BaseSecurityController {
         model.putAll(loginApi.map());
         return (String) model.get(ApplicationConst.getForwordUrl());
     }
+
     /***
      * 登錄后跳轉首頁
      */
@@ -115,5 +123,36 @@ public class LoginController extends BaseSecurityController {
             model.putAll(loginApi.home());
             return (String) model.get(ApplicationConst.getForwordUrl());
         }
+    }
+
+
+    /**
+     * 此方法主要提供给Ajax传递数据
+     * @param request 请求
+     * @param response 回调
+     */
+    @RequestMapping(value = {"/computerinfo"}, method = RequestMethod.GET)
+    public void computerinfo( ModelMap model, HttpServletRequest request, HttpServletResponse response) {
+        long ajaxnow = Long.valueOf(request.getParameter("ajaxnow"));
+        double ajaxvalue = Double.valueOf(request.getParameter("ajaxvalue"));
+        double degree = Double.valueOf(request.getParameter("degree"));
+        ajaxnow += 1000;
+        SimpleDateFormat s = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+        String time = s.format(new Date(ajaxnow));
+        degree += 6;
+        if (degree >= 360){
+            degree -= 360;
+        }
+        double a = Math.toRadians(degree);//把数字90 转换成 90度
+        Map<String,Object > map= new HashMap<String,Object >();
+        map.put("times",time);
+        map.put("ajaxnow",ajaxnow);
+        map.put("ajaxvalue",ajaxvalue);
+        map.put("degree",degree);
+        Map<String ,Object> md= new HashMap<String,Object >();
+        md.put("name",time);
+        md.put("value",new String[]{time,String.valueOf(ajaxvalue*Math.sin(a))});
+        map.put("data",md);
+        ResponseUtil.printWriteResponse(request.getParameter("callback"), map, response);
     }
 }

@@ -48,6 +48,8 @@
     </div>
     <p>玩家屬性分部圖</p>
     <div id="user" style="width: 300px;height: 400px"></div>
+
+    <div id="ajax" style="width: 100%;height: 800px"></div>
 </div>
 
 <script>
@@ -56,12 +58,13 @@
     var data = [];
     var xdata = [];
     var count = 100;
-    var now = +new Date()-count*1000;
-    var oneDay = 1*1000;
+    var now = +new Date() - count * 1000;
+    var oneDay = 1 * 1000;
     var value = Math.random() * 10;
     for (var i = 0; i < count; i++) {
         data.push(randomData());
     }
+
     function randomData() {
         now += oneDay;
         var nnow = new Date(+now);
@@ -69,10 +72,10 @@
         var year = nnow.getFullYear();
         var month = nnow.getMonth() + 1;
         var date = nnow.getDate();
-        var hours = nnow.getHours()<10?"0"+nnow.getHours():nnow.getHours();
-        var minutes = nnow.getMinutes()<10?"0"+nnow.getMinutes():nnow.getMinutes();
-        var seconds = nnow.getSeconds()<10?"0"+nnow.getSeconds():nnow.getSeconds();
-        var times = year+"/"+month+"/"+date+" "+ hours+":"+minutes+":"+seconds;
+        var hours = nnow.getHours() < 10 ? "0" + nnow.getHours() : nnow.getHours();
+        var minutes = nnow.getMinutes() < 10 ? "0" + nnow.getMinutes() : nnow.getMinutes();
+        var seconds = nnow.getSeconds() < 10 ? "0" + nnow.getSeconds() : nnow.getSeconds();
+        var times = year + "/" + month + "/" + date + " " + hours + ":" + minutes + ":" + seconds;
 
         xdata.push(times);
         return {
@@ -83,9 +86,10 @@
             ]
         }
     }
+
     chart.setOption({
         title: {
-            text: '实时监控',subtext: '测试一些虚假数据',
+            text: '实时监控', subtext: '测试一些虚假数据',
             top: 10,
             bottom: 10,
             left: 10
@@ -95,7 +99,7 @@
             formatter: function (params) {
                 params = params[0];
                 var date = new Date(params.name);
-                return date.getHours()+ ':' + date.getMinutes()+ ':' + date.getSeconds() + ' / ' + params.value[1];
+                return date.getHours() + ':' + date.getMinutes() + ':' + date.getSeconds() + ' / ' + params.value[1];
             },
             axisPointer: {
                 animation: true
@@ -125,7 +129,7 @@
     });
 
     setInterval(function () {
-        if (data.length>count){
+        if (data.length > count) {
             data.shift();
             xdata.shift();
         }
@@ -141,10 +145,10 @@
 <script>
     // 用户登陆统计
     var chartMain = echarts.init(document.getElementById('main'));
-    var Item = function(){
+    var Item = function () {
         return {
-            name:'',
-            data:[],
+            name: '',
+            data: [],
             type: 'bar',
             animationDelay: function (idx) {
                 return idx * 10 + 100;
@@ -170,20 +174,20 @@
     Series.push(al);
 
     var ausers = JSON.parse('${alluser}');
-    for(var key in ausers[0]){
+    for (var key in ausers[0]) {
         var it = new Item();
         it.name = key;// 先将每一项填充数据
         var arr = ausers[0][key];
 
-        for(var z=0;z <xAxis.length;z++){
+        for (var z = 0; z < xAxis.length; z++) {
             var isok = false;
-            for(var i=0;i <arr.length;i++){
-                if (xAxis[z] == arr[i].date){
+            for (var i = 0; i < arr.length; i++) {
+                if (xAxis[z] == arr[i].date) {
                     it.data.push(arr[i].count)
                     isok = true;
                 }
             }
-            if(!isok){
+            if (!isok) {
                 it.data.push(0);
             }
         }
@@ -192,7 +196,7 @@
 
     chartMain.setOption({
         title: {
-            text: '用户登陆统计',subtext: '查看所有用户登录情况',
+            text: '用户登陆统计', subtext: '查看所有用户登录情况',
             top: 10,
             bottom: 10,
             left: 10
@@ -237,16 +241,17 @@
     // 玩家屬性分部圖
     var legen = [];
     var serdata = [];
-    var serValue = Math.random()*10;
+    var serValue = Math.random() * 10;
     for (var i = 0; i < 10; i++) {
-        var t = serdata[i-1];
-        if (t!=null){
-            serdata.push(dataSer(t.value,i));
-        }else {
+        var t = serdata[i - 1];
+        if (t != null) {
+            serdata.push(dataSer(t.value, i));
+        } else {
             serdata.push(dataSers());
         }
     }
     console.log(serdata)
+
     function dataSers() {
         //第一组数据
         var name = "预算&实际";
@@ -259,27 +264,29 @@
                 Math.round(serValue + Math.random() * 10000 - 10),
                 Math.round(serValue + Math.random() * 10000 - 10),
                 Math.round(serValue + Math.random() * 10000 - 10),
-                Math.random()*2,
+                Math.random() * 2,
                 Math.round(serValue + Math.random() * 10000 - 10)
             ]
         }
     }
-    function dataSer(par,sr) {
-        var name = "预算&实际"+sr;
+
+    function dataSer(par, sr) {
+        var name = "预算&实际" + sr;
 
         legen.push(name);
         return {
             name: name,
             value: [
-                Math.round(par[0] + Math.random() *1000),
-                Math.round(par[1] + Math.random() *200),
-                Math.round(par[2] + Math.random() *1000),
-                Math.round(par[3] + Math.random() *300),
-                Math.round(par[4]+ Math.random()*0.1),
-                Math.round(par[5] + Math.random() *100)
+                Math.round(par[0] + Math.random() * 1000),
+                Math.round(par[1] + Math.random() * 200),
+                Math.round(par[2] + Math.random() * 1000),
+                Math.round(par[3] + Math.random() * 300),
+                Math.round(par[4] + Math.random() * 0.1),
+                Math.round(par[5] + Math.random() * 100)
             ]
         }
     }
+
     var chartMain = echarts.init(document.getElementById('user'));
     chartMain.setOption({
         title: {
@@ -302,19 +309,145 @@
                 }
             },
             indicator: [
-                { name: '力量', max: 20000},
-                { name: '智力', max: 20000},
-                { name: '敏捷', max: 20000},
-                { name: '体能', max: 20000},
-                { name: '操作性', max: 5},
-                { name: '能量', max: 20000}
+                {name: '力量', max: 20000},
+                {name: '智力', max: 20000},
+                {name: '敏捷', max: 20000},
+                {name: '体能', max: 20000},
+                {name: '操作性', max: 5},
+                {name: '能量', max: 20000}
             ]
         },
         series: [{
             type: 'radar',
-            data : serdata
+            data: serdata
         }]
     });
+</script>
+
+
+<script>
+    // ajax实时监控
+    var ajaxchart = echarts.init(document.getElementById('ajax'));
+    var ajaxcount = 100;
+    var ajaxnow = +new Date() - ajaxcount * 1000;
+    var ajaxvalue = Math.random() * ajaxcount;
+    var ajaxdata = [];
+    var ajaxxdata = [];
+    var degree = -1;
+    for (var i = 0; i < ajaxcount; i++) {
+        ajaxdata.push(ajaxrandomData());
+    }
+
+    function ajaxrandomData() {
+        ajaxnow += 1000;
+        var teday = new Date(+ajaxnow);
+        var year = teday.getFullYear();
+        var month = teday.getMonth() + 1;
+        var date = teday.getDate();
+        var hours = teday.getHours() < 10 ? "0" + teday.getHours() : teday.getHours();
+        var minutes = teday.getMinutes() < 10 ? "0" + teday.getMinutes() : teday.getMinutes();
+        var seconds = teday.getSeconds() < 10 ? "0" + teday.getSeconds() : teday.getSeconds();
+        var times = year + "/" + month + "/" + date + " " + hours + ":" + minutes + ":" + seconds;
+        ajaxxdata.push(times);
+        return {
+            name: times,
+            value: [
+                times,
+                Math.round(0)
+            ]
+        }
+    }
+
+
+    ajaxchart.setOption({
+        title: {
+            text: 'ajax实时监控', subtext: '从后台获取数据',
+            top: 10,
+            bottom: 10,
+            left: 10
+        },
+        tooltip: {
+            trigger: 'axis',
+            formatter: function (params) {
+                params = params[0];
+                var date = new Date(params.name);
+                return date.getHours() + ':' + date.getMinutes() + ':' + date.getSeconds() + ' / ' + params.value[1];
+            },
+            axisPointer: {
+                animation: true
+            }
+        },
+        xAxis: {
+            type: 'time',
+            data: [],
+            splitLine: {
+                show: true
+            }
+        },
+        yAxis: {
+            type: 'value',
+            boundaryGap: [0, '100%'],
+            splitLine: {
+                show: true
+            }
+        },
+        series: [{
+            name: '模拟数据',
+            type: 'line',
+            showSymbol: true,
+            hoverAnimation: true,
+            data: []
+        }]
+    });
+
+    setInterval(function () {
+        if (ajaxdata.length > ajaxcount) {
+            ajaxdata.shift();
+            ajaxxdata.shift();
+        }
+        //更新数据
+        getData(backs);
+    }, 1000);
+
+    function backs(data) {
+        for (var key in data) {
+            if ("ajaxnow" == key) {
+                ajaxnow = data[key];
+            } else if ("ajaxvalue" == key) {
+                ajaxvalue = data[key];
+            } else if ("degree" == key) {
+                degree = data[key];
+            } else if ("data" == key) {
+                ajaxdata.push(data[key]);
+            } else if ("times" == key) {
+                ajaxxdata.push(data[key]);
+            }
+
+        }
+        //在这里解析data并存入各自参数中。
+        var ajaxoption = ajaxchart.getOption();
+        ajaxoption.xAxis.data = ajaxxdata;
+        ajaxoption.series[0].data = ajaxdata;
+        ajaxchart.setOption(ajaxoption);
+    }
+
+    function getData(callback) {
+        $.ajax({
+            type: "get",
+            url: "${root}/computerinfo",
+            data: {
+                ajaxnow: ajaxnow,
+                ajaxvalue: ajaxvalue,
+                degree: degree>=0 ?degree:(ajaxvalue > 0 ? 90 : 270)
+            },
+            async: true,
+            dataType: "json",
+            success: function (data) {
+                callback(data);
+            }
+        });
+    }
+
 </script>
 <hr>
 <tags:footer/>

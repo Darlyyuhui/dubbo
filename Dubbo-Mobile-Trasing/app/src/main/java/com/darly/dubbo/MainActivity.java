@@ -37,12 +37,15 @@ public class MainActivity extends BaseActivity implements OnClickListener ,MainI
     Button id_common_login;
     @ViewsBinder(R.id.id_common_retrofit)
     Button id_common_retrofit;
+    @ViewsBinder(R.id.id_chart)
+    Button id_chart;
 
     private MainPresenter presenter;
     private OwnerPhotoPop pop;
 
     @Override
     protected void initView(Bundle savedInstanceState) {
+        title.setTitle("测试首页");
         title.setRightViewRightOneListener(this);
         pop = new OwnerPhotoPop(this);
         presenter = new MainPresenter(this);
@@ -58,6 +61,7 @@ public class MainActivity extends BaseActivity implements OnClickListener ,MainI
         btn.setOnClickListener(this);
         id_common_login.setOnClickListener(this);
         id_common_retrofit.setOnClickListener(this);
+        id_chart.setOnClickListener(this);
     }
 
     @Override
@@ -65,6 +69,9 @@ public class MainActivity extends BaseActivity implements OnClickListener ,MainI
         switch (view.getId()){
             case R.id.id_forword_html:
                 startActivity(new Intent(this,HtmlWebView.class));
+                break;
+            case R.id.id_chart:
+                startActivity(new Intent(this,ChartActivity.class));
                 break;
             case R.id.id_common_login:
                 presenter.login(id_accout.getText().toString().trim(),id_pwd.getText().toString().trim());

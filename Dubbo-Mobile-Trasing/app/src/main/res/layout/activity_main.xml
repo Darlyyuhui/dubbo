@@ -4,6 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.darly.dubbo.MainActivity"
+    android:background="@color/white"
     android:orientation="vertical">
 
     <com.darly.dview.widget.header.TitleView
@@ -46,6 +47,11 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="网络请求"/>
+    <Button
+        android:id="@+id/id_chart"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="图表展示页面"/>
 
 
 </LinearLayout>
