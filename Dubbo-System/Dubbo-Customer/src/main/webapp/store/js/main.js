@@ -199,7 +199,6 @@ $(".deal-slide").owlCarousel({
 	autoplayTimeout:5000,
 	autoplayHoverPause:true,
     navigation : true,
-	nav: true,
 	navText: ["<span>Previous Deal</span>","<span>Next Deal</span>"],
 	pagination : true,
 	lazyLoad:true,

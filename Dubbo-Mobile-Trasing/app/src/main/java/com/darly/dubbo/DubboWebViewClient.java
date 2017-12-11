@@ -26,7 +26,6 @@ public class DubboWebViewClient extends WebViewClient {
 
     @Override
     public WebResourceResponse shouldInterceptRequest(WebView view, String url) {
-        DLog.i("------------->shouldInterceptRequest" + url);
         if (android.os.Build.VERSION.SDK_INT < android.os.Build.VERSION_CODES.LOLLIPOP) {
                     /*如果请求包含约定的字段 说明是要拿本地的图片*/
             if (url.contains(listener.getLocalKey())) {
@@ -48,7 +47,6 @@ public class DubboWebViewClient extends WebViewClient {
 
     @Override
     public WebResourceResponse shouldInterceptRequest(WebView view, WebResourceRequest request) {
-        DLog.i("------------->shouldInterceptRequest");
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP) {
             String url = request.getUrl().toString();
                     /*如果请求包含约定的字段 说明是要拿本地的图片*/
@@ -71,31 +69,26 @@ public class DubboWebViewClient extends WebViewClient {
 
     @Override
     public boolean shouldOverrideUrlLoading(WebView view, WebResourceRequest request) {
-        DLog.i("------------->shouldOverrideUrlLoading");
         return true;
     }
 
     @Override
     public void onPageStarted(WebView view, String url, Bitmap favicon) {
-        DLog.i("------------->onPageStarted" + url);
         super.onPageStarted(view, url, favicon);
     }
 
     @Override
     public void onPageFinished(WebView view, String url) {
-        DLog.i("------------->onPageFinished" + url);
         super.onPageFinished(view, url);
     }
 
     @Override
     public void onLoadResource(WebView view, String url) {
-        DLog.i("------------->onLoadResource" + url);
         super.onLoadResource(view, url);
     }
 
     @Override
     public void onReceivedError(WebView view, WebResourceRequest request, WebResourceError error) {
-        DLog.i("------------->onReceivedError" + error);
         super.onReceivedError(view, request, error);
     }
 }

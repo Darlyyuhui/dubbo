@@ -77,14 +77,12 @@
 </footer>
 
 <!-- Rights -->
-<div class="rights">
-    <div class="container">
-        <div class="row">
-            <div class="col-sm-6">
-                <p>Copyright &copy; 2017.Company Darly All rights reserved.<a href="http://www.miibeian.gov.cn/" target="_blank">京ICP备11008151号</a>京公网安备11010802014853</p>
-            </div>
-        </div>
-    </div>
+<div class="row footer-bottom">
+    <ul class="list-inline text-center">
+        <li>Copyright &copy; 2017.Company Darly All rights reserved.</li>
+        <li><a href="http://www.miibeian.gov.cn/" target="_blank">京ICP备11008151号</a></li>
+        <li>京公网安备11010802014853</li>
+    </ul>
 </div>
 
 <!-- End Footer -->

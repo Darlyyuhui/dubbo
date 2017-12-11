@@ -38,6 +38,8 @@
     <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
+
+    <script src="${root}/store/js/storehome.js"></script>
 </head>
 <body>
     <!-- Page Wrapper -->
@@ -312,8 +314,6 @@
             </div>
         </section>
 
-
-
         <tags:store-footer/>
     </div>
 
@@ -328,5 +328,7 @@
     <script type="text/javascript" src="${resourceUrl}/store/rs-plugin/js/jquery.tp.t.min.js"></script>
     <script type="text/javascript" src="${resourceUrl}/store/rs-plugin/js/jquery.tp.min.js"></script>
     <script src="${resourceUrl}/store/js/main.js"></script>
+
+
 </body>
 </html>

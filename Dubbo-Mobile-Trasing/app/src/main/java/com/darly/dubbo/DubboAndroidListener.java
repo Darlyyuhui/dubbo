@@ -41,7 +41,8 @@ public class DubboAndroidListener implements LocationToolsListener {
      * JS启动页面调用接口
      */
     @JavascriptInterface
-    public void init() {
+    public void init(Object op) {
+        DLog.i(op);
         LocationTools.getInstance().setLocationToolsListener(this);
         LocationTools.getInstance().start();
     }
@@ -50,8 +51,10 @@ public class DubboAndroidListener implements LocationToolsListener {
     public void locationSuccess(AMapLocation amapLocation) {
         String json = new Gson().toJson(amapLocation);
         DLog.i(json);
-        webView.loadUrl("javascript:locationSuccess('" + json+ "')");
+//        webView.loadUrl("javascript:locationSuccess('" + json+ "')");
+        webView.loadUrl("javascript:Darly('" + json+ "')");
     }
+
 
 
     @Override
