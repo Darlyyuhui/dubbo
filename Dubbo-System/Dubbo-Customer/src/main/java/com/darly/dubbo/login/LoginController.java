@@ -77,7 +77,8 @@ public class LoginController extends BaseSecurityController {
             model.addAttribute("hasUser", true);
             model.addAttribute("userName", user.getRealName());
             model.addAttribute("account", user.getId());
-            model.addAttribute(ApplicationConst.getForwordUrl(), "/home/admin");
+//            model.addAttribute(ApplicationConst.getForwordUrl(), "/home/admin");
+            model.addAttribute(ApplicationConst.getForwordUrl(), "/dlstore/storehome");
         }
         return (String) model.get(ApplicationConst.getForwordUrl());
     }

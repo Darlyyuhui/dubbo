@@ -80,6 +80,7 @@ public class LoginBiz extends BaseController implements LoginApi {
         model.addAttribute(ApplicationConst.getApplicationName(), applicationName);
         model.addAttribute(ApplicationConst.getPageTitle(), applicationName);
         model.addAttribute(ApplicationConst.getResourceUrl(), resourceUrl);
+        model.addAttribute("storename", "达理全球连锁商城");
         //在这里添加用户登录统计表操作
 
         model.addAttribute("xAxisData", objectToJson(systemLogService.getAllUserLoginCount()));
@@ -92,7 +93,8 @@ public class LoginBiz extends BaseController implements LoginApi {
         model.addAttribute("users", objectToJson(user));
         model.addAttribute("alluser", objectToJson(map));
 
-        model.addAttribute(ApplicationConst.getForwordUrl(), "login/index");
+//        model.addAttribute(ApplicationConst.getForwordUrl(), "login/index");
+        model.addAttribute(ApplicationConst.getForwordUrl(), "/dlstore/storehome");
         return model;
     }
 

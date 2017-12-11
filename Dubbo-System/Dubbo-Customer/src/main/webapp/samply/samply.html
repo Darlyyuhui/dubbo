@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+	<title>下载</title>
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<meta name="format-detection" content="telephone=no">
+	<style>
+		html, body { color:#222; font-family:Microsoft YaHei, Helvitica, Verdana, Tohoma, Arial, san-serif; margin:0; padding: 0; text-decoration: none; }
+		input{font-family:Microsoft YaHei, Helvitica, Verdana, Tohoma, Arial, san-serif;}
+		body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, code, form, fieldset, legend, input, textarea, p, blockquote, th, td { margin:0; padding:0; }
+		img { border:0; }
+		ol, ul { list-style: none outside none; margin:0; padding: 0; }
+		i, em{font-style: normal;}
+		a {text-decoration: none; }	
+		body{background:#8c8787}
+		.header{width:100%; height:50px; background: linear-gradient(to right ,#ff0000,rgba(0, 0, 255, 0.5))}
+		.header .header_con{padding:0 10px;display: flex; flex-direction: row;flex-wrap: wrap;}
+		.header .back{line-height:50px; width:30px; flex-grow: 1;}
+		.header .title{line-height:50px; width:auto; text-align:center; flex-grow: 20;}
+		.header .save{ line-height:50px;width:40px; flex-grow: 1;text-align:right; cursor:pointer}
+		
+		#form{padding: 10px; background:#d6d0d0;}
+		#form input{border:0; outline:none; padding:8px;}
+		#form p{border:0; outline:none; padding:4px 0; }
+		#form span{padding-right:10px;}
+		
+		.address{padding:10px;background:#b9acac}
+		.address div{ padding:4px 0; }
+		
+		
+		.picture{padding:10px;background:#8c8787}
+		.picture div{ padding:4px 0; }
+		.add_pic{width:100%; height:100px;}
+	</style>
+
+	<script>
+		window.onload = function () {
+            if("DubboAndroidListener" in window){
+                console.log(DubboAndroidListener);
+                DubboAndroidListener.init();
+                console.log(window.screen.width);
+                console.log(window.screen.height);
+                console.log(window.devicePixelRatio);
+            }
+        }
+
+		function locationSuccess(location) {
+		    var arg = JSON.parse(location);
+			console.log(arg);
+			document.getElementById("suibian1").innerHTML =arg.s;
+			document.getElementById("suibian2").innerHTML =arg.t;
+        }
+
+		function onCamera() {
+            if("DubboAndroidListener" in window){
+                console.log(DubboAndroidListener);
+                DubboAndroidListener.onCamera();
+            }
+        }
+		function cameraSuccess(url,width,height) {
+		    console.log(url);
+			console.log(width);
+			console.log(height);
+		    if (url){
+		        var rts = document.createElement("img");
+		        rts.setAttribute("src",url);
+		        rts.width = width;
+		        rts.height = height;
+		        document.getElementsByClassName("add_pic")[0].appendChild(rts);
+			}
+        }
+
+        function onSave() {
+            console.log("输出所有参数");
+        }
+		function changeColor(asd){
+		    asd.stlye.color   = "#fff"
+		}
+        // mobile全兼容
+        (function (doc, win) {
+            // 分辨率Resolution适配
+            var docEl = doc.documentElement,
+                resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize',
+                recalc = function () {
+                    var clientWidth = docEl.clientWidth;
+                    if (!clientWidth) return;
+                    docEl.style.fontSize = 100 * (clientWidth / 750) + 'px';
+                };
+
+            // Abort if browser does not support addEventListener
+            if (!doc.addEventListener) return;
+            win.addEventListener(resizeEvt, recalc, false);
+            doc.addEventListener('DOMContentLoaded', recalc, false);
+
+            // 一物理像素在不同屏幕的显示效果不一样。要根据devicePixelRatio来修改meta标签的scale,要注释上面的meta标签
+            (function(){
+                return;
+                var dpr = scale =1;
+                var isIPhone = win.navigator.appVersion.match(/iphone/gi);
+                var devicePixelRatio = win.devicePixelRatio;
+                if (isIPhone) {
+                    // iOS下，对于2和3的屏，用2倍的方案，其余的用1倍方案
+                    if (devicePixelRatio >= 3 && (!dpr || dpr >= 3)) {
+                        dpr = 3;
+                    } else if (devicePixelRatio >= 2 && (!dpr || dpr >= 2)){
+                        dpr = 2;
+                    } else {
+                        dpr = 1;
+                    }
+                } else {
+                    // 其他设备下，仍旧使用1倍的方案
+                    dpr = 1;
+                }
+                scale = 1 / dpr;
+
+                //
+                var metaEl = "";
+                metaEl = doc.createElement('meta');
+                metaEl.setAttribute('name', 'viewport');
+                metaEl.setAttribute('content', 'initial-scale=' + scale + ', maximum-scale=' + scale + ', minimum-scale=' + scale + ', user-scalable=no');
+                if (docEl.firstElementChild) {
+                    docEl.firstElementChild.appendChild(metaEl);
+                } else {
+                    var wrap = doc.createElement('div');
+                    wrap.appendChild(metaEl);
+                    doc.write(wrap.innerHTML);
+                }
+            })();
+
+        })(document, window);
+	</script>
+
+</head>
+<body>
+	<div class="header">
+		<div class="header_con">
+			<div class="back" onclick = "changeColor(this)">&lt;</div>
+			<div class="title">现场采样</div>
+			<div class="save" onclick="onSave()">保存</div>
+		</div>
+		<form id="form" action="" method="">
+			<p>采样类型:农田土壤</p>
+			<p><label><span>样品名称</span><input type="text" name="first_name" placeholder="请输入样品名称" /></label></p>
+			<p><label><span>样品深度</span><input type="text" name="first_name" placeholder="请输入样品深度" /></label></p>
+			<p><label><span>土壤类型</span><input type="text" name="first_name" placeholder="请输入土壤类型" /></label></p>
+		</form>
+		<div class="address">
+			<div class="address_title">现场采样定位</div>
+			<div class="address_content">位置:<span></span></div>
+			<div class="latitude">纬度:<span id="suibian1"></span></div>
+			<div class="longitude">经度:<span id="suibian2"></span></div>
+		</div>
+		<div class="picture">
+			<div class="picture_title">现场采样图片</div>
+			<div class="add_pic">
+				<button onclick="onCamera()">添加图片</button>
+				<img id ="imagese">
+			</div>
+		</div>
+	</div>
+</body>
+	
+
+</html>
