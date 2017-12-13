@@ -34,6 +34,7 @@ public class StoreController extends BaseSecurityController {
 
     @Autowired
     StoreApi storeApi;
+
     @RequestMapping(value = {"/storehome"}, method = RequestMethod.GET)
     public String login(ModelMap model){
         hasUser(model);

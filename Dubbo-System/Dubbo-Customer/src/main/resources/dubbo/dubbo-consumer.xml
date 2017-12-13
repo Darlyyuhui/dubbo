@@ -33,4 +33,7 @@
     <dubbo:reference id="SecurityApi" interface="com.darly.dubbo.security.securitycfg.SecurityApi"
                      group="${dubbo-service-group}" version="${dubbo-service-version}"
                      check="false" />
+    <dubbo:reference id="StoreApi" interface="com.darly.dubbo.store.api.StoreApi"
+                     group="${dubbo-service-group}" version="${dubbo-service-version}"
+                     check="false" />
 </beans>
