@@ -29,6 +29,8 @@
                    version="${dubbo-version}" timeout="${dubbo-timeout}"/>
     <dubbo:service interface="com.darly.dubbo.security.securitycfg.SecurityApi" ref="SecurityApi" group="${dubbo-group}"
                    version="${dubbo-version}" timeout="${dubbo-timeout}"/>
+    <dubbo:service interface="com.darly.dubbo.store.api.StoreApi" ref="StoreApi" group="${dubbo-group}"
+                   version="${dubbo-version}" timeout="${dubbo-timeout}"/>
     <!-- 具体的实现bean -->
     <bean id="StudyApi" class="com.darly.dubbo.dubboapimpl.StudyBiz"/>
     <bean id="UserApi" class="com.darly.dubbo.dubboapimpl.UserBiz"/>
@@ -36,4 +38,5 @@
     <bean id="MobileUserApi" class="com.darly.dubbo.dubboapimpl.MobileUserBiz"/>
     <bean id="MobileLoginApi" class="com.darly.dubbo.dubboapimpl.MobileLoginBiz"/>
     <bean id="SecurityApi" class="com.darly.dubbo.dubboapimpl.SecurityBiz"/>
+    <bean id="StoreApi" class="com.darly.dubbo.dubboapimpl.StoreBiz"/>
 </beans>

@@ -8,14 +8,19 @@
 <%@tag pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <c:set var="root" value="${pageContext.request.contextPath}"/>
-
     <!-- Top bar -->
     <div class="top-bar">
         <div class="container">
-            <p>欢迎进入${storename}</p>
+            <c:choose>
+                <c:when test="${hasUser}">
+                        <p>欢迎${userName}进入${storename}</p>
+                </c:when>
+                <c:otherwise>
+                    <p>欢迎打开${storename}</p>
+                </c:otherwise>
+            </c:choose>
             <div class="right-sec">
                 <ul>
-                    <li><a href="#.">登录/注册 </a></li>
                     <li><a href="#.">店铺位置 </a></li>
                     <li><a href="#.">问题解答 </a></li>
                     <li><a href="#.">最新商品 </a></li>
@@ -31,11 +36,76 @@
                             <option>RMB</option>
                         </select>
                     </li>
+                    <c:choose>
+                        <c:when test="${hasUser}">
+                            <li><a href="javascript:storeout()">安全退出 </a></li>
+                        </c:when>
+                        <c:otherwise>
+                            <li><a href="javascript:darly().storeLogin('${root}')">登录/注册 </a></li>
+                        </c:otherwise>
+                    </c:choose>
                 </ul>
             </div>
         </div>
     </div>
-
+    <!-- 退出登陸提示框 -->
+<style>
+    .wrap-dialog {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        font-size: 16px;
+        text-align: center;
+        background-color: rgba(0, 0, 0, .4);
+        z-index: 999;
+    }
+    .dialog {
+        position: relative;
+        margin: 15% auto;
+        width: 300px;
+        background-color: #FFFFFF;
+    }
+    .dialog .dialog-header {
+        height: 40px;
+        padding: 10px;
+        background-color: lightskyblue;
+    }
+    .dialog .dialog-body {
+        height: 60px;
+        padding: 20px;
+    }
+    .dialog .dialog-footer {
+        padding: 8px;
+    }
+    .btn {
+        width: 70px;
+        padding: 2px;
+        background-color: lightskyblue;
+    }
+    .hide {
+        display: none;
+    }
+    .ml50 {
+        margin-left: 50px;
+    }
+</style>
+    <div class="wrap-dialog hide">
+        <div class="dialog">
+            <div class="dialog-header">
+                <span class="dialog-title">退出商城</span>
+            </div>
+            <div class="dialog-body">
+                <span class="dialog-message">你确认退出本商城？</span>
+            </div>
+            <div class="dialog-footer">
+                <input type="button" class="btn" id="confirm" value="确认" />
+                <input type="button" class="btn ml50" id="cancel" value="取消" />
+            </div>
+        </div>
+    </div>
+    <!-- 退出登陸提示框 -->
     <!-- Header -->
     <header>
         <div class="container">
@@ -153,4 +223,32 @@
         //跳转到商城首页
         window.location.href = "${root}/index";
     }
+      function storeout(){
+            var message = "你确认退出本商城？";
+            dialogBox(message,
+                function () {
+                    darly().logout('${root}');
+                },
+                function(){
+                }
+            );
+        };
+    function dialogBox(message, yesCallback, noCallback){
+        if(message){
+            $('.dialog-message').html(message);
+        }
+        // 显示遮罩和对话框
+        $('.wrap-dialog').removeClass("hide");
+        // 确定按钮
+        $('#confirm').click(function(){
+            $('.wrap-dialog').addClass("hide");
+            yesCallback();
+        });
+        // 取消按钮
+        $('#cancel').click(function(){
+            $('.wrap-dialog').addClass("hide");
+            noCallback();
+        });
+    }
+
 </script>

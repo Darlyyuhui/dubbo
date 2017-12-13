@@ -5,6 +5,7 @@ import com.darly.dubbo.framework.obs.ObsApplication;
 import com.darly.dubbo.framework.systemlog.Logger;
 import com.darly.dubbo.framework.systemlog.constant.Constant;
 import com.google.gson.JsonObject;
+import net.sf.json.JSONArray;
 
 import javax.servlet.ServletContext;
 import java.util.Map;
@@ -26,6 +27,14 @@ public class BaseController {
     }
 
     public Logger logger = new Logger(getClass());
+    /***
+     * 将对象转为json字符串
+     */
+    protected String objectToJson(Object t) {
+        JSONArray listArr = JSONArray.fromObject(t);
+        return listArr.toString();
+    }
+
 
     /***
      * 返回成功的json字符

@@ -8,35 +8,94 @@
     <link rel="SHORTCUT ICON" href="${resourceUrl}/images/base/logo.ico"/>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
-    <link href="${resourceUrl}/basejs/login/css/style.css" rel="stylesheet" type="text/css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="${resourceUrl}/basejs/login/css/stylelogin.css" rel="stylesheet" type="text/css"  media="all"/>
     <script type="text/javascript" src="${resourceUrl}/basejs/login/js/jquery-1.9.1.js"></script>
     <script type="text/javascript" src="${resourceUrl}/basejs/login/js/layer.js"></script>
+
+    <script type="application/x-javascript">
+        addEventListener("load", function() {
+            setTimeout(hideURLbar, 0);
+        }, false);
+        function hideURLbar(){
+            window.scrollTo(0,1);
+        }
+    </script>
 </head>
 <title>${itmsname}</title>
-<body style="background-color: #e6e6e6;">
-<div class="ma">
-    <div class="bt"> ${itmsname} &nbsp;V0.0.1</div>
-    <div class="bg">
-        <div class="tit">
-            <a class="tit" href="javascript:Regedit()">
-            没有${itmsname}账户，请注册
-            </a>
-        </div>
+<body>
+<h1>${itmsname} &nbsp;V0.0.1</h1>
+<div class="container w3layouts agileits">
+
+    <div class="login w3layouts agileits">
+        <h2>登 录</h2>
         <form action="j_spring_security_check" method="post" id="loginForm" >
-            <div class="con">
-				<span class="sp">
-					<img src="${resourceUrl}/images/login/user.png" width="25px" height="25px" />
-                    <input name="j_username" type="text"  id="user_name" placeholder="用户账号" value=""/>
-				</span>
-                <span class="sp">
-					<img src="${resourceUrl}/images/login/pass.png" width="25px" height="25px" />
-					<input name="j_password" type="password"  id="user_pwd" placeholder="密码" onpaste="return false" onfocus="this.type='password'" autocomplete="off"/>
-				</span>
-                    <span class="login" onclick="Login()">登 录</span>
-            </div>
+            <input name="j_username" type="text"  id="user_name" placeholder="用户账号" value=""/>
+            <input name="j_password" type="password"  id="user_pwd" placeholder="密码" onpaste="return false" onfocus="this.type='password'" autocomplete="off"/>
         </form>
+        <ul class="tick w3layouts agileits">
+            <li>
+                <input type="checkbox" id="brand1" value="">
+                <label for="brand1"><span></span>记住我</label>
+            </li>
+        </ul>
+        <div class="send-button w3layouts agileits">
+                <input type="submit" onclick="Login()" value="登 录">
+        </div>
+        <a href="#">记住密码?</a>
+        <div class="clear"></div>
     </div>
+
+
+    <div class="register w3layouts agileits">
+        <h2>注 册</h2>
+        <form action="#" method="post">
+            <input type="text" Name="Name" placeholder="用户名" required="">
+            <input type="text" Name="Email" placeholder="邮箱" required="">
+            <input type="password" Name="Password" placeholder="密码" required="">
+            <input type="text" Name="Phone Number" placeholder="手机号码" required="">
+        </form>
+        <div class="send-button w3layouts agileits">
+                <input type="submit" value="免费注册">
+        </div>
+        <div class="clear"></div>
+    </div>
+
+    <div class="clear"></div>
+
 </div>
+
+<div class="footer w3layouts agileits">
+    <p>Copyright © 2017.Company Darly All rights reserved.</p>
+</div>
+
+
+
+
+
+<%--<div class="ma">--%>
+    <%--<div class="bt"> ${itmsname} &nbsp;V0.0.1</div>--%>
+    <%--<div class="bg">--%>
+        <%--<div class="tit">--%>
+            <%--<a class="tit" href="javascript:Regedit()">--%>
+            <%--没有${itmsname}账户，请注册--%>
+            <%--</a>--%>
+        <%--</div>--%>
+        <%--<form action="j_spring_security_check" method="post" id="loginForm" >--%>
+            <%--<div class="con">--%>
+				<%--<span class="sp">--%>
+					<%--<img src="${resourceUrl}/images/login/user.png" width="25px" height="25px" />--%>
+                    <%--<input name="j_username" type="text"  id="user_name" placeholder="用户账号" value=""/>--%>
+				<%--</span>--%>
+                <%--<span class="sp">--%>
+					<%--<img src="${resourceUrl}/images/login/pass.png" width="25px" height="25px" />--%>
+					<%--<input name="j_password" type="password"  id="user_pwd" placeholder="密码" onpaste="return false" onfocus="this.type='password'" autocomplete="off"/>--%>
+				<%--</span>--%>
+                    <%--<span class="login" onclick="Login()">登 录</span>--%>
+            <%--</div>--%>
+        <%--</form>--%>
+    <%--</div>--%>
+<%--</div>--%>
 <script>
     $(function(){
         var u_name = getCookie("user_name");

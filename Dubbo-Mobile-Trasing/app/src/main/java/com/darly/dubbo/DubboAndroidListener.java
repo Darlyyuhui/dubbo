@@ -16,7 +16,9 @@ import com.darly.dview.common.SCfg;
 import com.darly.dview.widget.camera.OwnerPhotoPop;
 import com.google.gson.Gson;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * 
@@ -41,15 +43,19 @@ public class DubboAndroidListener implements LocationToolsListener {
      * JS启动页面调用接口
      */
     @JavascriptInterface
-    public void init(Object op) {
-        DLog.i(op);
+    public void init() {
         LocationTools.getInstance().setLocationToolsListener(this);
         LocationTools.getInstance().start();
     }
 
     @Override
     public void locationSuccess(AMapLocation amapLocation) {
-        String json = new Gson().toJson(amapLocation);
+        Map<String ,String > map = new HashMap<String ,String>();
+        map.put("address",amapLocation.getAddress());
+        map.put("latiude",String .valueOf(amapLocation.getLatitude()));
+        map.put("longitude",String .valueOf(amapLocation.getLongitude()));
+
+        String json = new Gson().toJson(map);
         DLog.i(json);
 //        webView.loadUrl("javascript:locationSuccess('" + json+ "')");
         webView.loadUrl("javascript:Darly('" + json+ "')");

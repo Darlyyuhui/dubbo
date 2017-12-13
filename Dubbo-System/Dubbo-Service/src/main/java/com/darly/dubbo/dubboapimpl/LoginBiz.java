@@ -93,16 +93,9 @@ public class LoginBiz extends BaseController implements LoginApi {
         model.addAttribute("users", objectToJson(user));
         model.addAttribute("alluser", objectToJson(map));
 
-//        model.addAttribute(ApplicationConst.getForwordUrl(), "login/index");
-        model.addAttribute(ApplicationConst.getForwordUrl(), "/dlstore/storehome");
+        model.addAttribute(ApplicationConst.getForwordUrl(), "login/index");
         return model;
     }
-
-    private String objectToJson(Object t) {
-        JSONArray listArr = JSONArray.fromObject(t);
-        return listArr.toString();
-    }
-
 
     @Override
     public ModelMap map() {
