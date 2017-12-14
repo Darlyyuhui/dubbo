@@ -36,7 +36,7 @@ public class StoreController extends BaseSecurityController {
     StoreApi storeApi;
 
     @RequestMapping(value = {"/storehome"}, method = RequestMethod.GET)
-    public String login(ModelMap model){
+    public String storehome(ModelMap model){
         hasUser(model);
         model.putAll(storeApi.storehome());
         return (String) model.get(ApplicationConst.getForwordUrl());

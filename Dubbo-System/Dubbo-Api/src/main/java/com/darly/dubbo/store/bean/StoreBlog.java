@@ -1,11 +1,13 @@
 package com.darly.dubbo.store.bean;
 
+import java.io.Serializable;
+
 /**
  * Author : ZhangYuHui
  * Date : 2017/12/13
  * TODO :
  */
-public class StoreBlog {
+public class StoreBlog  implements Serializable {
     private String id;
     private String product_id;
     private String auther_id;
@@ -78,4 +80,5 @@ public class StoreBlog {
     public void setBlog_creattime(String blog_creattime) {
         this.blog_creattime = blog_creattime;
     }
+
 }

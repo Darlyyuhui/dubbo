@@ -217,7 +217,7 @@
 <!-- 修改密码 -->
 <script>
     function onindex() {
-        window.location.href = "${root}/index";
+        window.location.href = "${root}/storehome";
     }
     function onmap() {
         window.location.href = "${root}/map";

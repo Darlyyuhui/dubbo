@@ -42,15 +42,16 @@
     <script src="${resourceUrl}/store/js/storehome.js"></script>
     <script>
         function DarlyCallBack() {
-            if (!(this instanceof DarlyCallBack)){
+            if (!(this instanceof DarlyCallBack)) {
                 return new DarlyCallBack();
             }
         }
+
         DarlyCallBack.prototype = {
-            setlatiude:function (jingdu) {
+            setlatiude: function (jingdu) {
                 console.log("setjingdu====" + jingdu);
             },
-            setlongitude:function (weidu) {
+            setlongitude: function (weidu) {
                 console.log("setweidu====" + weidu);
             }
         }
@@ -372,9 +373,12 @@
 
                 <!-- Nav tabs -->
                 <ul class="nav nav-tabs nav-pills margin-bottom-40" role="tablist">
-                    <li role="presentation" class="active"><a href="#featur" aria-controls="featur" role="tab" data-toggle="tab">Featured</a></li>
-                    <li role="presentation"><a href="#special" aria-controls="special" role="tab" data-toggle="tab">Special</a></li>
-                    <li role="presentation"><a href="#on-sal" aria-controls="on-sal" role="tab" data-toggle="tab">Onsale</a></li>
+                    <li role="presentation" class="active"><a href="#featur" aria-controls="featur" role="tab"
+                                                              data-toggle="tab">Featured</a></li>
+                    <li role="presentation"><a href="#special" aria-controls="special" role="tab" data-toggle="tab">Special</a>
+                    </li>
+                    <li role="presentation"><a href="#on-sal" aria-controls="on-sal" role="tab"
+                                               data-toggle="tab">Onsale</a></li>
                 </ul>
 
                 <!-- Tab panes -->
@@ -385,93 +389,133 @@
                         <div class="item-slide-5 with-nav">
                             <!-- Product -->
                             <div class="product">
-                                <article> <img class="img-responsive" src="${resourceUrl}/store/images/item-img-1-1.jpg" alt="" >
+                                <article><img class="img-responsive" src="${resourceUrl}/store/images/item-img-1-1.jpg"
+                                              alt="">
                                     <!-- Content -->
-                                    <span class="tag">Latop</span> <a href="#." class="tittle">Laptop Alienware 15 i7 Perfect For Playing Game</a>
+                                    <span class="tag">Latop</span> <a href="#." class="tittle">Laptop Alienware 15 i7
+                                        Perfect For Playing Game</a>
                                     <!-- Reviews -->
-                                    <p class="rev"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> <i class="fa fa-star-o"></i> <span class="margin-left-10">5 Review(s)</span></p>
-                                    <div class="price">$350.00 </div>
-                                    <a href="#." class="cart-btn"><i class="icon-basket-loaded"></i></a> </article>
+                                    <p class="rev"><i class="fa fa-star"></i><i class="fa fa-star"></i><i
+                                            class="fa fa-star"></i><i class="fa fa-star"></i> <i
+                                            class="fa fa-star-o"></i> <span class="margin-left-10">5 Review(s)</span>
+                                    </p>
+                                    <div class="price">$350.00</div>
+                                    <a href="#." class="cart-btn"><i class="icon-basket-loaded"></i></a></article>
                             </div>
                             <!-- Product -->
                             <div class="product">
-                                <article> <img class="img-responsive" src="${resourceUrl}/store/images/item-img-1-2.jpg" alt="" > <span class="sale-tag">-25%</span>
+                                <article><img class="img-responsive" src="${resourceUrl}/store/images/item-img-1-2.jpg"
+                                              alt=""> <span class="sale-tag">-25%</span>
 
                                     <!-- Content -->
-                                    <span class="tag">Tablets</span> <a href="#." class="tittle">Mp3 Sumergible Deportivo Slim Con 8GB</a>
+                                    <span class="tag">Tablets</span> <a href="#." class="tittle">Mp3 Sumergible
+                                        Deportivo Slim Con 8GB</a>
                                     <!-- Reviews -->
-                                    <p class="rev"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> <i class="fa fa-star-o"></i> <span class="margin-left-10">5 Review(s)</span></p>
+                                    <p class="rev"><i class="fa fa-star"></i><i class="fa fa-star"></i><i
+                                            class="fa fa-star"></i><i class="fa fa-star"></i> <i
+                                            class="fa fa-star-o"></i> <span class="margin-left-10">5 Review(s)</span>
+                                    </p>
                                     <div class="price">$350.00 <span>$200.00</span></div>
-                                    <a href="#." class="cart-btn"><i class="icon-basket-loaded"></i></a> </article>
+                                    <a href="#." class="cart-btn"><i class="icon-basket-loaded"></i></a></article>
                             </div>
 
                             <!-- Product -->
                             <div class="product">
-                                <article> <img class="img-responsive" src="${resourceUrl}/store/images/item-img-1-3.jpg" alt="" >
+                                <article><img class="img-responsive" src="${resourceUrl}/store/images/item-img-1-3.jpg"
+                                              alt="">
                                     <!-- Content -->
-                                    <span class="tag">Appliances</span> <a href="#." class="tittle">Reloj Inteligente Smart Watch M26 Touch Bluetooh </a>
+                                    <span class="tag">Appliances</span> <a href="#." class="tittle">Reloj Inteligente
+                                        Smart Watch M26 Touch Bluetooh </a>
                                     <!-- Reviews -->
-                                    <p class="rev"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> <i class="fa fa-star-o"></i> <span class="margin-left-10">5 Review(s)</span></p>
+                                    <p class="rev"><i class="fa fa-star"></i><i class="fa fa-star"></i><i
+                                            class="fa fa-star"></i><i class="fa fa-star"></i> <i
+                                            class="fa fa-star-o"></i> <span class="margin-left-10">5 Review(s)</span>
+                                    </p>
                                     <div class="price">$350.00</div>
-                                    <a href="#." class="cart-btn"><i class="icon-basket-loaded"></i></a> </article>
+                                    <a href="#." class="cart-btn"><i class="icon-basket-loaded"></i></a></article>
                             </div>
 
                             <!-- Product -->
                             <div class="product">
-                                <article> <img class="img-responsive" src="${resourceUrl}/store/images/item-img-1-4.jpg" alt="" > <span class="new-tag">New</span>
+                                <article><img class="img-responsive" src="${resourceUrl}/store/images/item-img-1-4.jpg"
+                                              alt=""> <span class="new-tag">New</span>
 
                                     <!-- Content -->
-                                    <span class="tag">Accessories</span> <a href="#." class="tittle">Teclado Inalambrico Bluetooth Con Air Mouse</a>
+                                    <span class="tag">Accessories</span> <a href="#." class="tittle">Teclado Inalambrico
+                                        Bluetooth Con Air Mouse</a>
                                     <!-- Reviews -->
-                                    <p class="rev"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> <i class="fa fa-star-o"></i> <span class="margin-left-10">5 Review(s)</span></p>
+                                    <p class="rev"><i class="fa fa-star"></i><i class="fa fa-star"></i><i
+                                            class="fa fa-star"></i><i class="fa fa-star"></i> <i
+                                            class="fa fa-star-o"></i> <span class="margin-left-10">5 Review(s)</span>
+                                    </p>
                                     <div class="price">$350.00</div>
-                                    <a href="#." class="cart-btn"><i class="icon-basket-loaded"></i></a> </article>
+                                    <a href="#." class="cart-btn"><i class="icon-basket-loaded"></i></a></article>
                             </div>
 
                             <!-- Product -->
                             <div class="product">
-                                <article> <img class="img-responsive" src="${resourceUrl}/store/images/item-img-1-5.jpg" alt="" >
+                                <article><img class="img-responsive" src="${resourceUrl}/store/images/item-img-1-5.jpg"
+                                              alt="">
                                     <!-- Content -->
-                                    <span class="tag">Appliances</span> <a href="#." class="tittle">Funda Para Ebook 7" 128GB full HD</a>
+                                    <span class="tag">Appliances</span> <a href="#." class="tittle">Funda Para Ebook 7"
+                                        128GB full HD</a>
                                     <!-- Reviews -->
-                                    <p class="rev"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> <i class="fa fa-star-o"></i> <span class="margin-left-10">5 Review(s)</span></p>
+                                    <p class="rev"><i class="fa fa-star"></i><i class="fa fa-star"></i><i
+                                            class="fa fa-star"></i><i class="fa fa-star"></i> <i
+                                            class="fa fa-star-o"></i> <span class="margin-left-10">5 Review(s)</span>
+                                    </p>
                                     <div class="price">$350.00</div>
-                                    <a href="#." class="cart-btn"><i class="icon-basket-loaded"></i></a> </article>
+                                    <a href="#." class="cart-btn"><i class="icon-basket-loaded"></i></a></article>
                             </div>
 
                             <!-- Product -->
                             <div class="product">
-                                <article> <img class="img-responsive" src="${resourceUrl}/store/images/item-img-1-6.jpg" alt="" > <span class="sale-tag">-25%</span>
+                                <article><img class="img-responsive" src="${resourceUrl}/store/images/item-img-1-6.jpg"
+                                              alt=""> <span class="sale-tag">-25%</span>
 
                                     <!-- Content -->
-                                    <span class="tag">Tablets</span> <a href="#." class="tittle">Mp3 Sumergible Deportivo Slim Con 8GB</a>
+                                    <span class="tag">Tablets</span> <a href="#." class="tittle">Mp3 Sumergible
+                                        Deportivo Slim Con 8GB</a>
                                     <!-- Reviews -->
-                                    <p class="rev"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> <i class="fa fa-star-o"></i> <span class="margin-left-10">5 Review(s)</span></p>
+                                    <p class="rev"><i class="fa fa-star"></i><i class="fa fa-star"></i><i
+                                            class="fa fa-star"></i><i class="fa fa-star"></i> <i
+                                            class="fa fa-star-o"></i> <span class="margin-left-10">5 Review(s)</span>
+                                    </p>
                                     <div class="price">$350.00 <span>$200.00</span></div>
-                                    <a href="#." class="cart-btn"><i class="icon-basket-loaded"></i></a> </article>
+                                    <a href="#." class="cart-btn"><i class="icon-basket-loaded"></i></a></article>
                             </div>
 
                             <!-- Product -->
                             <div class="product">
-                                <article> <img class="img-responsive" src="${resourceUrl}/store/images/item-img-1-7.jpg" alt="" >
+                                <article><img class="img-responsive" src="${resourceUrl}/store/images/item-img-1-7.jpg"
+                                              alt="">
                                     <!-- Content -->
-                                    <span class="tag">Appliances</span> <a href="#." class="tittle">Reloj Inteligente Smart Watch M26 Touch Bluetooh </a>
+                                    <span class="tag">Appliances</span> <a href="#." class="tittle">Reloj Inteligente
+                                        Smart Watch M26 Touch Bluetooh </a>
                                     <!-- Reviews -->
-                                    <p class="rev"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> <i class="fa fa-star-o"></i> <span class="margin-left-10">5 Review(s)</span></p>
+                                    <p class="rev"><i class="fa fa-star"></i><i class="fa fa-star"></i><i
+                                            class="fa fa-star"></i><i class="fa fa-star"></i> <i
+                                            class="fa fa-star-o"></i> <span class="margin-left-10">5 Review(s)</span>
+                                    </p>
                                     <div class="price">$350.00</div>
-                                    <a href="#." class="cart-btn"><i class="icon-basket-loaded"></i></a> </article>
+                                    <a href="#." class="cart-btn"><i class="icon-basket-loaded"></i></a></article>
                             </div>
 
                             <!-- Product -->
                             <div class="product">
-                                <article> <img class="img-responsive" src="${resourceUrl}/store/images/item-img-1-8.jpg" alt="" > <span class="new-tag">New</span>
+                                <article><img class="img-responsive" src="${resourceUrl}/store/images/item-img-1-8.jpg"
+                                              alt=""> <span class="new-tag">New</span>
 
                                     <!-- Content -->
-                                    <span class="tag">Accessories</span> <a href="#." class="tittle">Teclado Inalambrico Bluetooth Con Air Mouse</a>
+                                    <span class="tag">Accessories</span> <a href="#." class="tittle">Teclado Inalambrico
+                                        Bluetooth Con Air Mouse</a>
                                     <!-- Reviews -->
-                                    <p class="rev"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> <i class="fa fa-star-o"></i> <span class="margin-left-10">5 Review(s)</span></p>
+                                    <p class="rev"><i class="fa fa-star"></i><i class="fa fa-star"></i><i
+                                            class="fa fa-star"></i><i class="fa fa-star"></i> <i
+                                            class="fa fa-star-o"></i> <span class="margin-left-10">5 Review(s)</span>
+                                    </p>
                                     <div class="price">$350.00</div>
-                                    <a href="#." class="cart-btn"><i class="icon-basket-loaded"></i></a> </article>
+                                    <a href="#." class="cart-btn"><i class="icon-basket-loaded"></i></a></article>
                             </div>
                         </div>
                     </div>
@@ -483,59 +527,84 @@
 
                             <!-- Product -->
                             <div class="product">
-                                <article> <img class="img-responsive" src="${resourceUrl}/store/images/item-img-1-11.jpg" alt="" >
+                                <article><img class="img-responsive" src="${resourceUrl}/store/images/item-img-1-11.jpg"
+                                              alt="">
                                     <!-- Content -->
-                                    <span class="tag">Latop</span> <a href="#." class="tittle">Laptop Alienware 15 i7 Perfect For Playing Game</a>
+                                    <span class="tag">Latop</span> <a href="#." class="tittle">Laptop Alienware 15 i7
+                                        Perfect For Playing Game</a>
                                     <!-- Reviews -->
-                                    <p class="rev"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> <i class="fa fa-star-o"></i> <span class="margin-left-10">5 Review(s)</span></p>
-                                    <div class="price">$350.00 </div>
-                                    <a href="#." class="cart-btn"><i class="icon-basket-loaded"></i></a> </article>
+                                    <p class="rev"><i class="fa fa-star"></i><i class="fa fa-star"></i><i
+                                            class="fa fa-star"></i><i class="fa fa-star"></i> <i
+                                            class="fa fa-star-o"></i> <span class="margin-left-10">5 Review(s)</span>
+                                    </p>
+                                    <div class="price">$350.00</div>
+                                    <a href="#." class="cart-btn"><i class="icon-basket-loaded"></i></a></article>
                             </div>
 
                             <!-- Product -->
                             <div class="product">
-                                <article> <img class="img-responsive" src="${resourceUrl}/store/images/item-img-1-9.jpg" alt="" > <span class="sale-tag">-25%</span>
+                                <article><img class="img-responsive" src="${resourceUrl}/store/images/item-img-1-9.jpg"
+                                              alt=""> <span class="sale-tag">-25%</span>
 
                                     <!-- Content -->
-                                    <span class="tag">Tablets</span> <a href="#." class="tittle">Mp3 Sumergible Deportivo Slim Con 8GB</a>
+                                    <span class="tag">Tablets</span> <a href="#." class="tittle">Mp3 Sumergible
+                                        Deportivo Slim Con 8GB</a>
                                     <!-- Reviews -->
-                                    <p class="rev"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> <i class="fa fa-star-o"></i> <span class="margin-left-10">5 Review(s)</span></p>
+                                    <p class="rev"><i class="fa fa-star"></i><i class="fa fa-star"></i><i
+                                            class="fa fa-star"></i><i class="fa fa-star"></i> <i
+                                            class="fa fa-star-o"></i> <span class="margin-left-10">5 Review(s)</span>
+                                    </p>
                                     <div class="price">$350.00 <span>$200.00</span></div>
-                                    <a href="#." class="cart-btn"><i class="icon-basket-loaded"></i></a> </article>
+                                    <a href="#." class="cart-btn"><i class="icon-basket-loaded"></i></a></article>
                             </div>
 
                             <!-- Product -->
                             <div class="product">
-                                <article> <img class="img-responsive" src="${resourceUrl}/store/images/item-img-1-8.jpg" alt="" >
+                                <article><img class="img-responsive" src="${resourceUrl}/store/images/item-img-1-8.jpg"
+                                              alt="">
                                     <!-- Content -->
-                                    <span class="tag">Appliances</span> <a href="#." class="tittle">Reloj Inteligente Smart Watch M26 Touch Bluetooh </a>
+                                    <span class="tag">Appliances</span> <a href="#." class="tittle">Reloj Inteligente
+                                        Smart Watch M26 Touch Bluetooh </a>
                                     <!-- Reviews -->
-                                    <p class="rev"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> <i class="fa fa-star-o"></i> <span class="margin-left-10">5 Review(s)</span></p>
+                                    <p class="rev"><i class="fa fa-star"></i><i class="fa fa-star"></i><i
+                                            class="fa fa-star"></i><i class="fa fa-star"></i> <i
+                                            class="fa fa-star-o"></i> <span class="margin-left-10">5 Review(s)</span>
+                                    </p>
                                     <div class="price">$350.00</div>
-                                    <a href="#." class="cart-btn"><i class="icon-basket-loaded"></i></a> </article>
+                                    <a href="#." class="cart-btn"><i class="icon-basket-loaded"></i></a></article>
                             </div>
 
                             <!-- Product -->
                             <div class="product">
-                                <article> <img class="img-responsive" src="${resourceUrl}/store/images/item-img-1-7.jpg" alt="" > <span class="new-tag">New</span>
+                                <article><img class="img-responsive" src="${resourceUrl}/store/images/item-img-1-7.jpg"
+                                              alt=""> <span class="new-tag">New</span>
 
                                     <!-- Content -->
-                                    <span class="tag">Accessories</span> <a href="#." class="tittle">Teclado Inalambrico Bluetooth Con Air Mouse</a>
+                                    <span class="tag">Accessories</span> <a href="#." class="tittle">Teclado Inalambrico
+                                        Bluetooth Con Air Mouse</a>
                                     <!-- Reviews -->
-                                    <p class="rev"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> <i class="fa fa-star-o"></i> <span class="margin-left-10">5 Review(s)</span></p>
+                                    <p class="rev"><i class="fa fa-star"></i><i class="fa fa-star"></i><i
+                                            class="fa fa-star"></i><i class="fa fa-star"></i> <i
+                                            class="fa fa-star-o"></i> <span class="margin-left-10">5 Review(s)</span>
+                                    </p>
                                     <div class="price">$350.00</div>
-                                    <a href="#." class="cart-btn"><i class="icon-basket-loaded"></i></a> </article>
+                                    <a href="#." class="cart-btn"><i class="icon-basket-loaded"></i></a></article>
                             </div>
 
                             <!-- Product -->
                             <div class="product">
-                                <article> <img class="img-responsive" src="${resourceUrl}/store/images/item-img-1-6.jpg" alt="" >
+                                <article><img class="img-responsive" src="${resourceUrl}/store/images/item-img-1-6.jpg"
+                                              alt="">
                                     <!-- Content -->
-                                    <span class="tag">Appliances</span> <a href="#." class="tittle">Funda Para Ebook 7" 128GB full HD</a>
+                                    <span class="tag">Appliances</span> <a href="#." class="tittle">Funda Para Ebook 7"
+                                        128GB full HD</a>
                                     <!-- Reviews -->
-                                    <p class="rev"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> <i class="fa fa-star-o"></i> <span class="margin-left-10">5 Review(s)</span></p>
+                                    <p class="rev"><i class="fa fa-star"></i><i class="fa fa-star"></i><i
+                                            class="fa fa-star"></i><i class="fa fa-star"></i> <i
+                                            class="fa fa-star-o"></i> <span class="margin-left-10">5 Review(s)</span>
+                                    </p>
                                     <div class="price">$350.00</div>
-                                    <a href="#." class="cart-btn"><i class="icon-basket-loaded"></i></a> </article>
+                                    <a href="#." class="cart-btn"><i class="icon-basket-loaded"></i></a></article>
                             </div>
                         </div>
                     </div>
@@ -547,59 +616,80 @@
 
                             <!-- Product -->
                             <div class="product">
-                                <article> <img class="img-responsive" src="${resourceUrl}/store/images/item-img-1-3.jpg" alt="" >
+                                <article><img class="img-responsive" src="${resourceUrl}/store/images/item-img-1-3.jpg"
+                                              alt="">
                                     <!-- Content -->
-                                    <span class="tag">Latop</span> <a href="#." class="tittle">Laptop Alienware 15 i7 Perfect For Playing Game</a>
+                                    <span class="tag">Latop</span> <a href="#." class="tittle">Laptop Alienware 15 i7
+                                        Perfect For Playing Game</a>
                                     <!-- Reviews -->
-                                    <p class="rev"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> <i class="fa fa-star-o"></i> <span class="margin-left-10">5 Review(s)</span></p>
-                                    <div class="price">$350.00 </div>
-                                    <a href="#." class="cart-btn"><i class="icon-basket-loaded"></i></a> </article>
+                                    <p class="rev"><i class="fa fa-star"></i><i class="fa fa-star"></i><i
+                                            class="fa fa-star"></i><i class="fa fa-star"></i> <i
+                                            class="fa fa-star-o"></i> <span class="margin-left-10">5 Review(s)</span>
+                                    </p>
+                                    <div class="price">$350.00</div>
+                                    <a href="#." class="cart-btn"><i class="icon-basket-loaded"></i></a></article>
                             </div>
 
                             <!-- Product -->
                             <div class="product">
-                                <article> <img class="img-responsive" src="${resourceUrl}/store/images/item-img-1-1.jpg" alt="" > <span class="sale-tag">-25%</span>
+                                <article><img class="img-responsive" src="${resourceUrl}/store/images/item-img-1-1.jpg"
+                                              alt=""> <span class="sale-tag">-25%</span>
 
                                     <!-- Content -->
-                                    <span class="tag">Tablets</span> <a href="#." class="tittle">Mp3 Sumergible Deportivo Slim Con 8GB</a>
+                                    <span class="tag">Tablets</span> <a href="#." class="tittle">Mp3 Sumergible
+                                        Deportivo Slim Con 8GB</a>
                                     <!-- Reviews -->
-                                    <p class="rev"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> <i class="fa fa-star"></i> <span class="margin-left-10">5 Review(s)</span></p>
+                                    <p class="rev"><i class="fa fa-star"></i><i class="fa fa-star"></i><i
+                                            class="fa fa-star"></i><i class="fa fa-star"></i> <i class="fa fa-star"></i>
+                                        <span class="margin-left-10">5 Review(s)</span></p>
                                     <div class="price">$350.00 <span>$200.00</span></div>
-                                    <a href="#." class="cart-btn"><i class="icon-basket-loaded"></i></a> </article>
+                                    <a href="#." class="cart-btn"><i class="icon-basket-loaded"></i></a></article>
                             </div>
 
                             <!-- Product -->
                             <div class="product">
-                                <article> <img class="img-responsive" src="${resourceUrl}/store/images/item-img-1-2.jpg" alt="" >
+                                <article><img class="img-responsive" src="${resourceUrl}/store/images/item-img-1-2.jpg"
+                                              alt="">
                                     <!-- Content -->
-                                    <span class="tag">Appliances</span> <a href="#." class="tittle">Reloj Inteligente Smart Watch M26 Touch Bluetooh </a>
+                                    <span class="tag">Appliances</span> <a href="#." class="tittle">Reloj Inteligente
+                                        Smart Watch M26 Touch Bluetooh </a>
                                     <!-- Reviews -->
-                                    <p class="rev"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> <i class="fa fa-star"></i> <span class="margin-left-10">5 Review(s)</span></p>
+                                    <p class="rev"><i class="fa fa-star"></i><i class="fa fa-star"></i><i
+                                            class="fa fa-star"></i><i class="fa fa-star"></i> <i class="fa fa-star"></i>
+                                        <span class="margin-left-10">5 Review(s)</span></p>
                                     <div class="price">$350.00</div>
-                                    <a href="#." class="cart-btn"><i class="icon-basket-loaded"></i></a> </article>
+                                    <a href="#." class="cart-btn"><i class="icon-basket-loaded"></i></a></article>
                             </div>
 
                             <!-- Product -->
                             <div class="product">
-                                <article> <img class="img-responsive" src="${resourceUrl}/store/images/item-img-1-5.jpg" alt="" > <span class="new-tag">New</span>
+                                <article><img class="img-responsive" src="${resourceUrl}/store/images/item-img-1-5.jpg"
+                                              alt=""> <span class="new-tag">New</span>
 
                                     <!-- Content -->
-                                    <span class="tag">Accessories</span> <a href="#." class="tittle">Teclado Inalambrico Bluetooth Con Air Mouse</a>
+                                    <span class="tag">Accessories</span> <a href="#." class="tittle">Teclado Inalambrico
+                                        Bluetooth Con Air Mouse</a>
                                     <!-- Reviews -->
-                                    <p class="rev"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> <i class="fa fa-star"></i> <span class="margin-left-10">5 Review(s)</span></p>
+                                    <p class="rev"><i class="fa fa-star"></i><i class="fa fa-star"></i><i
+                                            class="fa fa-star"></i><i class="fa fa-star"></i> <i class="fa fa-star"></i>
+                                        <span class="margin-left-10">5 Review(s)</span></p>
                                     <div class="price">$350.00</div>
-                                    <a href="#." class="cart-btn"><i class="icon-basket-loaded"></i></a> </article>
+                                    <a href="#." class="cart-btn"><i class="icon-basket-loaded"></i></a></article>
                             </div>
 
                             <!-- Product -->
                             <div class="product">
-                                <article> <img class="img-responsive" src="${resourceUrl}/store/images/item-img-1-4.jpg" alt="" >
+                                <article><img class="img-responsive" src="${resourceUrl}/store/images/item-img-1-4.jpg"
+                                              alt="">
                                     <!-- Content -->
-                                    <span class="tag">Appliances</span> <a href="#." class="tittle">Funda Para Ebook 7" 128GB full HD</a>
+                                    <span class="tag">Appliances</span> <a href="#." class="tittle">Funda Para Ebook 7"
+                                        128GB full HD</a>
                                     <!-- Reviews -->
-                                    <p class="rev"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> <i class="fa fa-star"></i> <span class="margin-left-10">5 Review(s)</span></p>
+                                    <p class="rev"><i class="fa fa-star"></i><i class="fa fa-star"></i><i
+                                            class="fa fa-star"></i><i class="fa fa-star"></i> <i class="fa fa-star"></i>
+                                        <span class="margin-left-10">5 Review(s)</span></p>
                                     <div class="price">$350.00</div>
-                                    <a href="#." class="cart-btn"><i class="icon-basket-loaded"></i></a> </article>
+                                    <a href="#." class="cart-btn"><i class="icon-basket-loaded"></i></a></article>
                             </div>
                         </div>
                     </div>
@@ -608,133 +698,135 @@
         </section>
 
         <!-- Top Selling Week -->
-        <section class="light-gry-bg padding-top-60 padding-bottom-30">
-            <div class="container">
-
-                <!-- heading -->
-                <div class="heading">
-                    <h2>Top Selling of the Week</h2>
-                    <hr>
-                </div>
-
-                <!-- Items -->
-                <div class="item-col-5">
-
-                    <!-- Product -->
-                    <div class="product col-2x">
-                        <div class="like-bnr">
-                            <div class="position-center-center">
-                                <h5>Smart Watch 2.0</h5>
-                                <p>Space Gray Aluminum Case
-                                    with Black/Volt Real Sport Band <span>38mm | 42mm</span> </p>
-                                <a href="#." class="btn-round">View Detail</a> </div>
+        <c:forEach items="${allSale}" var="item">
+            <c:choose>
+                <c:when test="${item.key.storeType == 'HeaderTab'}">
+                    <section class="light-gry-bg padding-top-5 padding-bottom-5">
+                        <div class="container">
+                            <!-- heading -->
+                            <div class="heading">
+                                <h2>${item.key.storeDesc}</h2>
+                                <hr>
+                            </div>
+                            <!-- Items -->
+                            <div class="item-col-5">
+                                <c:forEach items="${item.value}" var="product">
+                                    <!-- Product -->
+                                    <div class="product">
+                                        <article><img class="img-responsive" src="${resourceUrl}${product.productImage}"
+                                                      alt=""> <span class="sale-tag">-25%</span>
+                                            <!-- Content -->
+                                            <span class="tag">Tablets</span> <a href="#."
+                                                                                class="tittle">${product.productName}</a>
+                                            <!-- Reviews -->
+                                            <p class="rev">
+                                                    <%--<c:forEach items="${product.productStars}" >--%>
+                                                    <%--<i class="fa fa-star"></i>--%>
+                                                    <%--</c:forEach>--%>
+                                                <i class="fa fa-star"></i>
+                                                <span class="margin-left-10">${product.productStars} Review(s)</span>
+                                            </p>
+                                            <div class="price">${product.productOrprice}
+                                                <span>${product.productPrice}</span></div>
+                                            <a href="#." class="cart-btn"><i class="icon-basket-loaded"></i></a>
+                                        </article>
+                                    </div>
+                                </c:forEach>
+                            </div>
                         </div>
-                    </div>
-
-                    <!-- Product -->
-                    <div class="product">
-                        <article> <img class="img-responsive" src="${resourceUrl}/store/images/item-img-1-6.jpg" alt="" > <span class="sale-tag">-25%</span>
-
-                            <!-- Content -->
-                            <span class="tag">Tablets</span> <a href="#." class="tittle">Mp3 Sumergible Deportivo Slim Con 8GB</a>
-                            <!-- Reviews -->
-                            <p class="rev"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> <i class="fa fa-star"></i> <span class="margin-left-10">5 Review(s)</span></p>
-                            <div class="price">$350.00 <span>$200.00</span></div>
-                            <a href="#." class="cart-btn"><i class="icon-basket-loaded"></i></a> </article>
-                    </div>
-
-                    <!-- Product -->
-                    <div class="product">
-                        <article> <img class="img-responsive" src="${resourceUrl}/store/images/item-img-1-7.jpg" alt="" >
-                            <!-- Content -->
-                            <span class="tag">Appliances</span> <a href="#." class="tittle">Reloj Inteligente Smart Watch M26 Touch Bluetooh </a>
-                            <!-- Reviews -->
-                            <p class="rev"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> <i class="fa fa-star-o"></i> <span class="margin-left-10">5 Review(s)</span></p>
-                            <div class="price">$350.00</div>
-                            <a href="#." class="cart-btn"><i class="icon-basket-loaded"></i></a> </article>
-                    </div>
-
-                    <!-- Product -->
-                    <div class="product">
-                        <article> <img class="img-responsive" src="${resourceUrl}/store/images/item-img-1-8.jpg" alt="" > <span class="new-tag">New</span>
-
-                            <!-- Content -->
-                            <span class="tag">Accessories</span> <a href="#." class="tittle">Teclado Inalambrico Bluetooth Con Air Mouse</a>
-                            <!-- Reviews -->
-                            <p class="rev"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> <i class="fa fa-star-o"></i> <span class="margin-left-10">5 Review(s)</span></p>
-                            <div class="price">$350.00</div>
-                            <a href="#." class="cart-btn"><i class="icon-basket-loaded"></i></a> </article>
-                    </div>
-
-                    <!-- Product -->
-                    <div class="product">
-                        <article> <img class="img-responsive" src="${resourceUrl}/store/images/item-img-1-9.jpg" alt="" >
-                            <!-- Content -->
-                            <span class="tag">Appliances</span> <a href="#." class="tittle">Funda Para Ebook 7" 128GB full HD</a>
-                            <!-- Reviews -->
-                            <p class="rev"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> <i class="fa fa-star-o"></i> <span class="margin-left-10">5 Review(s)</span></p>
-                            <div class="price">$350.00</div>
-                            <a href="#." class="cart-btn"><i class="icon-basket-loaded"></i></a> </article>
-                    </div>
-
-                    <!-- Product -->
-                    <div class="product">
-                        <article> <img class="img-responsive" src="${resourceUrl}/store/images/item-img-1-10.jpg" alt="" >
-                            <!-- Content -->
-                            <span class="tag">Appliances</span> <a href="#." class="tittle">Reloj Inteligente Smart Watch M26 Touch Bluetooh </a>
-                            <!-- Reviews -->
-                            <p class="rev"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> <i class="fa fa-star-o"></i> <span class="margin-left-10">5 Review(s)</span></p>
-                            <div class="price">$350.00</div>
-                            <a href="#." class="cart-btn"><i class="icon-basket-loaded"></i></a> </article>
-                    </div>
-
-                    <!-- Product -->
-                    <div class="product">
-                        <article> <img class="img-responsive" src="${resourceUrl}/store/images/item-img-1-11.jpg" alt="" > <span class="new-tag">New</span>
-
-                            <!-- Content -->
-                            <span class="tag">Accessories</span> <a href="#." class="tittle">Teclado Inalambrico Bluetooth Con Air Mouse</a>
-                            <!-- Reviews -->
-                            <p class="rev"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> <i class="fa fa-star"></i> <span class="margin-left-10">5 Review(s)</span></p>
-                            <div class="price">$350.00</div>
-                            <a href="#." class="cart-btn"><i class="icon-basket-loaded"></i></a> </article>
-                    </div>
-
-                    <!-- Product -->
-                    <div class="product">
-                        <article> <img class="img-responsive" src="${resourceUrl}/store/images/item-img-1-12.jpg" alt="" >
-                            <!-- Content -->
-                            <span class="tag">Appliances</span> <a href="#." class="tittle">Funda Para Ebook 7" 128GB full HD</a>
-                            <!-- Reviews -->
-                            <p class="rev"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> <i class="fa fa-star"></i> <span class="margin-left-10">5 Review(s)</span></p>
-                            <div class="price">$350.00</div>
-                            <a href="#." class="cart-btn"><i class="icon-basket-loaded"></i></a> </article>
-                    </div>
-
-                    <!-- Product -->
-                    <div class="product">
-                        <article> <img class="img-responsive" src="${resourceUrl}/store/images/item-img-1-13.jpg" alt="" >
-                            <!-- Content -->
-                            <span class="tag">Appliances</span> <a href="#." class="tittle">Reloj Inteligente Smart Watch M26 Touch Bluetooh </a>
-                            <!-- Reviews -->
-                            <p class="rev"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> <i class="fa fa-star"></i> <span class="margin-left-10">5 Review(s)</span></p>
-                            <div class="price">$350.00</div>
-                            <a href="#." class="cart-btn"><i class="icon-basket-loaded"></i></a> </article>
-                    </div>
-                </div>
-            </div>
-        </section>
-
+                    </section>
+                </c:when>
+                <c:when test="${item.key.storeType == 'FooterTab'}">
+                    <section class="light-gry-bg padding-top-5 padding-bottom-5">
+                        <div class="container">
+                            <!-- heading -->
+                            <div class="heading">
+                                <h2>${item.key.storeDesc}</h2>
+                                <hr>
+                            </div>
+                            <!-- Items -->
+                            <div class="item-col-5">
+                                <c:forEach items="${item.value}" var="product">
+                                    <!-- Product -->
+                                    <div class="product">
+                                        <article><img class="img-responsive" src="${resourceUrl}${product.productImage}"
+                                                      alt=""> <span class="sale-tag">-25%</span>
+                                            <!-- Content -->
+                                            <span class="tag">Tablets</span> <a href="#."
+                                                                                class="tittle">${product.productName}</a>
+                                            <!-- Reviews -->
+                                            <p class="rev">
+                                                    <%--<c:forEach items="${product.productStars}" >--%>
+                                                    <%--<i class="fa fa-star"></i>--%>
+                                                    <%--</c:forEach>--%>
+                                                <i class="fa fa-star"></i>
+                                                <span class="margin-left-10">${product.productStars} Review(s)</span>
+                                            </p>
+                                            <div class="price">${product.productOrprice}
+                                                <span>${product.productPrice}</span></div>
+                                            <a href="#." class="cart-btn"><i class="icon-basket-loaded"></i></a>
+                                        </article>
+                                    </div>
+                                </c:forEach>
+                            </div>
+                        </div>
+                    </section>
+                </c:when>
+                <c:otherwise>
+                    <section class="light-gry-bg padding-top-5 padding-bottom-5">
+                        <div class="container">
+                            <!-- heading -->
+                            <div class="heading">
+                                <h2>${item.key.storeDesc}</h2>
+                                <hr>
+                            </div>
+                            <!-- Items -->
+                            <div class="item-col-5">
+                                <c:forEach items="${item.value}" var="product">
+                                    <!-- Product -->
+                                    <div class="product">
+                                        <article><img class="img-responsive" src="${resourceUrl}${product.productImage}"
+                                                      alt=""> <span class="sale-tag">-25%</span>
+                                            <!-- Content -->
+                                            <span class="tag">Tablets</span> <a href="#."
+                                                                                class="tittle">${product.productName}</a>
+                                            <!-- Reviews -->
+                                            <p class="rev">
+                                                <c:forEach var="i" begin="1" end="${product.productStars}"
+                                                           varStatus="status">
+                                                    <i class="fa fa-star"></i>
+                                                </c:forEach>
+                                                <span class="margin-left-10">${product.productStars} Review(s)</span>
+                                            </p>
+                                            <div class="price">${product.productOrprice}
+                                                <span>${product.productPrice}</span></div>
+                                            <a href="#." class="cart-btn"><i class="icon-basket-loaded"></i></a>
+                                        </article>
+                                    </div>
+                                </c:forEach>
+                            </div>
+                        </div>
+                    </section>
+                </c:otherwise>
+            </c:choose>
+        </c:forEach>
         <!-- Main Tabs Sec -->
         <section class="main-tabs-sec padding-top-60 padding-bottom-0">
             <div class="container">
                 <ul class="nav margin-bottom-40" role="tablist">
-                    <li role="presentation" class="active"><a href="#tv-au" aria-controls="featur" role="tab" data-toggle="tab"> <i class="flaticon-computer"></i> TV & Audios <span>236 item(s)</span></a></li>
-                    <li role="presentation"><a href="#smart" aria-controls="special" role="tab" data-toggle="tab"><i class="flaticon-smartphone"></i>Smartphones <span>150 item(s)</span></a></li>
-                    <li role="presentation"><a href="#deks-lap" aria-controls="on-sal" role="tab" data-toggle="tab"><i class="flaticon-laptop"></i>Desk & Laptop <span>268 item(s)</span></a></li>
-                    <li role="presentation"><a href="#game-com" aria-controls="special" role="tab" data-toggle="tab"><i class="flaticon-gamepad-1"></i>Game Console <span>79 item(s)</span></a></li>
-                    <li role="presentation"><a href="#watches" aria-controls="on-sal" role="tab" data-toggle="tab"><i class="flaticon-computer-1"></i>Watches <span>105 item(s)</span></a></li>
-                    <li role="presentation"><a href="#access" aria-controls="on-sal" role="tab" data-toggle="tab"><i class="flaticon-keyboard"></i>Accessories <span>816 item(s)</span></a></li>
+                    <li role="presentation" class="active"><a href="#tv-au" aria-controls="featur" role="tab"
+                                                              data-toggle="tab"> <i class="flaticon-computer"></i> TV &
+                        Audios <span>236 item(s)</span></a></li>
+                    <li role="presentation"><a href="#smart" aria-controls="special" role="tab" data-toggle="tab"><i
+                            class="flaticon-smartphone"></i>Smartphones <span>150 item(s)</span></a></li>
+                    <li role="presentation"><a href="#deks-lap" aria-controls="on-sal" role="tab" data-toggle="tab"><i
+                            class="flaticon-laptop"></i>Desk & Laptop <span>268 item(s)</span></a></li>
+                    <li role="presentation"><a href="#game-com" aria-controls="special" role="tab" data-toggle="tab"><i
+                            class="flaticon-gamepad-1"></i>Game Console <span>79 item(s)</span></a></li>
+                    <li role="presentation"><a href="#watches" aria-controls="on-sal" role="tab" data-toggle="tab"><i
+                            class="flaticon-computer-1"></i>Watches <span>105 item(s)</span></a></li>
+                    <li role="presentation"><a href="#access" aria-controls="on-sal" role="tab" data-toggle="tab"><i
+                            class="flaticon-keyboard"></i>Accessories <span>816 item(s)</span></a></li>
                 </ul>
 
                 <!-- Tab panes -->
@@ -746,128 +838,183 @@
                         <div class="item-slide-5 with-bullet no-nav">
                             <!-- Product -->
                             <div class="product">
-                                <article> <img class="img-responsive" src="${resourceUrl}/store/images/item-img-1-1.jpg" alt="" >
+                                <article><img class="img-responsive" src="${resourceUrl}/store/images/item-img-1-1.jpg"
+                                              alt="">
                                     <!-- Content -->
-                                    <span class="tag">Latop</span> <a href="#." class="tittle">Laptop Alienware 15 i7 Perfect For Playing Game</a>
+                                    <span class="tag">Latop</span> <a href="#." class="tittle">Laptop Alienware 15 i7
+                                        Perfect For Playing Game</a>
                                     <!-- Reviews -->
-                                    <p class="rev"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> <i class="fa fa-star-o"></i> <span class="margin-left-10">5 Review(s)</span></p>
-                                    <div class="price">$350.00 </div>
-                                    <a href="#." class="cart-btn"><i class="icon-basket-loaded"></i></a> </article>
+                                    <p class="rev"><i class="fa fa-star"></i><i class="fa fa-star"></i><i
+                                            class="fa fa-star"></i><i class="fa fa-star"></i> <i
+                                            class="fa fa-star-o"></i> <span class="margin-left-10">5 Review(s)</span>
+                                    </p>
+                                    <div class="price">$350.00</div>
+                                    <a href="#." class="cart-btn"><i class="icon-basket-loaded"></i></a></article>
                             </div>
                             <!-- Product -->
                             <div class="product">
-                                <article> <img class="img-responsive" src="${resourceUrl}/store/images/item-img-1-2.jpg" alt="" > <span class="sale-tag">-25%</span>
+                                <article><img class="img-responsive" src="${resourceUrl}/store/images/item-img-1-2.jpg"
+                                              alt=""> <span class="sale-tag">-25%</span>
 
                                     <!-- Content -->
-                                    <span class="tag">Tablets</span> <a href="#." class="tittle">Mp3 Sumergible Deportivo Slim Con 8GB</a>
+                                    <span class="tag">Tablets</span> <a href="#." class="tittle">Mp3 Sumergible
+                                        Deportivo Slim Con 8GB</a>
                                     <!-- Reviews -->
-                                    <p class="rev"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> <i class="fa fa-star-o"></i> <span class="margin-left-10">5 Review(s)</span></p>
+                                    <p class="rev"><i class="fa fa-star"></i><i class="fa fa-star"></i><i
+                                            class="fa fa-star"></i><i class="fa fa-star"></i> <i
+                                            class="fa fa-star-o"></i> <span class="margin-left-10">5 Review(s)</span>
+                                    </p>
                                     <div class="price">$350.00 <span>$200.00</span></div>
-                                    <a href="#." class="cart-btn"><i class="icon-basket-loaded"></i></a> </article>
+                                    <a href="#." class="cart-btn"><i class="icon-basket-loaded"></i></a></article>
                             </div>
 
                             <!-- Product -->
                             <div class="product">
-                                <article> <img class="img-responsive" src="${resourceUrl}/store/images/item-img-1-3.jpg" alt="" >
+                                <article><img class="img-responsive" src="${resourceUrl}/store/images/item-img-1-3.jpg"
+                                              alt="">
                                     <!-- Content -->
-                                    <span class="tag">Appliances</span> <a href="#." class="tittle">Reloj Inteligente Smart Watch M26 Touch Bluetooh </a>
+                                    <span class="tag">Appliances</span> <a href="#." class="tittle">Reloj Inteligente
+                                        Smart Watch M26 Touch Bluetooh </a>
                                     <!-- Reviews -->
-                                    <p class="rev"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> <i class="fa fa-star-o"></i> <span class="margin-left-10">5 Review(s)</span></p>
+                                    <p class="rev"><i class="fa fa-star"></i><i class="fa fa-star"></i><i
+                                            class="fa fa-star"></i><i class="fa fa-star"></i> <i
+                                            class="fa fa-star-o"></i> <span class="margin-left-10">5 Review(s)</span>
+                                    </p>
                                     <div class="price">$350.00</div>
-                                    <a href="#." class="cart-btn"><i class="icon-basket-loaded"></i></a> </article>
+                                    <a href="#." class="cart-btn"><i class="icon-basket-loaded"></i></a></article>
                             </div>
 
                             <!-- Product -->
                             <div class="product">
-                                <article> <img class="img-responsive" src="${resourceUrl}/store/images/item-img-1-4.jpg" alt="" > <span class="new-tag">New</span>
+                                <article><img class="img-responsive" src="${resourceUrl}/store/images/item-img-1-4.jpg"
+                                              alt=""> <span class="new-tag">New</span>
 
                                     <!-- Content -->
-                                    <span class="tag">Accessories</span> <a href="#." class="tittle">Teclado Inalambrico Bluetooth Con Air Mouse</a>
+                                    <span class="tag">Accessories</span> <a href="#." class="tittle">Teclado Inalambrico
+                                        Bluetooth Con Air Mouse</a>
                                     <!-- Reviews -->
-                                    <p class="rev"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> <i class="fa fa-star-o"></i> <span class="margin-left-10">5 Review(s)</span></p>
+                                    <p class="rev"><i class="fa fa-star"></i><i class="fa fa-star"></i><i
+                                            class="fa fa-star"></i><i class="fa fa-star"></i> <i
+                                            class="fa fa-star-o"></i> <span class="margin-left-10">5 Review(s)</span>
+                                    </p>
                                     <div class="price">$350.00</div>
-                                    <a href="#." class="cart-btn"><i class="icon-basket-loaded"></i></a> </article>
+                                    <a href="#." class="cart-btn"><i class="icon-basket-loaded"></i></a></article>
                             </div>
 
                             <!-- Product -->
                             <div class="product">
-                                <article> <img class="img-responsive" src="${resourceUrl}/store/images/item-img-1-5.jpg" alt="" >
+                                <article><img class="img-responsive" src="${resourceUrl}/store/images/item-img-1-5.jpg"
+                                              alt="">
                                     <!-- Content -->
-                                    <span class="tag">Appliances</span> <a href="#." class="tittle">Funda Para Ebook 7" 128GB full HD</a>
+                                    <span class="tag">Appliances</span> <a href="#." class="tittle">Funda Para Ebook 7"
+                                        128GB full HD</a>
                                     <!-- Reviews -->
-                                    <p class="rev"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> <i class="fa fa-star-o"></i> <span class="margin-left-10">5 Review(s)</span></p>
+                                    <p class="rev"><i class="fa fa-star"></i><i class="fa fa-star"></i><i
+                                            class="fa fa-star"></i><i class="fa fa-star"></i> <i
+                                            class="fa fa-star-o"></i> <span class="margin-left-10">5 Review(s)</span>
+                                    </p>
                                     <div class="price">$350.00</div>
-                                    <a href="#." class="cart-btn"><i class="icon-basket-loaded"></i></a> </article>
+                                    <a href="#." class="cart-btn"><i class="icon-basket-loaded"></i></a></article>
                             </div>
 
                             <!-- Product -->
                             <div class="product">
-                                <article> <img class="img-responsive" src="${resourceUrl}/store/images/item-img-1-6.jpg" alt="" > <span class="sale-tag">-25%</span>
+                                <article><img class="img-responsive" src="${resourceUrl}/store/images/item-img-1-6.jpg"
+                                              alt=""> <span class="sale-tag">-25%</span>
 
                                     <!-- Content -->
-                                    <span class="tag">Tablets</span> <a href="#." class="tittle">Mp3 Sumergible Deportivo Slim Con 8GB</a>
+                                    <span class="tag">Tablets</span> <a href="#." class="tittle">Mp3 Sumergible
+                                        Deportivo Slim Con 8GB</a>
                                     <!-- Reviews -->
-                                    <p class="rev"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> <i class="fa fa-star-o"></i> <span class="margin-left-10">5 Review(s)</span></p>
+                                    <p class="rev"><i class="fa fa-star"></i><i class="fa fa-star"></i><i
+                                            class="fa fa-star"></i><i class="fa fa-star"></i> <i
+                                            class="fa fa-star-o"></i> <span class="margin-left-10">5 Review(s)</span>
+                                    </p>
                                     <div class="price">$350.00 <span>$200.00</span></div>
-                                    <a href="#." class="cart-btn"><i class="icon-basket-loaded"></i></a> </article>
+                                    <a href="#." class="cart-btn"><i class="icon-basket-loaded"></i></a></article>
                             </div>
 
                             <!-- Product -->
                             <div class="product">
-                                <article> <img class="img-responsive" src="${resourceUrl}/store/images/item-img-1-7.jpg" alt="" >
+                                <article><img class="img-responsive" src="${resourceUrl}/store/images/item-img-1-7.jpg"
+                                              alt="">
                                     <!-- Content -->
-                                    <span class="tag">Appliances</span> <a href="#." class="tittle">Reloj Inteligente Smart Watch M26 Touch Bluetooh </a>
+                                    <span class="tag">Appliances</span> <a href="#." class="tittle">Reloj Inteligente
+                                        Smart Watch M26 Touch Bluetooh </a>
                                     <!-- Reviews -->
-                                    <p class="rev"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> <i class="fa fa-star-o"></i> <span class="margin-left-10">5 Review(s)</span></p>
+                                    <p class="rev"><i class="fa fa-star"></i><i class="fa fa-star"></i><i
+                                            class="fa fa-star"></i><i class="fa fa-star"></i> <i
+                                            class="fa fa-star-o"></i> <span class="margin-left-10">5 Review(s)</span>
+                                    </p>
                                     <div class="price">$350.00</div>
-                                    <a href="#." class="cart-btn"><i class="icon-basket-loaded"></i></a> </article>
+                                    <a href="#." class="cart-btn"><i class="icon-basket-loaded"></i></a></article>
                             </div>
 
                             <!-- Product -->
                             <div class="product">
-                                <article> <img class="img-responsive" src="${resourceUrl}/store/images/item-img-1-8.jpg" alt="" > <span class="new-tag">New</span>
+                                <article><img class="img-responsive" src="${resourceUrl}/store/images/item-img-1-8.jpg"
+                                              alt=""> <span class="new-tag">New</span>
 
                                     <!-- Content -->
-                                    <span class="tag">Accessories</span> <a href="#." class="tittle">Teclado Inalambrico Bluetooth Con Air Mouse</a>
+                                    <span class="tag">Accessories</span> <a href="#." class="tittle">Teclado Inalambrico
+                                        Bluetooth Con Air Mouse</a>
                                     <!-- Reviews -->
-                                    <p class="rev"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> <i class="fa fa-star-o"></i> <span class="margin-left-10">5 Review(s)</span></p>
+                                    <p class="rev"><i class="fa fa-star"></i><i class="fa fa-star"></i><i
+                                            class="fa fa-star"></i><i class="fa fa-star"></i> <i
+                                            class="fa fa-star-o"></i> <span class="margin-left-10">5 Review(s)</span>
+                                    </p>
                                     <div class="price">$350.00</div>
-                                    <a href="#." class="cart-btn"><i class="icon-basket-loaded"></i></a> </article>
+                                    <a href="#." class="cart-btn"><i class="icon-basket-loaded"></i></a></article>
                             </div>
 
                             <!-- Product -->
                             <div class="product">
-                                <article> <img class="img-responsive" src="${resourceUrl}/store/images/item-img-1-9.jpg" alt="" > <span class="sale-tag">-25%</span>
+                                <article><img class="img-responsive" src="${resourceUrl}/store/images/item-img-1-9.jpg"
+                                              alt=""> <span class="sale-tag">-25%</span>
 
                                     <!-- Content -->
-                                    <span class="tag">Tablets</span> <a href="#." class="tittle">Mp3 Sumergible Deportivo Slim Con 8GB</a>
+                                    <span class="tag">Tablets</span> <a href="#." class="tittle">Mp3 Sumergible
+                                        Deportivo Slim Con 8GB</a>
                                     <!-- Reviews -->
-                                    <p class="rev"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> <i class="fa fa-star-o"></i> <span class="margin-left-10">5 Review(s)</span></p>
+                                    <p class="rev"><i class="fa fa-star"></i><i class="fa fa-star"></i><i
+                                            class="fa fa-star"></i><i class="fa fa-star"></i> <i
+                                            class="fa fa-star-o"></i> <span class="margin-left-10">5 Review(s)</span>
+                                    </p>
                                     <div class="price">$350.00 <span>$200.00</span></div>
-                                    <a href="#." class="cart-btn"><i class="icon-basket-loaded"></i></a> </article>
+                                    <a href="#." class="cart-btn"><i class="icon-basket-loaded"></i></a></article>
                             </div>
 
                             <!-- Product -->
                             <div class="product">
-                                <article> <img class="img-responsive" src="${resourceUrl}/store/images/item-img-1-10.jpg" alt="" >
+                                <article><img class="img-responsive" src="${resourceUrl}/store/images/item-img-1-10.jpg"
+                                              alt="">
                                     <!-- Content -->
-                                    <span class="tag">Appliances</span> <a href="#." class="tittle">Reloj Inteligente Smart Watch M26 Touch Bluetooh </a>
+                                    <span class="tag">Appliances</span> <a href="#." class="tittle">Reloj Inteligente
+                                        Smart Watch M26 Touch Bluetooh </a>
                                     <!-- Reviews -->
-                                    <p class="rev"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> <i class="fa fa-star-o"></i> <span class="margin-left-10">5 Review(s)</span></p>
+                                    <p class="rev"><i class="fa fa-star"></i><i class="fa fa-star"></i><i
+                                            class="fa fa-star"></i><i class="fa fa-star"></i> <i
+                                            class="fa fa-star-o"></i> <span class="margin-left-10">5 Review(s)</span>
+                                    </p>
                                     <div class="price">$350.00</div>
-                                    <a href="#." class="cart-btn"><i class="icon-basket-loaded"></i></a> </article>
+                                    <a href="#." class="cart-btn"><i class="icon-basket-loaded"></i></a></article>
                             </div>
 
                             <!-- Product -->
                             <div class="product">
-                                <article> <img class="img-responsive" src="${resourceUrl}/store/images/item-img-1-11.jpg" alt="" > <span class="new-tag">New</span>
+                                <article><img class="img-responsive" src="${resourceUrl}/store/images/item-img-1-11.jpg"
+                                              alt=""> <span class="new-tag">New</span>
 
                                     <!-- Content -->
-                                    <span class="tag">Accessories</span> <a href="#." class="tittle">Teclado Inalambrico Bluetooth Con Air Mouse</a>
+                                    <span class="tag">Accessories</span> <a href="#." class="tittle">Teclado Inalambrico
+                                        Bluetooth Con Air Mouse</a>
                                     <!-- Reviews -->
-                                    <p class="rev"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> <i class="fa fa-star-o"></i> <span class="margin-left-10">5 Review(s)</span></p>
+                                    <p class="rev"><i class="fa fa-star"></i><i class="fa fa-star"></i><i
+                                            class="fa fa-star"></i><i class="fa fa-star"></i> <i
+                                            class="fa fa-star-o"></i> <span class="margin-left-10">5 Review(s)</span>
+                                    </p>
                                     <div class="price">$350.00</div>
-                                    <a href="#." class="cart-btn"><i class="icon-basket-loaded"></i></a> </article>
+                                    <a href="#." class="cart-btn"><i class="icon-basket-loaded"></i></a></article>
                             </div>
                         </div>
                     </div>
@@ -879,59 +1026,82 @@
 
                             <!-- Product -->
                             <div class="product">
-                                <article> <img class="img-responsive" src="${resourceUrl}/store/images/item-img-1-11.jpg" alt="" > <span class="sale-tag">-25%</span>
+                                <article><img class="img-responsive" src="${resourceUrl}/store/images/item-img-1-11.jpg"
+                                              alt=""> <span class="sale-tag">-25%</span>
 
                                     <!-- Content -->
-                                    <span class="tag">Accessories</span> <a href="#." class="tittle">Teclado Inalambrico Bluetooth Con Air Mouse</a>
+                                    <span class="tag">Accessories</span> <a href="#." class="tittle">Teclado Inalambrico
+                                        Bluetooth Con Air Mouse</a>
                                     <!-- Reviews -->
-                                    <p class="rev"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> <i class="fa fa-star-o"></i> <span class="margin-left-10">5 Review(s)</span></p>
+                                    <p class="rev"><i class="fa fa-star"></i><i class="fa fa-star"></i><i
+                                            class="fa fa-star"></i><i class="fa fa-star"></i> <i
+                                            class="fa fa-star-o"></i> <span class="margin-left-10">5 Review(s)</span>
+                                    </p>
                                     <div class="price">$350.00</div>
-                                    <a href="#." class="cart-btn"><i class="icon-basket-loaded"></i></a> </article>
+                                    <a href="#." class="cart-btn"><i class="icon-basket-loaded"></i></a></article>
                             </div>
 
                             <!-- Product -->
                             <div class="product">
-                                <article> <img class="img-responsive" src="${resourceUrl}/store/images/item-img-1-8.jpg" alt="" >
+                                <article><img class="img-responsive" src="${resourceUrl}/store/images/item-img-1-8.jpg"
+                                              alt="">
                                     <!-- Content -->
-                                    <span class="tag">Appliances</span> <a href="#." class="tittle">Funda Para Ebook 7" 128GB full HD</a>
+                                    <span class="tag">Appliances</span> <a href="#." class="tittle">Funda Para Ebook 7"
+                                        128GB full HD</a>
                                     <!-- Reviews -->
-                                    <p class="rev"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> <i class="fa fa-star-o"></i> <span class="margin-left-10">5 Review(s)</span></p>
+                                    <p class="rev"><i class="fa fa-star"></i><i class="fa fa-star"></i><i
+                                            class="fa fa-star"></i><i class="fa fa-star"></i> <i
+                                            class="fa fa-star-o"></i> <span class="margin-left-10">5 Review(s)</span>
+                                    </p>
                                     <div class="price">$350.00</div>
-                                    <a href="#." class="cart-btn"><i class="icon-basket-loaded"></i></a> </article>
+                                    <a href="#." class="cart-btn"><i class="icon-basket-loaded"></i></a></article>
                             </div>
 
                             <!-- Product -->
                             <div class="product">
-                                <article> <img class="img-responsive" src="${resourceUrl}/store/images/item-img-1-5.jpg" alt="" >
+                                <article><img class="img-responsive" src="${resourceUrl}/store/images/item-img-1-5.jpg"
+                                              alt="">
                                     <!-- Content -->
-                                    <span class="tag">Appliances</span> <a href="#." class="tittle">Reloj Inteligente Smart Watch M26 Touch Bluetooh </a>
+                                    <span class="tag">Appliances</span> <a href="#." class="tittle">Reloj Inteligente
+                                        Smart Watch M26 Touch Bluetooh </a>
                                     <!-- Reviews -->
-                                    <p class="rev"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> <i class="fa fa-star-o"></i> <span class="margin-left-10">5 Review(s)</span></p>
+                                    <p class="rev"><i class="fa fa-star"></i><i class="fa fa-star"></i><i
+                                            class="fa fa-star"></i><i class="fa fa-star"></i> <i
+                                            class="fa fa-star-o"></i> <span class="margin-left-10">5 Review(s)</span>
+                                    </p>
                                     <div class="price">$350.00</div>
-                                    <a href="#." class="cart-btn"><i class="icon-basket-loaded"></i></a> </article>
+                                    <a href="#." class="cart-btn"><i class="icon-basket-loaded"></i></a></article>
                             </div>
 
                             <!-- Product -->
                             <div class="product">
-                                <article> <img class="img-responsive" src="${resourceUrl}/store/images/item-img-1-17.jpg" alt="" > <span class="new-tag">New</span>
+                                <article><img class="img-responsive" src="${resourceUrl}/store/images/item-img-1-17.jpg"
+                                              alt=""> <span class="new-tag">New</span>
 
                                     <!-- Content -->
-                                    <span class="tag">Accessories</span> <a href="#." class="tittle">Teclado Inalambrico Bluetooth Con Air Mouse</a>
+                                    <span class="tag">Accessories</span> <a href="#." class="tittle">Teclado Inalambrico
+                                        Bluetooth Con Air Mouse</a>
                                     <!-- Reviews -->
-                                    <p class="rev"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> <i class="fa fa-star"></i> <span class="margin-left-10">5 Review(s)</span></p>
+                                    <p class="rev"><i class="fa fa-star"></i><i class="fa fa-star"></i><i
+                                            class="fa fa-star"></i><i class="fa fa-star"></i> <i class="fa fa-star"></i>
+                                        <span class="margin-left-10">5 Review(s)</span></p>
                                     <div class="price">$350.00</div>
-                                    <a href="#." class="cart-btn"><i class="icon-basket-loaded"></i></a> </article>
+                                    <a href="#." class="cart-btn"><i class="icon-basket-loaded"></i></a></article>
                             </div>
 
                             <!-- Product -->
                             <div class="product">
-                                <article> <img class="img-responsive" src="${resourceUrl}/store/images/item-img-1-15.jpg" alt="" >
+                                <article><img class="img-responsive" src="${resourceUrl}/store/images/item-img-1-15.jpg"
+                                              alt="">
                                     <!-- Content -->
-                                    <span class="tag">Appliances</span> <a href="#." class="tittle">Funda Para Ebook 7" 128GB full HD</a>
+                                    <span class="tag">Appliances</span> <a href="#." class="tittle">Funda Para Ebook 7"
+                                        128GB full HD</a>
                                     <!-- Reviews -->
-                                    <p class="rev"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> <i class="fa fa-star"></i> <span class="margin-left-10">5 Review(s)</span></p>
+                                    <p class="rev"><i class="fa fa-star"></i><i class="fa fa-star"></i><i
+                                            class="fa fa-star"></i><i class="fa fa-star"></i> <i class="fa fa-star"></i>
+                                        <span class="margin-left-10">5 Review(s)</span></p>
                                     <div class="price">$350.00</div>
-                                    <a href="#." class="cart-btn"><i class="icon-basket-loaded"></i></a> </article>
+                                    <a href="#." class="cart-btn"><i class="icon-basket-loaded"></i></a></article>
                             </div>
                         </div>
                     </div>
@@ -943,59 +1113,82 @@
 
                             <!-- Product -->
                             <div class="product">
-                                <article> <img class="img-responsive" src="${resourceUrl}/store/images/item-img-1-2.jpg" alt="" > <span class="sale-tag">-25%</span>
+                                <article><img class="img-responsive" src="${resourceUrl}/store/images/item-img-1-2.jpg"
+                                              alt=""> <span class="sale-tag">-25%</span>
 
                                     <!-- Content -->
-                                    <span class="tag">Accessories</span> <a href="#." class="tittle">Teclado Inalambrico Bluetooth Con Air Mouse</a>
+                                    <span class="tag">Accessories</span> <a href="#." class="tittle">Teclado Inalambrico
+                                        Bluetooth Con Air Mouse</a>
                                     <!-- Reviews -->
-                                    <p class="rev"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> <i class="fa fa-star-o"></i> <span class="margin-left-10">5 Review(s)</span></p>
+                                    <p class="rev"><i class="fa fa-star"></i><i class="fa fa-star"></i><i
+                                            class="fa fa-star"></i><i class="fa fa-star"></i> <i
+                                            class="fa fa-star-o"></i> <span class="margin-left-10">5 Review(s)</span>
+                                    </p>
                                     <div class="price">$350.00</div>
-                                    <a href="#." class="cart-btn"><i class="icon-basket-loaded"></i></a> </article>
+                                    <a href="#." class="cart-btn"><i class="icon-basket-loaded"></i></a></article>
                             </div>
 
                             <!-- Product -->
                             <div class="product">
-                                <article> <img class="img-responsive" src="${resourceUrl}/store/images/item-img-1-3.jpg" alt="" >
+                                <article><img class="img-responsive" src="${resourceUrl}/store/images/item-img-1-3.jpg"
+                                              alt="">
                                     <!-- Content -->
-                                    <span class="tag">Appliances</span> <a href="#." class="tittle">Funda Para Ebook 7" 128GB full HD</a>
+                                    <span class="tag">Appliances</span> <a href="#." class="tittle">Funda Para Ebook 7"
+                                        128GB full HD</a>
                                     <!-- Reviews -->
-                                    <p class="rev"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> <i class="fa fa-star-o"></i> <span class="margin-left-10">5 Review(s)</span></p>
+                                    <p class="rev"><i class="fa fa-star"></i><i class="fa fa-star"></i><i
+                                            class="fa fa-star"></i><i class="fa fa-star"></i> <i
+                                            class="fa fa-star-o"></i> <span class="margin-left-10">5 Review(s)</span>
+                                    </p>
                                     <div class="price">$350.00</div>
-                                    <a href="#." class="cart-btn"><i class="icon-basket-loaded"></i></a> </article>
+                                    <a href="#." class="cart-btn"><i class="icon-basket-loaded"></i></a></article>
                             </div>
 
                             <!-- Product -->
                             <div class="product">
-                                <article> <img class="img-responsive" src="${resourceUrl}/store/images/item-img-1-4.jpg" alt="" >
+                                <article><img class="img-responsive" src="${resourceUrl}/store/images/item-img-1-4.jpg"
+                                              alt="">
                                     <!-- Content -->
-                                    <span class="tag">Appliances</span> <a href="#." class="tittle">Reloj Inteligente Smart Watch M26 Touch Bluetooh </a>
+                                    <span class="tag">Appliances</span> <a href="#." class="tittle">Reloj Inteligente
+                                        Smart Watch M26 Touch Bluetooh </a>
                                     <!-- Reviews -->
-                                    <p class="rev"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> <i class="fa fa-star-o"></i> <span class="margin-left-10">5 Review(s)</span></p>
+                                    <p class="rev"><i class="fa fa-star"></i><i class="fa fa-star"></i><i
+                                            class="fa fa-star"></i><i class="fa fa-star"></i> <i
+                                            class="fa fa-star-o"></i> <span class="margin-left-10">5 Review(s)</span>
+                                    </p>
                                     <div class="price">$350.00</div>
-                                    <a href="#." class="cart-btn"><i class="icon-basket-loaded"></i></a> </article>
+                                    <a href="#." class="cart-btn"><i class="icon-basket-loaded"></i></a></article>
                             </div>
 
                             <!-- Product -->
                             <div class="product">
-                                <article> <img class="img-responsive" src="${resourceUrl}/store/images/item-img-1-13.jpg" alt="" > <span class="new-tag">New</span>
+                                <article><img class="img-responsive" src="${resourceUrl}/store/images/item-img-1-13.jpg"
+                                              alt=""> <span class="new-tag">New</span>
 
                                     <!-- Content -->
-                                    <span class="tag">Accessories</span> <a href="#." class="tittle">Teclado Inalambrico Bluetooth Con Air Mouse</a>
+                                    <span class="tag">Accessories</span> <a href="#." class="tittle">Teclado Inalambrico
+                                        Bluetooth Con Air Mouse</a>
                                     <!-- Reviews -->
-                                    <p class="rev"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> <i class="fa fa-star"></i> <span class="margin-left-10">5 Review(s)</span></p>
+                                    <p class="rev"><i class="fa fa-star"></i><i class="fa fa-star"></i><i
+                                            class="fa fa-star"></i><i class="fa fa-star"></i> <i class="fa fa-star"></i>
+                                        <span class="margin-left-10">5 Review(s)</span></p>
                                     <div class="price">$350.00</div>
-                                    <a href="#." class="cart-btn"><i class="icon-basket-loaded"></i></a> </article>
+                                    <a href="#." class="cart-btn"><i class="icon-basket-loaded"></i></a></article>
                             </div>
 
                             <!-- Product -->
                             <div class="product">
-                                <article> <img class="img-responsive" src="${resourceUrl}/store/images/item-img-1-15.jpg" alt="" >
+                                <article><img class="img-responsive" src="${resourceUrl}/store/images/item-img-1-15.jpg"
+                                              alt="">
                                     <!-- Content -->
-                                    <span class="tag">Appliances</span> <a href="#." class="tittle">Funda Para Ebook 7" 128GB full HD</a>
+                                    <span class="tag">Appliances</span> <a href="#." class="tittle">Funda Para Ebook 7"
+                                        128GB full HD</a>
                                     <!-- Reviews -->
-                                    <p class="rev"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> <i class="fa fa-star"></i> <span class="margin-left-10">5 Review(s)</span></p>
+                                    <p class="rev"><i class="fa fa-star"></i><i class="fa fa-star"></i><i
+                                            class="fa fa-star"></i><i class="fa fa-star"></i> <i class="fa fa-star"></i>
+                                        <span class="margin-left-10">5 Review(s)</span></p>
                                     <div class="price">$350.00</div>
-                                    <a href="#." class="cart-btn"><i class="icon-basket-loaded"></i></a> </article>
+                                    <a href="#." class="cart-btn"><i class="icon-basket-loaded"></i></a></article>
                             </div>
                         </div>
                     </div>
@@ -1007,59 +1200,82 @@
 
                             <!-- Product -->
                             <div class="product">
-                                <article> <img class="img-responsive" src="${resourceUrl}/store/images/item-img-1-9.jpg" alt="" > <span class="sale-tag">-25%</span>
+                                <article><img class="img-responsive" src="${resourceUrl}/store/images/item-img-1-9.jpg"
+                                              alt=""> <span class="sale-tag">-25%</span>
 
                                     <!-- Content -->
-                                    <span class="tag">Accessories</span> <a href="#." class="tittle">Teclado Inalambrico Bluetooth Con Air Mouse</a>
+                                    <span class="tag">Accessories</span> <a href="#." class="tittle">Teclado Inalambrico
+                                        Bluetooth Con Air Mouse</a>
                                     <!-- Reviews -->
-                                    <p class="rev"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> <i class="fa fa-star-o"></i> <span class="margin-left-10">5 Review(s)</span></p>
+                                    <p class="rev"><i class="fa fa-star"></i><i class="fa fa-star"></i><i
+                                            class="fa fa-star"></i><i class="fa fa-star"></i> <i
+                                            class="fa fa-star-o"></i> <span class="margin-left-10">5 Review(s)</span>
+                                    </p>
                                     <div class="price">$350.00</div>
-                                    <a href="#." class="cart-btn"><i class="icon-basket-loaded"></i></a> </article>
+                                    <a href="#." class="cart-btn"><i class="icon-basket-loaded"></i></a></article>
                             </div>
 
                             <!-- Product -->
                             <div class="product">
-                                <article> <img class="img-responsive" src="${resourceUrl}/store/images/item-img-1-1.jpg" alt="" >
+                                <article><img class="img-responsive" src="${resourceUrl}/store/images/item-img-1-1.jpg"
+                                              alt="">
                                     <!-- Content -->
-                                    <span class="tag">Appliances</span> <a href="#." class="tittle">Funda Para Ebook 7" 128GB full HD</a>
+                                    <span class="tag">Appliances</span> <a href="#." class="tittle">Funda Para Ebook 7"
+                                        128GB full HD</a>
                                     <!-- Reviews -->
-                                    <p class="rev"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> <i class="fa fa-star-o"></i> <span class="margin-left-10">5 Review(s)</span></p>
+                                    <p class="rev"><i class="fa fa-star"></i><i class="fa fa-star"></i><i
+                                            class="fa fa-star"></i><i class="fa fa-star"></i> <i
+                                            class="fa fa-star-o"></i> <span class="margin-left-10">5 Review(s)</span>
+                                    </p>
                                     <div class="price">$350.00</div>
-                                    <a href="#." class="cart-btn"><i class="icon-basket-loaded"></i></a> </article>
+                                    <a href="#." class="cart-btn"><i class="icon-basket-loaded"></i></a></article>
                             </div>
 
                             <!-- Product -->
                             <div class="product">
-                                <article> <img class="img-responsive" src="${resourceUrl}/store/images/item-img-1-5.jpg" alt="" >
+                                <article><img class="img-responsive" src="${resourceUrl}/store/images/item-img-1-5.jpg"
+                                              alt="">
                                     <!-- Content -->
-                                    <span class="tag">Appliances</span> <a href="#." class="tittle">Reloj Inteligente Smart Watch M26 Touch Bluetooh </a>
+                                    <span class="tag">Appliances</span> <a href="#." class="tittle">Reloj Inteligente
+                                        Smart Watch M26 Touch Bluetooh </a>
                                     <!-- Reviews -->
-                                    <p class="rev"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> <i class="fa fa-star-o"></i> <span class="margin-left-10">5 Review(s)</span></p>
+                                    <p class="rev"><i class="fa fa-star"></i><i class="fa fa-star"></i><i
+                                            class="fa fa-star"></i><i class="fa fa-star"></i> <i
+                                            class="fa fa-star-o"></i> <span class="margin-left-10">5 Review(s)</span>
+                                    </p>
                                     <div class="price">$350.00</div>
-                                    <a href="#." class="cart-btn"><i class="icon-basket-loaded"></i></a> </article>
+                                    <a href="#." class="cart-btn"><i class="icon-basket-loaded"></i></a></article>
                             </div>
 
                             <!-- Product -->
                             <div class="product">
-                                <article> <img class="img-responsive" src="${resourceUrl}/store/images/item-img-1-3.jpg" alt="" > <span class="new-tag">New</span>
+                                <article><img class="img-responsive" src="${resourceUrl}/store/images/item-img-1-3.jpg"
+                                              alt=""> <span class="new-tag">New</span>
 
                                     <!-- Content -->
-                                    <span class="tag">Accessories</span> <a href="#." class="tittle">Teclado Inalambrico Bluetooth Con Air Mouse</a>
+                                    <span class="tag">Accessories</span> <a href="#." class="tittle">Teclado Inalambrico
+                                        Bluetooth Con Air Mouse</a>
                                     <!-- Reviews -->
-                                    <p class="rev"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> <i class="fa fa-star"></i> <span class="margin-left-10">5 Review(s)</span></p>
+                                    <p class="rev"><i class="fa fa-star"></i><i class="fa fa-star"></i><i
+                                            class="fa fa-star"></i><i class="fa fa-star"></i> <i class="fa fa-star"></i>
+                                        <span class="margin-left-10">5 Review(s)</span></p>
                                     <div class="price">$350.00</div>
-                                    <a href="#." class="cart-btn"><i class="icon-basket-loaded"></i></a> </article>
+                                    <a href="#." class="cart-btn"><i class="icon-basket-loaded"></i></a></article>
                             </div>
 
                             <!-- Product -->
                             <div class="product">
-                                <article> <img class="img-responsive" src="${resourceUrl}/store/images/item-img-1-2.jpg" alt="" >
+                                <article><img class="img-responsive" src="${resourceUrl}/store/images/item-img-1-2.jpg"
+                                              alt="">
                                     <!-- Content -->
-                                    <span class="tag">Appliances</span> <a href="#." class="tittle">Funda Para Ebook 7" 128GB full HD</a>
+                                    <span class="tag">Appliances</span> <a href="#." class="tittle">Funda Para Ebook 7"
+                                        128GB full HD</a>
                                     <!-- Reviews -->
-                                    <p class="rev"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> <i class="fa fa-star"></i> <span class="margin-left-10">5 Review(s)</span></p>
+                                    <p class="rev"><i class="fa fa-star"></i><i class="fa fa-star"></i><i
+                                            class="fa fa-star"></i><i class="fa fa-star"></i> <i class="fa fa-star"></i>
+                                        <span class="margin-left-10">5 Review(s)</span></p>
                                     <div class="price">$350.00</div>
-                                    <a href="#." class="cart-btn"><i class="icon-basket-loaded"></i></a> </article>
+                                    <a href="#." class="cart-btn"><i class="icon-basket-loaded"></i></a></article>
                             </div>
                         </div>
                     </div>
@@ -1071,59 +1287,82 @@
 
                             <!-- Product -->
                             <div class="product">
-                                <article> <img class="img-responsive" src="${resourceUrl}/store/images/item-img-1-8.jpg" alt="" > <span class="sale-tag">-25%</span>
+                                <article><img class="img-responsive" src="${resourceUrl}/store/images/item-img-1-8.jpg"
+                                              alt=""> <span class="sale-tag">-25%</span>
 
                                     <!-- Content -->
-                                    <span class="tag">Accessories</span> <a href="#." class="tittle">Teclado Inalambrico Bluetooth Con Air Mouse</a>
+                                    <span class="tag">Accessories</span> <a href="#." class="tittle">Teclado Inalambrico
+                                        Bluetooth Con Air Mouse</a>
                                     <!-- Reviews -->
-                                    <p class="rev"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> <i class="fa fa-star-o"></i> <span class="margin-left-10">5 Review(s)</span></p>
+                                    <p class="rev"><i class="fa fa-star"></i><i class="fa fa-star"></i><i
+                                            class="fa fa-star"></i><i class="fa fa-star"></i> <i
+                                            class="fa fa-star-o"></i> <span class="margin-left-10">5 Review(s)</span>
+                                    </p>
                                     <div class="price">$350.00</div>
-                                    <a href="#." class="cart-btn"><i class="icon-basket-loaded"></i></a> </article>
+                                    <a href="#." class="cart-btn"><i class="icon-basket-loaded"></i></a></article>
                             </div>
 
                             <!-- Product -->
                             <div class="product">
-                                <article> <img class="img-responsive" src="${resourceUrl}/store/images/item-img-1-9.jpg" alt="" >
+                                <article><img class="img-responsive" src="${resourceUrl}/store/images/item-img-1-9.jpg"
+                                              alt="">
                                     <!-- Content -->
-                                    <span class="tag">Appliances</span> <a href="#." class="tittle">Funda Para Ebook 7" 128GB full HD</a>
+                                    <span class="tag">Appliances</span> <a href="#." class="tittle">Funda Para Ebook 7"
+                                        128GB full HD</a>
                                     <!-- Reviews -->
-                                    <p class="rev"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> <i class="fa fa-star-o"></i> <span class="margin-left-10">5 Review(s)</span></p>
+                                    <p class="rev"><i class="fa fa-star"></i><i class="fa fa-star"></i><i
+                                            class="fa fa-star"></i><i class="fa fa-star"></i> <i
+                                            class="fa fa-star-o"></i> <span class="margin-left-10">5 Review(s)</span>
+                                    </p>
                                     <div class="price">$350.00</div>
-                                    <a href="#." class="cart-btn"><i class="icon-basket-loaded"></i></a> </article>
+                                    <a href="#." class="cart-btn"><i class="icon-basket-loaded"></i></a></article>
                             </div>
 
                             <!-- Product -->
                             <div class="product">
-                                <article> <img class="img-responsive" src="${resourceUrl}/store/images/item-img-1-17.jpg" alt="" >
+                                <article><img class="img-responsive" src="${resourceUrl}/store/images/item-img-1-17.jpg"
+                                              alt="">
                                     <!-- Content -->
-                                    <span class="tag">Appliances</span> <a href="#." class="tittle">Reloj Inteligente Smart Watch M26 Touch Bluetooh </a>
+                                    <span class="tag">Appliances</span> <a href="#." class="tittle">Reloj Inteligente
+                                        Smart Watch M26 Touch Bluetooh </a>
                                     <!-- Reviews -->
-                                    <p class="rev"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> <i class="fa fa-star-o"></i> <span class="margin-left-10">5 Review(s)</span></p>
+                                    <p class="rev"><i class="fa fa-star"></i><i class="fa fa-star"></i><i
+                                            class="fa fa-star"></i><i class="fa fa-star"></i> <i
+                                            class="fa fa-star-o"></i> <span class="margin-left-10">5 Review(s)</span>
+                                    </p>
                                     <div class="price">$350.00</div>
-                                    <a href="#." class="cart-btn"><i class="icon-basket-loaded"></i></a> </article>
+                                    <a href="#." class="cart-btn"><i class="icon-basket-loaded"></i></a></article>
                             </div>
 
                             <!-- Product -->
                             <div class="product">
-                                <article> <img class="img-responsive" src="${resourceUrl}/store/images/item-img-1-16.jpg" alt="" > <span class="new-tag">New</span>
+                                <article><img class="img-responsive" src="${resourceUrl}/store/images/item-img-1-16.jpg"
+                                              alt=""> <span class="new-tag">New</span>
 
                                     <!-- Content -->
-                                    <span class="tag">Accessories</span> <a href="#." class="tittle">Teclado Inalambrico Bluetooth Con Air Mouse</a>
+                                    <span class="tag">Accessories</span> <a href="#." class="tittle">Teclado Inalambrico
+                                        Bluetooth Con Air Mouse</a>
                                     <!-- Reviews -->
-                                    <p class="rev"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> <i class="fa fa-star"></i> <span class="margin-left-10">5 Review(s)</span></p>
+                                    <p class="rev"><i class="fa fa-star"></i><i class="fa fa-star"></i><i
+                                            class="fa fa-star"></i><i class="fa fa-star"></i> <i class="fa fa-star"></i>
+                                        <span class="margin-left-10">5 Review(s)</span></p>
                                     <div class="price">$350.00</div>
-                                    <a href="#." class="cart-btn"><i class="icon-basket-loaded"></i></a> </article>
+                                    <a href="#." class="cart-btn"><i class="icon-basket-loaded"></i></a></article>
                             </div>
 
                             <!-- Product -->
                             <div class="product">
-                                <article> <img class="img-responsive" src="${resourceUrl}/store/images/item-img-1-12.jpg" alt="" >
+                                <article><img class="img-responsive" src="${resourceUrl}/store/images/item-img-1-12.jpg"
+                                              alt="">
                                     <!-- Content -->
-                                    <span class="tag">Appliances</span> <a href="#." class="tittle">Funda Para Ebook 7" 128GB full HD</a>
+                                    <span class="tag">Appliances</span> <a href="#." class="tittle">Funda Para Ebook 7"
+                                        128GB full HD</a>
                                     <!-- Reviews -->
-                                    <p class="rev"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> <i class="fa fa-star"></i> <span class="margin-left-10">5 Review(s)</span></p>
+                                    <p class="rev"><i class="fa fa-star"></i><i class="fa fa-star"></i><i
+                                            class="fa fa-star"></i><i class="fa fa-star"></i> <i class="fa fa-star"></i>
+                                        <span class="margin-left-10">5 Review(s)</span></p>
                                     <div class="price">$350.00</div>
-                                    <a href="#." class="cart-btn"><i class="icon-basket-loaded"></i></a> </article>
+                                    <a href="#." class="cart-btn"><i class="icon-basket-loaded"></i></a></article>
                             </div>
                         </div>
                     </div>
@@ -1135,59 +1374,82 @@
 
                             <!-- Product -->
                             <div class="product">
-                                <article> <img class="img-responsive" src="${resourceUrl}/store/images/item-img-1-11.jpg" alt="" > <span class="sale-tag">-25%</span>
+                                <article><img class="img-responsive" src="${resourceUrl}/store/images/item-img-1-11.jpg"
+                                              alt=""> <span class="sale-tag">-25%</span>
 
                                     <!-- Content -->
-                                    <span class="tag">Accessories</span> <a href="#." class="tittle">Teclado Inalambrico Bluetooth Con Air Mouse</a>
+                                    <span class="tag">Accessories</span> <a href="#." class="tittle">Teclado Inalambrico
+                                        Bluetooth Con Air Mouse</a>
                                     <!-- Reviews -->
-                                    <p class="rev"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> <i class="fa fa-star-o"></i> <span class="margin-left-10">5 Review(s)</span></p>
+                                    <p class="rev"><i class="fa fa-star"></i><i class="fa fa-star"></i><i
+                                            class="fa fa-star"></i><i class="fa fa-star"></i> <i
+                                            class="fa fa-star-o"></i> <span class="margin-left-10">5 Review(s)</span>
+                                    </p>
                                     <div class="price">$350.00</div>
-                                    <a href="#." class="cart-btn"><i class="icon-basket-loaded"></i></a> </article>
+                                    <a href="#." class="cart-btn"><i class="icon-basket-loaded"></i></a></article>
                             </div>
 
                             <!-- Product -->
                             <div class="product">
-                                <article> <img class="img-responsive" src="${resourceUrl}/store/images/item-img-1-12.jpg" alt="" >
+                                <article><img class="img-responsive" src="${resourceUrl}/store/images/item-img-1-12.jpg"
+                                              alt="">
                                     <!-- Content -->
-                                    <span class="tag">Appliances</span> <a href="#." class="tittle">Funda Para Ebook 7" 128GB full HD</a>
+                                    <span class="tag">Appliances</span> <a href="#." class="tittle">Funda Para Ebook 7"
+                                        128GB full HD</a>
                                     <!-- Reviews -->
-                                    <p class="rev"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> <i class="fa fa-star-o"></i> <span class="margin-left-10">5 Review(s)</span></p>
+                                    <p class="rev"><i class="fa fa-star"></i><i class="fa fa-star"></i><i
+                                            class="fa fa-star"></i><i class="fa fa-star"></i> <i
+                                            class="fa fa-star-o"></i> <span class="margin-left-10">5 Review(s)</span>
+                                    </p>
                                     <div class="price">$350.00</div>
-                                    <a href="#." class="cart-btn"><i class="icon-basket-loaded"></i></a> </article>
+                                    <a href="#." class="cart-btn"><i class="icon-basket-loaded"></i></a></article>
                             </div>
 
                             <!-- Product -->
                             <div class="product">
-                                <article> <img class="img-responsive" src="${resourceUrl}/store/images/item-img-1-16.jpg" alt="" >
+                                <article><img class="img-responsive" src="${resourceUrl}/store/images/item-img-1-16.jpg"
+                                              alt="">
                                     <!-- Content -->
-                                    <span class="tag">Appliances</span> <a href="#." class="tittle">Reloj Inteligente Smart Watch M26 Touch Bluetooh </a>
+                                    <span class="tag">Appliances</span> <a href="#." class="tittle">Reloj Inteligente
+                                        Smart Watch M26 Touch Bluetooh </a>
                                     <!-- Reviews -->
-                                    <p class="rev"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> <i class="fa fa-star-o"></i> <span class="margin-left-10">5 Review(s)</span></p>
+                                    <p class="rev"><i class="fa fa-star"></i><i class="fa fa-star"></i><i
+                                            class="fa fa-star"></i><i class="fa fa-star"></i> <i
+                                            class="fa fa-star-o"></i> <span class="margin-left-10">5 Review(s)</span>
+                                    </p>
                                     <div class="price">$350.00</div>
-                                    <a href="#." class="cart-btn"><i class="icon-basket-loaded"></i></a> </article>
+                                    <a href="#." class="cart-btn"><i class="icon-basket-loaded"></i></a></article>
                             </div>
 
                             <!-- Product -->
                             <div class="product">
-                                <article> <img class="img-responsive" src="${resourceUrl}/store/images/item-img-1-15.jpg" alt="" > <span class="new-tag">New</span>
+                                <article><img class="img-responsive" src="${resourceUrl}/store/images/item-img-1-15.jpg"
+                                              alt=""> <span class="new-tag">New</span>
 
                                     <!-- Content -->
-                                    <span class="tag">Accessories</span> <a href="#." class="tittle">Teclado Inalambrico Bluetooth Con Air Mouse</a>
+                                    <span class="tag">Accessories</span> <a href="#." class="tittle">Teclado Inalambrico
+                                        Bluetooth Con Air Mouse</a>
                                     <!-- Reviews -->
-                                    <p class="rev"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> <i class="fa fa-star"></i> <span class="margin-left-10">5 Review(s)</span></p>
+                                    <p class="rev"><i class="fa fa-star"></i><i class="fa fa-star"></i><i
+                                            class="fa fa-star"></i><i class="fa fa-star"></i> <i class="fa fa-star"></i>
+                                        <span class="margin-left-10">5 Review(s)</span></p>
                                     <div class="price">$350.00</div>
-                                    <a href="#." class="cart-btn"><i class="icon-basket-loaded"></i></a> </article>
+                                    <a href="#." class="cart-btn"><i class="icon-basket-loaded"></i></a></article>
                             </div>
 
                             <!-- Product -->
                             <div class="product">
-                                <article> <img class="img-responsive" src="${resourceUrl}/store/images/item-img-1-14.jpg" alt="" >
+                                <article><img class="img-responsive" src="${resourceUrl}/store/images/item-img-1-14.jpg"
+                                              alt="">
                                     <!-- Content -->
-                                    <span class="tag">Appliances</span> <a href="#." class="tittle">Funda Para Ebook 7" 128GB full HD</a>
+                                    <span class="tag">Appliances</span> <a href="#." class="tittle">Funda Para Ebook 7"
+                                        128GB full HD</a>
                                     <!-- Reviews -->
-                                    <p class="rev"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> <i class="fa fa-star"></i> <span class="margin-left-10">5 Review(s)</span></p>
+                                    <p class="rev"><i class="fa fa-star"></i><i class="fa fa-star"></i><i
+                                            class="fa fa-star"></i><i class="fa fa-star"></i> <i class="fa fa-star"></i>
+                                        <span class="margin-left-10">5 Review(s)</span></p>
                                     <div class="price">$350.00</div>
-                                    <a href="#." class="cart-btn"><i class="icon-basket-loaded"></i></a> </article>
+                                    <a href="#." class="cart-btn"><i class="icon-basket-loaded"></i></a></article>
                             </div>
                         </div>
                     </div>
@@ -1196,42 +1458,35 @@
 
         </section>
 
-        <!-- Top Selling Week -->
-        <section class="padding-top-60 padding-bottom-60">
-            <div class="container">
+        <c:choose>
+            <c:when test="${storeblog !=null}">
+                <section class="padding-top-60 padding-bottom-60">
+                    <div class="container">
 
-                <!-- heading -->
-                <div class="heading">
-                    <h2>From our Blog</h2>
-                    ${storeblog}
-                    <hr>
-                </div>
-                <div id="blog-slide" class="with-nav">
-
-                    <!-- Blog Post -->
-                    <div class="blog-post">
-                        <article> <img class="img-responsive" src="${resourceUrl}/store/images/blog-img-1.jpg" alt="" > <span><i class="fa fa-bookmark-o"></i> 25 Dec, 2017</span> <span><i class="fa fa-comment-o"></i> 86 Comments</span> <a href="#." class="tittle">It’s why there’s nothing else like Mac. </a>
-                            <p>Etiam porttitor ante non tellus pulvinar, non vehicula lorem fermentum. Nulla vitae efficitur mi [...] </p>
-                            <a href="#.">Readmore</a> </article>
+                        <!-- heading -->
+                        <div class="heading">
+                            <h2>客户展示</h2>
+                            <hr>
+                        </div>
+                        <div id="blog-slide" class="with-nav">
+                            <c:forEach items="${storeblog}" var="item">
+                                <div class="blog-post">
+                                    <article>
+                                        <img class="img-responsive" src="${resourceUrl}${item.blog_image}" alt="">
+                                        <span><i class="fa fa-bookmark-o"></i> ${item.blog_creattime}</span>
+                                        <span><i class="fa fa-comment-o"></i> 86 Comments</span> <a href="#."
+                                                                                                    class="tittle">${item.blog_title} </a>
+                                        <p>${item.blog_article}</p>
+                                        <a href="#.">Readmore</a></article>
+                                </div>
+                            </c:forEach>
+                            <!-- Blog Post -->
+                        </div>
                     </div>
+                </section>
+            </c:when>
+        </c:choose>
 
-                    <!-- Blog Post -->
-                    <div class="blog-post">
-                        <article> <img class="img-responsive" src="${resourceUrl}/store/images/blog-img-2.jpg" alt="" > <span><i class="fa fa-bookmark-o"></i> 25 Dec, 2017</span> <span><i class="fa fa-comment-o"></i> 86 Comments</span> <a href="#." class="tittle">Get the power to take your business to the
-                            next level. </a>
-                            <p>Etiam porttitor ante non tellus pulvinar, non vehicula lorem fermentum. Nulla vitae efficitur mi [...] </p>
-                            <a href="#.">Readmore</a> </article>
-                    </div>
-
-                    <!-- Blog Post -->
-                    <div class="blog-post">
-                        <article> <img class="img-responsive" src="${resourceUrl}/store/images/blog-img-3.jpg" alt="" > <span><i class="fa fa-bookmark-o"></i> 25 Dec, 2017</span> <span><i class="fa fa-comment-o"></i> 86 Comments</span> <a href="#." class="tittle">It’s why there’s nothing else like Mac. </a>
-                            <p>Etiam porttitor ante non tellus pulvinar, non vehicula lorem fermentum. Nulla vitae efficitur mi [...] </p>
-                            <a href="#.">Readmore</a> </article>
-                    </div>
-                </div>
-            </div>
-        </section>
         <!-- Shipping Info -->
         <section class="shipping-info">
             <div class="container">
@@ -1239,40 +1494,37 @@
 
                     <!-- Free Shipping -->
                     <li>
-                        <div class="media-left"> <i class="flaticon-delivery-truck-1"></i> </div>
+                        <div class="media-left"><i class="flaticon-delivery-truck-1"></i></div>
                         <div class="media-body">
-                            <h5>Free Shipping</h5>
-                            <span>On order over $99</span></div>
+                            <h5>免费送货</h5>
+                            <span>购物满$99免费送货上门</span></div>
                     </li>
                     <!-- Money Return -->
                     <li>
-                        <div class="media-left"> <i class="flaticon-arrows"></i> </div>
+                        <div class="media-left"><i class="flaticon-arrows"></i></div>
                         <div class="media-body">
-                            <h5>Money Return</h5>
-                            <span>30 Days money return</span></div>
+                            <h5>上门退货</h5>
+                            <span>30天内商品问题无条件退货</span></div>
                     </li>
                     <!-- Support 24/7 -->
                     <li>
-                        <div class="media-left"> <i class="flaticon-operator"></i> </div>
+                        <div class="media-left"><i class="flaticon-operator"></i></div>
                         <div class="media-body">
-                            <h5>Support 24/7</h5>
-                            <span>Hotline: (+100) 123 456 7890</span></div>
+                            <h5>服务支持24/7</h5>
+                            <span>服务热线: (+100) 123 456 7890</span></div>
                     </li>
                     <!-- Safe Payment -->
                     <li>
-                        <div class="media-left"> <i class="flaticon-business"></i> </div>
+                        <div class="media-left"><i class="flaticon-business"></i></div>
                         <div class="media-body">
-                            <h5>Safe Payment</h5>
-                            <span>Protect online payment</span></div>
+                            <h5>放心购物</h5>
+                            <span>支持在线交易</span></div>
                     </li>
                 </ul>
             </div>
         </section>
     </div>
     <!-- End Content -->
-
-
-
     <tags:store-footer/>
 </div>
 

@@ -1,0 +1,273 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.darly.dubbo.store.dao.StoreProductMapper" >
+  <resultMap id="BaseResultMap" type="com.darly.dubbo.store.bean.StoreProduct" >
+    <id column="ID" property="id" jdbcType="VARCHAR" />
+    <result column="PRODUCT_NAME" property="productName" jdbcType="VARCHAR" />
+    <result column="PRODUCT_PRICE" property="productPrice" jdbcType="DECIMAL" />
+    <result column="PRODUCT_ORPRICE" property="productOrprice" jdbcType="DECIMAL" />
+    <result column="PRODUCT_DESC" property="productDesc" jdbcType="VARCHAR" />
+    <result column="PRODUCT_IMAGE" property="productImage" jdbcType="VARCHAR" />
+    <result column="PRODUCT_NUM" property="productNum" jdbcType="INTEGER" />
+    <result column="PRODUCT_STARS" property="productStars" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    ID, PRODUCT_NAME, PRODUCT_PRICE, PRODUCT_ORPRICE, PRODUCT_DESC, PRODUCT_IMAGE, PRODUCT_NUM, 
+    PRODUCT_STARS
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.darly.dubbo.store.bean.StoreProductSearch" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from store_product
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from store_product
+    where ID = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from store_product
+    where ID = #{id,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.darly.dubbo.store.bean.StoreProductSearch" >
+    delete from store_product
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.darly.dubbo.store.bean.StoreProduct" >
+    insert into store_product (ID, PRODUCT_NAME, PRODUCT_PRICE, 
+      PRODUCT_ORPRICE, PRODUCT_DESC, PRODUCT_IMAGE, 
+      PRODUCT_NUM, PRODUCT_STARS)
+    values (#{id,jdbcType=VARCHAR}, #{productName,jdbcType=VARCHAR}, #{productPrice,jdbcType=DECIMAL}, 
+      #{productOrprice,jdbcType=DECIMAL}, #{productDesc,jdbcType=VARCHAR}, #{productImage,jdbcType=VARCHAR}, 
+      #{productNum,jdbcType=INTEGER}, #{productStars,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.darly.dubbo.store.bean.StoreProduct" >
+    insert into store_product
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        ID,
+      </if>
+      <if test="productName != null" >
+        PRODUCT_NAME,
+      </if>
+      <if test="productPrice != null" >
+        PRODUCT_PRICE,
+      </if>
+      <if test="productOrprice != null" >
+        PRODUCT_ORPRICE,
+      </if>
+      <if test="productDesc != null" >
+        PRODUCT_DESC,
+      </if>
+      <if test="productImage != null" >
+        PRODUCT_IMAGE,
+      </if>
+      <if test="productNum != null" >
+        PRODUCT_NUM,
+      </if>
+      <if test="productStars != null" >
+        PRODUCT_STARS,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="productName != null" >
+        #{productName,jdbcType=VARCHAR},
+      </if>
+      <if test="productPrice != null" >
+        #{productPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="productOrprice != null" >
+        #{productOrprice,jdbcType=DECIMAL},
+      </if>
+      <if test="productDesc != null" >
+        #{productDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="productImage != null" >
+        #{productImage,jdbcType=VARCHAR},
+      </if>
+      <if test="productNum != null" >
+        #{productNum,jdbcType=INTEGER},
+      </if>
+      <if test="productStars != null" >
+        #{productStars,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.darly.dubbo.store.bean.StoreProductSearch" resultType="java.lang.Integer" >
+    select count(*) from store_product
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update store_product
+    <set >
+      <if test="record.id != null" >
+        ID = #{record.id,jdbcType=VARCHAR},
+      </if>
+      <if test="record.productName != null" >
+        PRODUCT_NAME = #{record.productName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.productPrice != null" >
+        PRODUCT_PRICE = #{record.productPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="record.productOrprice != null" >
+        PRODUCT_ORPRICE = #{record.productOrprice,jdbcType=DECIMAL},
+      </if>
+      <if test="record.productDesc != null" >
+        PRODUCT_DESC = #{record.productDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="record.productImage != null" >
+        PRODUCT_IMAGE = #{record.productImage,jdbcType=VARCHAR},
+      </if>
+      <if test="record.productNum != null" >
+        PRODUCT_NUM = #{record.productNum,jdbcType=INTEGER},
+      </if>
+      <if test="record.productStars != null" >
+        PRODUCT_STARS = #{record.productStars,jdbcType=INTEGER},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update store_product
+    set ID = #{record.id,jdbcType=VARCHAR},
+      PRODUCT_NAME = #{record.productName,jdbcType=VARCHAR},
+      PRODUCT_PRICE = #{record.productPrice,jdbcType=DECIMAL},
+      PRODUCT_ORPRICE = #{record.productOrprice,jdbcType=DECIMAL},
+      PRODUCT_DESC = #{record.productDesc,jdbcType=VARCHAR},
+      PRODUCT_IMAGE = #{record.productImage,jdbcType=VARCHAR},
+      PRODUCT_NUM = #{record.productNum,jdbcType=INTEGER},
+      PRODUCT_STARS = #{record.productStars,jdbcType=INTEGER}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.darly.dubbo.store.bean.StoreProduct" >
+    update store_product
+    <set >
+      <if test="productName != null" >
+        PRODUCT_NAME = #{productName,jdbcType=VARCHAR},
+      </if>
+      <if test="productPrice != null" >
+        PRODUCT_PRICE = #{productPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="productOrprice != null" >
+        PRODUCT_ORPRICE = #{productOrprice,jdbcType=DECIMAL},
+      </if>
+      <if test="productDesc != null" >
+        PRODUCT_DESC = #{productDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="productImage != null" >
+        PRODUCT_IMAGE = #{productImage,jdbcType=VARCHAR},
+      </if>
+      <if test="productNum != null" >
+        PRODUCT_NUM = #{productNum,jdbcType=INTEGER},
+      </if>
+      <if test="productStars != null" >
+        PRODUCT_STARS = #{productStars,jdbcType=INTEGER},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.darly.dubbo.store.bean.StoreProduct" >
+    update store_product
+    set PRODUCT_NAME = #{productName,jdbcType=VARCHAR},
+      PRODUCT_PRICE = #{productPrice,jdbcType=DECIMAL},
+      PRODUCT_ORPRICE = #{productOrprice,jdbcType=DECIMAL},
+      PRODUCT_DESC = #{productDesc,jdbcType=VARCHAR},
+      PRODUCT_IMAGE = #{productImage,jdbcType=VARCHAR},
+      PRODUCT_NUM = #{productNum,jdbcType=INTEGER},
+      PRODUCT_STARS = #{productStars,jdbcType=INTEGER}
+    where ID = #{id,jdbcType=VARCHAR}
+  </update>
+  <select resultMap="BaseResultMap" parameterType="com.darly.dubbo.store.bean.StoreProductSearch" id="selectByExampleWithRowbounds" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from store_product
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+</mapper>
