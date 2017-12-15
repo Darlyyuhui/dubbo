@@ -110,7 +110,7 @@
     <header>
         <div class="container">
             <!-- 商城首页图标，点击刷新首页 -->
-            <div class="logo"> <a href="javascript:onstorehome()"><img src="${resourceUrl}/images/login/ic_darly_logo_index.png" alt="" ></a> </div>
+            <div class="logo"> <a href="javascript:darly().storehome('${root}');"><img src="${resourceUrl}/images/login/ic_darly_logo_index.png" alt="" ></a> </div>
             <!-- 搜索框 -->
             <div class="search-cate">
                 <select class="selectpicker">
@@ -205,11 +205,11 @@
                 <!-- NAV -->
                 <div class="collapse navbar-collapse" id="nav-open-btn">
                     <ul class="nav">
-                        <li><a href="javascript:onstorehome()"> 首页 </a></li>
-                        <li><a href="javascript:onstorehome()"> 专区 </a></li>
-                        <li><a href="javascript:onstorehome()"> 限时 </a></li>
-                        <li><a href="javascript:onstorehome()"> 最新 </a></li>
-                        <li><a href="javascript:onstorehome()"> 折扣区 </a></li>
+                        <li><a href="javascript:darly().storehome('${root}');"> 首页 </a></li>
+                        <li><a href="javascript:darly().storehome('${root}');"> 专区 </a></li>
+                        <li><a href="javascript:darly().storehome('${root}');"> 限时 </a></li>
+                        <li><a href="javascript:darly().storehome('${root}');"> 最新 </a></li>
+                        <li><a href="javascript:darly().storehome('${root}');"> 折扣区 </a></li>
                     </ul>
                 </div>
 
@@ -219,10 +219,6 @@
         </nav>
     </header>
 <script>
-    function onstorehome() {
-        //跳转到商城首页
-        window.location.href = "${root}/index";
-    }
       function storeout(){
             var message = "你确认退出本商城？";
             dialogBox(message,

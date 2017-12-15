@@ -11,5 +11,9 @@ darly.prototype = {
     logout:function (root) {
         isloginout = true;
         window.location.href = root+"/j_spring_security_logout";
+    },
+    storehome:function (root) {
+        isloginout = true;
+        window.location.href = root+"/storehome";
     }
 }

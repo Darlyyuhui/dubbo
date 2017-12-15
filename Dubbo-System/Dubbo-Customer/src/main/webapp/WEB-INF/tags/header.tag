@@ -54,8 +54,8 @@
                         <c:choose>
                             <c:when test="${hasUser}">
                                 <li>
-                                    <a href="javascript:onsocket();">
-                                        <span style="font-size:16px">聊天</span>
+                                    <a href="javascript:onstoreoperation();">
+                                        <span style="font-size:16px">商城管理</span>
                                     </a>
                                 </li>
                                 <li>
@@ -238,6 +238,9 @@
 
     function onsocket() {
         window.location.href = "${root}/websocket/skt/socket";
+    }
+    function onstoreoperation() {
+        window.location.href = "${root}/option/index";
     }
 
     function login() {

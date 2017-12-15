@@ -26,16 +26,4 @@ Darly.prototype = {
     },
 }
 
-UIController.prototype = {
-    callback:function (json) {
-        if (darlyData == null||darlyData == ""){
-            console.log("darlyData is null or is \"\""+darlyData);
-            return;
-        }
-        var data = JSON.parse(darlyData);
-        json.setjingdu(data.latiude);
-        json.setweidu(data.longitude);
-    },
-}
-
 

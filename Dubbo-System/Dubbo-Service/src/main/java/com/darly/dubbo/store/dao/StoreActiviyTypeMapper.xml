@@ -11,6 +11,7 @@
     <result column="STORE_CREATETIME" property="storeCreatetime" jdbcType="TIMESTAMP" />
     <result column="STORE_UPDATETIME" property="storeUpdatetime" jdbcType="TIMESTAMP" />
     <result column="STORE_UPDATEREASON" property="storeUpdatereason" jdbcType="VARCHAR" />
+    <result column="STORE_TYPE_ICON" property="storeTypeIcon" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
@@ -72,7 +73,7 @@
   </sql>
   <sql id="Base_Column_List" >
     ID, STORE_TYPE, STORE_DESC, STORE_START_TIME, STORE_END_TIME, STORE_TYPE_OP, STORE_CREATETIME, 
-    STORE_UPDATETIME, STORE_UPDATEREASON
+    STORE_UPDATETIME, STORE_UPDATEREASON,STORE_TYPE_ICON
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.darly.dubbo.store.bean.StoreActiviyTypeSearch" >
     select
@@ -107,11 +108,11 @@
   <insert id="insert" parameterType="com.darly.dubbo.store.bean.StoreActiviyType" >
     insert into store_activiy_type (ID, STORE_TYPE, STORE_DESC, 
       STORE_START_TIME, STORE_END_TIME, STORE_TYPE_OP, 
-      STORE_CREATETIME, STORE_UPDATETIME, STORE_UPDATEREASON
+      STORE_CREATETIME, STORE_UPDATETIME, STORE_UPDATEREASON,STORE_TYPE_ICON
       )
     values (#{id,jdbcType=VARCHAR}, #{storeType,jdbcType=VARCHAR}, #{storeDesc,jdbcType=VARCHAR}, 
       #{storeStartTime,jdbcType=TIMESTAMP}, #{storeEndTime,jdbcType=TIMESTAMP}, #{storeTypeOp,jdbcType=VARCHAR}, 
-      #{storeCreatetime,jdbcType=TIMESTAMP}, #{storeUpdatetime,jdbcType=TIMESTAMP}, #{storeUpdatereason,jdbcType=VARCHAR}
+      #{storeCreatetime,jdbcType=TIMESTAMP}, #{storeUpdatetime,jdbcType=TIMESTAMP}, #{storeUpdatereason,jdbcType=VARCHAR}, #{storeTypeIcon,jdbcType=VARCHAR}
       )
   </insert>
   <insert id="insertSelective" parameterType="com.darly.dubbo.store.bean.StoreActiviyType" >
@@ -144,6 +145,9 @@
       <if test="storeUpdatereason != null" >
         STORE_UPDATEREASON,
       </if>
+      <if test="storeTypeIcon != null" >
+        STORE_TYPE_ICON,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="id != null" >
@@ -172,6 +176,9 @@
       </if>
       <if test="storeUpdatereason != null" >
         #{storeUpdatereason,jdbcType=VARCHAR},
+      </if>
+      <if test="storeTypeIcon != null" >
+        #{storeTypeIcon,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -211,6 +218,9 @@
       <if test="record.storeUpdatereason != null" >
         STORE_UPDATEREASON = #{record.storeUpdatereason,jdbcType=VARCHAR},
       </if>
+      <if test="record.storeTypeIcon != null" >
+        STORE_TYPE_ICON = #{record.storeTypeIcon,jdbcType=VARCHAR},
+      </if>
     </set>
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
@@ -226,7 +236,8 @@
       STORE_TYPE_OP = #{record.storeTypeOp,jdbcType=VARCHAR},
       STORE_CREATETIME = #{record.storeCreatetime,jdbcType=TIMESTAMP},
       STORE_UPDATETIME = #{record.storeUpdatetime,jdbcType=TIMESTAMP},
-      STORE_UPDATEREASON = #{record.storeUpdatereason,jdbcType=VARCHAR}
+      STORE_UPDATEREASON = #{record.storeUpdatereason,jdbcType=VARCHAR},
+      STORE_TYPE_ICON = #{record.storeTypeIcon,jdbcType=VARCHAR}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -258,6 +269,9 @@
       <if test="storeUpdatereason != null" >
         STORE_UPDATEREASON = #{storeUpdatereason,jdbcType=VARCHAR},
       </if>
+      <if test="storeTypeIcon != null" >
+        STORE_TYPE_ICON = #{storeTypeIcon,jdbcType=VARCHAR},
+      </if>
     </set>
     where ID = #{id,jdbcType=VARCHAR}
   </update>
@@ -270,7 +284,8 @@
       STORE_TYPE_OP = #{storeTypeOp,jdbcType=VARCHAR},
       STORE_CREATETIME = #{storeCreatetime,jdbcType=TIMESTAMP},
       STORE_UPDATETIME = #{storeUpdatetime,jdbcType=TIMESTAMP},
-      STORE_UPDATEREASON = #{storeUpdatereason,jdbcType=VARCHAR}
+      STORE_UPDATEREASON = #{storeUpdatereason,jdbcType=VARCHAR},
+      STORE_TYPE_ICON = #{storeTypeIcon,jdbcType=VARCHAR}
     where ID = #{id,jdbcType=VARCHAR}
   </update>
   <select resultMap="BaseResultMap" parameterType="com.darly.dubbo.store.bean.StoreActiviyTypeSearch" id="selectByExampleWithRowbounds" >

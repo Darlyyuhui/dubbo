@@ -22,6 +22,8 @@ public class StoreActiviyType implements Serializable {
 
     private String storeUpdatereason;
 
+    private String storeTypeIcon;
+
     private static final long serialVersionUID = 1L;
 
     public String getId() {
@@ -94,5 +96,13 @@ public class StoreActiviyType implements Serializable {
 
     public void setStoreUpdatereason(String storeUpdatereason) {
         this.storeUpdatereason = storeUpdatereason == null ? null : storeUpdatereason.trim();
+    }
+
+    public String getStoreTypeIcon() {
+        return storeTypeIcon;
+    }
+
+    public void setStoreTypeIcon(String storeTypeIcon) {
+        this.storeTypeIcon = storeTypeIcon;
     }
 }

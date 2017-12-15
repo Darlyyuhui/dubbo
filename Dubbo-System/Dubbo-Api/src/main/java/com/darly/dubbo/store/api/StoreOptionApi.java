@@ -7,7 +7,8 @@ import org.springframework.ui.ModelMap;
  * Date : 2017/11/9
  * TODO :
  */
-public interface StoreApi {
-     //商城首页接口
-     ModelMap storehome();
+public interface StoreOptionApi {
+     //商城管理首页
+     ModelMap optionIndex();
+
 }

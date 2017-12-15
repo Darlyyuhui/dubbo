@@ -2,8 +2,8 @@ package com.darly.dubbo.store.bean;
 
 import com.darly.dubbo.framework.base.Criterion;
 
+import java.sql.Date;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 public class StoreActiviyTypeSearch {
