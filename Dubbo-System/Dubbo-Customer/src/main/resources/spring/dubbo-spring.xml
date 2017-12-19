@@ -18,6 +18,7 @@
         <property name="locations">
             <list>
                 <value>classpath:dev/props/dubbo-consumer.properties</value>
+                <value>classpath:dev/props/log4j.properties</value>
             </list>
         </property>
     </bean>

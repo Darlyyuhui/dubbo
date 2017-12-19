@@ -28,7 +28,6 @@ import java.util.Map;
  */
 
 public class DubboAndroidListener implements LocationToolsListener {
-
     private WebView webView;
     private BaseWebView context;
     private String localKey = "http://file/";

@@ -29,9 +29,9 @@
     <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
     <![endif]-->
 
-    <script src="${root}/basejs/echarts.min.js"></script>
+    <script src="${resourceUrl}/basejs/echarts.min.js"></script>
     <!-- 引入 vintage 主题 -->
-    <script src="${root}/basejs/dark.js"></script>
+    <script src="${resourceUrl}/basejs/dark.js"></script>
 </head>
 <body>
 <tags:header/>

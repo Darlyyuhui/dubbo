@@ -1,17 +1,18 @@
-package com.darly.dubbo.mobile.session;
+package com.darly.dubbo.fileupload;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Properties;
 
 /**
- * 根据配置文件获取参数
  * Author : ZhangYuHui
- * Date : 2017/12/5
+ * Date : 2017/12/19
+ * TODO :
  */
-public class SessionConfig {
 
-    private static final String path = "dev/props/customer-session.properties";//从src的根目录开始
+public class FtpConfig {
+
+    private static final String path = "dev/props/ftp.properties";//从src的根目录开始
     private static final String encode = "UTF-8";//文件的编码格式
     private static Properties props = new Properties();
 
@@ -41,4 +42,6 @@ public class SessionConfig {
             return def;
         }
     }
+
+
 }

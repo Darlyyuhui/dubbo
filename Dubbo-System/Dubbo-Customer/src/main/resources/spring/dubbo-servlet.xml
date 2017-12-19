@@ -46,6 +46,15 @@
     <!-- 扫描任务 -->
     <context:component-scan base-package="com.darly.dubbo.mobile.session" />
 
+    <!-- 上传文件 -->
+    <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+        <property name="defaultEncoding" value="utf-8"/>
+        <!-- 最大内存大小 -->
+        <property name="maxInMemorySize" value="10240"/>
+        <!-- 最大文件大小，-1为不限制大小 -->
+        <property name="maxUploadSize" value="-1"/>
+    </bean>
+
     <!--<bean id="velocityConfig"-->
     <!--class="org.springframework.web.servlet.view.velocity.VelocityConfigurer">-->
     <!--<property name="resourceLoaderPath" value="/WEB-INF/views/page" />-->

@@ -10,5 +10,9 @@ import org.springframework.ui.ModelMap;
 public interface StoreOptionApi {
      //商城管理首页
      ModelMap optionIndex();
+     //商品录入
+     ModelMap productentry();
+     //活动录入
+     ModelMap activityentry();
 
 }

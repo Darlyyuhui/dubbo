@@ -405,7 +405,7 @@
                      </exclusion>
                  </exclusions>
              </dependency>
-         </dependencies>
+        </dependencies>
      </dependencyManagement>
     <profiles>
           <profile>

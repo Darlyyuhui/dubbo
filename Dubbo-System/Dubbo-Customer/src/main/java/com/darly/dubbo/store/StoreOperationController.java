@@ -32,4 +32,24 @@ public class StoreOperationController extends BaseSecurityController {
         model.putAll(storeOptionApi.optionIndex());
         return (String) model.get(ApplicationConst.getForwordUrl());
     }
+    /** 商品录入界面
+     * @param model
+     * @return
+     */
+    @RequestMapping(value = {"/productentry"}, method = RequestMethod.GET)
+    public String productentry(ModelMap model){
+        hasUser(model);
+        model.putAll(storeOptionApi.productentry());
+        return (String) model.get(ApplicationConst.getForwordUrl());
+    }
+    /** 活动录入界面
+     * @param model
+     * @return
+     */
+    @RequestMapping(value = {"/activityentry"}, method = RequestMethod.GET)
+    public String activityentry(ModelMap model){
+        hasUser(model);
+        model.putAll(storeOptionApi.activityentry());
+        return (String) model.get(ApplicationConst.getForwordUrl());
+    }
 }
