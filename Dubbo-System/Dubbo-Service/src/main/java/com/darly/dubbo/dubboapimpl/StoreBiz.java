@@ -4,10 +4,7 @@ import com.darly.dubbo.cfg.ApplicationConst;
 import com.darly.dubbo.framework.base.BaseController;
 import com.darly.dubbo.store.api.StoreApi;
 import com.darly.dubbo.store.bean.*;
-import com.darly.dubbo.store.service.StoreActiviyTypeService;
-import com.darly.dubbo.store.service.StoreBlogService;
-import com.darly.dubbo.store.service.StoreProductService;
-import com.darly.dubbo.store.service.StoreSaleService;
+import com.darly.dubbo.store.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.ModelMap;
@@ -34,7 +31,8 @@ public class StoreBiz extends BaseController implements StoreApi {
     StoreActiviyTypeService storeActiviyTypeService;
     @Autowired
     StoreProductService storeProductService;
-
+    @Autowired
+    StoreImageService storeImageService;
     @Override
     public ModelMap storehome() {
         ModelMap model = new ModelMap();
@@ -89,6 +87,12 @@ public class StoreBiz extends BaseController implements StoreApi {
             for (StoreSale sale:sales) {
                 StoreProduct product = storeProductService.getById(sale.getProductId());//所有商品
                 if (product!=null){
+                    StoreImageExample example = new StoreImageExample();
+                    example.createCriteria().andProductTypeIdEqualTo(product.getId());
+                    List<StoreImage> list = storeImageService.selectByExample(example);
+                    if (list!=null&&list.size()>0) {
+                        product.setProductImage(list.get(0).getImageUrl());
+                    }
                     products.add(product);
                 }
             }

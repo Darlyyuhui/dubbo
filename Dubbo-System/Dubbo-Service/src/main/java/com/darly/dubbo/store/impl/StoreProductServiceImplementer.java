@@ -26,6 +26,16 @@ public class StoreProductServiceImplementer extends AbstractBaseService<StorePro
         return this.storeProductMapper.selectByExample(null);
     }
 
+    @Override
+    public boolean insertProduct(StoreProduct product) {
+        int t =  storeProductMapper.insertSelective(product);
+        if (t>0){
+            return true;
+        }else {
+            return false;
+        }
+    }
+
     protected BaseMapper<StoreProduct, StoreProductSearch> getBaseMapper() {
         return this.storeProductMapper;
     }

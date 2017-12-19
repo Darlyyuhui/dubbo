@@ -1,6 +1,8 @@
 package com.darly.dubbo.fileupload;
 
-import org.springframework.ui.ModelMap;
+import com.darly.dubbo.store.bean.StoreImage;
+
+import java.util.List;
 
 /**
  * Author : ZhangYuHui
@@ -9,5 +11,5 @@ import org.springframework.ui.ModelMap;
  */
 public interface FileUploadApi {
      //图片上传，后台交互接口
-     ModelMap fileupload();
+     boolean fileupload(List<StoreImage> images);
 }

@@ -1,4 +1,4 @@
-package com.darly.dubbo.fileupload;
+package com.darly.dubbo.fileupload.cfg;
 
 import org.apache.commons.net.ftp.FTPClient;
 import org.apache.commons.net.ftp.FTPReply;

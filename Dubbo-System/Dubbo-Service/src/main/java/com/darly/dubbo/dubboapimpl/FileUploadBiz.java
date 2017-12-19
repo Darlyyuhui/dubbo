@@ -1,13 +1,11 @@
 package com.darly.dubbo.dubboapimpl;
 
-import com.darly.dubbo.cfg.ApplicationConst;
 import com.darly.dubbo.fileupload.FileUploadApi;
 import com.darly.dubbo.framework.base.BaseController;
-import com.darly.dubbo.store.bean.StoreProduct;
-import com.darly.dubbo.store.service.StoreProductService;
+import com.darly.dubbo.store.bean.StoreImage;
+import com.darly.dubbo.store.service.StoreImageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.ui.ModelMap;
 
 import java.util.List;
 
@@ -19,17 +17,19 @@ import java.util.List;
 @Service
 public class FileUploadBiz extends BaseController implements FileUploadApi {
     @Autowired
-    StoreProductService storeProductService;
+    StoreImageService storeImageService;
 
     @Override
-    public ModelMap fileupload() {
-        ModelMap model = new ModelMap();
-        model.addAttribute(ApplicationConst.getApplicationName(), applicationName);
-        model.addAttribute(ApplicationConst.getResourceUrl(), resourceUrl);
-        model.addAttribute(ApplicationConst.getPageTitle(), "商品录入");
-        model.addAttribute(ApplicationConst.getForwordUrl(),"storeoperation/product_entry");
-        List<StoreProduct> types = storeProductService.findAll();
-        model.addAttribute("STOREPRODUCT",types);
-        return model;
+    public boolean fileupload(List<StoreImage> images) {
+        if (images == null) {
+            return false;
+        }
+        for (StoreImage image : images) {
+            boolean ist = storeImageService.insertImage(image);
+            if (!ist){
+                return false;
+            }
+        }
+        return true;
     }
 }

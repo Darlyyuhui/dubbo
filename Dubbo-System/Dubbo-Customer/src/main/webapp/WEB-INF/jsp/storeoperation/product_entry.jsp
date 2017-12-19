@@ -28,7 +28,16 @@
     <!-- CSS App -->
     <link rel="stylesheet" href="${resourceUrl}/store/option/style.css">
     <link rel="stylesheet" href="${resourceUrl}/store/option/themes/flat-blue.css">
-
+    <style type="text/css">
+        .box{position:absolute;width:600px;left:50%;height:auto;z-index:100;background-color:#fff;border:1px #ddd solid;padding:1px;}
+        .box h2{height:25px;font-size:14px;background-color:#aaa;position:relative;padding-left:10px;line-height:25px;color:#fff;}
+        .box h2 a{position:absolute;right:5px;font-size:12px;color:#fff;}
+        .box .list{padding:10px;}
+        .box .list li{height:24px;line-height:24px;}
+        .box .list li span{margin:0 5px 0 0;font-family:"宋体";font-size:12px;font-weight:400;color:#ddd;}
+        .showbtn {font:bold 24px '微软雅黑';}
+        #bg{background-color:#666;position:absolute;z-index:99;left:0;top:0;display:none;width:100%;height:100%;opacity:0.5;filter: alpha(opacity=50);-moz-opacity: 0.5;}
+    </style>
 </head>
 <body class="flat-blue">
 <div class="app-container">
@@ -190,6 +199,9 @@
                                 <div class="card-title">
                                     <div class="title">商品列表</div>
                                 </div>
+                                <div class="text-right " style="padding: 1.2em 25px;">
+                                    <button onclick="add()">新增商品</button>
+                                </div>
                             </div>
                             <div class="card-body">
                                 <table class="datatable table table-striped" cellspacing="0" width="100%">
@@ -237,13 +249,6 @@
                         </div>
                     </div>
                 </div>
-                <form action="${root}/file/upload" method="post" enctype="multipart/form-data">
-                    <label>用户名：</label><input type="text" name="name"/><br/>
-                    <label>密 码：</label><input type="password" name="pwd"/><br/>
-                    <label>头 像1</label><input type="file" name="file"/><br/>
-                    <label>头 像2</label><input type="file" name="file"/><br/>
-                    <input type="submit" value="提  交"/>
-                </form>
             </div>
         </div>
         <!-- footer content -->
@@ -260,6 +265,36 @@
     </div>
 </div>
 
+<div id="bg"></div>
+<div class="box" style="display:none">
+    <div class="card">
+        <div class="card-header">
+            <div class="card-title">
+                <div class="title">新增商品</div>
+            </div>
+            <div class="text-right " style="padding: 1.2em 25px;">
+                <button onclick="closeer()">关闭</button>
+            </div>
+        </div>
+        <div class="card-body">
+            <form action="${root}/option/addProducet" method="post" enctype="multipart/form-data">
+                <label>商品名称：</label><input type="text" name="productName"/><br/>
+                <label>商品现价：</label><input type="text" name="productPrice"/><br/>
+                <label>商品原价：</label><input type="text" name="productOrprice"/><br/>
+                <label>商品描述：</label><input type="text" name="productDesc"/><br/>
+                <label>商品图片：</label><input type="file" name="file"/><br/>
+                <label>商品图片：</label><input type="file" name="file"/><br/>
+                <label>商品图片：</label><input type="file" name="file"/><br/>
+                <label>商品图片：</label><input type="file" name="file"/><br/>
+                <label>商品库存：</label><input type="text" name="productNum"/><br/>
+                <label>商品星评：</label><input type="text" name="productStars"/><br/>
+                <input type="submit" onclick="" value="提  交"/>
+            </form>
+        </div>
+    </div>
+</div>
+
+
 <script src="${resourceUrl}/store/js/vendors/jquery/jquery.min.js"></script>
 <script src="${resourceUrl}/store/js/vendors/bootstrap.min.js"></script>
 <!-- Javascript -->
@@ -267,5 +302,26 @@
 
 <script src="${resourceUrl}/store/js/jquery.dataTables.min.js"></script>
 <script src="${resourceUrl}/store/js/dataTables.bootstrap.min.js"></script>
+
+<script type="text/javascript">
+    function add() {
+        $("#bg").css({
+            display: "block", height: $(document).height()
+        });
+        var $box = $('.box');
+        $box.css({
+            //设置弹出层距离左边的位置
+            width:$("body").width()-60+ "px",
+            left: 60 + "px",
+            //设置弹出层距离上面的位置
+            top: 60 + "px",
+            display: "block"
+        });
+    }
+    function closeer() {
+        //点击关闭按钮的时候，遮罩层关闭
+        $("#bg,.box").css("display", "none");
+    }
+</script>
 </body>
 </html>

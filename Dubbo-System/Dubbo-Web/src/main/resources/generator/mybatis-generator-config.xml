@@ -18,16 +18,16 @@
                         connectionURL="jdbc:mysql://localhost:3306/darlybase" userId="root"
                         password="darly" />
 
-        <javaModelGenerator targetPackage="com.mybatis.entity"
+        <javaModelGenerator targetPackage="com.darly.dubbo.store.bean"
                             targetProject="D:/Dubbo/Dubbo-System/Dubbo-Web/src/main/java">
             <!-- 是否针对string类型的字段在set的时候进行trim调用 -->
             <property name="trimStrings" value="true" />
         </javaModelGenerator>
-        <sqlMapGenerator targetPackage="com.mybatis.mapper" targetProject="D:/Dubbo/Dubbo-System/Dubbo-Web/src/main/java" />
-        <javaClientGenerator targetPackage="com.mybatis.mapper"
+        <sqlMapGenerator targetPackage="com.darly.dubbo.store.dao" targetProject="D:/Dubbo/Dubbo-System/Dubbo-Web/src/main/java" />
+        <javaClientGenerator targetPackage="com.darly.dubbo.store.dao"
                              targetProject="D:/Dubbo/Dubbo-System/Dubbo-Web/src/main/java" type="XMLMAPPER" />
 
-        <table tableName="store_sale" domainObjectName="StoreSale">
+        <table tableName="store_image" domainObjectName="StoreImage">
 
         </table>
 

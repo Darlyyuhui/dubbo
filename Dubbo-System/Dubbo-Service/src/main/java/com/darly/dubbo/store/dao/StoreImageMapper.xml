@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.darly.dubbo.store.dao.StoreImageMapper" >
+  <resultMap id="BaseResultMap" type="com.darly.dubbo.store.bean.StoreImage" >
+    <id column="ID" property="id" jdbcType="VARCHAR" />
+    <result column="PRODUCT_TYPE_ID" property="productTypeId" jdbcType="VARCHAR" />
+    <result column="IMAGE_URL" property="imageUrl" jdbcType="VARCHAR" />
+    <result column="IMAGE_DESC" property="imageDesc" jdbcType="VARCHAR" />
+    <result column="IMAGE_UPLOADTIME" property="imageUploadtime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    ID, PRODUCT_TYPE_ID, IMAGE_URL, IMAGE_DESC, IMAGE_UPLOADTIME
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.darly.dubbo.store.bean.StoreImageExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from store_image
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from store_image
+    where ID = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from store_image
+    where ID = #{id,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.darly.dubbo.store.bean.StoreImageExample" >
+    delete from store_image
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.darly.dubbo.store.bean.StoreImage" >
+    insert into store_image (ID, PRODUCT_TYPE_ID, IMAGE_URL, 
+      IMAGE_DESC, IMAGE_UPLOADTIME)
+    values (#{id,jdbcType=VARCHAR}, #{productTypeId,jdbcType=VARCHAR}, #{imageUrl,jdbcType=VARCHAR}, 
+      #{imageDesc,jdbcType=VARCHAR}, #{imageUploadtime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.darly.dubbo.store.bean.StoreImage" >
+    insert into store_image
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        ID,
+      </if>
+      <if test="productTypeId != null" >
+        PRODUCT_TYPE_ID,
+      </if>
+      <if test="imageUrl != null" >
+        IMAGE_URL,
+      </if>
+      <if test="imageDesc != null" >
+        IMAGE_DESC,
+      </if>
+      <if test="imageUploadtime != null" >
+        IMAGE_UPLOADTIME,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="productTypeId != null" >
+        #{productTypeId,jdbcType=VARCHAR},
+      </if>
+      <if test="imageUrl != null" >
+        #{imageUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="imageDesc != null" >
+        #{imageDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="imageUploadtime != null" >
+        #{imageUploadtime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.darly.dubbo.store.bean.StoreImageExample" resultType="java.lang.Integer" >
+    select count(*) from store_image
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update store_image
+    <set >
+      <if test="record.id != null" >
+        ID = #{record.id,jdbcType=VARCHAR},
+      </if>
+      <if test="record.productTypeId != null" >
+        PRODUCT_TYPE_ID = #{record.productTypeId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.imageUrl != null" >
+        IMAGE_URL = #{record.imageUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="record.imageDesc != null" >
+        IMAGE_DESC = #{record.imageDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="record.imageUploadtime != null" >
+        IMAGE_UPLOADTIME = #{record.imageUploadtime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update store_image
+    set ID = #{record.id,jdbcType=VARCHAR},
+      PRODUCT_TYPE_ID = #{record.productTypeId,jdbcType=VARCHAR},
+      IMAGE_URL = #{record.imageUrl,jdbcType=VARCHAR},
+      IMAGE_DESC = #{record.imageDesc,jdbcType=VARCHAR},
+      IMAGE_UPLOADTIME = #{record.imageUploadtime,jdbcType=TIMESTAMP}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.darly.dubbo.store.bean.StoreImage" >
+    update store_image
+    <set >
+      <if test="productTypeId != null" >
+        PRODUCT_TYPE_ID = #{productTypeId,jdbcType=VARCHAR},
+      </if>
+      <if test="imageUrl != null" >
+        IMAGE_URL = #{imageUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="imageDesc != null" >
+        IMAGE_DESC = #{imageDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="imageUploadtime != null" >
+        IMAGE_UPLOADTIME = #{imageUploadtime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.darly.dubbo.store.bean.StoreImage" >
+    update store_image
+    set PRODUCT_TYPE_ID = #{productTypeId,jdbcType=VARCHAR},
+      IMAGE_URL = #{imageUrl,jdbcType=VARCHAR},
+      IMAGE_DESC = #{imageDesc,jdbcType=VARCHAR},
+      IMAGE_UPLOADTIME = #{imageUploadtime,jdbcType=TIMESTAMP}
+    where ID = #{id,jdbcType=VARCHAR}
+  </update>
+  <select resultMap="BaseResultMap" parameterType="com.darly.dubbo.store.bean.StoreImageExample" id="selectByExampleWithRowbounds" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from store_image
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+</mapper>

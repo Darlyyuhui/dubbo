@@ -1,14 +1,22 @@
 package com.darly.dubbo.security;
 
+import com.darly.dubbo.fileupload.cfg.FTPUtils;
 import com.darly.dubbo.framework.systemlog.Logger;
 import com.darly.dubbo.framework.systemlog.constant.Constant;
+import com.darly.dubbo.mobile.cfg.ResponseUtil;
 import com.darly.dubbo.security.securitycfg.SpringSecurityUtils;
 import com.darly.dubbo.security.securitycfg.UserDetials;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.ui.ModelMap;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.ServletContext;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import java.io.File;
+import java.io.IOException;
+import java.util.*;
 
 /**
  * Author : ZhangYuHui
@@ -65,4 +73,36 @@ public class BaseSecurityController {
         }
         return false;
     }
+
+
+    /** 图片上传到FTP服务器中
+     * @param file 传递的图片信息集合
+     * @throws IOException
+     */
+    public List<String> fileupload(MultipartFile[] file) {
+        //获得物理路径webapp所在路径
+        Map<String, Object> resultMap = new HashMap<String, Object>();
+        List<String> listImagePath=new ArrayList<String>();
+        try {
+            FTPUtils t = new FTPUtils();
+            for (MultipartFile mf : file) {
+                if(!mf.isEmpty()){
+                    // 获取旧的名字
+                    String oldName = mf.getOriginalFilename();
+                    //新名字
+                    String uuid = UUID.randomUUID().toString().replaceAll("-","");
+                    String filename = uuid+oldName.substring(oldName.lastIndexOf("."));
+                    File dest = new File(filename);
+                    mf.transferTo(dest);
+                    t.upload(dest);
+                    listImagePath.add(t.getFtpsavepath()+"/"+filename);
+                }
+            }
+            t.destroy();
+            return listImagePath;
+        }catch (Exception e){
+            return null;
+        }
+    }
+
 }

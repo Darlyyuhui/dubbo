@@ -1,4 +1,4 @@
-package com.darly.dubbo.fileupload;
+package com.darly.dubbo.fileupload.cfg;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;

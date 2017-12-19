@@ -1,5 +1,6 @@
 package com.darly.dubbo.store.api;
 
+import com.darly.dubbo.store.bean.StoreProduct;
 import org.springframework.ui.ModelMap;
 
 /**
@@ -14,5 +15,6 @@ public interface StoreOptionApi {
      ModelMap productentry();
      //活动录入
      ModelMap activityentry();
-
+     //錄入商品
+    boolean insertProduct(StoreProduct product);
 }

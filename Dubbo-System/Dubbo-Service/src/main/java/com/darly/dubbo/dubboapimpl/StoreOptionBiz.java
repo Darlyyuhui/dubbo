@@ -3,12 +3,8 @@ package com.darly.dubbo.dubboapimpl;
 import com.darly.dubbo.cfg.ApplicationConst;
 import com.darly.dubbo.framework.base.BaseController;
 import com.darly.dubbo.store.api.StoreOptionApi;
-import com.darly.dubbo.store.bean.StoreActiviyType;
-import com.darly.dubbo.store.bean.StoreProduct;
-import com.darly.dubbo.store.service.StoreActiviyTypeService;
-import com.darly.dubbo.store.service.StoreBlogService;
-import com.darly.dubbo.store.service.StoreProductService;
-import com.darly.dubbo.store.service.StoreSaleService;
+import com.darly.dubbo.store.bean.*;
+import com.darly.dubbo.store.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.ModelMap;
@@ -31,6 +27,8 @@ public class StoreOptionBiz extends BaseController implements StoreOptionApi {
     StoreActiviyTypeService storeActiviyTypeService;
     @Autowired
     StoreProductService storeProductService;
+    @Autowired
+    StoreImageService storeImageService;
 
 
     @Override
@@ -51,9 +49,20 @@ public class StoreOptionBiz extends BaseController implements StoreOptionApi {
 
         model.addAttribute(ApplicationConst.getPageTitle(), "商品录入");
         model.addAttribute(ApplicationConst.getForwordUrl(),"storeoperation/product_entry");
-        List<StoreProduct> types = storeProductService.findAll();
-        model.addAttribute("STOREPRODUCT",types);
-
+        StoreProductSearch storeProductSearch = new StoreProductSearch();
+        storeProductSearch.setOrderByClause("ID DESC");
+        List<StoreProduct> types = storeProductService.selectByExample(storeProductSearch);
+        if (types!=null){
+            for (StoreProduct product: types) {
+                StoreImageExample example = new StoreImageExample();
+                example.createCriteria().andProductTypeIdEqualTo(product.getId());
+                List<StoreImage> list = storeImageService.selectByExample(example);
+                if (list!=null&&list.size()>0) {
+                    product.setProductImage(list.get(0).getImageUrl());
+                }
+            }
+            model.addAttribute("STOREPRODUCT",types);
+        }
         return model;
     }
 
@@ -65,8 +74,19 @@ public class StoreOptionBiz extends BaseController implements StoreOptionApi {
 
         model.addAttribute(ApplicationConst.getPageTitle(), "活动录入");
         model.addAttribute(ApplicationConst.getForwordUrl(),"storeoperation/activity_entry");
-        List<StoreActiviyType> types = storeActiviyTypeService.findAll();
+
+        StoreActiviyTypeSearch storeActiviyTypeSearch = new StoreActiviyTypeSearch();
+        storeActiviyTypeSearch.setOrderByClause("ID DESC");
+        List<StoreActiviyType> types = storeActiviyTypeService.selectByExample(storeActiviyTypeSearch);
         model.addAttribute("STORETYPE",types);
         return model;
+    }
+
+    @Override
+    public boolean insertProduct(StoreProduct product) {
+        if (product == null) {
+            return false;
+        }
+        return storeProductService.insertProduct(product);
     }
 }
