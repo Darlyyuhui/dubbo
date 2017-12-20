@@ -26,6 +26,7 @@
     <!-- CSS App -->
     <link rel="stylesheet" href="${resourceUrl}/store/option/style.css">
     <link rel="stylesheet" href="${resourceUrl}/store/option/themes/flat-blue.css">
+    <link rel="stylesheet" href="${resourceUrl}/store/css/storeproduct.css">
 
 </head>
 <body class="flat-blue">
@@ -125,13 +126,13 @@
                             <i class="fa fa-times icon"></i>
                         </button>
                     </div>
-                    <ul class="nav navbar-nav">
-                        <li class="active">
+                    <ul  class="nav navbar-nav">
+                        <li id="baseset" class="active">
                             <a href="javascript:darly().onstoreoperationindex('${root}');">
                                 <span class="icon fa fa-tachometer"></span><span class="title">基础设置</span>
                             </a>
                         </li>
-                        <li class="panel panel-default dropdown">
+                        <li id="storeset" class="panel panel-default dropdown">
                             <a data-toggle="collapse" href="#dropdown-element">
                                 <span class="icon fa fa-desktop"></span><span class="title">商城模块</span>
                             </a>
@@ -149,7 +150,7 @@
                                 </div>
                             </div>
                         </li>
-                        <li class="panel panel-default dropdown">
+                        <li id="actset" class="panel panel-default dropdown">
                             <a data-toggle="collapse" href="#dropdown-table">
                                 <span class="icon fa fa-table"></span><span class="title">活动模块</span>
                             </a>
@@ -295,8 +296,23 @@
 <script src="${resourceUrl}/store/js/vendors/bootstrap.min.js"></script>
 <!-- Javascript -->
 <script src="${resourceUrl}/store/js/bootstrapstore.js"></script>
+<script src="${resourceUrl}/store/js/storeproduct.js"></script>
 <script src="${resourceUrl}/store/js/chartjs.js"></script>
 <script src="${resourceUrl}/store/js/Chart.min.js"></script>
+
+
+<script type="text/javascript">
+    function  cler(id) {
+        console.log("cler"+id)
+    }
+    function  good(id) {
+        console.log("good"+id)
+    }
+    function  del(id) {
+        console.log("del"+id)
+    }
+</script>
+
 
 </body>
 </html>

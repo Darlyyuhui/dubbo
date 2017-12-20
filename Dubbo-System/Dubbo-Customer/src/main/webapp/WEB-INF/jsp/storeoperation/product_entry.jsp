@@ -192,9 +192,13 @@
         <!-- Main Content -->
         <div class="container-fluid">
             <div class="side-body">
+                <div id="sbring"  class="page-title" style="text-align: center;display: none">
+                    <span id="sbringtext" class="title" style="color: darkred">保存成功</span>
+                </div>
                 <div class="row">
                     <div class="col-xs-12">
                         <div class="card">
+
                             <div class="card-header">
                                 <div class="card-title">
                                     <div class="title">商品列表</div>
@@ -322,6 +326,17 @@
         //点击关闭按钮的时候，遮罩层关闭
         $("#bg,.box").css("display", "none");
     }
+
+   window.onload = function () {
+        if(${addProducet !=null}){
+            $("#sbring").show();
+            $("#sbringtext").text("${addProducet}");
+           $("#sbring").fadeOut(3000);
+           setTimeout(function(){$("#sbring").hide()},3000)
+       }else {
+           $("#sbring").hide();
+       }
+   }
 </script>
 </body>
 </html>
