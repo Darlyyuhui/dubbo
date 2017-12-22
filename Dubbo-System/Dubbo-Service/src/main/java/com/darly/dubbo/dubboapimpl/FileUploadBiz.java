@@ -32,4 +32,12 @@ public class FileUploadBiz extends BaseController implements FileUploadApi {
         }
         return true;
     }
+
+    @Override
+    public boolean fileupload(StoreImage image) {
+        if (image == null) {
+            return false;
+        }
+        return storeImageService.insertImage(image);
+    }
 }

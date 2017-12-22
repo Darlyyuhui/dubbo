@@ -104,5 +104,31 @@ public class BaseSecurityController {
             return null;
         }
     }
+    /** 图片上传到FTP服务器中
+     * @param file 传递的图片信息集合
+     * @throws IOException
+     */
+    public String fileupload(MultipartFile file) {
+        //获得物理路径webapp所在路径
+        String load = null;
+        try {
+            FTPUtils t = new FTPUtils();
+                if(!file.isEmpty()){
+                    // 获取旧的名字
+                    String oldName = file.getOriginalFilename();
+                    //新名字
+                    String uuid = UUID.randomUUID().toString().replaceAll("-","");
+                    String filename = uuid+oldName.substring(oldName.lastIndexOf("."));
+                    File dest = new File(filename);
+                    file.transferTo(dest);
+                    t.upload(dest);
+                    load = t.getFtpsavepath()+"/"+filename;
+                }
+            t.destroy();
+            return load;
+        }catch (Exception e){
+            return null;
+        }
+    }
 
 }

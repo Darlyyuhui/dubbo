@@ -12,4 +12,6 @@ import java.util.List;
 public interface FileUploadApi {
      //图片上传，后台交互接口
      boolean fileupload(List<StoreImage> images);
+     //图片上传一张
+     boolean fileupload(StoreImage image);
 }

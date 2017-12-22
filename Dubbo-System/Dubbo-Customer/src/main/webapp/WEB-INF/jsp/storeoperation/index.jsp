@@ -27,7 +27,16 @@
     <link rel="stylesheet" href="${resourceUrl}/store/option/style.css">
     <link rel="stylesheet" href="${resourceUrl}/store/option/themes/flat-blue.css">
     <link rel="stylesheet" href="${resourceUrl}/store/css/storeproduct.css">
-
+    <style type="text/css">
+        .box{position:absolute;width:600px;left:50%;height:auto;z-index:100;background-color:#fff;border:1px #ddd solid;padding:1px;}
+        .box h2{height:25px;font-size:14px;background-color:#aaa;position:relative;padding-left:10px;line-height:25px;color:#fff;}
+        .box h2 a{position:absolute;right:5px;font-size:12px;color:#fff;}
+        .box .list{padding:10px;}
+        .box .list li{height:24px;line-height:24px;}
+        .box .list li span{margin:0 5px 0 0;font-family:"宋体";font-size:12px;font-weight:400;color:#ddd;}
+        .showbtn {font:bold 24px '微软雅黑';}
+        #bg{background-color:#666;position:absolute;z-index:99;left:0;top:0;display:none;width:100%;height:100%;opacity:0.5;filter: alpha(opacity=50);-moz-opacity: 0.5;}
+    </style>
 </head>
 <body class="flat-blue">
 <div class="app-container">
@@ -302,15 +311,76 @@
 
 
 <script type="text/javascript">
-    function  cler(id) {
-        console.log("cler"+id)
+    //---新增商品链接---
+    function productadd(title) {
+        $("#classtitle").text(title);
+        $("#bg").css({
+            display: "block", height: $(document).height()
+        });
+        var $box = $('.box');
+        $box.css({
+            //设置弹出层距离左边的位置
+            width:$("body").width()-60+ "px",
+            left: 60 + "px",
+            //设置弹出层距离上面的位置
+            top: 60 + "px",
+            display: "block"
+        });
     }
-    function  good(id) {
-        console.log("good"+id)
+    <%--function productinsert() {--%>
+        <%--var form = new FormData(document.getElementById("former"));--%>
+        <%--$.ajax({--%>
+            <%--url: "${root}/option/addProduceter" ,//url--%>
+            <%--//几个参数需要注意一下--%>
+            <%--type: "POST",//方法类型--%>
+            <%--dataType: "json",//预期服务器返回的数据类型--%>
+            <%--data:form,--%>
+            <%--processData:false,--%>
+            <%--contentType:false,--%>
+            <%--success: function (result) {--%>
+                <%--console.log(result);--%>
+                <%--console.log(result.resDesc);--%>
+                <%--productcloseer();--%>
+                <%--//在这里需要刷新Table表格数据--%>
+                <%--darly().ontable('${root}');--%>
+
+                <%--$("#sbring").show();--%>
+                <%--$("#sbringtext").text(result.resDesc);--%>
+                <%--$("#sbring").fadeOut(3000);--%>
+                <%--setTimeout(function(){$("#sbring").hide()},3000)--%>
+            <%--},--%>
+            <%--error : function() {--%>
+                <%--console.log("请求异常,检查网络和参数！");--%>
+            <%--}--%>
+        <%--});--%>
+    <%--}--%>
+    //关闭浮层
+//    function productcloseer() {
+//        //点击关闭按钮的时候，遮罩层关闭
+//        $("#bg,.box").css("display", "none");
+//    }
+    //进行判断是否成功
+    window.onload = function () {
+        if(${addProducet !=null}){
+            $("#sbring").show();
+            $("#sbringtext").text("${addProducet}");
+            $("#sbring").fadeOut(3000);
+            setTimeout(function(){$("#sbring").hide()},3000)
+        }else {
+            $("#sbring").hide();
+        }
     }
-    function  del(id) {
-        console.log("del"+id)
-    }
+
+
+//    //商品表格操作
+//    function  productedit(id) {
+//        console.log("productedit"+id)
+//    }
+//    //移除商品
+//    function  productdelete(id) {
+//        console.log("productdelete"+id)
+//
+//    }
 </script>
 
 

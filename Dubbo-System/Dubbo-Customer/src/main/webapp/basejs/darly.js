@@ -26,6 +26,7 @@ darly.prototype = {
         $("#actset").removeClass("active");
 
         $(".side-body").empty();
+
         $(".side-body").append($("<div id=\"sbring\"  class=\"page-title\" style=\"text-align: center;display: none\">\n" +
         "    <span id=\"sbringtext\" class=\"title\" style=\"color: darkred\">保存成功</span>\n" +
         "</div>\n" +
@@ -37,21 +38,21 @@ darly.prototype = {
         "                    <div class=\"title\">商品列表</div>\n" +
         "                </div>\n" +
         "                <div class=\"text-right \" style=\"padding: 1.2em 25px;\">\n" +
-        "                    <button onclick=\"add()\">新增商品</button>\n" +
+        "                    <button onclick=\"productadd('新增')\">新增商品</button>\n" +
         "                </div>\n" +
         "            </div>\n" +
         "<div class=\"search-area\">\n" +
         "    <div class=\"sa-ele\">\n" +
-        "        <label class=\"se-title\">名称:</label>\n" +
-        "        <input class=\"se-con\" name=\"name\"/>\n" +
+        "        <label class=\"se-title\">商品名称:</label>\n" +
+        "        <input class=\"se-con\" name=\"productName\"/>\n" +
         "    </div>\n" +
         "    <div class=\"sa-ele\">\n" +
-        "        <label class=\"se-title\">使用说明:</label>\n" +
-        "        <input class=\"se-con\" name=\"info\"/>\n" +
+        "        <label class=\"se-title\">商品描述:</label>\n" +
+        "        <input class=\"se-con\" name=\"productDesc\"/>\n" +
         "    </div>\n" +
         "    <div class=\"sa-ele\">\n" +
-        "        <label class=\"se-title\">url:</label>\n" +
-        "        <input class=\"se-con\" name=\"url\"/>\n" +
+        "        <label class=\"se-title\">商品图片:</label>\n" +
+        "        <input class=\"se-con\" name=\"productImage\"/>\n" +
         "    </div>\n" +
         "    <div class=\"sa-ele\">\n" +
         "        <button class=\"search-action\">搜索</button>\n" +
@@ -65,7 +66,77 @@ darly.prototype = {
         "        </div>\n" +
         "    </div>\n" +
         "</div>"));
+        //假如弹出新增商品功能页面
+        $(".side-body").append($("<div id=\"bg\"></div>\n" +
+            "<div class=\"box\" style=\"display:none\">\n" +
+            "    <div class=\"card\">\n" +
+            "        <div class=\"card-header\">\n" +
+            "            <div class=\"card-title\">\n" +
+            "                <div id='classtitle' class=\"title\">新增商品</div>\n" +
+            "            </div>\n" +
+            "            <div class=\"text-right \" style=\"padding: 1.2em 25px;\">\n" +
+            "                <button onclick=\"darly().productcloseer()\">关闭</button>\n" +
+            "            </div>\n" +
+            "        </div>\n" +
+            "        <div class=\"card-body\">\n" +
+            "            <form id=\"former\" onsubmit=\"return false\" action=\"##\"  method=\"post\" enctype=\"multipart/form-data\">\n" +
+            "                <label style='display: none'>商品id：</label><input type=\"text\" id='productid' name=\"id\" style='display: none'/><br/>\n" +
+            "                <label style='display: none'>商品图片：</label><input type=\"text\" id='productImage' name=\"productImage\" style='display: none'/><br/>\n" +
+            "                <label>商品名称：</label><input type=\"text\" id='productName' name=\"productName\"/><br/>\n" +
+            "                <label>商品现价：</label><input type=\"text\" id='productPrice' name=\"productPrice\"/><br/>\n" +
+            "                <label>商品原价：</label><input type=\"text\" id='productOrprice' name=\"productOrprice\"/><br/>\n" +
+            "                <label>商品描述：</label><input type=\"text\" id='productDesc' name=\"productDesc\"/><br/>\n" +
+            "                <label>商品图片：</label><input type=\"file\" id='file1' name=\"file\"/><br/>\n" +
+            "                <label>商品图片：</label><input type=\"file\" id='file2' name=\"file\"/><br/>\n" +
+            "                <label>商品图片：</label><input type=\"file\" id='file3' name=\"file\"/><br/>\n" +
+            "                <label>商品图片：</label><input type=\"file\" id='file4' name=\"file\"/><br/>\n" +
+            "                <label>商品库存：</label><input type=\"text\" id='productNum' name=\"productNum\"/><br/>\n" +
+            "                <label>商品星评：</label><input type=\"text\" id='productStars' name=\"productStars\"/><br/>\n" +
+            "                <p><input type=\"button\" value=\"提交\" onclick=\"darly().productinsert('"+root+"')\"/>&nbsp;&nbsp;&nbsp;&nbsp;<input type=\"reset\" value=\"重置\"></p>\n"+
+            "            </form>\n" +
+            "        </div>\n" +
+            "    </div>\n" +
+            "</div>"));
+        this.ontable(root);
+    },
 
+    productinsert:function (root) {
+        var form = new FormData(document.getElementById("former"));
+        console.log(this.root+"/option/addProduceter");
+        $.ajax({
+            url: root+"/option/addProduceter" ,
+            //几个参数需要注意一下
+            type: "POST",//方法类型
+            dataType: "json",//预期服务器返回的数据类型
+            data:form,
+            processData:false,
+            contentType:false,
+            success: function (result) {
+                //在这里需要刷新Table表格数据
+                $('table').GM('refreshGrid');
+                $('table').GM('clear');
+                //在这里需要刷新Table表格数据
+                console.log(result);
+                console.log(result.resDesc);
+                darly().productcloseer();
+                $("#sbring").show();
+                $("#sbringtext").text(result.resDesc);
+                $("#sbring").fadeOut(3000);
+                setTimeout(function(){$("#sbring").hide()},3000)
+
+            },
+            error : function() {
+                console.log("请求异常,检查网络和参数！");
+            }
+        });
+    },
+
+    productcloseer:function () {
+    //点击关闭按钮的时候，遮罩层关闭
+    $("#bg,.box").css("display", "none");
+},
+
+    ontable:function (root){
         var table = document.querySelector('table');
         if (table!=null){
             table.GM({
@@ -77,27 +148,30 @@ darly.prototype = {
                 ,ajax_url: root+'/option/productentryser'
                 ,ajax_type: 'POST'
                 ,query: {pluginId: 1}
+                ,supportAdjust: false
+                ,supportAutoOrder: false
                 ,pageSize:50
                 ,columnData: [{
+                    key: 'id',
+                    remind: 'id',
+                    text: '商品编号',
+                    sorting: ''
+                },{
                     key: 'productName',
                     remind: 'productName',
                     text: '商品名称',
-                    sorting: ''
                 },{
                     key: 'productPrice',
                     remind: 'productPrice',
                     text: '商品现价',
-                    sorting: ''
                 },{
                     key: 'productOrprice',
                     remind: 'productOrprice',
                     text: '商品原价',
-                    sorting: ''
                 },{
                     key: 'productDesc',
                     remind: 'productDesc',
                     text: '商品简介',
-                    sorting: ''
                 },{
                     key: 'productImage',
                     remind: 'productImage',
@@ -116,9 +190,9 @@ darly.prototype = {
                     text: '操作',
                     template: function(action, rowObject){
                         var id = "\'"+rowObject.id+"\'";
-                        return '<button style="margin: 5px" onclick="cler('+id+')">查看</button>' +
-                            '<button  style="margin: 5px" onclick="good('+id+')">编辑</button>'
-                            +'<button style="margin: 5px" onclick="del('+id+')">删除</button>';
+                        var roots = "\'"+root+"\'";
+                        return '<button  style="margin: 5px" onclick="darly().productedit('+roots+','+id+')">编辑</button>'
+                            +'<button style="margin: 5px" onclick="darly().productdelete('+roots+','+id+')">删除</button>';
                     }
                 }
                 ]
@@ -158,9 +232,9 @@ darly.prototype = {
             // 绑定搜索事件
             document.querySelector('.search-action').addEventListener('click', function () {
                 var _query = {
-                    name: document.querySelector('[name="name"]').value,
-                    info: document.querySelector('[name="info"]').value,
-                    url: document.querySelector('[name="url"]').value
+                    productName: document.querySelector('[name="productName"]').value,
+                    productDesc: document.querySelector('[name="productDesc"]').value,
+                    productImage: document.querySelector('[name="productImage"]').value
                 };
                 table.GM('setQuery', _query).GM('refreshGrid', function () {
                     console.log('搜索成功...');
@@ -169,31 +243,101 @@ darly.prototype = {
 
             // 绑定重置
             document.querySelector('.reset-action').addEventListener('click', function () {
-                document.querySelector('[name="name"]').value = '';
-                document.querySelector('[name="info"]').value = '';
-                document.querySelector('[name="url"]').value = '';
+                document.querySelector('[name="productName"]').value = '';
+                document.querySelector('[name="productDesc"]').value = '';
+                document.querySelector('[name="productImage"]').value = '';
             });
         }
     },
+
+
+    //商品編輯操作
+    productedit: function(root,id) {
+        var data = new FormData();
+        data.append("ID",id);
+        //调用后台接口，找到對應商品
+        $.ajax({
+            url: root+"/option/productedit" ,
+            //几个参数需要注意一下
+            type: "POST",//方法类型
+            dataType: "json",//预期服务器返回的数据类型
+            data:data,
+            processData:false,
+            contentType:false,
+            success: function (result) {
+                console.log(result);
+                //给form表单设置值
+                $("#productid").val(result.result.id);
+                $("#productName").val(result.result.productName);
+                $("#productPrice").val(result.result.productPrice);
+                $("#productOrprice").val(result.result.productOrprice);
+                $("#productDesc").val(result.result.productDesc);
+                $("#productImage").val(result.result.productImage);
+                $("#productNum").val(result.result.productNum);
+                $("#productStars").val(result.result.productStars);
+                productadd("编辑");
+            },
+            error : function() {
+                console.log("请求异常,检查网络和参数！");
+            }
+        });
+
+
+    },
+    //移除商品
+    productdelete:function(root,id) {
+
+        var data = new FormData();
+        data.append("ID",id);
+        //调用后台接口，进行数据删除操作
+        $.ajax({
+            url: root+"/option/productdelete" ,
+            //几个参数需要注意一下
+            type: "POST",//方法类型
+            dataType: "json",//预期服务器返回的数据类型
+            data:data,
+            processData:false,
+            contentType:false,
+            success: function (result) {
+                //在这里需要刷新Table表格数据
+                $('table').GM('refreshGrid');
+                $('table').GM('clear');
+                //在这里需要刷新Table表格数据
+                console.log(result);
+                darly().productcloseer();
+                $("#sbring").show();
+                $("#sbringtext").text(result.resDesc);
+                $("#sbring").fadeOut(3000);
+                setTimeout(function(){$("#sbring").hide()},3000)
+            },
+            error : function() {
+                console.log("请求异常,检查网络和参数！");
+            }
+        });
+
+    },
+
+
+
+
     //活动录入页面
     onactivityentry:function (root) {
         //window.location.href = root+"/option/activityentry";
         $("#baseset").removeClass("active");
         $("#storeset").removeClass("active");
         $("#actset").addClass("active");
-
         $(".side-body").empty();
         $(".side-body").append($("<div class=\"search-area\">\n" +
             "    <div class=\"sa-ele\">\n" +
-            "        <label class=\"se-title\">名称:</label>\n" +
+            "        <label class=\"se-title\">类型:</label>\n" +
             "        <input class=\"se-con\" name=\"name\"/>\n" +
             "    </div>\n" +
             "    <div class=\"sa-ele\">\n" +
-            "        <label class=\"se-title\">使用说明:</label>\n" +
+            "        <label class=\"se-title\">简介:</label>\n" +
             "        <input class=\"se-con\" name=\"info\"/>\n" +
             "    </div>\n" +
             "    <div class=\"sa-ele\">\n" +
-            "        <label class=\"se-title\">url:</label>\n" +
+            "        <label class=\"se-title\">负责人:</label>\n" +
             "        <input class=\"se-con\" name=\"url\"/>\n" +
             "    </div>\n" +
             "    <div class=\"sa-ele\">\n" +
@@ -213,12 +357,18 @@ darly.prototype = {
                 ,ajax_url: root+'/option/activityentryser'
                 ,ajax_type: 'POST'
                 ,query: {pluginId: 1}
+                ,supportAdjust: false
+                ,supportAutoOrder: false
                 ,pageSize:50
                 ,columnData: [{
+                    key: 'id',
+                    remind: 'id',
+                    text: '编号',
+                    sorting: ''
+                },{
                     key: 'storeType',
                     remind: 'storeType',
-                    text: '类型',
-                    sorting: ''
+                    text: '类型'
                 },{
                     key: 'storeDesc',
                     remind: 'storeDesc',
@@ -227,7 +377,6 @@ darly.prototype = {
                     key: 'storeStartTime',
                     remind: 'storeStartTime',
                     text: '开启时间',
-                    sorting: 'DESC',
                     template: function(storeStartTime, rowObject){
                         return new Date(storeStartTime).format('YYYY-MM-DD HH:mm:ss');
                     }
@@ -235,7 +384,6 @@ darly.prototype = {
                     key: 'storeEndTime',
                     remind: 'storeEndTime',
                     text: '结束时间',
-                    sorting: 'DESC',
                     template: function(storeEndTime, rowObject){
                         return new Date(storeEndTime).format('YYYY-MM-DD HH:mm:ss');
                     }
@@ -247,7 +395,6 @@ darly.prototype = {
                     key: 'storeCreatetime',
                         remind: 'storeCreatetime',
                         text: '创建时间',
-                        sorting: 'DESC',
                         template: function(storeCreatetime, rowObject){
                         return new Date(storeCreatetime).format('YYYY-MM-DD HH:mm:ss');
                     }
@@ -255,7 +402,6 @@ darly.prototype = {
                     key: 'storeUpdatetime',
                         remind: 'storeUpdatetime',
                         text: '更新时间',
-                        sorting: 'DESC',
                         template: function(storeUpdatetime, rowObject){
                         return new Date(storeUpdatetime).format('YYYY-MM-DD HH:mm:ss');
                         }
@@ -340,9 +486,9 @@ darly.prototype = {
             // 绑定搜索事件
             document.querySelector('.search-action').addEventListener('click', function () {
                 var _query = {
-                    name: document.querySelector('[name="name"]').value,
-                    info: document.querySelector('[name="info"]').value,
-                    url: document.querySelector('[name="url"]').value
+                    storeType: document.querySelector('[name="name"]').value,
+                    storeDesc: document.querySelector('[name="info"]').value,
+                    storeTypeOp: document.querySelector('[name="url"]').value
                 };
                 table.GM('setQuery', _query).GM('refreshGrid', function () {
                     console.log('搜索成功...');

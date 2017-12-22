@@ -1,7 +1,10 @@
 $(function() {
-  var ctx, data, myLineChart, options;
-  Chart.defaults.global.responsive = true;
-  ctx = $('#line-chart').get(0).getContext('2d');
+    var ctx, data, myLineChart, options;
+    ctx = $('#line-chart').get(0).getContext('2d');
+    if (ctx ==null){
+        return;
+    }
+    Chart.defaults.global.responsive = true;
   options = {
     scaleShowGridLines: true,
     scaleGridLineColor: "rgba(0,0,0,.05)",
@@ -48,8 +51,11 @@ $(function() {
 
 $(function() {
   var ctx, data, myBarChart, option_bars;
-  Chart.defaults.global.responsive = true;
-  ctx = $('#bar-chart').get(0).getContext('2d');
+    ctx = $('#bar-chart').get(0).getContext('2d');
+    if (ctx ==null){
+        return;
+    }
+    Chart.defaults.global.responsive = true;
   option_bars = {
     scaleBeginAtZero: true,
     scaleShowGridLines: true,
@@ -92,8 +98,11 @@ $(function() {
 
 $(function() {
   var ctx, data, myBarChart, option_bars;
-  Chart.defaults.global.responsive = true;
-  ctx = $('#radar-chart').get(0).getContext('2d');
+    ctx = $('#radar-chart').get(0).getContext('2d');
+    if (ctx ==null){
+        return;
+    }
+    Chart.defaults.global.responsive = true;
   option_bars = {
     scaleBeginAtZero: true,
     scaleShowGridLines: true,
@@ -136,8 +145,11 @@ $(function() {
 
 $(function() {
   var ctx, data, myPolarAreaChart, option_bars;
-  Chart.defaults.global.responsive = true;
-  ctx = $('#polar-area-chart').get(0).getContext('2d');
+    ctx = $('#polar-area-chart').get(0).getContext('2d');
+    if (ctx ==null){
+        return;
+    }
+    Chart.defaults.global.responsive = true;
   option_bars = {
     scaleShowLabelBackdrop: true,
     scaleBackdropColor: "rgba(255,255,255,0.75)",
@@ -187,8 +199,11 @@ $(function() {
 
 $(function() {
   var ctx, data, myLineChart, options;
-  Chart.defaults.global.responsive = true;
-  ctx = $('#pie-chart').get(0).getContext('2d');
+    ctx = $('#pie-chart').get(0).getContext('2d');
+    if (ctx ==null){
+        return;
+    }
+    Chart.defaults.global.responsive = true;
   options = {
     showScale: false,
     scaleShowGridLines: false,
@@ -230,8 +245,11 @@ $(function() {
 
 $(function() {
   var ctx, data, myLineChart, options;
-  Chart.defaults.global.responsive = true;
-  ctx = $('#jumbotron-line-chart').get(0).getContext('2d');
+    ctx = $('#jumbotron-line-chart').get(0).getContext('2d');
+    if (ctx ==null){
+        return;
+    }
+    Chart.defaults.global.responsive = true;
   options = {
     showScale: false,
     scaleShowGridLines: true,

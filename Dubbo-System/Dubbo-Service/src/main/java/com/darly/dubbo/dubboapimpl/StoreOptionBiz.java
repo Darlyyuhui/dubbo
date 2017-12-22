@@ -2,6 +2,7 @@ package com.darly.dubbo.dubboapimpl;
 
 import com.darly.dubbo.cfg.ApplicationConst;
 import com.darly.dubbo.framework.base.BaseController;
+import com.darly.dubbo.framework.common.StringDiyUtils;
 import com.darly.dubbo.store.api.StoreOptionApi;
 import com.darly.dubbo.store.bean.*;
 import com.darly.dubbo.store.service.*;
@@ -42,7 +43,7 @@ public class StoreOptionBiz extends BaseController implements StoreOptionApi {
     }
 
     @Override
-    public ModelMap productentry() {
+    public ModelMap productentry(String value) {
         ModelMap model = new ModelMap();
         model.addAttribute(ApplicationConst.getApplicationName(), applicationName);
         model.addAttribute(ApplicationConst.getResourceUrl(), resourceUrl);
@@ -50,7 +51,34 @@ public class StoreOptionBiz extends BaseController implements StoreOptionApi {
         model.addAttribute(ApplicationConst.getPageTitle(), "商品录入");
         model.addAttribute(ApplicationConst.getForwordUrl(),"storeoperation/product_entry");
         StoreProductSearch storeProductSearch = new StoreProductSearch();
-        storeProductSearch.setOrderByClause("ID DESC");
+        if (StringDiyUtils.isEmpty(value)){
+            storeProductSearch.setOrderByClause("ID DESC");
+        }else {
+            String [] keys = value.split("&");
+            for (String key:keys) {
+                if (key.split("=").length>1) {
+                    String vale = key.split("=")[1];
+                    if (!StringDiyUtils.isEmpty(vale)) {
+                        if (key.contains("id")) {
+                            //這裡添加productName條件
+                            storeProductSearch.setOrderByClause("id "+vale);
+                        }
+                        if (key.contains("productName")) {
+                            //這裡添加productName條件
+                            storeProductSearch.createCriteria().andProductNameLike("%"+vale+"%");
+                        }
+                        if (key.contains("productDesc")) {
+                            //這裡添加productName條件
+                            storeProductSearch.createCriteria().andProductDescLike("%"+vale+"%");
+                        }
+                        if (key.contains("productImage")) {
+                            //這裡添加productName條件
+                            storeProductSearch.createCriteria().andProductImageLike("%"+vale+"%");
+                        }
+                    }
+                }
+            }
+        }
         List<StoreProduct> types = storeProductService.selectByExample(storeProductSearch);
         if (types!=null){
             for (StoreProduct product: types) {
@@ -67,16 +95,42 @@ public class StoreOptionBiz extends BaseController implements StoreOptionApi {
     }
 
     @Override
-    public ModelMap activityentry() {
+    public ModelMap activityentry(String value) {
         ModelMap model = new ModelMap();
         model.addAttribute(ApplicationConst.getApplicationName(), applicationName);
         model.addAttribute(ApplicationConst.getResourceUrl(), resourceUrl);
 
         model.addAttribute(ApplicationConst.getPageTitle(), "活动录入");
         model.addAttribute(ApplicationConst.getForwordUrl(),"storeoperation/activity_entry");
-
         StoreActiviyTypeSearch storeActiviyTypeSearch = new StoreActiviyTypeSearch();
-        storeActiviyTypeSearch.setOrderByClause("ID DESC");
+        if (StringDiyUtils.isEmpty(value)){
+            storeActiviyTypeSearch.setOrderByClause("ID DESC");
+        }else {
+            String [] keys = value.split("&");
+            for (String key:keys) {
+                if (key.split("=").length>1) {
+                    String vale = key.split("=")[1];
+                    if (!StringDiyUtils.isEmpty(vale)) {
+                        if (key.contains("id")) {
+                            //這裡添加productName條件
+                            storeActiviyTypeSearch.setOrderByClause("id "+vale);
+                        }
+                        if (key.contains("storeType")) {
+                            //這裡添加productName條件
+                            storeActiviyTypeSearch.createCriteria().andStoreTypeLike("%"+vale+"%");
+                        }
+                        if (key.contains("storeDesc")) {
+                            //這裡添加productName條件
+                            storeActiviyTypeSearch.createCriteria().andStoreDescLike("%"+vale+"%");
+                        }
+                        if (key.contains("storeTypeOp")) {
+                            //這裡添加productName條件
+                            storeActiviyTypeSearch.createCriteria().andStoreTypeOpLike("%"+vale+"%");
+                        }
+                    }
+                }
+            }
+        }
         List<StoreActiviyType> types = storeActiviyTypeService.selectByExample(storeActiviyTypeSearch);
         model.addAttribute("STORETYPE",types);
         return model;
@@ -88,5 +142,55 @@ public class StoreOptionBiz extends BaseController implements StoreOptionApi {
             return false;
         }
         return storeProductService.insertProduct(product);
+    }
+
+    @Override
+    public boolean updateProduct(StoreProduct product) {
+        if (product == null){
+            return false;
+        }
+        int t = storeProductService.updateById(product);
+        if (t>0){
+            return true;
+        }else {
+            return false;
+        }
+    }
+
+    @Override
+    public void deleteImage(String id) {
+        if (StringDiyUtils.isEmpty(id)){
+            return;
+        }
+        StoreImageExample example = new StoreImageExample();
+        example.createCriteria().andProductTypeIdEqualTo(id);
+        storeImageService.deleteByExample(example);
+    }
+
+    @Override
+    public StoreProduct productedit(String id) {
+        if (StringDiyUtils.isEmpty(id)){
+            return null;
+        }
+       StoreProduct product=  storeProductService.getById(id);
+        StoreImageExample example = new StoreImageExample();
+        example.createCriteria().andProductTypeIdEqualTo(id);
+        List<StoreImage> images = storeImageService.selectByExample(example);
+        if (images!=null&&images.size()>0){
+            product.setProductImage(images.get(0).getImageUrl());
+        }
+        return product;
+    }
+
+    @Override
+    public boolean productdelete(String id) {
+        if (StringDiyUtils.isEmpty(id)){
+            return false;
+        }
+        if (storeProductService.deleteById(id)>0){
+            return true;
+        }else {
+            return false;
+        }
     }
 }
