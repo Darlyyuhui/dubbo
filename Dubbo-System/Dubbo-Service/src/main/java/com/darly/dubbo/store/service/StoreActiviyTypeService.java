@@ -14,4 +14,6 @@ import java.util.List;
  */
 public interface StoreActiviyTypeService extends BaseService<StoreActiviyType, StoreActiviyTypeSearch> {
     List<StoreActiviyType> findAll();
+
+    boolean insertActivity(StoreActiviyType type);
 }

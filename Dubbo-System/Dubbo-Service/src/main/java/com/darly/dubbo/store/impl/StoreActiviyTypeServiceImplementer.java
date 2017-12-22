@@ -28,6 +28,16 @@ public class StoreActiviyTypeServiceImplementer extends AbstractBaseService<Stor
         return this.storeActiviyTypeMapper.selectByExample(search);
     }
 
+    @Override
+    public boolean insertActivity(StoreActiviyType type) {
+        int t =  storeActiviyTypeMapper.insertSelective(type);
+        if (t>0){
+            return true;
+        }else {
+            return false;
+        }
+    }
+
     protected BaseMapper<StoreActiviyType, StoreActiviyTypeSearch> getBaseMapper() {
         return this.storeActiviyTypeMapper;
     }

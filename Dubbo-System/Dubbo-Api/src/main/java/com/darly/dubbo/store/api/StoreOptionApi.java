@@ -1,5 +1,6 @@
 package com.darly.dubbo.store.api;
 
+import com.darly.dubbo.store.bean.StoreActiviyType;
 import com.darly.dubbo.store.bean.StoreProduct;
 import org.springframework.ui.ModelMap;
 
@@ -28,4 +29,13 @@ public interface StoreOptionApi {
 
     //删除制定商品
     boolean productdelete(String id);
+    //编辑活动
+    StoreActiviyType activityedit(String id);
+    //删除活动
+    boolean activitydelete(String id);
+
+    //錄入活动
+    boolean insertActivity(StoreActiviyType type);
+    //活动更新
+    boolean updateActivity(StoreActiviyType type);
 }

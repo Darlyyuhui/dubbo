@@ -24,6 +24,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.lang.reflect.Field;
 import java.math.BigDecimal;
+import java.text.SimpleDateFormat;
 import java.util.*;
 
 /**
@@ -259,4 +260,157 @@ public class StoreOperationController extends BaseSecurityController {
         logger.info("-------->resultMap"+resultMap);
         ResponseUtil.printWriteResponse(request.getParameter("callback"), resultMap, response);
     }
+    /** 活动录入更新操作ajax
+     * @return
+     */
+    @RequestMapping(value = {"/activityinsert"}, method = RequestMethod.POST)
+    public void activityinsert(@RequestParam(value="file",required=false) MultipartFile[] file,HttpServletRequest request, HttpServletResponse response){
+        Map<String, Object> resultMap = new HashMap<String, Object>();
+        StoreActiviyType product = new StoreActiviyType();
+        try {
+            Field[] e = product.getClass().getDeclaredFields();
+            for (Field field:e) {
+                String name = field.getName();
+                if ("serialVersionUID".equals(name)){
+                    continue;
+                }
+                field.setAccessible(true);
+                String type = field.getType().toString();
+                if (type.contains("String")) {
+                    field.set(product, request.getParameter(name));
+                }else if (type.contains("Date")){
+                    SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd HH:mm:ss");
+                    field.set(product,dateFormat.parse(request.getParameter(name)));
+                }else {
+                    field.set(product,BigDecimal.valueOf(Double.parseDouble(request.getParameter(name))));
+                }
+            }
+            if (StringDiyUtils.isEmpty(product.getId())) {
+                product.setId(UuidGenerateUtil.getUUIDLong());
+                if (storeOptionApi.insertActivity(product)) {
+                    if (file!=null&&file.length>0) {
+                        for (MultipartFile multipartFile : file) {
+                            if (!multipartFile.isEmpty()) {
+                                //直接傳遞到數據庫保存
+                                StoreImage image = new StoreImage();
+                                image.setId(UuidGenerateUtil.getUUIDLong());
+                                image.setProductTypeId(product == null ? null : product.getId());
+                                image.setImageUrl(fileupload(multipartFile));
+                                image.setImageDesc("活动标签");
+                                image.setImageUploadtime(new Date());
+
+                                boolean isgood = fileUploadApi.fileupload(image);
+                                if (isgood) {
+                                    resultMap.put(ResponseUtil.RES_KEY_CODE, "200");
+                                    resultMap.put(ResponseUtil.RES_KEY_DESC, "活动和图片上传成功");
+                                } else {
+                                    resultMap.put(ResponseUtil.RES_KEY_CODE, "203");
+                                    resultMap.put(ResponseUtil.RES_KEY_DESC, "图片无法上传到数据库，请检查数据库连接");
+                                }
+                            }
+                        }
+                    }else {
+                        //沒有圖片
+                        resultMap.put(ResponseUtil.RES_KEY_CODE, "200");
+                        resultMap.put(ResponseUtil.RES_KEY_DESC, "活动上传成功");
+                    }
+                }else {
+                    resultMap.put(ResponseUtil.RES_KEY_CODE, "203");
+                    resultMap.put(ResponseUtil.RES_KEY_DESC, "活动无法上传到数据库，请检查数据库连接");
+                }
+            }else {
+                //--------------商品更新修改-------------------
+                if (storeOptionApi.updateActivity(product)) {
+                    //这里进行图片是否更新判断
+                    if (file!=null&&file.length>0){
+                        for (MultipartFile mf :file) {
+                            if (!mf.isEmpty()) {
+                                storeOptionApi.deleteImage(product.getId());
+                                break;
+                            }
+                        }
+                        for (MultipartFile mf :file) {
+                            if (!mf.isEmpty()) {
+                                //直接傳遞到數據庫保存
+                                StoreImage image = new StoreImage();
+                                image.setId(UuidGenerateUtil.getUUIDLong());
+                                image.setProductTypeId(product == null ? null : product.getId());
+                                image.setImageUrl(fileupload(mf));
+                                image.setImageDesc("活动图标更新");
+                                image.setImageUploadtime(new Date());
+                                if (fileUploadApi.fileupload(image)){
+                                    resultMap.put(ResponseUtil.RES_KEY_CODE, "200");
+                                    resultMap.put(ResponseUtil.RES_KEY_DESC, "活动和图片更新成功");
+                                }else {
+                                    resultMap.put(ResponseUtil.RES_KEY_CODE, "203");
+                                    resultMap.put(ResponseUtil.RES_KEY_DESC, "图片无法上传到数据库，请检查数据库连接");
+                                }
+                            }
+                        }
+                    }else {
+                        //没有图片
+                        resultMap.put(ResponseUtil.RES_KEY_CODE, "200");
+                        resultMap.put(ResponseUtil.RES_KEY_DESC, "活动更新成功");
+                    }
+                }else {
+                    resultMap.put(ResponseUtil.RES_KEY_CODE, "203");
+                    resultMap.put(ResponseUtil.RES_KEY_DESC, "活动无法编辑，请检查数据库连接");
+                }
+            }
+            ResponseUtil.printWriteResponse(request.getParameter("callback"), resultMap, response);
+        } catch (Exception var9) {
+            resultMap.put(ResponseUtil.RES_KEY_CODE, "203");
+            resultMap.put(ResponseUtil.RES_KEY_DESC, "参数传递错误，请检查参数");
+            ResponseUtil.printWriteResponse(request.getParameter("callback"), resultMap, response);
+        }
+    }
+    /** 商品移除操作ajax
+     */
+    @RequestMapping(value = {"/activitydelete"}, method = RequestMethod.POST)
+    public void activitydelete(HttpServletRequest request, HttpServletResponse response){
+        Map<String, Object> resultMap = new HashMap<String, Object>();
+        String id = request.getParameter("ID");
+        if (StringDiyUtils.isEmpty(id)){
+            resultMap.put(ResponseUtil.RES_KEY_CODE, "203");
+            resultMap.put(ResponseUtil.RES_KEY_DESC, "参数传递错误，请检查参数");
+
+        }else {
+            boolean ok = storeOptionApi.activitydelete(id);
+            if (ok){
+                storeOptionApi.deleteImage(id);
+                resultMap.put(ResponseUtil.RES_KEY_CODE, "200");
+                resultMap.put(ResponseUtil.RES_KEY_DESC, "活动删除成功");
+            }else {
+                resultMap.put(ResponseUtil.RES_KEY_CODE, "203");
+                resultMap.put(ResponseUtil.RES_KEY_DESC, "无法删除数据，请检查数据库连接");
+            }
+        }
+        ResponseUtil.printWriteResponse(request.getParameter("callback"), resultMap, response);
+    }
+    /** 商品移除操作ajax
+     */
+    @RequestMapping(value = {"/activityedit"}, method = RequestMethod.POST)
+    public void activityedit(HttpServletRequest request, HttpServletResponse response){
+        Map<String, Object> resultMap = new HashMap<String, Object>();
+        String id = request.getParameter("ID");
+        if (StringDiyUtils.isEmpty(id)){
+            resultMap.put(ResponseUtil.RES_KEY_CODE, "203");
+            resultMap.put(ResponseUtil.RES_KEY_DESC, "参数传递错误，请检查参数");
+        }else {
+            StoreActiviyType type = storeOptionApi.activityedit(id);
+            if (type!=null){
+                storeOptionApi.deleteImage(id);
+                resultMap.put(ResponseUtil.RES_KEY_CODE, "200");
+                resultMap.put(ResponseUtil.RES_KEY_DESC, "活动查询成功");
+                resultMap.put(ResponseUtil.RES_KEY_RESULT,type);
+            }else {
+                resultMap.put(ResponseUtil.RES_KEY_CODE, "203");
+                resultMap.put(ResponseUtil.RES_KEY_DESC, "无法删除数据，请检查数据库连接");
+            }
+        }
+        ResponseUtil.printWriteResponse(request.getParameter("callback"), resultMap, response);
+    }
+
+
+
 }

@@ -132,7 +132,18 @@ public class StoreOptionBiz extends BaseController implements StoreOptionApi {
             }
         }
         List<StoreActiviyType> types = storeActiviyTypeService.selectByExample(storeActiviyTypeSearch);
-        model.addAttribute("STORETYPE",types);
+        if (types!=null){
+            for (StoreActiviyType product: types) {
+                StoreImageExample example = new StoreImageExample();
+                example.createCriteria().andProductTypeIdEqualTo(product.getId());
+                List<StoreImage> list = storeImageService.selectByExample(example);
+                if (list!=null&&list.size()>0) {
+                    product.setStoreTypeIcon(list.get(0).getImageUrl());
+                }
+            }
+            model.addAttribute("STORETYPE",types);
+        }
+
         return model;
     }
 
@@ -188,6 +199,54 @@ public class StoreOptionBiz extends BaseController implements StoreOptionApi {
             return false;
         }
         if (storeProductService.deleteById(id)>0){
+            return true;
+        }else {
+            return false;
+        }
+    }
+
+    @Override
+    public StoreActiviyType activityedit(String id) {
+        if (StringDiyUtils.isEmpty(id)){
+            return null;
+        }
+        StoreActiviyType type=  storeActiviyTypeService.getById(id);
+        StoreImageExample example = new StoreImageExample();
+        example.createCriteria().andProductTypeIdEqualTo(id);
+        List<StoreImage> images = storeImageService.selectByExample(example);
+        if (images!=null&&images.size()>0){
+            type.setStoreTypeIcon(images.get(0).getImageUrl());
+        }
+        return type;
+    }
+
+    @Override
+    public boolean activitydelete(String id) {
+        if (StringDiyUtils.isEmpty(id)){
+            return false;
+        }
+        if (storeActiviyTypeService.deleteById(id)>0){
+            return true;
+        }else {
+            return false;
+        }
+    }
+
+    @Override
+    public boolean insertActivity(StoreActiviyType type) {
+        if (type == null) {
+            return false;
+        }
+        return storeActiviyTypeService.insertActivity(type);
+    }
+
+    @Override
+    public boolean updateActivity(StoreActiviyType type) {
+        if (type == null){
+            return false;
+        }
+        int t = storeActiviyTypeService.updateById(type);
+        if (t>0){
             return true;
         }else {
             return false;

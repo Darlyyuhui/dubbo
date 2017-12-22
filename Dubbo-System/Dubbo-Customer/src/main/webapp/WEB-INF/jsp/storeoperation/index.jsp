@@ -313,7 +313,7 @@
 <script type="text/javascript">
     //---新增商品链接---
     function productadd(title) {
-        $("#classtitle").text(title);
+        $("#classtitle").val(title);
         $("#bg").css({
             display: "block", height: $(document).height()
         });
