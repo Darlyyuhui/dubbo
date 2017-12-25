@@ -284,34 +284,37 @@ darly.prototype = {
     },
     //移除商品
     productdelete:function(root,id) {
-
-        var data = new FormData();
-        data.append("ID",id);
-        //调用后台接口，进行数据删除操作
-        $.ajax({
-            url: root+"/option/productdelete" ,
-            //几个参数需要注意一下
-            type: "POST",//方法类型
-            dataType: "json",//预期服务器返回的数据类型
-            data:data,
-            processData:false,
-            contentType:false,
-            success: function (result) {
-                //在这里需要刷新Table表格数据
-                $('table').GM('refreshGrid');
-                $('table').GM('clear');
-                //在这里需要刷新Table表格数据
-                console.log(result);
-                darly().productcloseer();
-                $("#sbring").show();
-                $("#sbringtext").text(result.resDesc);
-                $("#sbring").fadeOut(3000);
-                setTimeout(function(){$("#sbring").hide()},3000)
-            },
-            error : function() {
-                console.log("请求异常,检查网络和参数！");
-            }
-        });
+        if(confirm("确定要删除当前商品？")) {
+            var data = new FormData();
+            data.append("ID", id);
+            //调用后台接口，进行数据删除操作
+            $.ajax({
+                url: root + "/option/productdelete",
+                //几个参数需要注意一下
+                type: "POST",//方法类型
+                dataType: "json",//预期服务器返回的数据类型
+                data: data,
+                processData: false,
+                contentType: false,
+                success: function (result) {
+                    //在这里需要刷新Table表格数据
+                    $('table').GM('refreshGrid');
+                    $('table').GM('clear');
+                    //在这里需要刷新Table表格数据
+                    console.log(result);
+                    darly().productcloseer();
+                    $("#sbring").show();
+                    $("#sbringtext").text(result.resDesc);
+                    $("#sbring").fadeOut(3000);
+                    setTimeout(function () {
+                        $("#sbring").hide()
+                    }, 3000)
+                },
+                error: function () {
+                    console.log("请求异常,检查网络和参数！");
+                }
+            });
+        }
 
     },
     //活动录入页面
@@ -614,38 +617,35 @@ darly.prototype = {
     },
     //活动移除
     activitydelete:function(root,id) {
-
-
-
-
-        var data = new FormData();
-        data.append("ID",id);
-        //调用后台接口，进行数据删除操作
-        $.ajax({
-            url: root+"/option/activitydelete" ,
-            //几个参数需要注意一下
-            type: "POST",//方法类型
-            dataType: "json",//预期服务器返回的数据类型
-            data:data,
-            processData:false,
-            contentType:false,
-            success: function (result) {
-                //在这里需要刷新Table表格数据
-                $('table').GM('refreshGrid');
-                $('table').GM('clear');
-                //在这里需要刷新Table表格数据
-                console.log(result);
-                darly().productcloseer();
-                $("#sbring").show();
-                $("#sbringtext").text(result.resDesc);
-                $("#sbring").fadeOut(3000);
-                setTimeout(function(){$("#sbring").hide()},3000)
-            },
-            error : function() {
-                console.log("请求异常,检查网络和参数！");
-            }
-        });
-
+        if(confirm("确定要删除当前活动？")){
+            var data = new FormData();
+            data.append("ID",id);
+            //调用后台接口，进行数据删除操作
+            $.ajax({
+                url: root+"/option/activitydelete" ,
+                //几个参数需要注意一下
+                type: "POST",//方法类型
+                dataType: "json",//预期服务器返回的数据类型
+                data:data,
+                processData:false,
+                contentType:false,
+                success: function (result) {
+                    //在这里需要刷新Table表格数据
+                    $('table').GM('refreshGrid');
+                    $('table').GM('clear');
+                    //在这里需要刷新Table表格数据
+                    console.log(result);
+                    darly().productcloseer();
+                    $("#sbring").show();
+                    $("#sbringtext").text(result.resDesc);
+                    $("#sbring").fadeOut(3000);
+                    setTimeout(function(){$("#sbring").hide()},3000)
+                },
+                error : function() {
+                    console.log("请求异常,检查网络和参数！");
+                }
+            });
+        }
     },
 
     //活动绑定商品页面
