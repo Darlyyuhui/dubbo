@@ -122,7 +122,6 @@ darly.prototype = {
                 $("#sbringtext").text(result.resDesc);
                 $("#sbring").fadeOut(3000);
                 setTimeout(function(){$("#sbring").hide()},3000)
-
             },
             error : function() {
                 console.log("请求异常,检查网络和参数！");
@@ -130,9 +129,12 @@ darly.prototype = {
         });
     },
     productcloseer:function () {
-    //点击关闭按钮的时候，遮罩层关闭
-    $("#bg,.box").css("display", "none");
-},
+        if ($("#former")[0]){
+            $("#former")[0].reset();
+        }
+        //点击关闭按钮的时候，遮罩层关闭
+        $("#bg,.box").css("display", "none");
+    },
     ontable:function (root){
         var table = document.querySelector('table');
         if (table!=null){
@@ -147,6 +149,7 @@ darly.prototype = {
                 ,query: {pluginId: 1}
                 ,supportAdjust: false
                 ,supportAutoOrder: false
+                ,supportCheckbox: false
                 ,pageSize:50
                 ,columnData: [{
                     key: 'id',
@@ -188,7 +191,7 @@ darly.prototype = {
                     template: function(action, rowObject){
                         var id = "\'"+rowObject.id+"\'";
                         var roots = "\'"+root+"\'";
-                        return '<button  style="margin: 5px" onclick="darly().productedit('+roots+','+id+')">编辑</button>'
+                        return '<button class="productedit" style="margin: 5px" onclick="darly().productedit('+roots+','+id+')">编辑</button>'
                             +'<button style="margin: 5px" onclick="darly().productdelete('+roots+','+id+')">删除</button>';
                     }
                 }
@@ -402,6 +405,7 @@ darly.prototype = {
                 ,query: {pluginId: 1}
                 ,supportAdjust: false
                 ,supportAutoOrder: false
+                ,supportCheckbox: false
                 ,pageSize:50
                 ,columnData: [{
                     key: 'id',
@@ -610,6 +614,10 @@ darly.prototype = {
     },
     //活动移除
     activitydelete:function(root,id) {
+
+
+
+
         var data = new FormData();
         data.append("ID",id);
         //调用后台接口，进行数据删除操作
@@ -640,5 +648,300 @@ darly.prototype = {
 
     },
 
+    //活动绑定商品页面
+    onactivityproduct:function (root) {
+        $("#baseset").removeClass("active");
+        $("#storeset").removeClass("active");
+        $("#actset").addClass("active");
+        $(".side-body").empty();
+        $(".side-body").append($("<div id=\"sbring\"  class=\"page-title\" style=\"text-align: center;display: none\">\n" +
+            "    <span id=\"sbringtext\" class=\"title\" style=\"color: darkred\">保存成功</span>\n" +
+            "</div>\n" +
+            "<div class=\"row\">\n" +
+            "    <div class=\"col-xs-12\">\n" +
+            "        <div class=\"card\">\n" +
+            "            <div class=\"card-header\">\n" +
+            "                <div class=\"card-title\">\n" +
+            "                    <div class=\"title\">活动商品查看</div>\n" +
+            "                </div>\n" +
+            "            </div>\n" +
+            "            <div class=\"card-body\">\n" +
+            "                <table id='activityshow'>\n" +
+            "                </table>\n" +
+            "            </div>\n" +
+            "        </div>\n" +
+            "    </div>\n" +
+            "</div>"));
+        //假如弹出新增商品功能页面
+        $(".side-body").append($("<div id=\"bg\"></div>\n" +
+            "<div class=\"box\" style=\"display:none\">\n" +
+            "    <div class=\"card\">\n" +
+            "        <div class=\"card-header\">\n" +
+            "            <div class=\"card-title\">\n" +
+            "                <div id='classtitle' class=\"title\">参与活动的商品</div>\n" +
+            "            </div>\n" +
+            "            <div class=\"text-right \" style=\"padding: 1.2em 25px;\">\n" +
+            "                <button onclick=\"darly().productsave()\">保存</button>\n" +
+            "                <button onclick=\"darly().activityproductcloseer()\">关闭</button>\n" +
+            "            </div>\n" +
+            "        </div>\n" +
+            "        <div class=\"card-body\">\n" +
+            "                <table id='activityproduct'>\n" +
+            "                </table>\n" +
+            "        </div>\n" +
+            "    </div>\n" +
+            "</div>"));
 
+        var table = document.querySelector('#activityshow');
+        if (table!=null){
+            table.GM({
+                supportRemind: true
+                ,gridManagerName: 'test'
+                ,isCombSorting: true
+                ,supportAjaxPage:true
+                ,supportSorting: true
+                ,ajax_url: root+'/option/activityentryser'
+                ,ajax_type: 'POST'
+                ,query: {pluginId: 1}
+                ,supportAdjust: false
+                ,supportAutoOrder: false
+                ,supportCheckbox: false
+                ,pageSize:50
+                ,columnData: [{
+                    key: 'id',
+                    remind: 'id',
+                    text: '编号',
+                    sorting: ''
+                },{
+                    key: 'storeType',
+                    remind: 'storeType',
+                    text: '类型'
+                },{
+                    key: 'storeDesc',
+                    remind: 'storeDesc',
+                    text: '简介'
+                },{
+                    key: 'storeStartTime',
+                    remind: 'storeStartTime',
+                    text: '开启时间',
+                    template: function(storeStartTime, rowObject){
+                        return new Date(storeStartTime).format('YYYY-MM-DD HH:mm:ss');
+                    }
+                },{
+                    key: 'storeEndTime',
+                    remind: 'storeEndTime',
+                    text: '结束时间',
+                    template: function(storeEndTime, rowObject){
+                        return new Date(storeEndTime).format('YYYY-MM-DD HH:mm:ss');
+                    }
+                },{
+                    key: 'storeTypeOp',
+                    remind: 'storeTypeOp',
+                    text: '负责人'
+                },{
+                    key: 'storeCreatetime',
+                    remind: 'storeCreatetime',
+                    text: '创建时间',
+                    template: function(storeCreatetime, rowObject){
+                        return new Date(storeCreatetime).format('YYYY-MM-DD HH:mm:ss');
+                    }
+                },{
+                    key: 'storeUpdatetime',
+                    remind: 'storeUpdatetime',
+                    text: '更新时间',
+                    template: function(storeUpdatetime, rowObject){
+                        return new Date(storeUpdatetime).format('YYYY-MM-DD HH:mm:ss');
+                    }
+                },{
+                    key: 'storeUpdatereason',
+                    remind: 'storeUpdatereason',
+                    text: '原因'
+                }, {
+                    key: 'storeTypeIcon',
+                    remind:'storeTypeIcon',
+                    text:'图片'
+                },{
+                    key: 'action',
+                    remind: 'the action',
+                    width: '100px',
+                    text: '操作',
+                    template: function(action, rowObject){
+                        var id = "\'"+rowObject.id+"\'";
+                        var roots = "\'"+root+"\'";
+                        return '<button class="activityproductselect"  style="margin: 5px" onclick="darly().activityproductselect('+roots+','+id+')">查询</button>'
+                            +'<button  class="activityproductedit" style="margin: 5px" onclick="darly().activityproductedit('+roots+','+id+')">编辑</button>';
+                    }
+                }]
+                // 分页前事件
+                ,pagingBefore: function(query){
+                    console.log('pagingBefore', query);
+                }
+                // 分页后事件
+                ,pagingAfter: function(data){
+                    console.log('pagingAfter', data);
+                }
+                // 排序前事件
+                ,sortingBefore: function (data) {
+                    console.log('sortBefore', data);
+                }
+                // 排序后事件
+                ,sortingAfter: function (data) {
+                    console.log('sortAfter', data);
+                }
+                // 宽度调整前事件
+                ,adjustBefore: function (event) {
+                    console.log('adjustBefore', event);
+                }
+                // 宽度调整后事件
+                ,adjustAfter: function (event) {
+                    console.log('adjustAfter', event);
+                }
+                // 拖拽前事件
+                ,dragBefore: function (event) {
+                    console.log('dragBefore', event);
+                }
+                // 拖拽后事件
+                ,dragAfter: function (event) {
+                    console.log('dragAfter', event);
+                }
+            });
+            // 日期格式化,不是插件的代码,只用于处理时间格式化
+            Date.prototype.format = function(fmt){
+                var o = {
+                    "M+": this.getMonth() + 1, //月份
+                    "D+": this.getDate(), //日
+                    "d+": this.getDate(), //日
+                    "H+": this.getHours(), //小时
+                    "h+": this.getHours(), //小时
+                    "m+": this.getMinutes(), //分
+                    "s+": this.getSeconds(), //秒
+                    "q+": Math.floor((this.getMonth() + 3) / 3), //季度
+                    "S": this.getMilliseconds() //毫秒
+                };
+                if (/([Y,y]+)/.test(fmt)){
+                    fmt = fmt.replace(RegExp.$1, (this.getFullYear() + "").substr(4 - RegExp.$1.length));
+                }
+                for (var k in o){
+                    if(new RegExp("(" + k + ")").test(fmt)){
+                        fmt = fmt.replace(RegExp.$1, (RegExp.$1.length == 1) ? (o[k]) : (("00" + o[k]).substr(("" + o[k]).length)));
+                    }
+                }
+                return fmt;
+            };
+        }
+
+        var table = document.querySelector("#activityproduct");
+        if (table!=null){
+            table.GM({
+                supportRemind: true
+                ,gridManagerName: 'test'
+                ,isCombSorting: true
+                ,supportAjaxPage:true
+                ,supportSorting: true
+                ,ajax_url: root+'/option/actproduct'
+                ,ajax_type: 'POST'
+                ,query: {pluginId: 1}
+                ,supportAdjust: false
+                ,supportAutoOrder: false
+                ,supportCheckbox: true
+                ,pageSize:50
+                ,columnData: [{
+                    key: 'id',
+                    remind: 'id',
+                    text: '商品编号',
+                    sorting: ''
+                },{
+                    key: 'productName',
+                    remind: 'productName',
+                    text: '商品名称',
+                },{
+                    key: 'productPrice',
+                    remind: 'productPrice',
+                    text: '商品现价',
+                },{
+                    key: 'productOrprice',
+                    remind: 'productOrprice',
+                    text: '商品原价',
+                },{
+                    key: 'productDesc',
+                    remind: 'productDesc',
+                    text: '商品简介',
+                },{
+                    key: 'productImage',
+                    remind: 'productImage',
+                    text: '图片'
+                },{
+                    key: 'productNum',
+                    remind: 'productNum',
+                    text: '库存'
+                },{
+                    key: 'productStars',
+                    remind: 'productStars',
+                    text: '评分'
+                }]
+                // 分页前事件
+                ,pagingBefore: function(query){
+                    console.log('pagingBefore', query);
+                }
+                // 分页后事件
+                ,pagingAfter: function(data){
+                    console.log('pagingAfter', data);
+                }
+                // 排序前事件
+                ,sortingBefore: function (data) {
+                    console.log('sortBefore', data);
+                }
+                // 排序后事件
+                ,sortingAfter: function (data) {
+                    console.log('sortAfter', data);
+                }
+                // 宽度调整前事件
+                ,adjustBefore: function (event) {
+                    console.log('adjustBefore', event);
+                }
+                // 宽度调整后事件
+                ,adjustAfter: function (event) {
+                    console.log('adjustAfter', event);
+                }
+                // 拖拽前事件
+                ,dragBefore: function (event) {
+                    console.log('dragBefore', event);
+                }
+                // 拖拽后事件
+                ,dragAfter: function (event) {
+                    console.log('dragAfter', event);
+                }
+            });
+
+
+        }
+
+    },
+    activityproductselect:function (root,id) {
+            var table = document.querySelector("#activityproduct");
+            table.GM('refreshGrid', function () {
+                productadd('关联商品')
+            });
+    },
+    //点击编辑查看关联商品浮层
+    activityproductedit:function (root,id) {
+        var _query = {
+            id: id,
+        };
+        var table = document.querySelector("#activityproduct");
+        table.GM('setQuery', _query).GM('refreshGrid', function () {
+            productadd('关联商品')
+        });
+    },
+
+    //编辑关联商品后进行保存操作
+    productsave: function () {
+        //根据选中项插入到数据库中。
+    },
+    activityproductcloseer:function () {
+        var table = document.querySelector("#activityproduct");
+        table.GM('clear');
+        //点击关闭按钮的时候，遮罩层关闭
+        $("#bg,.box").css("display", "none");
+    },
 }

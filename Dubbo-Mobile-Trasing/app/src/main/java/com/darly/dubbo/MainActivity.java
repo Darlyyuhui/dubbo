@@ -49,6 +49,7 @@ public class MainActivity extends BaseActivity implements OnClickListener ,MainI
         title.setRightViewRightOneListener(this);
         pop = new OwnerPhotoPop(this);
         presenter = new MainPresenter(this);
+        presenter.startServer(this);
     }
 
     @Override

@@ -169,7 +169,7 @@
                                     <ul class="nav navbar-nav">
                                         <li><a href="javascript:darly().onactivityentry('${root}');">活动录入</a>
                                         </li>
-                                        <li><a href="#">暂未开通</a>
+                                        <li><a href="javascript:darly().onactivityproduct('${root}');">活动绑定</a>
                                         </li>
                                     </ul>
                                 </div>
@@ -313,17 +313,18 @@
 <script type="text/javascript">
     //---新增商品链接---
     function productadd(title) {
-        $("#classtitle").val(title);
+        $("#classtitle").html(title);
         $("#bg").css({
             display: "block", height: $(document).height()
         });
         var $box = $('.box');
         $box.css({
             //设置弹出层距离左边的位置
-            width:$("body").width()-60+ "px",
-            left: 60 + "px",
+            width:$("body").width()-100+ "px",
+            left: 80 + "px",
             //设置弹出层距离上面的位置
-            top: 60 + "px",
+            top: 80 + "px",
+            right:20+"px",
             display: "block"
         });
     }

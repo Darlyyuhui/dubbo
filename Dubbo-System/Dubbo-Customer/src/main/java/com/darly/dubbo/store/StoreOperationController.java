@@ -124,6 +124,9 @@ public class StoreOperationController extends BaseSecurityController {
             if (StringDiyUtils.isEmpty(product.getId())) {
                 product.setId(UuidGenerateUtil.getUUIDLong());
                 if (storeOptionApi.insertProduct(product)) {
+                    //沒有圖片
+                    resultMap.put(ResponseUtil.RES_KEY_CODE, "200");
+                    resultMap.put(ResponseUtil.RES_KEY_DESC, "商品上传成功");
                     if (file!=null&&file.length>0) {
                         for (MultipartFile multipartFile : file) {
                             if (!multipartFile.isEmpty()) {
@@ -157,6 +160,9 @@ public class StoreOperationController extends BaseSecurityController {
             }else {
                 //--------------商品更新修改-------------------
                 if (storeOptionApi.updateProduct(product)) {
+                    //防止图片为空
+                    resultMap.put(ResponseUtil.RES_KEY_CODE, "200");
+                    resultMap.put(ResponseUtil.RES_KEY_DESC, "商品更新成功");
                     //这里进行图片是否更新判断
                     if (file!=null&&file.length>0){
                         for (MultipartFile mf :file) {
@@ -223,7 +229,7 @@ public class StoreOperationController extends BaseSecurityController {
         }
         ResponseUtil.printWriteResponse(request.getParameter("callback"), resultMap, response);
     }
-    /** 商品移除操作ajax
+    /** 商品編輯操作ajax
      */
     @RequestMapping(value = {"/productedit"}, method = RequestMethod.POST)
     public void productedit(HttpServletRequest request, HttpServletResponse response){
@@ -241,7 +247,7 @@ public class StoreOperationController extends BaseSecurityController {
                 resultMap.put(ResponseUtil.RES_KEY_RESULT,product);
             }else {
                 resultMap.put(ResponseUtil.RES_KEY_CODE, "203");
-                resultMap.put(ResponseUtil.RES_KEY_DESC, "无法删除数据，请检查数据库连接");
+                resultMap.put(ResponseUtil.RES_KEY_DESC, "无法查询数据，请检查数据库连接");
             }
         }
         ResponseUtil.printWriteResponse(request.getParameter("callback"), resultMap, response);
@@ -288,6 +294,10 @@ public class StoreOperationController extends BaseSecurityController {
             if (StringDiyUtils.isEmpty(product.getId())) {
                 product.setId(UuidGenerateUtil.getUUIDLong());
                 if (storeOptionApi.insertActivity(product)) {
+                    //沒有圖片
+                    resultMap.put(ResponseUtil.RES_KEY_CODE, "200");
+                    resultMap.put(ResponseUtil.RES_KEY_DESC, "活动上传成功");
+
                     if (file!=null&&file.length>0) {
                         for (MultipartFile multipartFile : file) {
                             if (!multipartFile.isEmpty()) {
@@ -322,6 +332,8 @@ public class StoreOperationController extends BaseSecurityController {
                 //--------------商品更新修改-------------------
                 if (storeOptionApi.updateActivity(product)) {
                     //这里进行图片是否更新判断
+                    resultMap.put(ResponseUtil.RES_KEY_CODE, "200");
+                    resultMap.put(ResponseUtil.RES_KEY_DESC, "活动更新成功");
                     if (file!=null&&file.length>0){
                         for (MultipartFile mf :file) {
                             if (!mf.isEmpty()) {
@@ -411,6 +423,18 @@ public class StoreOperationController extends BaseSecurityController {
         ResponseUtil.printWriteResponse(request.getParameter("callback"), resultMap, response);
     }
 
-
+    /** ajax请求接口
+     * @return
+     */
+    @RequestMapping(value = {"/actproduct"}, method = RequestMethod.POST)
+    public void actproduct(@RequestBody String s, HttpServletRequest request, HttpServletResponse response){
+        List<StoreProduct> products = (List<StoreProduct>) storeOptionApi.actproduct(s);
+        Map<String, Object> resultMap = new HashMap<String, Object>();
+        resultMap.put("status", "success");
+        resultMap.put("totals", products.size());
+        resultMap.put("data", products);
+        logger.info("-------->resultMap"+resultMap);
+        ResponseUtil.printWriteResponse(request.getParameter("callback"), resultMap, response);
+    }
 
 }

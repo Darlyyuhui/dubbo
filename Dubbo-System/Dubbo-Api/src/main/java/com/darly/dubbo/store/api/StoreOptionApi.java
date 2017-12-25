@@ -4,6 +4,8 @@ import com.darly.dubbo.store.bean.StoreActiviyType;
 import com.darly.dubbo.store.bean.StoreProduct;
 import org.springframework.ui.ModelMap;
 
+import java.util.List;
+
 /**
  * Author : ZhangYuHui
  * Date : 2017/11/9
@@ -38,4 +40,6 @@ public interface StoreOptionApi {
     boolean insertActivity(StoreActiviyType type);
     //活动更新
     boolean updateActivity(StoreActiviyType type);
+    //获取活动对应商品集合
+    List<StoreProduct> actproduct(String s);
 }

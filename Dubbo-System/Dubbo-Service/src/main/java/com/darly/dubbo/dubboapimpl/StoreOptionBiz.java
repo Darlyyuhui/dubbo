@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.ModelMap;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -251,5 +252,41 @@ public class StoreOptionBiz extends BaseController implements StoreOptionApi {
         }else {
             return false;
         }
+    }
+
+    @Override
+    public List<StoreProduct> actproduct(String value) {
+        StoreSaleSearch storeSaleSearch = new StoreSaleSearch();
+        if (StringDiyUtils.isEmpty(value)){
+            storeSaleSearch.setOrderByClause("ID DESC");
+        }else {
+            String [] keys = value.split("&");
+            for (String key:keys) {
+                if (key.split("=").length>1) {
+                    String vale = key.split("=")[1];
+                    if (!StringDiyUtils.isEmpty(vale)) {
+                        if (key.contains("id")) {
+                            //這裡添加productName條件
+                            storeSaleSearch.createCriteria().andStoreTypeEqualTo(vale);
+                        }
+                    }
+                }
+            }
+        }
+        List<StoreSale> sales = storeSaleService.selectByExample(storeSaleSearch);
+        List<StoreProduct> products = new ArrayList<StoreProduct>();
+        for (StoreSale sale:sales) {
+            StoreProduct product = storeProductService.getById(sale.getProductId());
+            if (product!=null) {
+                StoreImageExample example = new StoreImageExample();
+                example.createCriteria().andProductTypeIdEqualTo(sale.getProductId());
+                List<StoreImage> list = storeImageService.selectByExample(example);
+                if (list != null && list.size() > 0) {
+                    product.setProductImage(list.get(0).getImageUrl());
+                }
+                products.add(product);
+            }
+        }
+        return products;
     }
 }

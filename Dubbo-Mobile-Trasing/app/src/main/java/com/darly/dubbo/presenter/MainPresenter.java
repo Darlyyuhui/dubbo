@@ -1,10 +1,15 @@
 package com.darly.dubbo.presenter;
 
+import android.content.Context;
+import android.content.Intent;
+
 import com.darly.common.ToastApp;
 import com.darly.common.retrofit.FrameListener;
 import com.darly.dubbo.MainActivity;
 import com.darly.dubbo.base.AppApplication;
 import com.darly.dubbo.biz.MainBiz;
+import com.darly.dubbo.server.MainServer;
+import com.darly.dubbo.server.OtherServer;
 import com.darly.dview.widget.loading.ShowLoading;
 
 /**
@@ -53,5 +58,13 @@ public class MainPresenter {
 
             }
         });
+    }
+    //启动两个服务进行测试
+    public void startServer(Context context) {
+        Intent i1 = new Intent(context, MainServer.class);
+        context.startService(i1);
+
+        Intent i2 = new Intent(context, OtherServer.class);
+        context.startService(i2);
     }
 }
