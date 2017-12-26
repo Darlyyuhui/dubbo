@@ -1,7 +1,9 @@
 package com.darly.dubbo.server;
 
+import android.app.ActivityManager;
 import android.app.Notification;
 import android.app.Service;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Handler;
 import android.os.IBinder;
@@ -14,11 +16,13 @@ import com.darly.dubbo.R;
 
 import java.util.Date;
 
-/** 主服务
+/**
+ * 主服务
+ *
  * @author Darly/张宇辉/2017/12/25 9:21
  * @version 1.0/com.darly.dubbo.server
  */
-public class MainServer  extends Service{
+public class MainServer extends Service {
     private Handler handler = new Handler() {
         public void handleMessage(android.os.Message msg) {
             switch (msg.what) {
@@ -35,7 +39,7 @@ public class MainServer  extends Service{
     /**
      * 使用aidl 启动Service2
      */
-    private StrongServer strongServer = new StrongServer.Stub(){
+    private StrongServer strongServer = new StrongServer.Stub() {
 
         @Override
         public void basicTypes(int anInt, long aLong, boolean aBoolean, float aFloat, double aDouble, String aString) throws RemoteException {
@@ -60,7 +64,7 @@ public class MainServer  extends Service{
      */
     @Override
     public void onTrimMemory(int level) {
-		/*
+        /*
 		 * 启动service2
 		 */
         startService2();
@@ -75,26 +79,22 @@ public class MainServer  extends Service{
 		/*
 		 * 此线程用监听Service2的状态
 		 */
-        new Thread() {
-            public void run() {
-                while (true) {
-                    boolean isRun = Utils.isServiceWork(MainServer.this,
-                            "com.darly.dubbo.server.OtherServer");
-                    if (!isRun) {
-                        Message msg = Message.obtain();
-                        msg.what = 1;
-                        handler.sendMessage(msg);
-                    }
-                    DLog.i("MainServer",isRun);
-                    try {
-                        Thread.sleep(5000);
-                    } catch (InterruptedException e) {
-                        // TODO Auto-generated catch block
-                        e.printStackTrace();
-                    }
-                }
+        while (true) {
+            boolean isRun = Utils.isServiceWork(MainServer.this,
+                    "com.darly.dubbo.server.OtherServer");
+            if (!isRun) {
+                Message msg = Message.obtain();
+                msg.what = 1;
+                handler.sendMessage(msg);
             }
-        }.start();
+            DLog.i("MainServer在主进程中进行无限循环"+isRun);
+            try {
+                Thread.sleep(30000);
+            } catch (InterruptedException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            }
+        }
     }
 
     /**
@@ -130,7 +130,7 @@ public class MainServer  extends Service{
         builder.setOngoing(true);
 
         builder.setContentTitle(getClass().getSimpleName())
-                .setContentText(System.currentTimeMillis()+"")
+                .setContentText(System.currentTimeMillis() + "")
                 .setSmallIcon(R.mipmap.ic_launcher)
                 .setTicker("Time");
         builder.setPriority(Notification.PRIORITY_MAX);

@@ -8,7 +8,6 @@ import android.os.Handler;
 import android.os.IBinder;
 import android.os.Message;
 import android.os.RemoteException;
-import android.view.WindowManager;
 import android.widget.Toast;
 
 import com.darly.common.DLog;
@@ -31,7 +30,9 @@ public class OtherServer extends Service {
                     break;
             }
 
-        };
+        }
+
+        ;
     };
 
     /**
@@ -71,28 +72,21 @@ public class OtherServer extends Service {
         Toast.makeText(OtherServer.this, "Service2 启动中...", Toast.LENGTH_SHORT)
                 .show();
         startService1();
-		/*
-		 * 此线程用监听Service2的状态
-		 */
-        new Thread() {
-            public void run() {
-                while (true) {
-                    boolean isRun = Utils.isServiceWork(OtherServer.this,
-                            "com.darly.dubbo.server.MainServer");
-                    if (!isRun) {
-                        Message msg = Message.obtain();
-                        msg.what = 1;
-                        handler.sendMessage(msg);
-                    }
-                    DLog.i("OtherServer",isRun);
-                    try {
-                        Thread.sleep(5000);
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
-                }
+        while (true) {
+            boolean isRun = Utils.isServiceWork(OtherServer.this,
+                    "com.darly.dubbo.server.MainServer");
+            if (!isRun) {
+                Message msg = Message.obtain();
+                msg.what = 1;
+                handler.sendMessage(msg);
             }
-        }.start();
+            DLog.i("OtherServer在進程中無限循環"+ isRun);
+            try {
+                Thread.sleep(60000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
     }
 
     /**
@@ -128,7 +122,7 @@ public class OtherServer extends Service {
         builder.setOngoing(true);
 
         builder.setContentTitle(getClass().getSimpleName())
-                .setContentText(System.currentTimeMillis()+"")
+                .setContentText(System.currentTimeMillis() + "")
                 .setSmallIcon(R.mipmap.ic_launcher)
                 .setTicker("Time");
         builder.setPriority(Notification.PRIORITY_MAX);

@@ -38,7 +38,7 @@ darly.prototype = {
         "                    <div class=\"title\">商品列表</div>\n" +
         "                </div>\n" +
         "                <div class=\"text-right \" style=\"padding: 1.2em 25px;\">\n" +
-        "                    <button onclick=\"productadd('新增')\">新增商品</button>\n" +
+        "                    <button  onclick=\"productadd('新增')\"><i class='fa fa-plus'></i></button>\n" +
         "                </div>\n" +
         "            </div>\n" +
         "<div class=\"search-area\">\n" +
@@ -55,8 +55,8 @@ darly.prototype = {
         "        <input class=\"se-con\" name=\"productImage\"/>\n" +
         "    </div>\n" +
         "    <div class=\"sa-ele\">\n" +
-        "        <button class=\"search-action\">搜索</button>\n" +
-        "        <button class=\"reset-action\">重置</button>\n" +
+        "        <button class=\"search-action\"><i class='fa fa-search'></i></button>\n" +
+        "        <button class=\"reset-action\"><i class='fa fa-undo'></i></button>\n" +
         "    </div>\n" +
         "</div>\n" +
         "            <div class=\"card-body\">\n" +
@@ -72,10 +72,10 @@ darly.prototype = {
             "    <div class=\"card\">\n" +
             "        <div class=\"card-header\">\n" +
             "            <div class=\"card-title\">\n" +
-            "                <div id='classtitle' class=\"title\">新增商品</div>\n" +
+            "                <div id='classtitle' class=\"title\"></div>\n" +
             "            </div>\n" +
             "            <div class=\"text-right \" style=\"padding: 1.2em 25px;\">\n" +
-            "                <button onclick=\"darly().productcloseer()\">关闭</button>\n" +
+            "                <button onclick=\"darly().productcloseer()\"><i class='fa fa-remove'></i></button>\n" +
             "            </div>\n" +
             "        </div>\n" +
             "        <div class=\"card-body\">\n" +
@@ -198,8 +198,8 @@ darly.prototype = {
                     template: function(action, rowObject){
                         var id = "\'"+rowObject.id+"\'";
                         var roots = "\'"+root+"\'";
-                        return '<button class="productedit" style="margin: 5px" onclick="darly().productedit('+roots+','+id+')">编辑</button>'
-                            +'<button style="margin: 5px" onclick="darly().productdelete('+roots+','+id+')">删除</button>';
+                        return '<button class="productedit button-add" style="padding-left:10px;padding-right:10px;margin: 5px" onclick="darly().productedit('+roots+','+id+')"><i class="fa fa-edit"></i></button>'
+                            +'<button class="button-del" style="padding-left:10px;padding-right:10px;margin: 5px" onclick="darly().productdelete('+roots+','+id+')"><i class="fa fa-trash-o"></i></button>';
                     }
                 }
                 ]
