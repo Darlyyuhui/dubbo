@@ -2,6 +2,7 @@ package com.darly.dubbo.store.api;
 
 import com.darly.dubbo.store.bean.StoreActiviyType;
 import com.darly.dubbo.store.bean.StoreProduct;
+import com.darly.dubbo.store.bean.StoreSale;
 import org.springframework.ui.ModelMap;
 
 import java.util.List;
@@ -42,4 +43,10 @@ public interface StoreOptionApi {
     boolean updateActivity(StoreActiviyType type);
     //获取活动对应商品集合
     List<StoreProduct> actproduct(String s);
+    //移除活动中的商品
+    boolean activityproductremove(String id);
+    //获取没有参加任何本活动的商品
+    List<StoreProduct> activityproductinsert(String s);
+    //插入数据
+    boolean activitysaleinsert(StoreSale sale);
 }

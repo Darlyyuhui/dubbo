@@ -26,6 +26,19 @@ public class StoreSaleServiceImplementer extends AbstractBaseService<StoreSale, 
         return this.storeSaleMapper.selectByExample(null);
     }
 
+    @Override
+    public boolean insertSale(StoreSale sale) {
+        if (sale==null) {
+            return false;
+        }
+        int t = storeSaleMapper.insert(sale);
+        if (t>0){
+            return true;
+        }else {
+            return false;
+        }
+    }
+
     protected BaseMapper<StoreSale, StoreSaleSearch> getBaseMapper() {
         return this.storeSaleMapper;
     }

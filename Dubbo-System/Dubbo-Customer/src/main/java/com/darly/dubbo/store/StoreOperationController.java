@@ -10,6 +10,7 @@ import com.darly.dubbo.store.api.StoreOptionApi;
 import com.darly.dubbo.store.bean.StoreActiviyType;
 import com.darly.dubbo.store.bean.StoreImage;
 import com.darly.dubbo.store.bean.StoreProduct;
+import com.darly.dubbo.store.bean.StoreSale;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -430,10 +431,75 @@ public class StoreOperationController extends BaseSecurityController {
     public void actproduct(@RequestBody String s, HttpServletRequest request, HttpServletResponse response){
         List<StoreProduct> products = (List<StoreProduct>) storeOptionApi.actproduct(s);
         Map<String, Object> resultMap = new HashMap<String, Object>();
-        resultMap.put("status", "success");
+        resultMap.put("status", "活动商品查询成功");
         resultMap.put("totals", products.size());
         resultMap.put("data", products);
         logger.info("-------->resultMap"+resultMap);
+        ResponseUtil.printWriteResponse(request.getParameter("callback"), resultMap, response);
+    }
+
+
+
+    /** ajax 添加新的商品进入活动
+     * @return
+     */
+    @RequestMapping(value = {"/activityproductinsert"}, method = RequestMethod.POST)
+    public void activityproductinsert(@RequestBody String s, HttpServletRequest request, HttpServletResponse response){
+        List<StoreProduct> products = (List<StoreProduct>) storeOptionApi.activityproductinsert(s);
+        Map<String, Object> resultMap = new HashMap<String, Object>();
+        resultMap.put("status", "非活动商品查询成功");
+        resultMap.put("totals", products.size());
+        resultMap.put("data", products);
+        logger.info("-------->resultMap"+resultMap);
+        ResponseUtil.printWriteResponse(request.getParameter("callback"), resultMap, response);
+    }
+    /** ajax 添加新的商品进入活动
+     * @return
+     */
+    @RequestMapping(value = {"/activitysaleinsert"}, method = RequestMethod.POST)
+    public void activitysaleinsert(HttpServletRequest request, HttpServletResponse response){
+        Map<String, Object> resultMap = new HashMap<String, Object>();
+        String storeType = request.getParameter("storeType");
+        String id = request.getParameter("id");
+        String[] ids = id.split(",");
+        StoreSale sale = new StoreSale();
+        for (String str :ids){
+            sale.setId(UuidGenerateUtil.getUUIDLong());
+            sale.setStoreType(storeType);
+            sale.setProductId(str);
+            if(storeOptionApi.activitysaleinsert(sale)){
+                resultMap.put(ResponseUtil.RES_KEY_CODE, "200");
+                resultMap.put(ResponseUtil.RES_KEY_DESC, "商品参与活动成功");
+            }else {
+                resultMap.put(ResponseUtil.RES_KEY_CODE, "203");
+                resultMap.put(ResponseUtil.RES_KEY_DESC, "无法关联，请检查数据库连接");
+            }
+        }
+        ResponseUtil.printWriteResponse(request.getParameter("callback"), resultMap, response);
+    }
+
+
+    /** ajax 从活动中移除已有商品，通过商品id
+     */
+    @RequestMapping(value = {"/activityproductremove"}, method = RequestMethod.POST)
+    public void activityproductremove(HttpServletRequest request, HttpServletResponse response){
+        Map<String, Object> resultMap = new HashMap<String, Object>();
+        String id = request.getParameter("ID");
+        if (StringDiyUtils.isEmpty(id)){
+            resultMap.put(ResponseUtil.RES_KEY_CODE, "203");
+            resultMap.put(ResponseUtil.RES_KEY_DESC, "参数传递错误，请检查参数");
+
+        }else {
+            boolean ok = storeOptionApi.activityproductremove(id);
+            if (ok){
+                storeOptionApi.deleteImage(id);
+                resultMap.put(ResponseUtil.RES_KEY_CODE, "200");
+                resultMap.put(ResponseUtil.RES_KEY_DESC, "商品移除成功");
+            }else {
+                resultMap.put(ResponseUtil.RES_KEY_CODE, "203");
+                resultMap.put(ResponseUtil.RES_KEY_DESC, "无法移除商品，请检查数据库连接");
+            }
+        }
         ResponseUtil.printWriteResponse(request.getParameter("callback"), resultMap, response);
     }
 

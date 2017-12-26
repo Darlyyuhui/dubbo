@@ -99,35 +99,41 @@ darly.prototype = {
             "</div>"));
         this.ontable(root);
     },
+
     productinsert:function (root) {
-        var form = new FormData(document.getElementById("former"));
-        console.log(this.root+"/option/addProduceter");
-        $.ajax({
-            url: root+"/option/addProduceter" ,
-            //几个参数需要注意一下
-            type: "POST",//方法类型
-            dataType: "json",//预期服务器返回的数据类型
-            data:form,
-            processData:false,
-            contentType:false,
-            success: function (result) {
-                //在这里需要刷新Table表格数据
-                $('table').GM('refreshGrid');
-                $('table').GM('clear');
-                //在这里需要刷新Table表格数据
-                console.log(result);
-                console.log(result.resDesc);
-                darly().productcloseer();
-                $("#sbring").show();
-                $("#sbringtext").text(result.resDesc);
-                $("#sbring").fadeOut(3000);
-                setTimeout(function(){$("#sbring").hide()},3000)
-            },
-            error : function() {
-                console.log("请求异常,检查网络和参数！");
-            }
-        });
+        if(confirm("是否确认新增商品")) {
+            var form = new FormData(document.getElementById("former"));
+            console.log(this.root + "/option/addProduceter");
+            $.ajax({
+                url: root + "/option/addProduceter",
+                //几个参数需要注意一下
+                type: "POST",//方法类型
+                dataType: "json",//预期服务器返回的数据类型
+                data: form,
+                processData: false,
+                contentType: false,
+                success: function (result) {
+                    //在这里需要刷新Table表格数据
+                    $('table').GM('refreshGrid');
+                    $('table').GM('clear');
+                    //在这里需要刷新Table表格数据
+                    console.log(result);
+                    console.log(result.resDesc);
+                    darly().productcloseer();
+                    $("#sbring").show();
+                    $("#sbringtext").text(result.resDesc);
+                    $("#sbring").fadeOut(3000);
+                    setTimeout(function () {
+                        $("#sbring").hide()
+                    }, 3000)
+                },
+                error: function () {
+                    console.log("请求异常,检查网络和参数！");
+                }
+            });
+        }
     },
+
     productcloseer:function () {
         if ($("#former")[0]){
             $("#former")[0].reset();
@@ -135,6 +141,7 @@ darly.prototype = {
         //点击关闭按钮的时候，遮罩层关闭
         $("#bg,.box").css("display", "none");
     },
+
     ontable:function (root){
         var table = document.querySelector('table');
         if (table!=null){
@@ -251,35 +258,36 @@ darly.prototype = {
     },
     //商品編輯操作
     productedit: function(root,id) {
-        var data = new FormData();
-        data.append("ID",id);
-        //调用后台接口，找到對應商品
-        $.ajax({
-            url: root+"/option/productedit" ,
-            //几个参数需要注意一下
-            type: "POST",//方法类型
-            dataType: "json",//预期服务器返回的数据类型
-            data:data,
-            processData:false,
-            contentType:false,
-            success: function (result) {
-                console.log(result);
-                //给form表单设置值
-                $("#productid").val(result.result.id);
-                $("#productName").val(result.result.productName);
-                $("#productPrice").val(result.result.productPrice);
-                $("#productOrprice").val(result.result.productOrprice);
-                $("#productDesc").val(result.result.productDesc);
-                $("#productImage").val(result.result.productImage);
-                $("#productNum").val(result.result.productNum);
-                $("#productStars").val(result.result.productStars);
-                productadd("编辑");
-            },
-            error : function() {
-                console.log("请求异常,检查网络和参数！");
-            }
-        });
-
+        if(confirm("确认修改商品信息？")) {
+            var data = new FormData();
+            data.append("ID", id);
+            //调用后台接口，找到對應商品
+            $.ajax({
+                url: root + "/option/productedit",
+                //几个参数需要注意一下
+                type: "POST",//方法类型
+                dataType: "json",//预期服务器返回的数据类型
+                data: data,
+                processData: false,
+                contentType: false,
+                success: function (result) {
+                    console.log(result);
+                    //给form表单设置值
+                    $("#productid").val(result.result.id);
+                    $("#productName").val(result.result.productName);
+                    $("#productPrice").val(result.result.productPrice);
+                    $("#productOrprice").val(result.result.productOrprice);
+                    $("#productDesc").val(result.result.productDesc);
+                    $("#productImage").val(result.result.productImage);
+                    $("#productNum").val(result.result.productNum);
+                    $("#productStars").val(result.result.productStars);
+                    productadd("编辑");
+                },
+                error: function () {
+                    console.log("请求异常,检查网络和参数！");
+                }
+            });
+        }
 
     },
     //移除商品
@@ -552,37 +560,41 @@ darly.prototype = {
             });
         }
     },
+
     activityinsert:function (root) {
-        var form = new FormData(document.getElementById("former"));
-        console.log(this.root+"/option/activityinsert");
-        $.ajax({
-            url: root+"/option/activityinsert" ,
-            //几个参数需要注意一下
-            type: "POST",//方法类型
-            dataType: "json",//预期服务器返回的数据类型
-            data:form,
-            processData:false,
-            contentType:false,
-            success: function (result) {
-                //在这里需要刷新Table表格数据
-                $('table').GM('refreshGrid');
-                $('table').GM('clear');
-                //在这里需要刷新Table表格数据
-                console.log(result);
-                console.log(result.resDesc);
-                darly().productcloseer();
-                $("#sbring").show();
-                $("#sbringtext").text(result.resDesc);
-                $("#sbring").fadeOut(3000);
-                setTimeout(function(){$("#sbring").hide()},3000)
+        if(confirm("确认增加活动？")) {
+            var form = new FormData(document.getElementById("former"));
+            console.log(this.root + "/option/activityinsert");
+            $.ajax({
+                url: root + "/option/activityinsert",
+                //几个参数需要注意一下
+                type: "POST",//方法类型
+                dataType: "json",//预期服务器返回的数据类型
+                data: form,
+                processData: false,
+                contentType: false,
+                success: function (result) {
+                    //在这里需要刷新Table表格数据
+                    $('table').GM('refreshGrid');
+                    $('table').GM('clear');
+                    //在这里需要刷新Table表格数据
+                    console.log(result);
+                    console.log(result.resDesc);
+                    darly().productcloseer();
+                    $("#sbring").show();
+                    $("#sbringtext").text(result.resDesc);
+                    $("#sbring").fadeOut(3000);
+                    setTimeout(function () {
+                        $("#sbring").hide()
+                    }, 3000)
 
-            },
-            error : function() {
-                console.log("请求异常,检查网络和参数！");
-            }
-        });
+                },
+                error: function () {
+                    console.log("请求异常,检查网络和参数！");
+                }
+            });
+        }
     },
-
     //活动编辑
     activityedit: function(root,id) {
         var data = new FormData();
@@ -647,7 +659,6 @@ darly.prototype = {
             });
         }
     },
-
     //活动绑定商品页面
     onactivityproduct:function (root) {
         $("#baseset").removeClass("active");
@@ -674,14 +685,13 @@ darly.prototype = {
             "</div>"));
         //假如弹出新增商品功能页面
         $(".side-body").append($("<div id=\"bg\"></div>\n" +
-            "<div class=\"box\" style=\"display:none\">\n" +
+            "<div id='addbox' class=\"box\" style=\"display:none\">\n" +
             "    <div class=\"card\">\n" +
             "        <div class=\"card-header\">\n" +
             "            <div class=\"card-title\">\n" +
-            "                <div id='classtitle' class=\"title\">参与活动的商品</div>\n" +
+            "                <div id='addtitle' class=\"title\">参与活动的商品</div>\n" +
             "            </div>\n" +
             "            <div class=\"text-right \" style=\"padding: 1.2em 25px;\">\n" +
-            "                <button onclick=\"darly().productsave()\">保存</button>\n" +
             "                <button onclick=\"darly().activityproductcloseer()\">关闭</button>\n" +
             "            </div>\n" +
             "        </div>\n" +
@@ -691,7 +701,26 @@ darly.prototype = {
             "        </div>\n" +
             "    </div>\n" +
             "</div>"));
-
+        //假如弹出新增商品功能页面
+        $(".side-body").append($("<div id=\"bgprod\"></div>\n" +
+            "<div id='boxprod' class=\"box\" style=\"display:none;background-color: #00cdcd\">\n" +
+            "    <div class=\"card\">\n" +
+            "        <div class=\"card-header\">\n" +
+            "            <div class=\"card-title\">\n" +
+            "                <div id='titleprod' class=\"title\">参与活动的商品</div>\n" +
+            "            </div>\n" +
+            "            <div class=\"text-right \" style=\"padding: 1.2em 25px;\">\n" +
+            "                <button onclick=\"darly().activityproductinsert('"+root+"')\">关联</button>\n" +
+            "                <button onclick=\"darly().activityprodcloseer()\">关闭</button>\n" +
+            "            </div>\n" +
+            "        </div>\n" +
+            "        <div class=\"card-body\">\n" +
+            "                <table id='activityproductinsert'>\n" +
+            "                </table>\n" +
+            "        </div>\n" +
+            "    </div>\n" +
+            "</div>"));
+        //活动展示
         var table = document.querySelector('#activityshow');
         if (table!=null){
             table.GM({
@@ -767,9 +796,10 @@ darly.prototype = {
                     text: '操作',
                     template: function(action, rowObject){
                         var id = "\'"+rowObject.id+"\'";
+                        var title = "\'"+rowObject.storeDesc+"\'";
                         var roots = "\'"+root+"\'";
-                        return '<button class="activityproductselect"  style="margin: 5px" onclick="darly().activityproductselect('+roots+','+id+')">查询</button>'
-                            +'<button  class="activityproductedit" style="margin: 5px" onclick="darly().activityproductedit('+roots+','+id+')">编辑</button>';
+                        return '<button  class="activityproductedit" style="margin: 5px" onclick="darly().activityproductedit('+roots+','+id+','+title+')">编辑</button>' +
+                            '<button  class="activityproductedit" style="margin: 5px" onclick="darly().activityproductadd('+roots+','+id+','+title+')">添加</button>';
                     }
                 }]
                 // 分页前事件
@@ -829,7 +859,7 @@ darly.prototype = {
                 return fmt;
             };
         }
-
+        //编辑浮层
         var table = document.querySelector("#activityproduct");
         if (table!=null){
             table.GM({
@@ -837,19 +867,113 @@ darly.prototype = {
                 ,gridManagerName: 'test'
                 ,isCombSorting: true
                 ,supportAjaxPage:true
-                ,supportSorting: true
+                ,supportSorting: false
                 ,ajax_url: root+'/option/actproduct'
                 ,ajax_type: 'POST'
                 ,query: {pluginId: 1}
                 ,supportAdjust: false
                 ,supportAutoOrder: false
-                ,supportCheckbox: true
+                ,supportCheckbox: false
                 ,pageSize:50
                 ,columnData: [{
                     key: 'id',
                     remind: 'id',
                     text: '商品编号',
-                    sorting: ''
+                },{
+                    key: 'productName',
+                    remind: 'productName',
+                    text: '商品名称',
+                },{
+                    key: 'productPrice',
+                    remind: 'productPrice',
+                    text: '商品现价',
+                },{
+                    key: 'productOrprice',
+                    remind: 'productOrprice',
+                    text: '商品原价',
+                },{
+                    key: 'productDesc',
+                    remind: 'productDesc',
+                    text: '商品简介',
+                },{
+                    key: 'productImage',
+                    remind: 'productImage',
+                    text: '图片'
+                },{
+                    key: 'productNum',
+                    remind: 'productNum',
+                    text: '库存'
+                },{
+                    key: 'productStars',
+                    remind: 'productStars',
+                    text: '评分'
+                },{
+                    key: 'action',
+                    remind: 'the action',
+                    width: '100px',
+                    text: '操作',
+                    template: function(action, rowObject){
+                        var id = "\'"+rowObject.id+"\'";
+                        var title = "\'"+rowObject.productName+"\'";
+                        var roots = "\'"+root+"\'";
+                        return '<button class="activityproductremove"  style="margin: 5px" onclick="darly().activityproductremove('+roots+','+id+','+title+')">移除</button>';
+                    }
+                }]
+                // 分页前事件
+                ,pagingBefore: function(query){
+                    console.log('pagingBefore', query);
+                }
+                // 分页后事件
+                ,pagingAfter: function(data){
+                    console.log('pagingAfter', data);
+                }
+                // 排序前事件
+                ,sortingBefore: function (data) {
+                    console.log('sortBefore', data);
+                }
+                // 排序后事件
+                ,sortingAfter: function (data) {
+                    console.log('sortAfter', data);
+                }
+                // 宽度调整前事件
+                ,adjustBefore: function (event) {
+                    console.log('adjustBefore', event);
+                }
+                // 宽度调整后事件
+                ,adjustAfter: function (event) {
+                    console.log('adjustAfter', event);
+                }
+                // 拖拽前事件
+                ,dragBefore: function (event) {
+                    console.log('dragBefore', event);
+                }
+                // 拖拽后事件
+                ,dragAfter: function (event) {
+                    console.log('dragAfter', event);
+                }
+            });
+        }
+        //进入关联页面
+        var table = document.querySelector("#activityproductinsert");
+        if (table!=null){
+            table.GM({
+                supportRemind: true
+                ,gridManagerName: 'test'
+                ,isCombSorting: true
+                ,supportAjaxPage:true
+                ,supportSorting: false
+                ,ajax_url: root+'/option/activityproductinsert'
+                ,ajax_type: 'POST'
+                ,query: {pluginId: 1}
+                ,supportAdjust: false
+                ,supportAutoOrder: false
+                ,supportCheckbox: true
+                ,supportDrag: false
+                ,pageSize:50
+                ,columnData: [{
+                    key: 'id',
+                    remind: 'id',
+                    text: '商品编号',
                 },{
                     key: 'productName',
                     remind: 'productName',
@@ -917,31 +1041,132 @@ darly.prototype = {
         }
 
     },
-    activityproductselect:function (root,id) {
-            var table = document.querySelector("#activityproduct");
-            table.GM('refreshGrid', function () {
-                productadd('关联商品')
+    //移除绑定商品
+    activityproductremove:function (root,id,title) {
+        if(confirm("是否要从活动中移除关联的 "+title+" 商品？")){
+            //移除，删除数据操作
+            var data = new FormData();
+            data.append("ID",id);
+            //调用后台接口，进行数据删除操作
+            $.ajax({
+                url: root+"/option/activityproductremove" ,
+                //几个参数需要注意一下
+                type: "POST",//方法类型
+                dataType: "json",//预期服务器返回的数据类型
+                data:data,
+                processData:false,
+                contentType:false,
+                success: function (result) {
+                    //在这里需要刷新Table表格数据
+                    var table = document.querySelector("#activityproduct");
+                    table.GM('refreshGrid');
+                    //在这里需要刷新Table表格数据
+                    console.log(result);
+                    $("#sbring").show();
+                    $("#sbringtext").text(result.resDesc);
+                    $("#sbring").fadeOut(3000);
+                    setTimeout(function(){$("#sbring").hide()},3000)
+                },
+                error : function() {
+                    console.log("请求异常,检查网络和参数！");
+                }
             });
+
+        }
     },
-    //点击编辑查看关联商品浮层
-    activityproductedit:function (root,id) {
+    //点编辑查看关联商品浮层
+    activityproductedit:function (root,id,title) {
         var _query = {
             id: id,
         };
         var table = document.querySelector("#activityproduct");
         table.GM('setQuery', _query).GM('refreshGrid', function () {
-            productadd('关联商品')
+            $("#addtitle").html(title+"关联商品");
+            $("#bg").css({
+                display: "block", height: $(document).height()
+            });
+            var $box = $('#addbox');
+            $box.css({
+                //设置弹出层距离左边的位置
+                width:$("body").width()-100+ "px",
+                left: 80 + "px",
+                //设置弹出层距离上面的位置
+                top: 80 + "px",
+                display: "block"
+            });
+
         });
     },
-
-    //编辑关联商品后进行保存操作
-    productsave: function () {
-        //根据选中项插入到数据库中。
+    //点击关联商品后弹出浮层
+    activityproductadd: function (root,id,title) {
+        var _query = {
+            storeType: id,
+        };
+        var table = document.querySelector("#activityproductinsert");
+        table.GM('setQuery', _query).GM('refreshGrid', function () {
+            $("#titleprod").html("添加参与本活动的商品");
+            $("#bgprod").css({
+                display: "block", height: $(document).height()
+            });
+            var $box = $('#boxprod');
+            $box.css({
+                //设置弹出层距离左边的位置
+                width:$("body").width()-80+ "px",
+                left: 70 + "px",
+                //设置弹出层距离上面的位置
+                top: 70 + "px",
+                display: "block"
+            });
+        });
     },
+    //新增关联商品
+    activityproductinsert:function (root) {
+      //新增关联商品
+        if(confirm("商品是否确定参与此活动？")){
+            var table = document.querySelector("#activityproductinsert");
+           var a =  table.GM("getCheckedTr");
+
+           var storeType = table.GM("getSettings").query.storeType;//获取到了活动ID
+            var data = new FormData();
+            data.append("storeType",storeType);
+            var arg = [];
+            for(var i=0;i<a.length;i++){
+                arg.push(a[i].children[1].innerText);
+            }
+            console.log(arg);
+            data.append("id",arg);
+            //调用后台接口，进行数据删除操作
+            $.ajax({
+                url: root+"/option/activitysaleinsert" ,
+                //几个参数需要注意一下
+                type: "POST",//方法类型
+                dataType: "json",//预期服务器返回的数据类型
+                data:data,
+                processData:false,
+                contentType:false,
+                success: function (result) {
+                    new darly().activityprodcloseer();
+                    console.log(result);
+                    $("#sbring").show();
+                    $("#sbringtext").text(result.resDesc);
+                    $("#sbring").fadeOut(3000);
+                    setTimeout(function(){$("#sbring").hide()},3000)
+                },
+                error : function() {
+                    console.log("请求异常,检查网络和参数！");
+                }
+            });
+
+        }
+    },
+    
     activityproductcloseer:function () {
-        var table = document.querySelector("#activityproduct");
-        table.GM('clear');
         //点击关闭按钮的时候，遮罩层关闭
         $("#bg,.box").css("display", "none");
+    },
+
+    activityprodcloseer:function () {
+        //点击关闭按钮的时候，遮罩层关闭
+        $("#bgprod,#boxprod").css("display", "none");
     },
 }

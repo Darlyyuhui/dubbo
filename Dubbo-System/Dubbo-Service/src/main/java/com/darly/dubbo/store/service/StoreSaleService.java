@@ -14,4 +14,6 @@ import java.util.List;
  */
 public interface StoreSaleService extends BaseService<StoreSale, StoreSaleSearch> {
     List<StoreSale> findAll();
+
+    boolean insertSale(StoreSale sale);
 }
