@@ -286,7 +286,7 @@ public class StoreOperationController extends BaseSecurityController {
                 if (type.contains("String")) {
                     field.set(product, request.getParameter(name));
                 }else if (type.contains("Date")){
-                    SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd HH:mm:ss");
+                    SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
                     field.set(product,dateFormat.parse(request.getParameter(name)));
                 }else {
                     field.set(product,BigDecimal.valueOf(Double.parseDouble(request.getParameter(name))));
