@@ -52,8 +52,8 @@ darly.prototype = {
             "                <label>商品星评：</label><input type=\"text\" id='productStars' name=\"productStars\"/><br/>\n" +
             "                <label>商品图片：</label><br/>\n" +
             "                   <div id=\"upload_input_div\">\n" +
-            "                       <p style=\"overflow: hidden\">\n"+
-            "                        <input type=\"file\" id='imagefile' class='auto_upload_file' onchange='new darly().autoChangeFile(0)'/><a href=\"javascript:new darly().oncleanFile('imagefile')\">清除</a><br/>\n" +
+            "                       <p style=\"overflow: hidden\" style='display:inline-flex'>\n"+
+            "                        <input type=\"file\" id='imagefile' class='auto_upload_file' name='file' onchange=\"new darly().autoChangeFile('imagefile', '0' )\"/><a href=\"javascript:new darly().oncleanFile('imagefile','0')\">清除</a><br/>\n" +
             "                        </p>\n"+
             "                   </div>\n"+
             "                <div id=\"images\"style='display:inline-flex'></div>\n" +
@@ -141,6 +141,12 @@ darly.prototype = {
     productcloseer: function () {
         if ($("#former")[0]) {
             $("#former")[0].reset();
+        }
+        if ($("#upload_input_div")[0]) {
+            $("#upload_input_div").empty();
+            $("#upload_input_div").append("<p style=\"overflow: hidden\" style='display:inline-flex'><input type='file' id='imagefile' name='file' class='auto_upload_file' onchange=\"new darly().autoChangeFile('imagefile', '0' )\" /><a href=\"javascript:new darly().oncleanFile('imagefile','0')\" >清除</a></p>");
+        }
+        if ($("#images")[0]) {
             $("#images").empty();
         }
         //点击关闭按钮的时候，遮罩层关闭
@@ -1186,27 +1192,35 @@ darly.prototype = {
                 emptyCount++;
             }
         });
-        if (emptyCount == 0) {
-            uiindex++;
-            $("#upload_input_div").append("<p style=\"overflow: hidden\"><input type='file' id='file"+uiindex+"'  class='auto_upload_file' onchange='new darly().autoChangeFile("+uiindex+")' /><a href=\"javascript:new darly().oncleanFile('file"+uiindex+"')\" >清除</a></p>");
-        }
         var input = $("#"+id);
         if (typeof FileReader === 'undefined') {
             console.warn("抱歉，你的浏览器不支持 FileReader");
         }else {
-            if (!input['value'].match(/.jpg|.gif|.png|.bmp/i)) {　　//判断上传文件格式
+            if (!input[0].value.match(/.jpg|.gif|.png|.bmp/i)) {　　//判断上传文件格式
                 console.warn("上传的图片格式不正确，请重新选择");
             }else {
                 var reader = new FileReader();
-                reader.readAsDataURL(input.files[0]);
-                var result = '<div id="result"><img style="width: 200px;height: 200px;" src="' + input.result + '" alt=""/></div>';
-                var div = document.createElement('div');
-                div.innerHTML = result;
-                document.getElementById('images').appendChild(div);
+                reader.readAsDataURL(input[0].files[0]);
+                reader.onload = function(e){
+                    if($("#result"+uiindex)!=null){
+                        var imageObj = $("#result"+uiindex);
+                        imageObj.parent().remove();
+                    }
+                    var result = '<div id="result'+uiindex+'"><img style="width: 200px;height: 200px;" src="' + e.target.result + '" alt=""/></div>';
+                    var div = document.createElement('div');
+                    div.innerHTML = result;
+                    document.getElementById('images').appendChild(div);
+                    //圖片加載完成后，進行新模塊添加
+                    if (emptyCount == 0) {
+                        uiindex++;
+                        $("#upload_input_div").append("<p style=\"overflow: hidden\" style='display:inline-flex'><input type='file' id='file"+uiindex+"' name='file' class='auto_upload_file' onchange='new darly().autoChangeFile(\"file\"+"+uiindex+","+uiindex+")' /><a href=\"javascript:new darly().oncleanFile('file"+uiindex+"','"+uiindex+"')\" >清除</a></p>");
+                    }
+                }
             }
 　　    }
     },
-    oncleanFile:function (id) {
+    oncleanFile:function (id,index) {
+        console.info(id+"-------->"+index);
         var fileObj = $("#"+id);
         if (fileObj.clone().val() != "" || fileObj.val() != "") {
             fileObj.after(fileObj.clone().val(""));
@@ -1220,5 +1234,7 @@ darly.prototype = {
                 pObj.remove();
             }
         }
+        var imageObj = $("#result"+index);
+        imageObj.parent().remove();
     },
 }
