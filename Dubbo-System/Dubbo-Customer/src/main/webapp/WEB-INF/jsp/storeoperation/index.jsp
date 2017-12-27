@@ -21,22 +21,90 @@
     <title>${itmsname}</title>
 
     <link href="${resourceUrl}/store/css/font-awesome.min.css" rel="stylesheet">
-    <link href="${resourceUrl}/store/option/bootstrap.min.css" rel="stylesheet" >
+    <link href="${resourceUrl}/store/option/bootstrap.min.css" rel="stylesheet">
     <script src="${resourceUrl}/basejs/darly.js"></script>
+    <script src="${resourceUrl}/basejs/date/WdatePicker.js"></script>
     <!-- CSS App -->
     <link rel="stylesheet" href="${resourceUrl}/store/option/style.css">
     <link rel="stylesheet" href="${resourceUrl}/store/option/themes/flat-blue.css">
     <link rel="stylesheet" href="${resourceUrl}/store/css/storeproduct.css">
     <style type="text/css">
-        .box{position:absolute;width:600px;left:50%;height:auto;z-index:100;background-color:#fff;border:1px #ddd solid;padding:1px;}
-        .box h2{height:25px;font-size:14px;background-color:#aaa;position:relative;padding-left:10px;line-height:25px;color:#fff;}
-        .box h2 a{position:absolute;right:5px;font-size:12px;color:#fff;}
-        .box .list{padding:10px;}
-        .box .list li{height:24px;line-height:24px;}
-        .box .list li span{margin:0 5px 0 0;font-family:"宋体";font-size:12px;font-weight:400;color:#ddd;}
-        .showbtn {font:bold 24px '微软雅黑';}
-        #bg{background-color:#666;position:absolute;z-index:99;left:0;top:0;display:none;width:100%;height:100%;opacity:0.5;filter: alpha(opacity=50);-moz-opacity: 0.5;}
-        #bgprod{background-color:#666;position:absolute;z-index:99;left:0;top:0;display:none;width:100%;height:100%;opacity:0.5;filter: alpha(opacity=50);-moz-opacity: 0.5;}
+        .box {
+            position: absolute;
+            width: 600px;
+            left: 50%;
+            height: auto;
+            z-index: 100;
+            background-color: #fff;
+            border: 1px #ddd solid;
+            padding: 1px;
+        }
+
+        .box h2 {
+            height: 25px;
+            font-size: 14px;
+            background-color: #aaa;
+            position: relative;
+            padding-left: 10px;
+            line-height: 25px;
+            color: #fff;
+        }
+
+        .box h2 a {
+            position: absolute;
+            right: 5px;
+            font-size: 12px;
+            color: #fff;
+        }
+
+        .box .list {
+            padding: 10px;
+        }
+
+        .box .list li {
+            height: 24px;
+            line-height: 24px;
+        }
+
+        .box .list li span {
+            margin: 0 5px 0 0;
+            font-family: "宋体";
+            font-size: 12px;
+            font-weight: 400;
+            color: #ddd;
+        }
+
+        .showbtn {
+            font: bold 24px '微软雅黑';
+        }
+
+        #bg {
+            background-color: #666;
+            position: absolute;
+            z-index: 99;
+            left: 0;
+            top: 0;
+            display: none;
+            width: 100%;
+            height: 100%;
+            opacity: 0.5;
+            filter: alpha(opacity=50);
+            -moz-opacity: 0.5;
+        }
+
+        #bgprod {
+            background-color: #666;
+            position: absolute;
+            z-index: 99;
+            left: 0;
+            top: 0;
+            display: none;
+            width: 100%;
+            height: 100%;
+            opacity: 0.5;
+            filter: alpha(opacity=50);
+            -moz-opacity: 0.5;
+        }
     </style>
 </head>
 <body class="flat-blue">
@@ -60,7 +128,8 @@
                         <i class="fa fa-times icon"></i>
                     </button>
                     <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-comments-o"></i></a>
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                           aria-expanded="false"><i class="fa fa-comments-o"></i></a>
                         <ul class="dropdown-menu animated fadeInDown">
                             <li class="title">
                                 通知 <span class="badge pull-right">0</span>
@@ -71,7 +140,8 @@
                         </ul>
                     </li>
                     <li class="dropdown danger">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-star-half-o"></i> </a>
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                           aria-expanded="false"><i class="fa fa-star-half-o"></i> </a>
                         <ul class="dropdown-menu danger  animated fadeInDown">
                             <li class="title">
                                 通知 <span class="badge pull-right"></span>
@@ -80,7 +150,8 @@
                                 <ul class="list-group notifications">
                                     <a href="#">
                                         <li class="list-group-item">
-                                            <span class="badge">1</span> <i class="fa fa-exclamation-circle icon"></i> 新注册
+                                            <span class="badge">1</span> <i class="fa fa-exclamation-circle icon"></i>
+                                            新注册
                                         </li>
                                     </a>
                                     <a href="#">
@@ -103,7 +174,8 @@
                         </ul>
                     </li>
                     <li class="dropdown profile">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">用户信息<span class="caret"></span></a>
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">用户信息<span
+                                class="caret"></span></a>
                         <ul class="dropdown-menu animated fadeInDown">
                             <li class="profile-img">
                                 <img src="${resourceUrl}/store/images/main-bg-slider.jpg" class="profile-img">
@@ -113,8 +185,11 @@
                                     <h4 class="username">${userName}</h4>
                                     <p>${account}</p>
                                     <div class="btn-group margin-bottom-2x" role="group">
-                                        <button type="button" class="btn btn-default"><i class="fa fa-user"></i> Profile</button>
-                                        <button type="button" class="btn btn-default"><i class="fa fa-sign-out"></i> Logout</button>
+                                        <button type="button" class="btn btn-default"><i class="fa fa-user"></i> Profile
+                                        </button>
+                                        <button type="button" class="btn btn-default"><i class="fa fa-sign-out"></i>
+                                            Logout
+                                        </button>
                                     </div>
                                 </div>
                             </li>
@@ -136,7 +211,7 @@
                             <i class="fa fa-times icon"></i>
                         </button>
                     </div>
-                    <ul  class="nav navbar-nav">
+                    <ul class="nav navbar-nav">
                         <li id="baseset" class="active">
                             <a href="javascript:darly().onstoreoperationindex('${root}');">
                                 <span class="icon fa fa-tachometer"></span><span class="title">基础设置</span>
@@ -309,9 +384,8 @@
 <script src="${resourceUrl}/store/js/storeproduct.js"></script>
 <script src="${resourceUrl}/store/js/chartjs.js"></script>
 <script src="${resourceUrl}/store/js/Chart.min.js"></script>
-
-
 <script type="text/javascript">
+
     //---新增商品链接---
     function productadd(title) {
         $("#classtitle").html(title);
@@ -321,68 +395,14 @@
         var $box = $('.box');
         $box.css({
             //设置弹出层距离左边的位置
-            width:$("body").width()-100+ "px",
+            width: $("body").width() - 100 + "px",
             left: 80 + "px",
             //设置弹出层距离上面的位置
             top: 80 + "px",
-            right:20+"px",
+            right: 20 + "px",
             display: "block"
         });
     }
-    <%--function productinsert() {--%>
-        <%--var form = new FormData(document.getElementById("former"));--%>
-        <%--$.ajax({--%>
-            <%--url: "${root}/option/addProduceter" ,//url--%>
-            <%--//几个参数需要注意一下--%>
-            <%--type: "POST",//方法类型--%>
-            <%--dataType: "json",//预期服务器返回的数据类型--%>
-            <%--data:form,--%>
-            <%--processData:false,--%>
-            <%--contentType:false,--%>
-            <%--success: function (result) {--%>
-                <%--console.log(result);--%>
-                <%--console.log(result.resDesc);--%>
-                <%--productcloseer();--%>
-                <%--//在这里需要刷新Table表格数据--%>
-                <%--darly().ontable('${root}');--%>
-
-                <%--$("#sbring").show();--%>
-                <%--$("#sbringtext").text(result.resDesc);--%>
-                <%--$("#sbring").fadeOut(3000);--%>
-                <%--setTimeout(function(){$("#sbring").hide()},3000)--%>
-            <%--},--%>
-            <%--error : function() {--%>
-                <%--console.log("请求异常,检查网络和参数！");--%>
-            <%--}--%>
-        <%--});--%>
-    <%--}--%>
-    //关闭浮层
-//    function productcloseer() {
-//        //点击关闭按钮的时候，遮罩层关闭
-//        $("#bg,.box").css("display", "none");
-//    }
-    //进行判断是否成功
-    window.onload = function () {
-        if(${addProducet !=null}){
-            $("#sbring").show();
-            $("#sbringtext").text("${addProducet}");
-            $("#sbring").fadeOut(3000);
-            setTimeout(function(){$("#sbring").hide()},3000)
-        }else {
-            $("#sbring").hide();
-        }
-    }
-
-
-//    //商品表格操作
-//    function  productedit(id) {
-//        console.log("productedit"+id)
-//    }
-//    //移除商品
-//    function  productdelete(id) {
-//        console.log("productdelete"+id)
-//
-//    }
 </script>
 
 

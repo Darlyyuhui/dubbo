@@ -26,6 +26,7 @@
         <security:csrf disabled="true"/>
         <security:headers disabled="true"/>
         <security:intercept-url pattern="/home/admin/" access="isAuthenticated()"/>
+        <security:intercept-url pattern="/option/*" access="isAuthenticated()"/>
         <security:intercept-url pattern="/websocket/skt/**" access="isAuthenticated()"/>
         <security:intercept-url pattern="/**/testftp.jsp*" access="permitAll"/>
         <security:intercept-url pattern="proxy.jsp" access="permitAll"/>

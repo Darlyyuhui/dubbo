@@ -28,6 +28,40 @@ darly.prototype = {
 
         $(".side-body").empty();
 
+        //假如弹出新增商品功能页面
+        $(".side-body").append($("<div id=\"bg\"></div>\n" +
+            "<div class=\"box\" style=\"display:none\">\n" +
+            "    <div class=\"card\">\n" +
+            "        <div class=\"card-header\">\n" +
+            "            <div class=\"card-title\">\n" +
+            "                <div id='classtitle' class=\"title\"></div>\n" +
+            "            </div>\n" +
+            "            <div class=\"text-right \" style=\"padding: 1.2em 25px;\">\n" +
+            "                <button onclick=\"darly().productcloseer()\"><i class='fa fa-remove'></i></button>\n" +
+            "            </div>\n" +
+            "        </div>\n" +
+            "        <div class=\"card-body\">\n" +
+            "            <form id=\"former\" onsubmit=\"return false\" action=\"##\"  method=\"post\" enctype=\"multipart/form-data\">\n" +
+            "                <label style='display: none'>商品id：</label><input type=\"text\" id='productid' name=\"id\" style='display: none'/><br/>\n" +
+            "                <label style='display: none'>商品图片：</label><input type=\"text\" id='productImage' name=\"productImage\" style='display: none'/><br/>\n" +
+            "                <label>商品名称：</label><input type=\"text\" id='productName' name=\"productName\"/><br/>\n" +
+            "                <label>商品现价：</label><input type=\"text\" id='productPrice' name=\"productPrice\"/><br/>\n" +
+            "                <label>商品原价：</label><input type=\"text\" id='productOrprice' name=\"productOrprice\"/><br/>\n" +
+            "                <label>商品描述：</label><input type=\"text\" id='productDesc' name=\"productDesc\"/><br/>\n" +
+            "                <label>商品库存：</label><input type=\"text\" id='productNum' name=\"productNum\"/><br/>\n" +
+            "                <label>商品星评：</label><input type=\"text\" id='productStars' name=\"productStars\"/><br/>\n" +
+            "                <label>商品图片：</label><br/>\n" +
+            "                   <div id=\"upload_input_div\">\n" +
+            "                       <p style=\"overflow: hidden\">\n"+
+            "                        <input type=\"file\" id='imagefile' class='auto_upload_file' onchange='new darly().autoChangeFile(0)'/><a href=\"javascript:new darly().oncleanFile('imagefile')\">清除</a><br/>\n" +
+            "                        </p>\n"+
+            "                   </div>\n"+
+            "                <div id=\"images\"style='display:inline-flex'></div>\n" +
+            "                <p><input type=\"button\" value=\"提交\" onclick=\"darly().productinsert('" + root + "')\"/>&nbsp;&nbsp;&nbsp;&nbsp;<input type=\"reset\" value=\"重置\"></p>\n" +
+            "            </form>\n" +
+            "        </div>\n" +
+            "    </div>\n" +
+            "</div>"));
         $(".side-body").append($("<div id=\"sbring\"  class=\"page-title\" style=\"text-align: center;display: none\">\n" +
             "    <span id=\"sbringtext\" class=\"title\" style=\"color: darkred\">保存成功</span>\n" +
             "</div>\n" +
@@ -64,37 +98,6 @@ darly.prototype = {
             "                <table>\n" +
             "                </table>\n" +
             "            </div>\n" +
-            "        </div>\n" +
-            "    </div>\n" +
-            "</div>"));
-        //假如弹出新增商品功能页面
-        $(".side-body").append($("<div id=\"bg\"></div>\n" +
-            "<div class=\"box\" style=\"display:none\">\n" +
-            "    <div class=\"card\">\n" +
-            "        <div class=\"card-header\">\n" +
-            "            <div class=\"card-title\">\n" +
-            "                <div id='classtitle' class=\"title\"></div>\n" +
-            "            </div>\n" +
-            "            <div class=\"text-right \" style=\"padding: 1.2em 25px;\">\n" +
-            "                <button onclick=\"darly().productcloseer()\"><i class='fa fa-remove'></i></button>\n" +
-            "            </div>\n" +
-            "        </div>\n" +
-            "        <div class=\"card-body\">\n" +
-            "            <form id=\"former\" onsubmit=\"return false\" action=\"##\"  method=\"post\" enctype=\"multipart/form-data\">\n" +
-            "                <label style='display: none'>商品id：</label><input type=\"text\" id='productid' name=\"id\" style='display: none'/><br/>\n" +
-            "                <label style='display: none'>商品图片：</label><input type=\"text\" id='productImage' name=\"productImage\" style='display: none'/><br/>\n" +
-            "                <label>商品名称：</label><input type=\"text\" id='productName' name=\"productName\"/><br/>\n" +
-            "                <label>商品现价：</label><input type=\"text\" id='productPrice' name=\"productPrice\"/><br/>\n" +
-            "                <label>商品原价：</label><input type=\"text\" id='productOrprice' name=\"productOrprice\"/><br/>\n" +
-            "                <label>商品描述：</label><input type=\"text\" id='productDesc' name=\"productDesc\"/><br/>\n" +
-            "                <label>商品图片：</label><input type=\"file\" id='file1' name=\"file\"/><br/>\n" +
-            "                <label>商品图片：</label><input type=\"file\" id='file2' name=\"file\"/><br/>\n" +
-            "                <label>商品图片：</label><input type=\"file\" id='file3' name=\"file\"/><br/>\n" +
-            "                <label>商品图片：</label><input type=\"file\" id='file4' name=\"file\"/><br/>\n" +
-            "                <label>商品库存：</label><input type=\"text\" id='productNum' name=\"productNum\"/><br/>\n" +
-            "                <label>商品星评：</label><input type=\"text\" id='productStars' name=\"productStars\"/><br/>\n" +
-            "                <p><input type=\"button\" value=\"提交\" onclick=\"darly().productinsert('" + root + "')\"/>&nbsp;&nbsp;&nbsp;&nbsp;<input type=\"reset\" value=\"重置\"></p>\n" +
-            "            </form>\n" +
             "        </div>\n" +
             "    </div>\n" +
             "</div>"));
@@ -138,6 +141,7 @@ darly.prototype = {
     productcloseer: function () {
         if ($("#former")[0]) {
             $("#former")[0].reset();
+            $("#images").empty();
         }
         //点击关闭按钮的时候，遮罩层关闭
         $("#bg,.box").css("display", "none");
@@ -155,7 +159,7 @@ darly.prototype = {
                 , ajax_url: root + '/option/productentryser'
                 , ajax_type: 'POST'
                 , query: {pluginId: 1}
-                , supportAdjust: false
+                , supportAdjust: true
                 , supportAutoOrder: false
                 , supportCheckbox: false
                 , pageSize: 50
@@ -389,11 +393,11 @@ darly.prototype = {
             "                <label style='display: none'>活动图标：</label><input type=\"text\" id='storeTypeIcon' name=\"storeTypeIcon\" style='display: none'/><br/>\n" +
             "                <label>活动类型：</label><input type=\"text\" id='storeType' name=\"storeType\"/><br/>\n" +
             "                <label>活动说明：</label><input type=\"text\" id='storeDesc' name=\"storeDesc\"/><br/>\n" +
-            "                <label>开始时间：</label><input type=\"text\" id='storeStartTime' name=\"storeStartTime\"/><br/>\n" +
-            "                <label>结束时间：</label><input type=\"text\" id='storeEndTime' name=\"storeEndTime\"/><br/>\n" +
+            "                <label>开始时间：</label><input class=\"Wdate\"  type=\"text\" id='storeStartTime' name=\"storeStartTime\" onClick=\"WdatePicker({startDate:'%y-%M-01 00:00:00',el:this,dateFmt:'yyyy-MM-dd HH:mm:ss'})\"><br/>\n" +
+            "                <label>结束时间：</label><input class=\"Wdate\" type=\"text\" id='storeEndTime' name=\"storeEndTime\" onClick=\"WdatePicker({startDate:'%y-%M-01 00:00:00',el:this,dateFmt:'yyyy-MM-dd HH:mm:ss'})\"><br/>\n" +
             "                <label>负责人：</label><input type=\"text\" id='storeTypeOp' name=\"storeTypeOp\"/><br/>\n" +
-            "                <label>创建时间：</label><input type=\"text\" id='storeCreatetime' name=\"storeCreatetime\"/><br/>\n" +
-            "                <label>更新时间：</label><input type=\"text\" id='storeUpdatetime' name=\"storeUpdatetime\"/><br/>\n" +
+            "                <label>创建时间：</label><input class=\"Wdate\" type=\"text\" id='storeCreatetime' name=\"storeCreatetime\" onClick=\"WdatePicker({startDate:'%y-%M-01 00:00:00',el:this,dateFmt:'yyyy-MM-dd HH:mm:ss'})\"><br/>\n" +
+            "                <label>更新时间：</label><input class=\"Wdate\" type=\"text\" id='storeUpdatetime' name=\"storeUpdatetime\" onClick=\"WdatePicker({startDate:'%y-%M-01 00:00:00',el:this,dateFmt:'yyyy-MM-dd HH:mm:ss'})\"><br/>\n" +
             "                <label>活动图标：</label><input type=\"file\" id='file1' name=\"file\"/><br/>\n" +
             "                <label>更新说明：</label><input type=\"text\" id='storeUpdatereason' name=\"storeUpdatereason\"/><br/>\n" +
             "                <p><input type=\"button\" value=\"提交\" onclick=\"darly().activityinsert('" + root + "')\"/>&nbsp;&nbsp;&nbsp;&nbsp;<input type=\"reset\" value=\"重置\"></p>\n" +
@@ -412,7 +416,7 @@ darly.prototype = {
                 , ajax_url: root + '/option/activityentryser'
                 , ajax_type: 'POST'
                 , query: {pluginId: 1}
-                , supportAdjust: false
+                , supportAdjust: true
                 , supportAutoOrder: false
                 , supportCheckbox: false
                 , pageSize: 50
@@ -732,7 +736,7 @@ darly.prototype = {
                 , ajax_url: root + '/option/activityentryser'
                 , ajax_type: 'POST'
                 , query: {pluginId: 1}
-                , supportAdjust: false
+                , supportAdjust: true
                 , supportAutoOrder: false
                 , supportCheckbox: false
                 , pageSize: 50
@@ -871,7 +875,7 @@ darly.prototype = {
                 , ajax_url: root + '/option/actproduct'
                 , ajax_type: 'POST'
                 , query: {pluginId: 1}
-                , supportAdjust: false
+                , supportAdjust: true//是否可以宽度调整
                 , supportAutoOrder: false
                 , supportCheckbox: false
                 , pageSize: 50
@@ -965,7 +969,7 @@ darly.prototype = {
                 , ajax_url: root + '/option/activityproductinsert'
                 , ajax_type: 'POST'
                 , query: {pluginId: 1}
-                , supportAdjust: false
+                , supportAdjust: true
                 , supportAutoOrder: false
                 , supportCheckbox: true
                 , supportDrag: false
@@ -1172,5 +1176,49 @@ darly.prototype = {
     activityprodcloseer: function () {
         //点击关闭按钮的时候，遮罩层关闭
         $("#bgprod,#boxprod").css("display", "none");
+    },
+
+
+    autoChangeFile:function (id,uiindex) {
+        var emptyCount = 0;
+        $(".auto_upload_file").each(function() {
+            if (this.value == "") {
+                emptyCount++;
+            }
+        });
+        if (emptyCount == 0) {
+            uiindex++;
+            $("#upload_input_div").append("<p style=\"overflow: hidden\"><input type='file' id='file"+uiindex+"'  class='auto_upload_file' onchange='new darly().autoChangeFile("+uiindex+")' /><a href=\"javascript:new darly().oncleanFile('file"+uiindex+"')\" >清除</a></p>");
+        }
+        var input = $("#"+id);
+        if (typeof FileReader === 'undefined') {
+            console.warn("抱歉，你的浏览器不支持 FileReader");
+        }else {
+            if (!input['value'].match(/.jpg|.gif|.png|.bmp/i)) {　　//判断上传文件格式
+                console.warn("上传的图片格式不正确，请重新选择");
+            }else {
+                var reader = new FileReader();
+                reader.readAsDataURL(input.files[0]);
+                var result = '<div id="result"><img style="width: 200px;height: 200px;" src="' + input.result + '" alt=""/></div>';
+                var div = document.createElement('div');
+                div.innerHTML = result;
+                document.getElementById('images').appendChild(div);
+            }
+　　    }
+    },
+    oncleanFile:function (id) {
+        var fileObj = $("#"+id);
+        if (fileObj.clone().val() != "" || fileObj.val() != "") {
+            fileObj.after(fileObj.clone().val(""));
+            var pObj = fileObj.parent();
+            fileObj.remove();
+            var count = 0;
+            $(".auto_upload_file").each(function() {
+                count++;
+            });
+            if (count > 1) {
+                pObj.remove();
+            }
+        }
     },
 }
