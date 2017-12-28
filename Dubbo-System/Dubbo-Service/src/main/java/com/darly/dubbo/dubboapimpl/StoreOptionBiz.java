@@ -185,7 +185,7 @@ public class StoreOptionBiz extends BaseController implements StoreOptionApi {
             FTPUtils t = new FTPUtils();
             for (StoreImage im:image) {
                 if (im!=null&&im.getImageUrl()!=null){
-                    String filename = im.getImageUrl().substring(im.getImageUrl().lastIndexOf("/")-1,im.getImageUrl().length());
+                    String filename = im.getImageUrl().substring(im.getImageUrl().lastIndexOf("/")+1,im.getImageUrl().length());
                     t.deleteFileFtp(filename);
                 }
             }
@@ -381,17 +381,25 @@ public class StoreOptionBiz extends BaseController implements StoreOptionApi {
     /**查看商品是否正在参加活动，没有参加活动则可以直接删除，否则提示用户，需要解除活动绑定方可删除。
      */
     @Override
-    public boolean checkactivitysale(String value) {
-        if (StringDiyUtils.isEmpty(value)) {
-            return false;
-        }
-        StoreSaleSearch storeSaleSearch = new StoreSaleSearch();
-        storeSaleSearch.createCriteria().andProductIdEqualTo(value);
-       List<StoreSale> sales = storeSaleService.selectByExample(storeSaleSearch);
-        if (sales!=null&&sales.size() > 0) {
-            return true;
-        } else {
-            return false;
+    public boolean checkactivitysale(String value,String storeType) {
+        if (!StringDiyUtils.isEmpty(value)) {
+            StoreSaleSearch storeSaleSearch = new StoreSaleSearch();
+            storeSaleSearch.createCriteria().andProductIdEqualTo(value);
+            List<StoreSale> sales = storeSaleService.selectByExample(storeSaleSearch);
+            if (sales!=null&&sales.size() > 0) {
+                return true;
+            } else {
+                return false;
+            }
+        }else {
+            StoreSaleSearch storeSaleSearch = new StoreSaleSearch();
+            storeSaleSearch.createCriteria().andStoreTypeEqualTo(value);
+            List<StoreSale> sales = storeSaleService.selectByExample(storeSaleSearch);
+            if (sales!=null&&sales.size() > 0) {
+                return true;
+            } else {
+                return false;
+            }
         }
     }
 }

@@ -50,5 +50,5 @@ public interface StoreOptionApi {
     //插入数据
     boolean activitysaleinsert(StoreSale sale);
     //先查看商品是否正在参加活动，没有参加活动则可以直接删除，否则提示用户，需要解除活动绑定方可删除。
-    boolean checkactivitysale(String id);
+    boolean checkactivitysale(String productId,String storeType);
 }
