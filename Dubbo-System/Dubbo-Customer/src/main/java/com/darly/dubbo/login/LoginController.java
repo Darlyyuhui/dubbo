@@ -6,6 +6,7 @@ import com.darly.dubbo.mobile.cfg.ResponseUtil;
 import com.darly.dubbo.security.BaseSecurityController;
 import com.darly.dubbo.security.securitycfg.UserDetials;
 import com.darly.dubbo.security.user.api.LoginApi;
+import com.darly.dubbo.store.api.StoreOptionApi;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Controller;
@@ -35,6 +36,9 @@ public class LoginController extends BaseSecurityController {
 
     @Autowired
     LoginApi loginApi;
+
+    @Autowired
+    StoreOptionApi storeOptionApi;
     @RequestMapping(value = {"/login"}, method = RequestMethod.GET)
     public String login(String error,ModelMap model,HttpServletRequest request){
         hasUser(model);
@@ -67,19 +71,17 @@ public class LoginController extends BaseSecurityController {
 
     @RequestMapping(value = {"/index"}, method = RequestMethod.GET)
     public String index(ModelMap model, HttpServletRequest request) {
-        model.putAll(loginApi.index());
+
         UserDetials user = getCurrentUser();
         if (user == null) {
             model.addAttribute("hasUser", false);
             logger.info("--->没有登录用户--->[方法 home 运行中...]");
+            model.putAll(loginApi.index());
+            return (String) model.get(ApplicationConst.getForwordUrl());
         } else {
             logger.info("--->用户" + user.getAccount() + "--->[方法 home 运行中...]");
-            model.addAttribute("hasUser", true);
-            model.addAttribute("userName", user.getRealName());
-            model.addAttribute("account", user.getId());
-            model.addAttribute(ApplicationConst.getForwordUrl(), "/home/admin");
+            return "redirect:/home/admin/";
         }
-        return (String) model.get(ApplicationConst.getForwordUrl());
     }
 
     @RequestMapping(value = {"/map"}, method = RequestMethod.GET)
@@ -120,7 +122,8 @@ public class LoginController extends BaseSecurityController {
             if (index != null && index.length() > 0) {
                 session.setAttribute("index", index);
             }
-            model.putAll(loginApi.home());
+//            model.putAll(loginApi.home());
+            model.putAll(storeOptionApi.optionIndex());
             return (String) model.get(ApplicationConst.getForwordUrl());
         }
     }

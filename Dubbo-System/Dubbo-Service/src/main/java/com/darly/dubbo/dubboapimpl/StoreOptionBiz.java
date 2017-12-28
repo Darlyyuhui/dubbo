@@ -1,12 +1,12 @@
 package com.darly.dubbo.dubboapimpl;
 
 import com.darly.dubbo.cfg.ApplicationConst;
+import com.darly.dubbo.fileupload.cfg.FTPUtils;
 import com.darly.dubbo.framework.base.BaseController;
 import com.darly.dubbo.framework.common.StringDiyUtils;
 import com.darly.dubbo.store.api.StoreOptionApi;
 import com.darly.dubbo.store.bean.*;
 import com.darly.dubbo.store.service.*;
-import com.sun.org.apache.bcel.internal.generic.IF_ACMPEQ;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.ModelMap;
@@ -177,6 +177,22 @@ public class StoreOptionBiz extends BaseController implements StoreOptionApi {
         }
         StoreImageExample example = new StoreImageExample();
         example.createCriteria().andProductTypeIdEqualTo(id);
+        List<StoreImage> image = storeImageService.selectByExample(example);
+        if (image ==null){
+            return;
+        }
+        try {
+            FTPUtils t = new FTPUtils();
+            for (StoreImage im:image) {
+                if (im!=null&&im.getImageUrl()!=null){
+                    String filename = im.getImageUrl().substring(im.getImageUrl().lastIndexOf("/")-1,im.getImageUrl().length());
+                    t.deleteFileFtp(filename);
+                }
+            }
+            t.destroy();
+        } catch (Exception e) {
+            logger.info(e.getMessage());
+        }
         storeImageService.deleteByExample(example);
     }
 
@@ -306,8 +322,9 @@ public class StoreOptionBiz extends BaseController implements StoreOptionApi {
         }
     }
 
-    /**获取没有参加任何本活动的商品
-     * @param s
+    /**
+     * 获取没有参加任何本活动的商品
+     *
      * @return
      */
     @Override
@@ -330,17 +347,17 @@ public class StoreOptionBiz extends BaseController implements StoreOptionApi {
             }
         }
         List<StoreSale> sales = storeSaleService.selectByExample(storeSaleSearch);
-        List<String > ids = new ArrayList<String>();
+        List<String> ids = new ArrayList<String>();
         for (StoreSale sale : sales) {
             ids.add(sale.getProductId());
         }
 
         StoreProductSearch search = new StoreProductSearch();
-        if (ids.size()>0) {
+        if (ids.size() > 0) {
             search.createCriteria().andIdNotIn(ids);
         }
-        List<StoreProduct>  products = storeProductService.selectByExample(search);
-        for (StoreProduct product:products) {
+        List<StoreProduct> products = storeProductService.selectByExample(search);
+        for (StoreProduct product : products) {
             if (product != null) {
                 StoreImageExample example = new StoreImageExample();
                 example.createCriteria().andProductTypeIdEqualTo(product.getId());
@@ -355,9 +372,26 @@ public class StoreOptionBiz extends BaseController implements StoreOptionApi {
 
     @Override
     public boolean activitysaleinsert(StoreSale sale) {
-        if (sale == null){
+        if (sale == null) {
             return false;
         }
-        return  storeSaleService.insertSale(sale);
+        return storeSaleService.insertSale(sale);
+    }
+
+    /**查看商品是否正在参加活动，没有参加活动则可以直接删除，否则提示用户，需要解除活动绑定方可删除。
+     */
+    @Override
+    public boolean checkactivitysale(String value) {
+        if (StringDiyUtils.isEmpty(value)) {
+            return false;
+        }
+        StoreSaleSearch storeSaleSearch = new StoreSaleSearch();
+        storeSaleSearch.createCriteria().andProductIdEqualTo(value);
+       List<StoreSale> sales = storeSaleService.selectByExample(storeSaleSearch);
+        if (sales!=null&&sales.size() > 0) {
+            return true;
+        } else {
+            return false;
+        }
     }
 }

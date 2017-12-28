@@ -187,7 +187,7 @@
                                     <div class="btn-group margin-bottom-2x" role="group">
                                         <button type="button" class="btn btn-default"><i class="fa fa-user"></i> Profile
                                         </button>
-                                        <button type="button" class="btn btn-default"><i class="fa fa-sign-out"></i>
+                                        <button onclick="loginout()" type="button" class="btn btn-default"><i class="fa fa-sign-out"></i>
                                             Logout
                                         </button>
                                     </div>
@@ -402,6 +402,13 @@
             right: 20 + "px",
             display: "block"
         });
+    }
+    
+    //退出登陸
+    function loginout() {
+        if (confirm("确定退出登陆？")) {
+            window.location.href = "${root}/j_spring_security_logout";
+        }
     }
 </script>
 

@@ -91,4 +91,18 @@ public class FTPUtils {
     public String getFtpsavepath() {
         return ftpsavepath;
     }
+
+
+    // 删除文件至FTP通用方法
+    public void deleteFileFtp(String fileName){
+        try {
+            try {
+                ftp.deleteFile(fileName);
+            } catch (Exception e) {
+                System.out.println("删除文件失败！请检查系统FTP设置,并确认FTP服务启动");
+            }
+        } catch (Exception e) {
+            System.out.println("删除文件失败！");
+        }
+    }
 }

@@ -1,9 +1,7 @@
 package com.darly.dubbo.server;
 
-import android.app.ActivityManager;
 import android.app.Notification;
 import android.app.Service;
-import android.content.Context;
 import android.content.Intent;
 import android.os.Handler;
 import android.os.IBinder;
@@ -13,8 +11,6 @@ import android.widget.Toast;
 
 import com.darly.common.DLog;
 import com.darly.dubbo.R;
-
-import java.util.Date;
 
 /**
  * 主服务

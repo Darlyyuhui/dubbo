@@ -218,14 +218,21 @@ public class StoreOperationController extends BaseSecurityController {
             resultMap.put(ResponseUtil.RES_KEY_DESC, "参数传递错误，请检查参数");
 
         }else {
-            boolean ok = storeOptionApi.productdelete(id);
-            if (ok){
-                storeOptionApi.deleteImage(id);
-                resultMap.put(ResponseUtil.RES_KEY_CODE, "200");
-                resultMap.put(ResponseUtil.RES_KEY_DESC, "商品删除成功");
+            //先查看商品是否正在参加活动，没有参加活动则可以直接删除，否则提示用户，需要解除活动绑定方可删除。
+            if(storeOptionApi.checkactivitysale(id)){
+                //已經參與了活動。提示用戶，解除活動。
+                resultMap.put(ResponseUtil.RES_KEY_CODE, "205");
+                resultMap.put(ResponseUtil.RES_KEY_DESC, "商品正在参与活动，请在活动中解除商品绑定，方可删除商品");
             }else {
-                resultMap.put(ResponseUtil.RES_KEY_CODE, "203");
-                resultMap.put(ResponseUtil.RES_KEY_DESC, "无法删除数据，请检查数据库连接");
+                boolean ok = storeOptionApi.productdelete(id);
+                if (ok) {
+                    storeOptionApi.deleteImage(id);
+                    resultMap.put(ResponseUtil.RES_KEY_CODE, "200");
+                    resultMap.put(ResponseUtil.RES_KEY_DESC, "商品删除成功");
+                } else {
+                    resultMap.put(ResponseUtil.RES_KEY_CODE, "203");
+                    resultMap.put(ResponseUtil.RES_KEY_DESC, "无法删除数据，请检查数据库连接");
+                }
             }
         }
         ResponseUtil.printWriteResponse(request.getParameter("callback"), resultMap, response);
@@ -492,7 +499,6 @@ public class StoreOperationController extends BaseSecurityController {
         }else {
             boolean ok = storeOptionApi.activityproductremove(id);
             if (ok){
-                storeOptionApi.deleteImage(id);
                 resultMap.put(ResponseUtil.RES_KEY_CODE, "200");
                 resultMap.put(ResponseUtil.RES_KEY_DESC, "商品移除成功");
             }else {
