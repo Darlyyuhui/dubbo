@@ -393,7 +393,7 @@ public class StoreOptionBiz extends BaseController implements StoreOptionApi {
             }
         }else {
             StoreSaleSearch storeSaleSearch = new StoreSaleSearch();
-            storeSaleSearch.createCriteria().andStoreTypeEqualTo(value);
+            storeSaleSearch.createCriteria().andStoreTypeEqualTo(storeType);
             List<StoreSale> sales = storeSaleService.selectByExample(storeSaleSearch);
             if (sales!=null&&sales.size() > 0) {
                 return true;

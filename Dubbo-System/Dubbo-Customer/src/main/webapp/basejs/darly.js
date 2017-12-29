@@ -42,8 +42,8 @@ darly.prototype = {
             "        </div>\n" +
             "        <div class=\"card-body\">\n" +
             "            <form id=\"former\" onsubmit=\"return false\" action=\"##\"  method=\"post\" enctype=\"multipart/form-data\">\n" +
-            "                <label style='display: none'>商品id：</label><input type=\"text\" id='productid' name=\"id\" style='display: none'/><br/>\n" +
-            "                <label style='display: none'>商品图片：</label><input type=\"text\" id='productImage' name=\"productImage\" style='display: none'/><br/>\n" +
+            "                <label style='display: none'>商品id：</label><input type=\"text\" id='productid' name=\"id\" style='display: none'/>\n" +
+            "                <label style='display: none'>商品图片：</label><input type=\"text\" id='productImage' name=\"productImage\" style='display: none'/>\n" +
             "                <label>商品名称：</label><input type=\"text\" id='productName' name=\"productName\"/><br/>\n" +
             "                <label>商品现价：</label><input type=\"text\" id='productPrice' name=\"productPrice\"/><br/>\n" +
             "                <label>商品原价：</label><input type=\"text\" id='productOrprice' name=\"productOrprice\"/><br/>\n" +
@@ -52,12 +52,10 @@ darly.prototype = {
             "                <label>商品星评：</label><input type=\"text\" id='productStars' name=\"productStars\"/><br/>\n" +
             "                <label>商品图片：</label><br/>\n" +
             "                   <div id=\"upload_input_div\">\n" +
-            "                       <p style=\"overflow: hidden\" style='display:inline-flex'>\n"+
-            "                        <input type=\"file\" id='imagefile' class='auto_upload_file' name='file' onchange=\"new darly().autoChangeFile('imagefile', '0' )\"/><a href=\"javascript:new darly().oncleanFile('imagefile','0')\">清除</a><br/>\n" +
-            "                        </p>\n"+
+            "                       <div id=\"inputBox\"> <input type=\"file\" id='imagefile' class='auto_upload_file' name='file' onchange=\"new darly().autoChangeFile('imagefile', '0' )\"/>点击选择图片</div><br/>\n" +
             "                   </div>\n"+
             "                <div id=\"images\"style='display:inline-flex'></div>\n" +
-            "                <p><input type=\"button\" value=\"提交\" onclick=\"darly().productinsert('" + root + "')\"/>&nbsp;&nbsp;&nbsp;&nbsp;<input type=\"reset\" value=\"重置\"></p>\n" +
+            "                <p><input type=\"button\" value=\"提交\" onclick=\"darly().productinsert('" + root + "')\"/></p>\n" +
             "            </form>\n" +
             "        </div>\n" +
             "    </div>\n" +
@@ -144,7 +142,7 @@ darly.prototype = {
         }
         if ($("#upload_input_div")[0]) {
             $("#upload_input_div").empty();
-            $("#upload_input_div").append("<p style=\"overflow: hidden\" style='display:inline-flex'><input type='file' id='imagefile' name='file' class='auto_upload_file' onchange=\"new darly().autoChangeFile('imagefile', '0' )\" /><a href=\"javascript:new darly().oncleanFile('imagefile','0')\" >清除</a></p>");
+            $("#upload_input_div").append("<div id=\"inputBox\"> <input type=\"file\" id='imagefile' class='auto_upload_file' name='file' onchange=\"new darly().autoChangeFile('imagefile', '0' )\"/>点击选择图片</div><br/>");
         }
         if ($("#images")[0]) {
             $("#images").empty();
@@ -1193,29 +1191,24 @@ darly.prototype = {
             }
         });
         var input = $("#"+id);
-        if (typeof FileReader === 'undefined') {
-            console.warn("抱歉，你的浏览器不支持 FileReader");
+        if (!input[0].value.match(/.jpg|.gif|.png|.bmp/i)) {　　//判断上传文件格式
+            console.warn("上传的图片格式不正确，请重新选择");
         }else {
-            if (!input[0].value.match(/.jpg|.gif|.png|.bmp/i)) {　　//判断上传文件格式
-                console.warn("上传的图片格式不正确，请重新选择");
-            }else {
-                var reader = new FileReader();
-                reader.readAsDataURL(input[0].files[0]);
-                reader.onload = function(e){
-                    if($("#result"+uiindex)!=null){
-                        var imageObj = $("#result"+uiindex);
-                        imageObj.parent().remove();
-                    }
-                    var result = '<div id="result'+uiindex+'"><img style="width: 200px;height: 200px;" src="' + e.target.result + '" alt=""/></div>';
-                    var div = document.createElement('div');
-                    div.innerHTML = result;
-                    document.getElementById('images').appendChild(div);
-                    //圖片加載完成后，進行新模塊添加
-                    if (emptyCount == 0) {
-                        uiindex++;
-                        $("#upload_input_div").append("<p style=\"overflow: hidden\" style='display:inline-flex'><input type='file' id='file"+uiindex+"' name='file' class='auto_upload_file' onchange='new darly().autoChangeFile(\"file\"+"+uiindex+","+uiindex+")' /><a href=\"javascript:new darly().oncleanFile('file"+uiindex+"','"+uiindex+"')\" >清除</a></p>");
-                    }
-                }
+            var fileList = input[0].files;
+            for(var i = 0; i < fileList.length; i++) {
+                var imgSrcI = getObjectURLs(fileList[i]);
+                var result = '<img src="' + imgSrcI + '" onclick="imgDisplay(this)"><p onclick="removeImg(this,' + uiindex + ')" class="imgDelete">删除</p>';
+                var div = document.createElement('div');
+                div.id = "result"+uiindex;
+                div.setAttribute("class","imgContainer");
+                div.innerHTML = result;
+                document.getElementById('images').appendChild(div);
+            }
+            //圖片加載完成后，進行新模塊添加
+            if (emptyCount == 0) {
+                uiindex++;
+                $("#"+id).css("display", "none");;
+                $("#inputBox").append("<input type=\"file\" id='file"+uiindex+"' name='file' class='auto_upload_file' name='file' onchange='new darly().autoChangeFile(\"file\"+"+uiindex+","+uiindex+")'/>");
             }
 　　    }
     },

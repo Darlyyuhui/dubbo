@@ -28,6 +28,7 @@
     <link rel="stylesheet" href="${resourceUrl}/store/option/style.css">
     <link rel="stylesheet" href="${resourceUrl}/store/option/themes/flat-blue.css">
     <link rel="stylesheet" href="${resourceUrl}/store/css/storeproduct.css">
+    <link rel="stylesheet" href="${resourceUrl}/basejs/upload/imageLoader.css">
     <style type="text/css">
         .box {
             position: absolute;
@@ -384,8 +385,8 @@
 <script src="${resourceUrl}/store/js/storeproduct.js"></script>
 <script src="${resourceUrl}/store/js/chartjs.js"></script>
 <script src="${resourceUrl}/store/js/Chart.min.js"></script>
+<script src="${resourceUrl}/basejs/upload/imageLoader.js"></script>
 <script type="text/javascript">
-
     //---新增商品链接---
     function productadd(title) {
         $("#classtitle").html(title);
