@@ -37,13 +37,12 @@ darly.prototype = {
             "                <div id='classtitle' class=\"title\"></div>\n" +
             "            </div>\n" +
             "            <div class=\"text-right \" style=\"padding: 1.2em 25px;\">\n" +
-            "                <button onclick=\"darly().productcloseer()\"><i class='fa fa-remove'></i></button>\n" +
+            "                <button onclick=\"darly().productcloseer()\" style='width: 40px' ><i class='fa fa-remove'></i></button>\n" +
             "            </div>\n" +
             "        </div>\n" +
             "        <div class=\"card-body\">\n" +
             "            <form id=\"former\" onsubmit=\"return false\" action=\"##\"  method=\"post\" enctype=\"multipart/form-data\">\n" +
             "                <label style='display: none'>商品id：</label><input type=\"text\" id='productid' name=\"id\" style='display: none'/>\n" +
-            "                <label style='display: none'>商品图片：</label><input type=\"text\" id='productImage' name=\"productImage\" style='display: none'/>\n" +
             "                <label>商品名称：</label><input type=\"text\" id='productName' name=\"productName\"/><br/>\n" +
             "                <label>商品现价：</label><input type=\"text\" id='productPrice' name=\"productPrice\"/><br/>\n" +
             "                <label>商品原价：</label><input type=\"text\" id='productOrprice' name=\"productOrprice\"/><br/>\n" +
@@ -52,10 +51,10 @@ darly.prototype = {
             "                <label>商品星评：</label><input type=\"text\" id='productStars' name=\"productStars\"/><br/>\n" +
             "                <label>商品图片：</label><br/>\n" +
             "                   <div id=\"upload_input_div\">\n" +
-            "                       <div id=\"inputBox\"> <input type=\"file\" id='imagefile' class='auto_upload_file' name='file' onchange=\"new darly().autoChangeFile('imagefile', '0' )\"/>点击选择图片</div><br/>\n" +
+            "                       <div id=\"inputBox\"> <input type=\"file\" id='imagefile' class='auto_upload_file' name='file' onchange=\"new darly().autoChangeFile('imagefile', '0' )\"/>请选择商品图片</div><br/>\n" +
             "                   </div>\n"+
             "                <div id=\"images\"style='display:inline-flex'></div>\n" +
-            "                <p><input type=\"button\" value=\"提交\" onclick=\"darly().productinsert('" + root + "')\"/></p>\n" +
+            "                <p><input type=\"button\" value=\"提交\" style='width: 40px'  onclick=\"darly().productinsert('" + root + "')\"/></p>\n" +
             "            </form>\n" +
             "        </div>\n" +
             "    </div>\n" +
@@ -103,9 +102,9 @@ darly.prototype = {
     },
 
     productinsert: function (root) {
-        if (confirm("是否确认新增商品")) {
+        if (confirm("是否确认新增或修改商品")) {
             var form = new FormData(document.getElementById("former"));
-            console.log(this.root + "/option/addProduceter");
+            console.log(root + "/option/addProduceter");
             $.ajax({
                 url: root + "/option/addProduceter",
                 //几个参数需要注意一下
@@ -267,6 +266,7 @@ darly.prototype = {
     },
     //商品編輯操作
     productedit: function (root, id) {
+        var roos = "'"+root+"'";
         var data = new FormData();
         data.append("ID", id);
         //调用后台接口，找到對應商品
@@ -286,9 +286,23 @@ darly.prototype = {
                 $("#productPrice").val(result.result.productPrice);
                 $("#productOrprice").val(result.result.productOrprice);
                 $("#productDesc").val(result.result.productDesc);
-                $("#productImage").val(result.result.productImage);
                 $("#productNum").val(result.result.productNum);
                 $("#productStars").val(result.result.productStars);
+                //編輯时，获取到已经存在的对象图片集合。将这些图片集合进行展示。
+                var images = result.result.images;
+                if (images!=null) {
+                    for (var item = 0; item < images.length; item++) {
+                        var ids = item + 1000;
+                        var imageurl = "'" + images[item].id + "'";
+                        var imgSrc = resource + images[item].imageUrl;
+                        var result = '<img src="' + imgSrc + '" onclick="imgDisplay(this)"><p onclick="removeImg(' + roos + ',' + ids + ',' + imageurl + ')" class="imgDelete">删除</p>';
+                        var div = document.createElement('div');
+                        div.id = "result" + ids;
+                        div.setAttribute("class", "imgContainer");
+                        div.innerHTML = result;
+                        document.getElementById('images').appendChild(div);
+                    }
+                }
                 productadd("编辑");
             },
             error: function () {
@@ -313,7 +327,6 @@ darly.prototype = {
                 success: function (result) {
                     //在这里需要刷新Table表格数据
                     $('table').GM('refreshGrid');
-                    $('table').GM('clear');
                     //在这里需要刷新Table表格数据
                     console.log(result);
                     darly().productcloseer();
@@ -351,7 +364,7 @@ darly.prototype = {
             "                    <div class=\"title\">活动列表</div>\n" +
             "                </div>\n" +
             "                <div class=\"text-right \" style=\"padding: 1.2em 25px;\">\n" +
-            "                    <button onclick=\"productadd('新增')\"><i class='fa fa-plus'></i></button>\n" +
+            "                    <button onclick=\"productadd('新增')\" style='width: 40px'><i class='fa fa-plus'></i></button>\n" +
             "                </div>\n" +
             "            </div>\n" +
             "<div class=\"search-area\">\n" +
@@ -388,7 +401,7 @@ darly.prototype = {
             "                <div id='classtitle' class=\"title\">新增活动</div>\n" +
             "            </div>\n" +
             "            <div class=\"text-right \" style=\"padding: 1.2em 25px;\">\n" +
-            "                <button onclick=\"darly().productcloseer()\"><i class='fa fa-remove'></i></button>\n" +
+            "                <button onclick=\"darly().productcloseer()\" style='width: 40px' ><i class='fa fa-remove'></i></button>\n" +
             "            </div>\n" +
             "        </div>\n" +
             "        <div class=\"card-body\">\n" +
@@ -399,12 +412,16 @@ darly.prototype = {
             "                <label>活动说明：</label><input type=\"text\" id='storeDesc' name=\"storeDesc\"/><br/>\n" +
             "                <label>开始时间：</label><input class=\"Wdate\"  type=\"text\" id='storeStartTime' name=\"storeStartTime\" onClick=\"WdatePicker({startDate:'%y-%M-01 00:00:00',el:this,dateFmt:'yyyy-MM-dd HH:mm:ss'})\"><br/>\n" +
             "                <label>结束时间：</label><input class=\"Wdate\" type=\"text\" id='storeEndTime' name=\"storeEndTime\" onClick=\"WdatePicker({startDate:'%y-%M-01 00:00:00',el:this,dateFmt:'yyyy-MM-dd HH:mm:ss'})\"><br/>\n" +
-            "                <label>负责人：</label><input type=\"text\" id='storeTypeOp' name=\"storeTypeOp\"/><br/>\n" +
+            "                <label>负责人&nbsp&nbsp&nbsp&nbsp：</label><input type=\"text\" id='storeTypeOp' name=\"storeTypeOp\"/><br/>\n" +
             "                <label>创建时间：</label><input class=\"Wdate\" type=\"text\" id='storeCreatetime' name=\"storeCreatetime\" onClick=\"WdatePicker({startDate:'%y-%M-01 00:00:00',el:this,dateFmt:'yyyy-MM-dd HH:mm:ss'})\"><br/>\n" +
             "                <label>更新时间：</label><input class=\"Wdate\" type=\"text\" id='storeUpdatetime' name=\"storeUpdatetime\" onClick=\"WdatePicker({startDate:'%y-%M-01 00:00:00',el:this,dateFmt:'yyyy-MM-dd HH:mm:ss'})\"><br/>\n" +
-            "                <label>活动图标：</label><input type=\"file\" id='file1' name=\"file\"/><br/>\n" +
             "                <label>更新说明：</label><input type=\"text\" id='storeUpdatereason' name=\"storeUpdatereason\"/><br/>\n" +
-            "                <p><input type=\"button\" value=\"提交\" onclick=\"darly().activityinsert('" + root + "')\"/>&nbsp;&nbsp;&nbsp;&nbsp;<input type=\"reset\" value=\"重置\"></p>\n" +
+            "                <label>活动图标：</label><br/>\n" +
+            "                   <div id=\"upload_input_div\">\n" +
+            "                       <div id=\"inputBox\"> <input type=\"file\" id='imagefile' class='auto_upload_file' name='file' onchange=\"new darly().autoChangeFile('imagefile', '0' )\"/>请选择活动图片</div><br/>\n" +
+            "                   </div>\n"+
+            "                <div id=\"images\"style='display:inline-flex'></div>\n" +
+            "                <p><input style='width: 40px'  type=\"button\" value=\"提交\" onclick=\"darly().activityinsert('" + root + "')\"/></p>\n" +
             "            </form>\n" +
             "        </div>\n" +
             "    </div>\n" +
@@ -568,7 +585,7 @@ darly.prototype = {
     },
 
     activityinsert: function (root) {
-        if (confirm("确认增加活动？")) {
+        if (confirm("确认增加或修改活动？")) {
             var form = new FormData(document.getElementById("former"));
             console.log(this.root + "/option/activityinsert");
             $.ajax({
@@ -605,6 +622,7 @@ darly.prototype = {
     activityedit: function (root, id) {
         var data = new FormData();
         data.append("ID", id);
+        var roos = "'"+root+"'";
         //调用后台接口，找到對應商品
         $.ajax({
             url: root + "/option/activityedit",
@@ -626,6 +644,20 @@ darly.prototype = {
                 $("#storeCreatetime").val(result.result.storeCreatetime);
                 $("#storeUpdatetime").val(result.result.storeUpdatetime);
                 $("#storeUpdatereason").val(result.result.storeUpdatereason);
+                var icons = result.result.icons;
+                if (icons!=null) {
+                    for (var item = 0; item < icons.length; item++) {
+                        var ids = item + 1000;
+                        var imageurl = "'" + icons[item].id + "'";
+                        var imgSrc = resource + icons[item].imageUrl;
+                        var result = '<img src="' + imgSrc + '" onclick="imgDisplay(this)"><p onclick="removeImg(' + roos + ',' + ids + ',' + imageurl + ')" class="imgDelete">删除</p>';
+                        var div = document.createElement('div');
+                        div.id = "result" + ids;
+                        div.setAttribute("class", "imgContainer");
+                        div.innerHTML = result;
+                        document.getElementById('images').appendChild(div);
+                    }
+                }
                 productadd("编辑");
             },
             error: function () {
@@ -650,7 +682,6 @@ darly.prototype = {
                 success: function (result) {
                     //在这里需要刷新Table表格数据
                     $('table').GM('refreshGrid');
-                    $('table').GM('clear');
                     //在这里需要刷新Table表格数据
                     console.log(result);
                     darly().productcloseer();
@@ -700,7 +731,7 @@ darly.prototype = {
             "                <div id='addtitle' class=\"title\">参与活动的商品</div>\n" +
             "            </div>\n" +
             "            <div class=\"text-right \" style=\"padding: 1.2em 25px;\">\n" +
-            "                <button onclick=\"darly().activityproductcloseer()\"><i class='fa fa-remove'></i></button>\n" +
+            "                <button onclick=\"darly().activityproductcloseer()\" style='width: 40px' ><i class='fa fa-remove'></i></button>\n" +
             "            </div>\n" +
             "        </div>\n" +
             "        <div class=\"card-body\">\n" +
@@ -719,7 +750,7 @@ darly.prototype = {
             "            </div>\n" +
             "            <div class=\"text-right \" style=\"padding: 1.2em 25px;\">\n" +
             "                <button style='width: 40px;margin: 5px;' onclick=\"darly().activityproductinsert('" + root + "')\"><i class='fa fa-save'></i></button>\n" +
-            "                <button onclick=\"darly().activityprodcloseer()\"><i class='fa fa-remove'></i></button>\n" +
+            "                <button onclick=\"darly().activityprodcloseer()\" style='width: 40px' ><i class='fa fa-remove'></i></button>\n" +
             "            </div>\n" +
             "        </div>\n" +
             "        <div class=\"card-body\">\n" +
@@ -1197,7 +1228,7 @@ darly.prototype = {
             var fileList = input[0].files;
             for(var i = 0; i < fileList.length; i++) {
                 var imgSrcI = getObjectURLs(fileList[i]);
-                var result = '<img src="' + imgSrcI + '" onclick="imgDisplay(this)"><p onclick="removeImg(this,' + uiindex + ')" class="imgDelete">删除</p>';
+                var result = '<img src="' + imgSrcI + '" onclick="imgDisplay(this)"><p onclick="removeImg(0,' + uiindex + ',null)" class="imgDelete">删除</p>';
                 var div = document.createElement('div');
                 div.id = "result"+uiindex;
                 div.setAttribute("class","imgContainer");

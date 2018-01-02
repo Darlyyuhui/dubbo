@@ -21,4 +21,6 @@
     <color name="red">#CDAA7D</color>
     <color name="green">#45CD87</color>
     <color name="blue">#ff169aff</color>
+    <color name="black">#ff000000</color>
+    <color name="gray">#666666</color>
 </resources>

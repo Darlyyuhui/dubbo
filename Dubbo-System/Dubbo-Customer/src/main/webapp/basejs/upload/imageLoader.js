@@ -1,9 +1,42 @@
 //删除
-function removeImg(obj, index) {
-    //移除點擊出的圖片
-    $("#result"+index).remove();
-    //移除對應的input標籤
-    $("#file"+index).remove();
+function removeImg(obj, index,id) {
+    if (obj != 0){
+        //根據傳遞過來的id刪除對應圖片
+        var data = new FormData();
+        data.append("ID", id);
+        //调用后台接口，找到對應商品
+        $.ajax({
+            url: obj + "/option/imagedelete",
+            //几个参数需要注意一下
+            type: "POST",//方法类型
+            dataType: "json",//预期服务器返回的数据类型
+            data: data,
+            processData: false,
+            contentType: false,
+            success: function (result) {
+                if(result!=null&&result.resCode == 200) {
+                    //移除點擊出的圖片
+                    $("#result" + index).remove();
+                    //移除對應的input標籤
+                    if ($("#file" + index)[0]) {
+                        $("#file" + index).remove();
+                    }
+                }else {
+                    console.log(result.resDesc);
+                }
+            },
+            error: function () {
+                console.log("请求异常,检查网络和参数！");
+            }
+        });
+    }else {
+        //移除點擊出的圖片
+        $("#result" + index).remove();
+        //移除對應的input標籤
+        if ($("#file" + index)[0]) {
+            $("#file" + index).remove();
+        }
+    }
 }
 //图片灯箱
 function imgDisplay(obj) {

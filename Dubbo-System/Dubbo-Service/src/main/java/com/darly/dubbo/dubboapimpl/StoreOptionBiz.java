@@ -89,6 +89,7 @@ public class StoreOptionBiz extends BaseController implements StoreOptionApi {
                 List<StoreImage> list = storeImageService.selectByExample(example);
                 if (list != null && list.size() > 0) {
                     product.setProductImage(list.get(0).getImageUrl());
+                    product.setImages(list);
                 }
             }
             model.addAttribute("STOREPRODUCT", types);
@@ -141,11 +142,11 @@ public class StoreOptionBiz extends BaseController implements StoreOptionApi {
                 List<StoreImage> list = storeImageService.selectByExample(example);
                 if (list != null && list.size() > 0) {
                     product.setStoreTypeIcon(list.get(0).getImageUrl());
+                    product.setIcons(list);
                 }
             }
             model.addAttribute("STORETYPE", types);
         }
-
         return model;
     }
 
@@ -178,14 +179,14 @@ public class StoreOptionBiz extends BaseController implements StoreOptionApi {
         StoreImageExample example = new StoreImageExample();
         example.createCriteria().andProductTypeIdEqualTo(id);
         List<StoreImage> image = storeImageService.selectByExample(example);
-        if (image ==null){
+        if (image == null) {
             return;
         }
         try {
             FTPUtils t = new FTPUtils();
-            for (StoreImage im:image) {
-                if (im!=null&&im.getImageUrl()!=null){
-                    String filename = im.getImageUrl().substring(im.getImageUrl().lastIndexOf("/")+1,im.getImageUrl().length());
+            for (StoreImage im : image) {
+                if (im != null && im.getImageUrl() != null) {
+                    String filename = im.getImageUrl().substring(im.getImageUrl().lastIndexOf("/") + 1, im.getImageUrl().length());
                     t.deleteFileFtp(filename);
                 }
             }
@@ -207,6 +208,7 @@ public class StoreOptionBiz extends BaseController implements StoreOptionApi {
         List<StoreImage> images = storeImageService.selectByExample(example);
         if (images != null && images.size() > 0) {
             product.setProductImage(images.get(0).getImageUrl());
+            product.setImages(images);
         }
         return product;
     }
@@ -234,6 +236,7 @@ public class StoreOptionBiz extends BaseController implements StoreOptionApi {
         List<StoreImage> images = storeImageService.selectByExample(example);
         if (images != null && images.size() > 0) {
             type.setStoreTypeIcon(images.get(0).getImageUrl());
+            type.setIcons(images);
         }
         return type;
     }
@@ -300,6 +303,7 @@ public class StoreOptionBiz extends BaseController implements StoreOptionApi {
                 List<StoreImage> list = storeImageService.selectByExample(example);
                 if (list != null && list.size() > 0) {
                     product.setProductImage(list.get(0).getImageUrl());
+                    product.setImages(list);
                 }
                 products.add(product);
             }
@@ -364,6 +368,7 @@ public class StoreOptionBiz extends BaseController implements StoreOptionApi {
                 List<StoreImage> list = storeImageService.selectByExample(example);
                 if (list != null && list.size() > 0) {
                     product.setProductImage(list.get(0).getImageUrl());
+                    product.setImages(list);
                 }
             }
         }
@@ -378,28 +383,53 @@ public class StoreOptionBiz extends BaseController implements StoreOptionApi {
         return storeSaleService.insertSale(sale);
     }
 
-    /**查看商品是否正在参加活动，没有参加活动则可以直接删除，否则提示用户，需要解除活动绑定方可删除。
+    /**
+     * 查看商品是否正在参加活动，没有参加活动则可以直接删除，否则提示用户，需要解除活动绑定方可删除。
      */
     @Override
-    public boolean checkactivitysale(String value,String storeType) {
+    public boolean checkactivitysale(String value, String storeType) {
         if (!StringDiyUtils.isEmpty(value)) {
             StoreSaleSearch storeSaleSearch = new StoreSaleSearch();
             storeSaleSearch.createCriteria().andProductIdEqualTo(value);
             List<StoreSale> sales = storeSaleService.selectByExample(storeSaleSearch);
-            if (sales!=null&&sales.size() > 0) {
+            if (sales != null && sales.size() > 0) {
                 return true;
             } else {
                 return false;
             }
-        }else {
+        } else {
             StoreSaleSearch storeSaleSearch = new StoreSaleSearch();
             storeSaleSearch.createCriteria().andStoreTypeEqualTo(storeType);
             List<StoreSale> sales = storeSaleService.selectByExample(storeSaleSearch);
-            if (sales!=null&&sales.size() > 0) {
+            if (sales != null && sales.size() > 0) {
                 return true;
             } else {
                 return false;
             }
+        }
+    }
+
+    @Override
+    public boolean deleteImageByID(String id) {
+        if (StringDiyUtils.isEmpty(id)) {
+            return false;
+        }
+        try {
+            StoreImage im = storeImageService.getById(id);
+            if (im != null && im.getImageUrl() != null) {
+                FTPUtils t = new FTPUtils();
+                String filename = im.getImageUrl().substring(im.getImageUrl().lastIndexOf("/") + 1, im.getImageUrl().length());
+                t.deleteFileFtp(filename);
+                t.destroy();
+            }
+        } catch (Exception e) {
+            logger.info(e.getMessage());
+        }
+        int t = storeImageService.deleteById(id);
+        if (t > 0) {
+            return true;
+        } else {
+            return false;
         }
     }
 }

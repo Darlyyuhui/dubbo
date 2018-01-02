@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/view_height40"
+    android:orientation="vertical" >
+
+    <Button
+        android:id="@+id/btn_sub"
+        android:layout_width="fill_parent"
+        android:layout_height="@dimen/view_height40"
+        android:layout_gravity="right|center_vertical"
+        android:background="@drawable/dv_btn_selecter_login"
+        android:text="@string/mine_login_login"
+        android:textColor="@color/white"
+        android:textSize="@dimen/textSize18" />
+
+    <ProgressBar
+        android:id="@+id/pb_wait"
+        android:layout_width="@dimen/progressbarSize20"
+        android:layout_height="@dimen/progressbarSize20"
+        android:layout_gravity="right|center_vertical"
+        android:layout_marginRight="@dimen/margin_padding25"
+        android:indeterminateDrawable="@drawable/dv_sub_progress_style"
+        android:indeterminateDuration="1800"
+        android:visibility="visible" />
+
+</FrameLayout>

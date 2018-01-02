@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/text_viewedit"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="@dimen/margin_padding10" >
+
+    <TextView
+        android:id="@+id/text_view"
+        style="@style/more_text"
+        android:text="TextView" />
+
+    <EditText
+        android:id="@+id/text_edit"
+        style="@style/edittext"
+        android:hint="EditText"
+        android:singleLine="true" />
+</LinearLayout>

@@ -2,6 +2,7 @@ package com.darly.dubbo.store.bean;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
+import java.util.List;
 
 public class StoreProduct implements Serializable {
     private String id;
@@ -19,6 +20,8 @@ public class StoreProduct implements Serializable {
     private Integer productNum;
 
     private Integer productStars;
+
+    private List<StoreImage> images;
 
     private static final long serialVersionUID = 1L;
 
@@ -84,5 +87,14 @@ public class StoreProduct implements Serializable {
 
     public void setProductStars(Integer productStars) {
         this.productStars = productStars;
+    }
+
+
+    public List<StoreImage> getImages() {
+        return images;
+    }
+
+    public void setImages(List<StoreImage> images) {
+        this.images = images;
     }
 }

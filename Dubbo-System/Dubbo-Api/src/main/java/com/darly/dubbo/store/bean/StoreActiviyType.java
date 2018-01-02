@@ -2,6 +2,7 @@ package com.darly.dubbo.store.bean;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 public class StoreActiviyType implements Serializable {
     private String id;
@@ -23,6 +24,8 @@ public class StoreActiviyType implements Serializable {
     private String storeUpdatereason;
 
     private String storeTypeIcon;
+
+    private List<StoreImage> icons;
 
     private static final long serialVersionUID = 1L;
 
@@ -104,5 +107,13 @@ public class StoreActiviyType implements Serializable {
 
     public void setStoreTypeIcon(String storeTypeIcon) {
         this.storeTypeIcon = storeTypeIcon;
+    }
+
+    public List<StoreImage> getIcons() {
+        return icons;
+    }
+
+    public void setIcons(List<StoreImage> icons) {
+        this.icons = icons;
     }
 }

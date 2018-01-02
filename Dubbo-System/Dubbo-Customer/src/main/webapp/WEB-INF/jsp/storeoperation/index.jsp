@@ -387,6 +387,7 @@
 <script src="${resourceUrl}/store/js/Chart.min.js"></script>
 <script src="${resourceUrl}/basejs/upload/imageLoader.js"></script>
 <script type="text/javascript">
+    var resource = "${resourceUrl}";
     //---新增商品链接---
     function productadd(title) {
         $("#classtitle").html(title);
@@ -404,7 +405,6 @@
             display: "block"
         });
     }
-    
     //退出登陸
     function loginout() {
         if (confirm("确定退出登陆？")) {
