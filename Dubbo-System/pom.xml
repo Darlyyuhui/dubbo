@@ -14,8 +14,9 @@
       <email>Darlyyuhui@hotmail.com</email>
     </developer>
   </developers>
-
   <properties>
+      <!--項目的版本統一 -->
+    <verisons>1.0.1</verisons>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <dep.ver.lombok>1.16.10</dep.ver.lombok>
     <dep.ver.druid>1.0.1</dep.ver.druid>

@@ -7,6 +7,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
     <artifactId>Dubbo-Customer</artifactId>
+    <version>${verisons}</version>
     <packaging>war</packaging>
     <name>Dubbo-Customer Maven Webapp</name>
     <description>提供测试接口</description>
@@ -27,7 +28,7 @@
         <dependency>
             <groupId>com.darly.dubbo</groupId>
             <artifactId>Dubbo-Api</artifactId>
-            <version>1.0</version>
+            <version>${verisons}</version>
         </dependency>
 
         <dependency>

@@ -7,6 +7,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
     <artifactId>Dubbo-Api</artifactId>
+    <version>${verisons}</version>
     <packaging>jar</packaging>
     <name>Dubbo-Api</name>
 

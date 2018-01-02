@@ -7,6 +7,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
     <artifactId>Dubbo-Service</artifactId>
+    <version>${verisons}</version>
     <packaging>jar</packaging>
     <name>Dubbo-Service</name>
 
@@ -31,7 +32,7 @@
         <dependency>
             <groupId>com.darly.dubbo</groupId>
             <artifactId>Dubbo-Api</artifactId>
-            <version>1.0</version>
+            <version>${verisons}</version>
         </dependency>
 
         <dependency>
