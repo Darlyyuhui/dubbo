@@ -21,6 +21,8 @@ import com.darly.dview.widget.camera.util.ImageUtils;
  */
 
 public class OwnerPhotoPop extends PopupWindow {
+    public static int CameraRequstCode = 0x00022;
+    public static int SelectRequstCode = 0x00011;
 
     /**
      * 下午1:29:10 TODO 系统参数。
@@ -34,7 +36,9 @@ public class OwnerPhotoPop extends PopupWindow {
     private Button item_popupwindows_cancel;
 
     private int size;
+    private int totalSize;
     private String path;
+    private boolean islogo;
 
     public OwnerPhotoPop(Context context) {
         super();
@@ -60,10 +64,10 @@ public class OwnerPhotoPop extends PopupWindow {
                 if (ImageUtils.isCameraUseable()) {
                     Intent intentCamera = new Intent(context, CameraActivity.class);
                     intentCamera.putExtra("size", size);
+                    intentCamera.putExtra("totalSize", totalSize);
                     intentCamera.putExtra("file", path);
-                    intentCamera.setAction("Sence");
-                    intentCamera.putExtra("LOGO", false);//不打印水印
-                    ((Activity)context).startActivityForResult(intentCamera, 1);
+                    intentCamera.putExtra("LOGO", islogo);//不打印水印
+                    ((Activity)OwnerPhotoPop.this.context).startActivityForResult(intentCamera, OwnerPhotoPop.CameraRequstCode);
                 } else {
                     Toast.makeText(context,"需要调用摄像头权限，请在设置中打开摄像头权限",Toast.LENGTH_SHORT).show();
                 }
@@ -76,11 +80,10 @@ public class OwnerPhotoPop extends PopupWindow {
             @Override
             public void onClick(View view) {
                 // 相册功能
-                Intent intentAlbum = new Intent();
+                Intent intentAlbum = new Intent(context, PhotoSelectActivity.class);
                 intentAlbum.putExtra("size", size);
-                intentAlbum.setAction("publishFourPhotos");
-                intentAlbum.setClass(context, PhotoSelectActivity.class);
-                ((Activity)context).startActivityForResult(intentAlbum, 99);
+                intentAlbum.putExtra("totalSize", totalSize);
+                ((Activity)context).startActivityForResult(intentAlbum, SelectRequstCode);
                 dismiss();
             }
         });
@@ -99,15 +102,13 @@ public class OwnerPhotoPop extends PopupWindow {
         setOutsideTouchable(true);
         setContentView(view);
     }
-    /**展示POP
-     * @param v 控件
-     * @param size 大小
-     * @param path 路径
-     */
-    public void show(View v, int size, String path) {
+
+    public void show(View v, int size, int totalSize, String path, boolean islogo) {
         this.size = size;
+        this.totalSize = totalSize;
         this.path = path;
-        showAtLocation(v, Gravity.CENTER, 0, 0);
+        this.islogo = islogo;
+        this.showAtLocation(v, 17, 0, 0);
     }
 
 }

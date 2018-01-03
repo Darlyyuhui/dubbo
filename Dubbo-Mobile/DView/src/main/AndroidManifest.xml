@@ -5,7 +5,7 @@
         android:allowBackup="true"
         android:supportsRtl="true">
 
-        <activity android:name=".widget.camera.CameraActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".widget.camera.CameraActivity" android:screenOrientation="landscape"/>
         <activity android:name=".widget.camera.PhotoSelectActivity" android:screenOrientation="portrait"/>
 
     </application>

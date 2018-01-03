@@ -49,6 +49,7 @@ public class PhotoSelectActivity extends Activity{
     private List<String> mSelectedPhotos = new ArrayList<String>();
     private int mCount = 0;
     private int mSize;
+    private int totalSize;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -84,16 +85,9 @@ public class PhotoSelectActivity extends Activity{
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 ImageView ivSelectChecked = (ImageView) view.findViewById(R.id.iv_photo_select);
                 if (ivSelectChecked.getVisibility() == View.GONE) {
-                    if (getIntent().getAction() != null && getIntent().getAction().equals("publishFourPhotos")) {
-                        if (mSize + mCount >= 4) {
-                            Toast.makeText(PhotoSelectActivity.this,"已经选取3张照片~",Toast.LENGTH_SHORT).show();
-                            return;
-                        }
-                    } else if (getIntent().getAction() != null && getIntent().getAction().equals("publishThreePhotos")) {
-                        if (mSize + mCount >= 4) {
-                            Toast.makeText(PhotoSelectActivity.this,"已经选取3张照片~",Toast.LENGTH_SHORT).show();
-                            return;
-                        }
+                    if (mSize + mCount >= totalSize) {
+                        Toast.makeText(PhotoSelectActivity.this,"已经选取" + totalSize + "张照片~",Toast.LENGTH_SHORT).show();
+                        return;
                     }
                     ivSelectChecked.setVisibility(View.VISIBLE);
                     mSelectedPhotos.add(mAllLocalPhotos.get(position));
@@ -110,6 +104,7 @@ public class PhotoSelectActivity extends Activity{
 
     public void loadData() {
         mSize = getIntent().getIntExtra("size", 0);
+        this.totalSize = getIntent().getIntExtra("totalSize", 0);
         mMyGridAdapter = new MyGridAdapter();
         //query(new File(AppEnum.IMAGE));
         getImages();
@@ -130,18 +125,6 @@ public class PhotoSelectActivity extends Activity{
             }
         } else
             return;
-
-        // String[] filePathColumn = { MediaStore.Images.Media.DATA };
-        // Cursor cursor =
-        // getContentResolver().query(MediaStore.Images.Media.EXTERNAL_CONTENT_URI,
-        // filePathColumn, null, null,
-        // MediaStore.Images.Media.DATE_ADDED.concat(" desc"));
-        // for (cursor.moveToFirst(); !cursor.isAfterLast();
-        // cursor.moveToNext()) {
-        // String filepath =
-        // cursor.getString(cursor.getColumnIndexOrThrow(MediaStore.Images.Media.DATA));
-        // mAllLocalPhotos.add(filepath);
-        // }
     }
 
     private Handler handler = new Handler() {
