@@ -28,6 +28,8 @@ public class UserDetials extends User {
 
     private String account;
 
+    private String resource;
+
     public UserDetials(String username, String password, boolean enabled, boolean accountNonExpired,
                            boolean credentialsNonExpired, boolean accountNonLocked, Collection<GrantedAuthority> authorities)
             throws IllegalArgumentException {
@@ -95,4 +97,11 @@ public class UserDetials extends User {
         this.account = account;
     }
 
+    public String getResource() {
+        return resource;
+    }
+
+    public void setResource(String resource) {
+        this.resource = resource;
+    }
 }

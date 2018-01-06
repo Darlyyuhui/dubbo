@@ -5,28 +5,42 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
                         http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-4.0.xsd"
        default-lazy-init="true">
+    <security:http pattern="/loginPage" security="none"/>
     <security:http auto-config="true" use-expressions="true">
         <security:remember-me remember-me-cookie="SPRING_SECURITY_REMEMBER_ME_COOKIE"
                               remember-me-parameter="_spring_security_remember_me" use-secure-cookie="true"
                               user-service-ref="userDetailsService"/>
         <!--****** 主要完成内容，用户只能在一个地方登陆一次，其他地方登陆无效 -->
-        <security:session-management  >
+        <security:session-management>
             <!--session-authentication-strategy-ref="sas"-->
             <!-- ****** 第一步： error-if-maximum-exceeded属性为false的话，踢掉原来的登录， max-sessions默认为1 -->
             <security:concurrency-control max-sessions="1" error-if-maximum-exceeded="false" expired-url="/sameuser"/>
         </security:session-management>
         <!-- 指定默认登陆页面 -->
-        <security:form-login always-use-default-target="true" default-target-url="/home/admin/"
-                             login-processing-url="/j_spring_security_check"
-                             username-parameter="j_username" password-parameter="j_password"
-                             login-page="/login?error=false" authentication-failure-url="/login?error=true"/>
+        <!--form-login是spring security命名空间配置登录相关信息的标签,它包含如下属性：-->
+        <!--1. login-page 自定义登录页url,默认为/login-->
+        <!--2. login-processing-url 登录请求拦截的url,也就是form表单提交时指定的action-->
+        <!--3. default-target-url 默认登录成功后跳转的url-->
+        <!--4. always-use-default-target 是否总是使用默认的登录成功后跳转url-->
+        <!--5. authentication-failure-url 登录失败后跳转的url-->
+        <!--6. username-parameter 用户名的请求字段 默认为userName-->
+        <!--7. password-parameter 密码的请求字段 默认为password-->
+        <!--8. authentication-success-handler-ref 指向一个AuthenticationSuccessHandler用于处理认证成功的请求,不能和default-target-url还有always-use-default-target同时使用-->
+        <!--9. authentication-success-forward-url 用于authentication-failure-handler-ref-->
+        <!--10. authentication-failure-handler-ref 指向一个AuthenticationFailureHandler用于处理失败的认证请求-->
+        <!--11. authentication-failure-forward-url 用于authentication-failure-handler-ref-->
+        <!--12. authentication-details-source-ref 指向一个AuthenticationDetailsSource,在认证过滤器中使用-->
+        <security:form-login always-use-default-target="true" default-target-url="/loginCheck"
+                             username-parameter="dubbo_username" password-parameter="dubbo_password"
+                             login-processing-url="/login"
+                             login-page="/loginPage?error=false" authentication-failure-url="/loginPage?error=true"/>
         <!-- 退出登录时删除session对应的cookie -->
         <security:logout success-handler-ref="logoutSuccessHandler" delete-cookies="JSESSIONID"
                          logout-url="/j_spring_security_logout"/>
         <security:csrf disabled="true"/>
         <security:headers disabled="true"/>
         <security:intercept-url pattern="/home/admin/" access="isAuthenticated()"/>
-        <!--<security:intercept-url pattern="/option/*" access="isAuthenticated()"/>-->
+        <security:intercept-url pattern="/option/*" access="isAuthenticated()"/>
         <security:intercept-url pattern="/websocket/skt/**" access="isAuthenticated()"/>
         <security:intercept-url pattern="/**/testftp.jsp*" access="permitAll"/>
         <security:intercept-url pattern="proxy.jsp" access="permitAll"/>
@@ -39,7 +53,6 @@
         <security:intercept-url pattern="/index.jsp" access="permitAll"/>
     </security:http>
 
-
     <!-- 认证管理器，实现用户认证的入口，主要实现UserDetailsService接口即可 -->
     <security:authentication-manager alias="authenticationManager">
         <security:authentication-provider user-service-ref="userDetailsService">
@@ -49,13 +62,17 @@
         </security:authentication-provider>
     </security:authentication-manager>
 
+    <bean id="loginAuthenticationFilter"
+          class="com.darly.dubbo.security.init.LoginAuthenticationFilter">
+        <property name="authenticationManager" ref="authenticationManager"/>
+    </bean>
+
     <bean id="userDetailsService" class="com.darly.dubbo.security.securitycfg.UserDetailServer"/>
 
     <bean id="md5PasswordEncoder" class="org.springframework.security.authentication.encoding.Md5PasswordEncoder"/>
     <bean id="saltSource" class="org.springframework.security.authentication.dao.ReflectionSaltSource">
         <property name="userPropertyToUse" value="username"/>
     </bean>
-
     <bean id="daoAuthenticationProvider"
           class="org.springframework.security.authentication.dao.DaoAuthenticationProvider">
         <property name="userDetailsService" ref="userDetailsService"/>

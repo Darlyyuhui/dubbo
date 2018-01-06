@@ -244,7 +244,7 @@
     }
 
     function login() {
-        window.location.href = "${root}/login";
+        window.location.href = "${root}/loginPage";
     }
 
     function logout() {
@@ -283,7 +283,7 @@
                 }
                 if (data.result == '502') {
                     alert(data.message);
-                    window.top.location.href = "${root}/login";
+                    window.top.location.href = "${root}/loginPage";
                 }
                 if (data.result == 'error') {
                     $("#upPasdMsg").html(data.message);

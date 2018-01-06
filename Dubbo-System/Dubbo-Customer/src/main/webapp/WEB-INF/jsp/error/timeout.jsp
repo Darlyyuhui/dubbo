@@ -26,7 +26,7 @@
  <div class="container" align="center">
    <h3>登陆已超时</h3>
    <p>
-    点<a href="${root}/login">这里</a>重新登陆
+    点<a href="${root}/loginPage">这里</a>重新登陆
    </p>
 
  </div>

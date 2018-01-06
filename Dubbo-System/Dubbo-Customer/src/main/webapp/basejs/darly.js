@@ -7,7 +7,7 @@ function darly() {
 darly.prototype = {
     //跳转到登录页面
     storeLogin: function (root) {
-        window.location.href = root + "/login";
+        window.location.href = root + "/loginPage";
     },
     logout: function (root) {
         window.location.href = root + "/j_spring_security_logout";

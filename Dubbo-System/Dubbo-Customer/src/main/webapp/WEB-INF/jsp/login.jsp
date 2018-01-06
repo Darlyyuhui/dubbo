@@ -29,9 +29,9 @@
 
     <div class="login w3layouts agileits">
         <h2>登 录</h2>
-        <form action="j_spring_security_check" method="post" id="loginForm" >
-            <input name="j_username" type="text"  id="user_name" placeholder="用户账号" value=""/>
-            <input name="j_password" type="password"  id="user_pwd" placeholder="密码" onpaste="return false" onfocus="this.type='password'" autocomplete="off"/>
+        <form action="${root}/login" method="post" id="loginForm" >
+            <input name="dubbo_username" type="text"  id="user_name" placeholder="用户账号" value=""/>
+            <input name="dubbo_password" type="password"  id="user_pwd" placeholder="密码" onpaste="return false" onfocus="this.type='password'" autocomplete="off"/>
         </form>
         <ul class="tick w3layouts agileits">
             <li>
