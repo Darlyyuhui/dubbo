@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:circleprogress="http://schemas.android.com/apk/res-auto"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:layout_gravity="center"
+              android:background="@drawable/progress_custom_bg"
+              android:gravity="center_horizontal"
+              android:orientation="vertical"
+              android:paddingBottom="10dp"
+              android:paddingLeft="15dp"
+              android:paddingRight="15dp"
+              android:paddingTop="10dp">
+
+    <com.darly.video.wedget.CircleProgresser
+        android:id="@+id/video_progress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        circleprogress:color1="@color/red"
+        circleprogress:color2="@color/green"
+        circleprogress:color3="@color/blue"/>
+
+    <TextView
+        android:id="@+id/video_message"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:textColor="#FFFFFF"/>
+
+</LinearLayout>

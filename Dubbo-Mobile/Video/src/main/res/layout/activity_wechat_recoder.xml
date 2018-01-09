@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:android_custom="http://schemas.android.com/apk/res-auto"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@android:color/black">
+
+    <RelativeLayout
+        android:id="@+id/layout_header"
+        android:layout_width="fill_parent"
+        android:layout_height="48.0dip"
+        android:background="@color/black"
+        android:visibility="gone">
+
+        <TextView
+            android:id="@+id/tv_recorder_cancel"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:layout_centerVertical="true"
+            android:clickable="true"
+            android:gravity="center"
+            android:padding="10.0dip"
+            android:text="取消"
+            android:textColor="@color/FF00FF00"
+            android:textSize="16.0dip" />
+
+        <TextView
+            android:id="@+id/tv_select_video"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:clickable="true"
+            android:gravity="center"
+            android:padding="10.0dip"
+            android:text="选择视频"
+            android:textColor="@color/FF00FF00"
+            android:textSize="16.0dip"
+            android:visibility="visible" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rl_recoder_surfaceview"
+        android:layout_width="fill_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/layout_header"
+        android:background="@color/black">
+
+
+        <SurfaceView
+            android:id="@+id/surfaceView"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent" />
+
+        <VideoView
+            android:id="@+id/videoview"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="gone" />
+
+        <ImageView
+            android:id="@+id/img_record_focusing"
+            android:layout_width="64dip"
+            android:layout_height="64dip"
+            android:scaleType="fitXY"
+            android:visibility="gone" />
+
+        <ImageView
+            android:id="@+id/id_recoder_ratio"
+            android:layout_width="48dip"
+            android:layout_height="48dip"
+            android:padding="10dp"
+            android:src="@mipmap/ic_recoder_ratio" />
+
+        <ImageView
+            android:id="@+id/id_recoder_switch"
+            android:layout_width="48dip"
+            android:layout_height="48dip"
+            android:layout_centerHorizontal="true"
+            android:padding="10dp"
+            android:src="@mipmap/ic_recoder_switch" />
+
+        <ImageView
+            android:id="@+id/id_recoder_time"
+            android:layout_width="48dip"
+            android:layout_height="48dip"
+            android:layout_alignParentRight="true"
+            android:padding="10dp"
+            android:src="@mipmap/ic_recoder_time" />
+
+    </RelativeLayout>
+
+
+    <LinearLayout
+        android:id="@+id/rl_recorder_bottom"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:padding="30dp"
+        android:visibility="visible">
+
+        <TableRow
+            android:id="@+id/id_recorder_select"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone">
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:layout_weight="1" />
+
+            <ImageView
+                android:id="@+id/id_recorder_de"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:padding="10dp"
+                android:src="@mipmap/ic_video_delete" />
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:layout_weight="1" />
+
+            <ImageView
+                android:id="@+id/id_recorder_ch"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:padding="10dp"
+                android:src="@mipmap/ic_video_chose" />
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:layout_weight="1" />
+
+        </TableRow>
+        <com.darly.video.wedget.ProgressImage
+            android:id="@+id/btn_press"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android_custom:roundColor="#D1D1D1"
+            android_custom:roundProgressColor="@android:color/black"
+            android_custom:roundWidth="10dip"
+            android_custom:textColor="#9A32CD"
+            android_custom:textIsDisplayable="false"
+            android_custom:textSize="18sp"
+            android:visibility="visible"/>
+    </LinearLayout>
+
+</RelativeLayout>

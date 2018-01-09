@@ -1,0 +1,47 @@
+apply plugin: 'maven'
+
+// 2.maven-信息
+ext {// ext is a gradle closure allowing the declaration of global properties
+    ARTIFACT_ID = 'video'
+    GROUP_ID = 'com.darly.video'
+}
+
+// 3.maven-输出路径
+uploadArchives{
+    repositories.mavenDeployer{
+        println repositoryUrl
+        repository(url:repositoryUrl){
+            authentication(userName:repositoryUserName,password:repositoryPassword)
+        }
+        pom.project{
+            groupId project.GROUP_ID
+            artifactId project.ARTIFACT_ID
+            version android.defaultConfig.versionName
+        }
+    }
+}
+//以下代码会生成jar包源文件，如果是不开源码，请不要输入这段
+//aar包内包含注释
+task sourcesJar(type: Jar) {
+    from android.sourceSets.main.java.srcDirs
+    classifier = 'sources'
+}
+
+
+task javadoc(type: Javadoc) {
+    failOnError = false
+    options.encoding ="utf-8"
+    source = android.sourceSets.main.java.srcDirs
+    ext.androidJar = "${android.sdkDirectory}/platforms/${android.compileSdkVersion}/android.jar"
+    classpath += files(ext.androidJar)
+}
+
+task javadocJar(type: Jar, dependsOn: javadoc) {
+    classifier = 'javadoc'
+    from javadoc.destinationDir
+}
+
+artifacts {
+    archives javadocJar
+    archives sourcesJar
+}

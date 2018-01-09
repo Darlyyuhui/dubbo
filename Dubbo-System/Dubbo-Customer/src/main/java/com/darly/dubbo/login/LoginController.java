@@ -43,85 +43,10 @@ public class LoginController extends BaseSecurityController {
      */
     @RequestMapping(value = {"/loginPage"}, method = RequestMethod.GET)
     public String loginPage(String error, ModelMap model, HttpServletRequest request, HttpServletResponse response) {
-        String userAgent = request.getHeader("User-Agent");
-        if (userAgent.toLowerCase().indexOf("android") >= 0) {
-            if ("true".equalsIgnoreCase(error)) {
-                loginerror(request, response);
-            }
-            //返回JSON
-            return null;
-        } else if (userAgent.toLowerCase().indexOf("okhttp") >= 0) {
-            //返回JSON
-            if ("true".equalsIgnoreCase(error)) {
-                loginerror(request, response);
-            }
-            return null;
-        } else if (userAgent.toLowerCase().indexOf("iphone") >= 0) {
-            //返回JSON
-            if ("true".equalsIgnoreCase(error)) {
-                loginerror(request, response);
-            }
-            return null;
-        } else if (userAgent.toLowerCase().indexOf("postman") >= 0) {
-            //返回JSON
-            if ("true".equalsIgnoreCase(error)) {
-                loginerror(request, response);
-            }
-            return null;
-        } else {
-            hasUser(model);
-            model.putAll(loginApi.login(error));
-            return (String) model.get(ApplicationConst.getForwordUrl());
-        }
+        hasUser(model);
+        model.putAll(loginApi.login(error));
+        return (String) model.get(ApplicationConst.getForwordUrl());
     }
-    private void loginerror(HttpServletRequest request, HttpServletResponse response) {
-        Map<String, Object> resultMap = new HashMap<String, Object>();
-        resultMap.put(ResponseUtil.RES_KEY_DESC, "用户名密码错误");
-        resultMap.put(ResponseUtil.RES_KEY_CODE, 201);
-        ResponseUtil.printWriteResponse(request.getParameter("callback"), resultMap, response);
-    }
-
-    /**
-     * 根据请求对象不同，返回不同数据
-     */
-    @RequestMapping(value = {"/loginCheck"}, method = RequestMethod.GET)
-    public String loginCheck(HttpServletRequest request, HttpServletResponse response) {
-        String userAgent = request.getHeader("User-Agent");
-        if (userAgent.toLowerCase().indexOf("android") >= 0) {
-            returnJson(request, response);
-            //返回JSON
-            return null;
-        } else if (userAgent.toLowerCase().indexOf("okhttp") >= 0) {
-            //返回JSON
-            returnJson(request, response);
-            return null;
-        } else if (userAgent.toLowerCase().indexOf("iphone") >= 0) {
-            //返回JSON
-            returnJson(request, response);
-            return null;
-        } else if (userAgent.toLowerCase().indexOf("postman") >= 0) {
-            //返回JSON
-            returnJson(request, response);
-            return null;
-        } else {
-            return "redirect:/home/admin/";
-        }
-    }
-
-    private void returnJson(HttpServletRequest request, HttpServletResponse response) {
-        Map<String, Object> resultMap = new HashMap<String, Object>();
-        UserDetials user = getCurrentUser();
-        if (user == null) {
-            resultMap.put(ResponseUtil.RES_KEY_DESC, "用户为空");
-            resultMap.put(ResponseUtil.RES_KEY_CODE, 201);
-        } else {
-            resultMap.put(ResponseUtil.RES_KEY_DESC, "success");
-            resultMap.put(ResponseUtil.RES_KEY_CODE, 200);
-            resultMap.put(ResponseUtil.RES_KEY_RESULT, user);
-        }
-        ResponseUtil.printWriteResponse(request.getParameter("callback"), resultMap, response);
-    }
-
 
     @RequestMapping({"/sameuser"})
     public String sameuser(ModelMap model) {

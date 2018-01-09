@@ -1,11 +1,8 @@
 package com.darly.dubbo.security.user.bean;
 
-import org.springframework.context.annotation.Role;
 import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
@@ -16,7 +13,7 @@ import java.util.List;
  * @Modified By：Darly Fronch（张宇辉）
  * @Description： 用户表对应实体类
  */
-public class User implements UserDetails  {
+public class User implements UserDetails{
     private String id;
     private String account;
     private String pwd;
