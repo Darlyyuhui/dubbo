@@ -32,9 +32,9 @@ public class SearchEngineController  extends BaseSecurityController {
     @RequestMapping(value = {"/search"}, method = RequestMethod.POST)
     public void searchEngine( HttpServletRequest request, HttpServletResponse response) {
         String arg = request.getParameter("KeyWord");
-        searchEngineApi.searchEngine(arg);
         Map<String, Object> resultMap = new HashMap<String, Object>();
         resultMap.put(ResponseUtil.RES_KEY_CODE, "200");
+        resultMap.put(ResponseUtil.RES_KEY_RESULT,searchEngineApi.searchEngine(arg).get("values"));
         resultMap.put(ResponseUtil.RES_KEY_DESC, "測試正常");
         ResponseUtil.printWriteResponse(request.getParameter("callback"), resultMap, response);
     }

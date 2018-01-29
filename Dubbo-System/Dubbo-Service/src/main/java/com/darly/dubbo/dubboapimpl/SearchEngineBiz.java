@@ -3,10 +3,12 @@ package com.darly.dubbo.dubboapimpl;
 import com.darly.dubbo.framework.base.BaseController;
 import com.darly.dubbo.searchengine.analyzer.lucene.IKAnalyzer;
 import com.darly.dubbo.searchengine.api.SearchEngineApi;
+import com.darly.dubbo.security.system.bean.SystemLog;
 import org.apache.lucene.analysis.Analyzer;
 import org.apache.lucene.analysis.TokenStream;
 import org.apache.lucene.analysis.tokenattributes.CharTermAttribute;
 import org.apache.lucene.document.Document;
+import org.apache.lucene.document.Field;
 import org.apache.lucene.index.DirectoryReader;
 import org.apache.lucene.index.IndexReader;
 import org.apache.lucene.index.Term;
@@ -23,6 +25,8 @@ import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
 
+import static org.apache.lucene.document.StringField.TYPE_STORED;
+
 /**
  * Author : ZhangYuHui
  * Date : 2018/1/29
@@ -32,6 +36,8 @@ import java.util.List;
 public class SearchEngineBiz extends BaseController implements SearchEngineApi {
     @Override
     public ModelMap searchEngine(String key) {
+        ModelMap map = new ModelMap();
+        List<SystemLog> values = new ArrayList<SystemLog>();
         long start = System.currentTimeMillis();
         logger.info("开始搜索时间：" + start);
         //定义索引目录
@@ -48,7 +54,6 @@ public class SearchEngineBiz extends BaseController implements SearchEngineApi {
             //获取分词结果
             List<String> analyseResult = getAnalyseResult(key, new IKAnalyzer());
             for (String result : analyseResult){
-                termList.add(new Term("id",result));
                 termList.add(new Term("content",result));
             }
             //定义TermQuery集合
@@ -76,15 +81,21 @@ public class SearchEngineBiz extends BaseController implements SearchEngineApi {
             //取出文档
             ScoreDoc[] scoreDocs = topDocs.scoreDocs;
             //遍历取出数据
+
             for (ScoreDoc scoreDoc : scoreDocs){
                 float score = scoreDoc.score; //相似度
                 logger.info("相似度:"+ score);
                 //通过indexSearcher的doc方法取出文档
                 Document doc = indexSearcher.doc(scoreDoc.doc);
-                logger.info("id:"+doc.get("id"));
-                logger.info("content:"+doc.get("content"));
+                SystemLog log = new SystemLog();
+                log.setId(doc.get("id"));
+                log.setOperatorId(doc.get("operatorId"));
+                log.setIpAddress(doc.get("ipAddress"));
+                log.setOperatorName(doc.get("operatorName"));
+                log.setType(Long.valueOf(doc.get("type")));
+                log.setContent(doc.get("content"));
+                values.add(log);
             }
-
             //关闭索引查看器
             indexReader.close();
             long end = System.currentTimeMillis();
@@ -93,7 +104,8 @@ public class SearchEngineBiz extends BaseController implements SearchEngineApi {
         } catch (IOException e) {
             logger.info(e.getMessage());
         }
-        return null;
+        map.addAttribute("values",values);
+        return map;
     }
 
 

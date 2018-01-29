@@ -54,6 +54,10 @@ public class SearchEngineSchedule {
             //读取每一行
             document.add(new Field("content", log.getContent(), TYPE_STORED));
             document.add(new Field("id", log.getId(), TYPE_STORED));
+            document.add(new Field("operatorId", log.getOperatorId(), TYPE_STORED));
+            document.add(new Field("ipAddress", log.getIpAddress(), TYPE_STORED));
+            document.add(new Field("operatorName", log.getOperatorName(), TYPE_STORED));
+            document.add(new Field("type", String.valueOf(log.getType()), TYPE_STORED));
             indexWriter.addDocument(document);
         }
         long end = System.currentTimeMillis();

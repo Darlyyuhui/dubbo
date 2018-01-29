@@ -269,6 +269,7 @@
             contentType: false,
 
             success: function(msg) {
+                console.log(msg);
             }
         });
     }
