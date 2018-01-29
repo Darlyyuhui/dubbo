@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/select_photos"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent" >
 
     <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:background="#eaeaea"
         android:orientation="vertical" >
 
         <com.darly.dview.widget.header.TitleView
@@ -35,7 +35,6 @@
         android:layout_width="fill_parent"
         android:layout_height="50dp"
         android:layout_alignParentBottom="true"
-        android:background="@mipmap/contact_background"
         android:gravity="center"
         android:orientation="horizontal"
         android:paddingBottom="@dimen/margin_padding1"

@@ -22,6 +22,7 @@ import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.GridView;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import com.darly.dview.R;
@@ -40,6 +41,7 @@ import java.util.List;
  */
 
 public class PhotoSelectActivity extends Activity{
+    private RelativeLayout select_photos;
     private TitleView titleView;
     private GridView mGvPhotos = null;
     private MyGridAdapter mMyGridAdapter = null;
@@ -55,6 +57,7 @@ public class PhotoSelectActivity extends Activity{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.photo_select_activity);
+        select_photos = (RelativeLayout) findViewById(R.id.select_photos);
         titleView = (TitleView) findViewById(R.id.tv_comm_title);
         titleView.setLeftBackOneListener(R.mipmap.ic_title_back, new OnClickListener() {
             @Override
@@ -178,7 +181,26 @@ public class PhotoSelectActivity extends Activity{
         }).start();
     }
 
+    public void setSelect_photos(int resId) {
+        if (resId==0){
+            return;
+        }
+        select_photos.setBackgroundResource(resId);
+    }
 
+    public void setTitleView(int resId) {
+        if (resId==0){
+            return;
+        }
+        titleView.removeBackground(resId);
+    }
+
+    public void setmBtnFinish(int resId) {
+        if (resId==0){
+            return;
+        }
+        mBtnFinish.setBackgroundResource(resId);
+    }
 
     private class MyGridAdapter extends BaseAdapter {
         private LayoutInflater mInflater = null;

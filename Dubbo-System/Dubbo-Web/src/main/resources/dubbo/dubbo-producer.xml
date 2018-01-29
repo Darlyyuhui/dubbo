@@ -35,6 +35,8 @@
                    version="${dubbo-version}" timeout="${dubbo-timeout}"/>
     <dubbo:service interface="com.darly.dubbo.fileupload.FileUploadApi" ref="FileUploadApi" group="${dubbo-group}"
                    version="${dubbo-version}" timeout="${dubbo-timeout}"/>
+    <dubbo:service interface="com.darly.dubbo.searchengine.api.SearchEngineApi" ref="SearchEngineApi" group="${dubbo-group}"
+                   version="${dubbo-version}" timeout="${dubbo-timeout}"/>
     <!-- 具体的实现bean -->
     <bean id="StudyApi" class="com.darly.dubbo.dubboapimpl.StudyBiz"/>
     <bean id="UserApi" class="com.darly.dubbo.dubboapimpl.UserBiz"/>
@@ -45,4 +47,5 @@
     <bean id="StoreApi" class="com.darly.dubbo.dubboapimpl.StoreBiz"/>
     <bean id="StoreOptionApi" class="com.darly.dubbo.dubboapimpl.StoreOptionBiz"/>
     <bean id="FileUploadApi" class="com.darly.dubbo.dubboapimpl.FileUploadBiz"/>
+    <bean id="SearchEngineApi" class="com.darly.dubbo.dubboapimpl.SearchEngineBiz"/>
 </beans>

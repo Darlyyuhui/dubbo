@@ -103,6 +103,36 @@ public class OwnerPhotoPop extends PopupWindow {
         setContentView(view);
     }
 
+    public void setBackground(int resId){
+        if (resId==0){
+            return;
+        }
+        item_popupwindows_camera.setBackgroundResource(resId);
+        item_popupwindows_Photo.setBackgroundResource(resId);
+        item_popupwindows_cancel.setBackgroundResource(resId);
+    }
+
+    public void setItem_popupwindows_camera(int resId) {
+        if (resId==0){
+            return;
+        }
+        item_popupwindows_camera.setBackgroundResource(resId);
+    }
+
+    public void setItem_popupwindows_Photo(int resId) {
+        if (resId==0){
+            return;
+        }
+        item_popupwindows_Photo.setBackgroundResource(resId);
+    }
+
+    public void setItem_popupwindows_cancel(int resId) {
+        if (resId==0){
+            return;
+        }
+        item_popupwindows_cancel.setBackgroundResource(resId);
+    }
+
     public void show(View v, int size, int totalSize, String path, boolean islogo) {
         this.size = size;
         this.totalSize = totalSize;

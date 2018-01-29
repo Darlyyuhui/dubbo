@@ -89,4 +89,8 @@ public class DSubButton extends FrameLayout {
         mButton.setEnabled(isClick);
     }
 
+    public void setmButtonBackground(int resid){
+        mButton.setBackgroundResource(resid);
+    }
+
 }

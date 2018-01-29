@@ -42,4 +42,7 @@
     <dubbo:reference id="FileUploadApi" interface="com.darly.dubbo.fileupload.FileUploadApi"
                      group="${dubbo-service-group}" version="${dubbo-service-version}"
                      check="false" />
+    <dubbo:reference id="SearchEngineApi" interface="com.darly.dubbo.searchengine.api.SearchEngineApi"
+                     group="${dubbo-service-group}" version="${dubbo-service-version}"
+                     check="false" />
 </beans>

@@ -100,8 +100,13 @@
             </div>
         </nav>
     </div>
-
     <div class="row" style="margin-top: -20px;">
+        <form id="searcher" onsubmit="return false" action="##"  method="post">
+            <input type="text" id='KeyWord' name="KeyWord" size="30" required="" placeholder="ID">
+            <input type="submit" name="" id="" value="提交" onclick = "PostData()">
+        </form>
+    </div>
+    <div class="row" >
         <!--轮播图-->
         <div id="carousel-example-generic" class="carousel slide" data-ride="carousel" data-interval="3000">
             <ol class="carousel-indicators">
@@ -251,6 +256,21 @@
         isloginout = true;
         window.location.href = "${root}/j_spring_security_logout";
 
+    }
+
+    function PostData() {
+        var form = new FormData(document.getElementById("searcher"));
+        $.ajax({
+            url: "${root}/search",
+            type: "POST",//方法类型
+            dataType: "json",//预期服务器返回的数据类型
+            data: form,
+            processData: false,
+            contentType: false,
+
+            success: function(msg) {
+            }
+        });
     }
 
     function showSecondMenu() {

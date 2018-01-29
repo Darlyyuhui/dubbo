@@ -157,7 +157,12 @@ public class TitleView extends FrameLayout {
     }
 
 
-    public void removeBackground() {
-        background.setBackgroundResource(R.color.transparent);
+    public void removeBackground(int resid) {
+        if (resid == 0) {
+            background.setBackgroundResource(R.color.transparent);
+        }else {
+            background.setBackgroundResource(resid);
+        }
     }
+
 }
