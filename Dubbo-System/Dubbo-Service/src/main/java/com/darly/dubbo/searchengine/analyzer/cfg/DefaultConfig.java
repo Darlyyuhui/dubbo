@@ -39,10 +39,10 @@ import java.util.Properties;
 public class DefaultConfig implements Configuration {
 
 	/*
-	 * 分词器默认字典路径
+	 * 数据字典路径，使用数据库引入数据字典，这两个参数已经废弃
 	 */
-	private static final String PATH_DIC_MAIN = "main2012.dic";
-	private static final String PATH_DIC_QUANTIFIER = "quantifier.dic";
+	private static final String PATH_DIC_MAIN = "";
+	private static final String PATH_DIC_QUANTIFIER = "";
 
 	/*
 	 * 分词器配置文件路径
