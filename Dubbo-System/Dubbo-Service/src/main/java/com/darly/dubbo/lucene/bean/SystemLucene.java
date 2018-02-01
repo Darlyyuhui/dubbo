@@ -5,11 +5,11 @@ import java.io.Serializable;
 public class SystemLucene implements Serializable {
     private String id;
 
-    private String key;
+    private String lucenekey;
 
-    private String value;
+    private String lucenevalue;
 
-    private String url;
+    private String luceneurl;
 
     private static final long serialVersionUID = 1L;
 
@@ -21,27 +21,27 @@ public class SystemLucene implements Serializable {
         this.id = id == null ? null : id.trim();
     }
 
-    public String getKey() {
-        return key;
+    public String getLucenekey() {
+        return lucenekey;
     }
 
-    public void setKey(String key) {
-        this.key = key == null ? null : key.trim();
+    public void setLucenekey(String lucenekey) {
+        this.lucenekey = lucenekey == null ? null : lucenekey.trim();
     }
 
-    public String getValue() {
-        return value;
+    public String getLucenevalue() {
+        return lucenevalue;
     }
 
-    public void setValue(String value) {
-        this.value = value == null ? null : value.trim();
+    public void setLucenevalue(String lucenevalue) {
+        this.lucenevalue = lucenevalue == null ? null : lucenevalue.trim();
     }
 
-    public String getUrl() {
-        return url;
+    public String getLuceneurl() {
+        return luceneurl;
     }
 
-    public void setUrl(String url) {
-        this.url = url == null ? null : url.trim();
+    public void setLuceneurl(String luceneurl) {
+        this.luceneurl = luceneurl == null ? null : luceneurl.trim();
     }
 }

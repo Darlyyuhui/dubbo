@@ -174,213 +174,213 @@ public class SystemLuceneSearch {
             return (Criteria) this;
         }
 
-        public Criteria andKeyIsNull() {
-            addCriterion("KEY is null");
+        public Criteria andLucenekeyIsNull() {
+            addCriterion("LUCENEKEY is null");
             return (Criteria) this;
         }
 
-        public Criteria andKeyIsNotNull() {
-            addCriterion("KEY is not null");
+        public Criteria andLucenekeyIsNotNull() {
+            addCriterion("LUCENEKEY is not null");
             return (Criteria) this;
         }
 
-        public Criteria andKeyEqualTo(String value) {
-            addCriterion("KEY =", value, "key");
+        public Criteria andLucenekeyEqualTo(String value) {
+            addCriterion("LUCENEKEY =", value, "lucenekey");
             return (Criteria) this;
         }
 
-        public Criteria andKeyNotEqualTo(String value) {
-            addCriterion("KEY <>", value, "key");
+        public Criteria andLucenekeyNotEqualTo(String value) {
+            addCriterion("LUCENEKEY <>", value, "lucenekey");
             return (Criteria) this;
         }
 
-        public Criteria andKeyGreaterThan(String value) {
-            addCriterion("KEY >", value, "key");
+        public Criteria andLucenekeyGreaterThan(String value) {
+            addCriterion("LUCENEKEY >", value, "lucenekey");
             return (Criteria) this;
         }
 
-        public Criteria andKeyGreaterThanOrEqualTo(String value) {
-            addCriterion("KEY >=", value, "key");
+        public Criteria andLucenekeyGreaterThanOrEqualTo(String value) {
+            addCriterion("LUCENEKEY >=", value, "lucenekey");
             return (Criteria) this;
         }
 
-        public Criteria andKeyLessThan(String value) {
-            addCriterion("KEY <", value, "key");
+        public Criteria andLucenekeyLessThan(String value) {
+            addCriterion("LUCENEKEY <", value, "lucenekey");
             return (Criteria) this;
         }
 
-        public Criteria andKeyLessThanOrEqualTo(String value) {
-            addCriterion("KEY <=", value, "key");
+        public Criteria andLucenekeyLessThanOrEqualTo(String value) {
+            addCriterion("LUCENEKEY <=", value, "lucenekey");
             return (Criteria) this;
         }
 
-        public Criteria andKeyLike(String value) {
-            addCriterion("KEY like", value, "key");
+        public Criteria andLucenekeyLike(String value) {
+            addCriterion("LUCENEKEY like", value, "lucenekey");
             return (Criteria) this;
         }
 
-        public Criteria andKeyNotLike(String value) {
-            addCriterion("KEY not like", value, "key");
+        public Criteria andLucenekeyNotLike(String value) {
+            addCriterion("LUCENEKEY not like", value, "lucenekey");
             return (Criteria) this;
         }
 
-        public Criteria andKeyIn(List<String> values) {
-            addCriterion("KEY in", values, "key");
+        public Criteria andLucenekeyIn(List<String> values) {
+            addCriterion("LUCENEKEY in", values, "lucenekey");
             return (Criteria) this;
         }
 
-        public Criteria andKeyNotIn(List<String> values) {
-            addCriterion("KEY not in", values, "key");
+        public Criteria andLucenekeyNotIn(List<String> values) {
+            addCriterion("LUCENEKEY not in", values, "lucenekey");
             return (Criteria) this;
         }
 
-        public Criteria andKeyBetween(String value1, String value2) {
-            addCriterion("KEY between", value1, value2, "key");
+        public Criteria andLucenekeyBetween(String value1, String value2) {
+            addCriterion("LUCENEKEY between", value1, value2, "lucenekey");
             return (Criteria) this;
         }
 
-        public Criteria andKeyNotBetween(String value1, String value2) {
-            addCriterion("KEY not between", value1, value2, "key");
+        public Criteria andLucenekeyNotBetween(String value1, String value2) {
+            addCriterion("LUCENEKEY not between", value1, value2, "lucenekey");
             return (Criteria) this;
         }
 
-        public Criteria andValueIsNull() {
-            addCriterion("VALUE is null");
+        public Criteria andLucenevalueIsNull() {
+            addCriterion("LUCENEVALUE is null");
             return (Criteria) this;
         }
 
-        public Criteria andValueIsNotNull() {
-            addCriterion("VALUE is not null");
+        public Criteria andLucenevalueIsNotNull() {
+            addCriterion("LUCENEVALUE is not null");
             return (Criteria) this;
         }
 
-        public Criteria andValueEqualTo(String value) {
-            addCriterion("VALUE =", value, "value");
+        public Criteria andLucenevalueEqualTo(String value) {
+            addCriterion("LUCENEVALUE =", value, "lucenevalue");
             return (Criteria) this;
         }
 
-        public Criteria andValueNotEqualTo(String value) {
-            addCriterion("VALUE <>", value, "value");
+        public Criteria andLucenevalueNotEqualTo(String value) {
+            addCriterion("LUCENEVALUE <>", value, "lucenevalue");
             return (Criteria) this;
         }
 
-        public Criteria andValueGreaterThan(String value) {
-            addCriterion("VALUE >", value, "value");
+        public Criteria andLucenevalueGreaterThan(String value) {
+            addCriterion("LUCENEVALUE >", value, "lucenevalue");
             return (Criteria) this;
         }
 
-        public Criteria andValueGreaterThanOrEqualTo(String value) {
-            addCriterion("VALUE >=", value, "value");
+        public Criteria andLucenevalueGreaterThanOrEqualTo(String value) {
+            addCriterion("LUCENEVALUE >=", value, "lucenevalue");
             return (Criteria) this;
         }
 
-        public Criteria andValueLessThan(String value) {
-            addCriterion("VALUE <", value, "value");
+        public Criteria andLucenevalueLessThan(String value) {
+            addCriterion("LUCENEVALUE <", value, "lucenevalue");
             return (Criteria) this;
         }
 
-        public Criteria andValueLessThanOrEqualTo(String value) {
-            addCriterion("VALUE <=", value, "value");
+        public Criteria andLucenevalueLessThanOrEqualTo(String value) {
+            addCriterion("LUCENEVALUE <=", value, "lucenevalue");
             return (Criteria) this;
         }
 
-        public Criteria andValueLike(String value) {
-            addCriterion("VALUE like", value, "value");
+        public Criteria andLucenevalueLike(String value) {
+            addCriterion("LUCENEVALUE like", value, "lucenevalue");
             return (Criteria) this;
         }
 
-        public Criteria andValueNotLike(String value) {
-            addCriterion("VALUE not like", value, "value");
+        public Criteria andLucenevalueNotLike(String value) {
+            addCriterion("LUCENEVALUE not like", value, "lucenevalue");
             return (Criteria) this;
         }
 
-        public Criteria andValueIn(List<String> values) {
-            addCriterion("VALUE in", values, "value");
+        public Criteria andLucenevalueIn(List<String> values) {
+            addCriterion("LUCENEVALUE in", values, "lucenevalue");
             return (Criteria) this;
         }
 
-        public Criteria andValueNotIn(List<String> values) {
-            addCriterion("VALUE not in", values, "value");
+        public Criteria andLucenevalueNotIn(List<String> values) {
+            addCriterion("LUCENEVALUE not in", values, "lucenevalue");
             return (Criteria) this;
         }
 
-        public Criteria andValueBetween(String value1, String value2) {
-            addCriterion("VALUE between", value1, value2, "value");
+        public Criteria andLucenevalueBetween(String value1, String value2) {
+            addCriterion("LUCENEVALUE between", value1, value2, "lucenevalue");
             return (Criteria) this;
         }
 
-        public Criteria andValueNotBetween(String value1, String value2) {
-            addCriterion("VALUE not between", value1, value2, "value");
+        public Criteria andLucenevalueNotBetween(String value1, String value2) {
+            addCriterion("LUCENEVALUE not between", value1, value2, "lucenevalue");
             return (Criteria) this;
         }
 
-        public Criteria andUrlIsNull() {
-            addCriterion("URL is null");
+        public Criteria andLuceneurlIsNull() {
+            addCriterion("LUCENEURL is null");
             return (Criteria) this;
         }
 
-        public Criteria andUrlIsNotNull() {
-            addCriterion("URL is not null");
+        public Criteria andLuceneurlIsNotNull() {
+            addCriterion("LUCENEURL is not null");
             return (Criteria) this;
         }
 
-        public Criteria andUrlEqualTo(String value) {
-            addCriterion("URL =", value, "url");
+        public Criteria andLuceneurlEqualTo(String value) {
+            addCriterion("LUCENEURL =", value, "luceneurl");
             return (Criteria) this;
         }
 
-        public Criteria andUrlNotEqualTo(String value) {
-            addCriterion("URL <>", value, "url");
+        public Criteria andLuceneurlNotEqualTo(String value) {
+            addCriterion("LUCENEURL <>", value, "luceneurl");
             return (Criteria) this;
         }
 
-        public Criteria andUrlGreaterThan(String value) {
-            addCriterion("URL >", value, "url");
+        public Criteria andLuceneurlGreaterThan(String value) {
+            addCriterion("LUCENEURL >", value, "luceneurl");
             return (Criteria) this;
         }
 
-        public Criteria andUrlGreaterThanOrEqualTo(String value) {
-            addCriterion("URL >=", value, "url");
+        public Criteria andLuceneurlGreaterThanOrEqualTo(String value) {
+            addCriterion("LUCENEURL >=", value, "luceneurl");
             return (Criteria) this;
         }
 
-        public Criteria andUrlLessThan(String value) {
-            addCriterion("URL <", value, "url");
+        public Criteria andLuceneurlLessThan(String value) {
+            addCriterion("LUCENEURL <", value, "luceneurl");
             return (Criteria) this;
         }
 
-        public Criteria andUrlLessThanOrEqualTo(String value) {
-            addCriterion("URL <=", value, "url");
+        public Criteria andLuceneurlLessThanOrEqualTo(String value) {
+            addCriterion("LUCENEURL <=", value, "luceneurl");
             return (Criteria) this;
         }
 
-        public Criteria andUrlLike(String value) {
-            addCriterion("URL like", value, "url");
+        public Criteria andLuceneurlLike(String value) {
+            addCriterion("LUCENEURL like", value, "luceneurl");
             return (Criteria) this;
         }
 
-        public Criteria andUrlNotLike(String value) {
-            addCriterion("URL not like", value, "url");
+        public Criteria andLuceneurlNotLike(String value) {
+            addCriterion("LUCENEURL not like", value, "luceneurl");
             return (Criteria) this;
         }
 
-        public Criteria andUrlIn(List<String> values) {
-            addCriterion("URL in", values, "url");
+        public Criteria andLuceneurlIn(List<String> values) {
+            addCriterion("LUCENEURL in", values, "luceneurl");
             return (Criteria) this;
         }
 
-        public Criteria andUrlNotIn(List<String> values) {
-            addCriterion("URL not in", values, "url");
+        public Criteria andLuceneurlNotIn(List<String> values) {
+            addCriterion("LUCENEURL not in", values, "luceneurl");
             return (Criteria) this;
         }
 
-        public Criteria andUrlBetween(String value1, String value2) {
-            addCriterion("URL between", value1, value2, "url");
+        public Criteria andLuceneurlBetween(String value1, String value2) {
+            addCriterion("LUCENEURL between", value1, value2, "luceneurl");
             return (Criteria) this;
         }
 
-        public Criteria andUrlNotBetween(String value1, String value2) {
-            addCriterion("URL not between", value1, value2, "url");
+        public Criteria andLuceneurlNotBetween(String value1, String value2) {
+            addCriterion("LUCENEURL not between", value1, value2, "luceneurl");
             return (Criteria) this;
         }
 
@@ -389,18 +389,18 @@ public class SystemLuceneSearch {
             return (Criteria) this;
         }
 
-        public Criteria andKeyLikeInsensitive(String value) {
-            addCriterion("upper(KEY) like", value.toUpperCase(), "key");
+        public Criteria andLucenekeyLikeInsensitive(String value) {
+            addCriterion("upper(LUCENEKEY) like", value.toUpperCase(), "lucenekey");
             return (Criteria) this;
         }
 
-        public Criteria andValueLikeInsensitive(String value) {
-            addCriterion("upper(VALUE) like", value.toUpperCase(), "value");
+        public Criteria andLucenevalueLikeInsensitive(String value) {
+            addCriterion("upper(LUCENEVALUE) like", value.toUpperCase(), "lucenevalue");
             return (Criteria) this;
         }
 
-        public Criteria andUrlLikeInsensitive(String value) {
-            addCriterion("upper(URL) like", value.toUpperCase(), "url");
+        public Criteria andLuceneurlLikeInsensitive(String value) {
+            addCriterion("upper(LUCENEURL) like", value.toUpperCase(), "luceneurl");
             return (Criteria) this;
         }
     }

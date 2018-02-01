@@ -3,9 +3,9 @@
 <mapper namespace="com.darly.dubbo.lucene.dao.SystemLuceneMapper" >
   <resultMap id="BaseResultMap" type="com.darly.dubbo.lucene.bean.SystemLucene" >
     <id column="ID" property="id" jdbcType="VARCHAR" />
-    <result column="KEY" property="key" jdbcType="VARCHAR" />
-    <result column="VALUE" property="value" jdbcType="VARCHAR" />
-    <result column="URL" property="url" jdbcType="VARCHAR" />
+    <result column="LUCENEKEY" property="lucenekey" jdbcType="VARCHAR" />
+    <result column="LUCENEVALUE" property="lucenevalue" jdbcType="VARCHAR" />
+    <result column="LUCENEURL" property="luceneurl" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
@@ -66,9 +66,9 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    ID, KEY, VALUE, URL
+    ID, LUCENEKEY, LUCENEVALUE, LUCENEURL
   </sql>
-  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.darly.dubbo.lucene.bean.SystemLuceneSearch" >
+  <select id="selectByExample" fetchSize="-2147483648" resultMap="BaseResultMap" parameterType="com.darly.dubbo.lucene.bean.SystemLuceneSearch" >
     select
     <if test="distinct" >
       distinct
@@ -99,10 +99,10 @@
     </if>
   </delete>
   <insert id="insert" parameterType="com.darly.dubbo.lucene.bean.SystemLucene" >
-    insert into sys_lucene (ID, KEY, VALUE, 
-      URL)
-    values (#{id,jdbcType=VARCHAR}, #{key,jdbcType=VARCHAR}, #{value,jdbcType=VARCHAR}, 
-      #{url,jdbcType=VARCHAR})
+    insert into sys_lucene (ID, LUCENEKEY, LUCENEVALUE, 
+      LUCENEURL)
+    values (#{id,jdbcType=VARCHAR}, #{lucenekey,jdbcType=VARCHAR}, #{lucenevalue,jdbcType=VARCHAR}, 
+      #{luceneurl,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.darly.dubbo.lucene.bean.SystemLucene" >
     insert into sys_lucene
@@ -110,28 +110,28 @@
       <if test="id != null" >
         ID,
       </if>
-      <if test="key != null" >
-        KEY,
+      <if test="lucenekey != null" >
+        LUCENEKEY,
       </if>
-      <if test="value != null" >
-        VALUE,
+      <if test="lucenevalue != null" >
+        LUCENEVALUE,
       </if>
-      <if test="url != null" >
-        URL,
+      <if test="luceneurl != null" >
+        LUCENEURL,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="id != null" >
         #{id,jdbcType=VARCHAR},
       </if>
-      <if test="key != null" >
-        #{key,jdbcType=VARCHAR},
+      <if test="lucenekey != null" >
+        #{lucenekey,jdbcType=VARCHAR},
       </if>
-      <if test="value != null" >
-        #{value,jdbcType=VARCHAR},
+      <if test="lucenevalue != null" >
+        #{lucenevalue,jdbcType=VARCHAR},
       </if>
-      <if test="url != null" >
-        #{url,jdbcType=VARCHAR},
+      <if test="luceneurl != null" >
+        #{luceneurl,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -147,14 +147,14 @@
       <if test="record.id != null" >
         ID = #{record.id,jdbcType=VARCHAR},
       </if>
-      <if test="record.key != null" >
-        KEY = #{record.key,jdbcType=VARCHAR},
+      <if test="record.lucenekey != null" >
+        LUCENEKEY = #{record.lucenekey,jdbcType=VARCHAR},
       </if>
-      <if test="record.value != null" >
-        VALUE = #{record.value,jdbcType=VARCHAR},
+      <if test="record.lucenevalue != null" >
+        LUCENEVALUE = #{record.lucenevalue,jdbcType=VARCHAR},
       </if>
-      <if test="record.url != null" >
-        URL = #{record.url,jdbcType=VARCHAR},
+      <if test="record.luceneurl != null" >
+        LUCENEURL = #{record.luceneurl,jdbcType=VARCHAR},
       </if>
     </set>
     <if test="_parameter != null" >
@@ -164,9 +164,9 @@
   <update id="updateByExample" parameterType="map" >
     update sys_lucene
     set ID = #{record.id,jdbcType=VARCHAR},
-      KEY = #{record.key,jdbcType=VARCHAR},
-      VALUE = #{record.value,jdbcType=VARCHAR},
-      URL = #{record.url,jdbcType=VARCHAR}
+      LUCENEKEY = #{record.lucenekey,jdbcType=VARCHAR},
+      LUCENEVALUE = #{record.lucenevalue,jdbcType=VARCHAR},
+      LUCENEURL = #{record.luceneurl,jdbcType=VARCHAR}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -174,23 +174,23 @@
   <update id="updateByPrimaryKeySelective" parameterType="com.darly.dubbo.lucene.bean.SystemLucene" >
     update sys_lucene
     <set >
-      <if test="key != null" >
-        KEY = #{key,jdbcType=VARCHAR},
+      <if test="lucenekey != null" >
+        LUCENEKEY = #{lucenekey,jdbcType=VARCHAR},
       </if>
-      <if test="value != null" >
-        VALUE = #{value,jdbcType=VARCHAR},
+      <if test="lucenevalue != null" >
+        LUCENEVALUE = #{lucenevalue,jdbcType=VARCHAR},
       </if>
-      <if test="url != null" >
-        URL = #{url,jdbcType=VARCHAR},
+      <if test="luceneurl != null" >
+        LUCENEURL = #{luceneurl,jdbcType=VARCHAR},
       </if>
     </set>
     where ID = #{id,jdbcType=VARCHAR}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.darly.dubbo.lucene.bean.SystemLucene" >
     update sys_lucene
-    set KEY = #{key,jdbcType=VARCHAR},
-      VALUE = #{value,jdbcType=VARCHAR},
-      URL = #{url,jdbcType=VARCHAR}
+    set LUCENEKEY = #{lucenekey,jdbcType=VARCHAR},
+      LUCENEVALUE = #{lucenevalue,jdbcType=VARCHAR},
+      LUCENEURL = #{luceneurl,jdbcType=VARCHAR}
     where ID = #{id,jdbcType=VARCHAR}
   </update>
   <select resultMap="BaseResultMap" parameterType="com.darly.dubbo.lucene.bean.SystemLuceneSearch" id="selectByExampleWithRowbounds" >

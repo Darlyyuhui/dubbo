@@ -1,14 +1,13 @@
 package com.darly.dubbo.dubboapimpl;
 
 import com.darly.dubbo.framework.base.BaseController;
+import com.darly.dubbo.lucene.bean.SystemLucene;
 import com.darly.dubbo.searchengine.analyzer.lucene.IKAnalyzer;
 import com.darly.dubbo.searchengine.api.SearchEngineApi;
-import com.darly.dubbo.security.system.bean.SystemLog;
 import org.apache.lucene.analysis.Analyzer;
 import org.apache.lucene.analysis.TokenStream;
 import org.apache.lucene.analysis.tokenattributes.CharTermAttribute;
 import org.apache.lucene.document.Document;
-import org.apache.lucene.document.Field;
 import org.apache.lucene.index.DirectoryReader;
 import org.apache.lucene.index.IndexReader;
 import org.apache.lucene.index.Term;
@@ -25,8 +24,6 @@ import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.apache.lucene.document.StringField.TYPE_STORED;
-
 /**
  * Author : ZhangYuHui
  * Date : 2018/1/29
@@ -37,7 +34,7 @@ public class SearchEngineBiz extends BaseController implements SearchEngineApi {
     @Override
     public ModelMap searchEngine(String key) {
         ModelMap map = new ModelMap();
-        List<SystemLog> values = new ArrayList<SystemLog>();
+        List<SystemLucene> values = new ArrayList<SystemLucene>();
         long start = System.currentTimeMillis();
         logger.info("开始搜索时间：" + start);
         //定义索引目录
@@ -54,7 +51,7 @@ public class SearchEngineBiz extends BaseController implements SearchEngineApi {
             //获取分词结果
             List<String> analyseResult = getAnalyseResult(key, new IKAnalyzer());
             for (String result : analyseResult){
-                termList.add(new Term("content",result));
+                termList.add(new Term("key",result));
             }
             //定义TermQuery集合
             List<TermQuery> termQueries = new ArrayList<TermQuery>();
@@ -87,13 +84,11 @@ public class SearchEngineBiz extends BaseController implements SearchEngineApi {
                 logger.info("相似度:"+ score);
                 //通过indexSearcher的doc方法取出文档
                 Document doc = indexSearcher.doc(scoreDoc.doc);
-                SystemLog log = new SystemLog();
+                SystemLucene log = new SystemLucene();
                 log.setId(doc.get("id"));
-                log.setOperatorId(doc.get("operatorId"));
-                log.setIpAddress(doc.get("ipAddress"));
-                log.setOperatorName(doc.get("operatorName"));
-                log.setType(Long.valueOf(doc.get("type")));
-                log.setContent(doc.get("content"));
+                log.setLucenekey(doc.get("key"));
+                log.setLucenevalue(doc.get("value"));
+                log.setLuceneurl(doc.get("url"));
                 values.add(log);
             }
             //关闭索引查看器
