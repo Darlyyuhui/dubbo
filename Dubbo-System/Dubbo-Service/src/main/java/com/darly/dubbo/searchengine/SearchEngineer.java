@@ -49,6 +49,7 @@ public class SearchEngineer implements SearchDocumentListener {
         return instance;
     }
 
+
     private SearchDocumentListener listener;
 
     public void setListener(SearchDocumentListener listener) {
@@ -89,5 +90,7 @@ public class SearchEngineer implements SearchDocumentListener {
                 e.printStackTrace();
             }
         }
+        instance = null;
     }
+
 }

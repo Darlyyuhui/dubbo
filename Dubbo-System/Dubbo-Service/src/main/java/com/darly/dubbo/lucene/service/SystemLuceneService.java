@@ -13,4 +13,6 @@ import com.darly.dubbo.lucene.bean.SystemLuceneSearch;
 public interface SystemLuceneService extends BaseService<SystemLucene, SystemLuceneSearch> {
 
     int save(SystemLucene lucene);
+
+    int count(SystemLuceneSearch search);
 }

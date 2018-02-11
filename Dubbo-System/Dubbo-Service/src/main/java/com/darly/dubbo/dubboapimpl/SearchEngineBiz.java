@@ -6,6 +6,7 @@ import com.darly.dubbo.searchengine.analyzer.lucene.IKAnalyzer;
 import com.darly.dubbo.searchengine.api.SearchEngineApi;
 import org.apache.lucene.analysis.Analyzer;
 import org.apache.lucene.analysis.TokenStream;
+import org.apache.lucene.analysis.cjk.CJKAnalyzer;
 import org.apache.lucene.analysis.tokenattributes.CharTermAttribute;
 import org.apache.lucene.document.Document;
 import org.apache.lucene.index.DirectoryReader;
@@ -50,6 +51,7 @@ public class SearchEngineBiz extends BaseController implements SearchEngineApi {
             List<Term> termList = new ArrayList<Term>();
             //获取分词结果
             List<String> analyseResult = getAnalyseResult(key, new IKAnalyzer());
+            termList.add(new Term("key",key));
             for (String result : analyseResult){
                 termList.add(new Term("key",result));
             }
@@ -58,6 +60,7 @@ public class SearchEngineBiz extends BaseController implements SearchEngineApi {
             //取出集合结果
             for(Term term : termList){
                 termQueries.add(new TermQuery(term));
+                logger.info(term.text());
             }
             List<BooleanClause> booleanClauses = new ArrayList<BooleanClause>();
             //遍历
@@ -72,7 +75,7 @@ public class SearchEngineBiz extends BaseController implements SearchEngineApi {
             BooleanQuery query = builder.build();
 
             //命中前10条文档
-            TopDocs topDocs = indexSearcher.search(query,20);
+            TopDocs topDocs = indexSearcher.search(query,1000);
             //打印命中数
             logger.info("命中数："+topDocs.totalHits);
             //取出文档

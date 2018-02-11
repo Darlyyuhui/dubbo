@@ -28,4 +28,9 @@ public class SystemLuceneImplementer extends AbstractBaseService<SystemLucene, S
         int result = this.mapper.insert(record);
         return result;
     }
+
+    @Override
+    public int count(SystemLuceneSearch search) {
+        return mapper.countByExample(search);
+    }
 }
