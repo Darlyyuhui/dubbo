@@ -1,0 +1,220 @@
+html,
+body,
+ul,
+li {
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    width: 60%;
+    max-width: 100%;
+    margin: 40px auto;
+}
+
+ul li.li-item {
+    list-style: none;
+    line-height: 20px;
+    font-family: 微软雅黑;
+    animation: fadeIn 1s 1 0s;
+    -webkit-animation: fadeIn 1s 1 0s;
+    -moz-animation: fadeIn 1s 1 0s;
+    -ms-animation: fadeIn 1s 1 0s;
+    -o-animation: fadeIn 1s 1 0s;
+}
+
+/**淡入淡出过渡效果**/
+@keyframes fadeIn {
+    0% {
+        opacity: 0; /*初始状态 透明度为0*/
+    }
+    50% {
+        opacity: 0.5; /*中间状态 透明度为0.5*/
+    }
+    100% {
+        opacity: 1; /*结尾状态 透明度为1*/
+    }
+}
+
+@-webkit-keyframes fadeIn {
+    0% {
+        opacity: 0; /*初始状态 透明度为0*/
+    }
+    50% {
+        opacity: 0.5; /*中间状态 透明度为0.5*/
+    }
+    100% {
+        opacity: 1; /*结尾状态 透明度为1*/
+    }
+}
+
+@-moz-keyframes fadeIn {
+    0% {
+        opacity: 0; /*初始状态 透明度为0*/
+    }
+    50% {
+        opacity: 0.5; /*中间状态 透明度为0.5*/
+    }
+    100% {
+        opacity: 1; /*结尾状态 透明度为1*/
+    }
+}
+
+@-ms-keyframes fadeIn {
+    0% {
+        opacity: 0; /*初始状态 透明度为0*/
+    }
+    50% {
+        opacity: 0.5; /*中间状态 透明度为0.5*/
+    }
+    100% {
+        opacity: 1; /*结尾状态 透明度为1*/
+    }
+}
+
+@-o-keyframes fadeIn {
+    0% {
+        opacity: 0; /*初始状态 透明度为0*/
+    }
+    50% {
+        opacity: 0.5; /*中间状态 透明度为0.5*/
+    }
+    100% {
+        opacity: 1; /*结尾状态 透明度为1*/
+    }
+}
+
+.li-item {
+    margin: auto 40px;
+}
+
+.turn-page {
+    float: right;
+    margin-top: 20px;
+    font-size: 12px;
+    color: #404040;
+    padding-bottom: 20px;
+}
+
+.turn-page .turn-num {
+    float: left;
+    color: #8c8c8c;
+    margin-top: 4px;
+}
+
+.turn-page .turn-ul {
+    float: left;
+    margin: 0 30px 0 20px;
+}
+
+.turn-page .turn-ul li {
+    list-style: none;
+    float: left;
+    width: 28px;
+    height: 26px;
+    line-height: 26px;
+    text-align: center;
+    border: 1px solid #e6eaeb;
+    margin-left: -1px;
+    cursor: pointer;
+}
+
+.turn-page .turn-ul i {
+    font-style: normal;
+    display: inline-block;
+    float: left;
+    width: 25px;
+}
+
+.turn-page .turn-ul li.tz {
+    color: #333;
+    font-family: simsun;
+}
+
+.turn-page .turn-ul li:hover, .turn-page .turn-ul li:active {
+    background: #4a93e8;
+    color: #fff;
+}
+
+.turn-page .turn-ul li.on {
+    background: #4a93e8;
+    color: #fff;
+}
+
+.turn-page .turn-ul li.inp {
+    width: 36px;
+    margin: 0 10px 0 20px;
+}
+
+.turn-page .turn-ul li.slh {
+    border: none;
+    font-size: 16px;
+    margin-top: -3px;
+}
+
+.turn-page .turn-ul li.slh:active {
+    background: none;
+}
+
+.turn-page .turn-ul li.inp:active {
+    background: none;
+}
+
+.turn-page .turn-ul .li-inp {
+    width: 36px;
+    height: 24px;
+    outline: none;
+    border: none;
+    text-align: center;
+}
+
+.s_ipt_wr {
+    border: 1px solid #0a95da;
+    border-color: #0a95da #0a95da #0a95da #0a95da;
+    background: #fff;
+    display: inline-block;
+    vertical-align: top;
+    width: 539px;
+    height: 34px;
+    margin-right: 0;
+    border-right-width: 0;
+    border-color: #b8b8b8 transparent #ccc #b8b8b8;
+    overflow: hidden
+}
+
+.s_ipt {
+    width: 526px;
+    height: 22px;
+    font: 16px/18px arial;
+    line-height: 22px;
+    margin: 6px 0 0 7px;
+    padding: 0;
+    background: transparent;
+    border: 0;
+    outline: 0;
+    -webkit-appearance: none
+}
+
+.s_btn_wr {
+    margin-left: -5px;
+    width: auto;
+    height: auto;
+    border-bottom: 1px solid transparent;
+    *border-bottom: 0
+}
+
+.s_btn {
+    width: 100px;
+    height: 36px;
+    color: #fff;
+    font-size: 15px;
+    letter-spacing: 1px;
+    background: #0a95da;
+    border-bottom: 1px solid #2d78f4;
+    outline: medium;
+    *border-bottom: 0;
+    -webkit-appearance: none;
+    -webkit-border-radius: 0;
+    border: 0;
+    outline: none
+}

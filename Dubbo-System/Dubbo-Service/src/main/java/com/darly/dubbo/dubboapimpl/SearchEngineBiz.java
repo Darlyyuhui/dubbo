@@ -1,5 +1,6 @@
 package com.darly.dubbo.dubboapimpl;
 
+import com.darly.dubbo.cfg.ApplicationConst;
 import com.darly.dubbo.framework.base.BaseController;
 import com.darly.dubbo.lucene.bean.SystemLucene;
 import com.darly.dubbo.searchengine.analyzer.lucene.IKAnalyzer;
@@ -23,6 +24,7 @@ import java.io.StringReader;
 import java.nio.file.FileSystems;
 import java.nio.file.Path;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -102,8 +104,30 @@ public class SearchEngineBiz extends BaseController implements SearchEngineApi {
         } catch (IOException e) {
             logger.info(e.getMessage());
         }
+        Collections.reverse(values);
         map.addAttribute("values",values);
         return map;
+    }
+
+    @Override
+    public ModelMap searchindex() {
+        ModelMap model = new ModelMap();
+        model.addAttribute(ApplicationConst.getApplicationName(), applicationName);
+        model.addAttribute(ApplicationConst.getPageTitle(), "Darly搜索，你就知道");
+        model.addAttribute(ApplicationConst.getResourceUrl(), resourceUrl);
+        model.addAttribute(ApplicationConst.getForwordUrl(), "search/index");
+        return model;
+    }
+
+    @Override
+    public ModelMap searchhome(String key) {
+        ModelMap model = new ModelMap();
+        model.addAttribute(ApplicationConst.getApplicationName(), applicationName);
+        model.addAttribute(ApplicationConst.getPageTitle(), key+"_Darly搜索");
+        model.addAttribute(ApplicationConst.getResourceUrl(), resourceUrl);
+        model.addAttribute("keyword",key);
+        model.addAttribute(ApplicationConst.getForwordUrl(), "search/search");
+        return model;
     }
 
 

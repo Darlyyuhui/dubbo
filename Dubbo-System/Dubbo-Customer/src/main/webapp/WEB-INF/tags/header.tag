@@ -19,6 +19,12 @@
                 <div class="collapse navbar-collapse pull-right" id="bs-example-navbar-collapse-1">
                     <ul class="nav navbar-nav">
                         <li>
+                            <a href="javascript:onsearch();">
+                                <span style="font-size:16px">全局搜索</span>
+                            </a>
+                        </li>
+
+                        <li>
                             <a href="javascript:onmap();">
                                 <span style="font-size:16px">地图展示</span>
                             </a>
@@ -101,12 +107,6 @@
         </nav>
     </div>
     <div class="row" style="margin-top: -20px;">
-        <form id="searcher" onsubmit="return false" action="##"  method="post">
-            <input type="text" id='KeyWord' name="KeyWord" size="30" required="" placeholder="ID">
-            <input type="submit" name="" id="" value="提交" onclick = "PostData()">
-        </form>
-    </div>
-    <div class="row" >
         <!--轮播图-->
         <div id="carousel-example-generic" class="carousel slide" data-ride="carousel" data-interval="3000">
             <ol class="carousel-indicators">
@@ -116,13 +116,13 @@
             </ol>
             <div class="carousel-inner" role="listbox">
                 <div class="item active">
-                    <img src="http://hovertree.com/texiao/bootstrap/8/img/lbt01.jpg" alt="图片不存在">
+                    <img src="${root}/images/lbt01.jpg" alt="图片不存在" >
                 </div>
                 <div class="item">
-                    <img src="http://hovertree.com/texiao/bootstrap/8/img/lbt02.jpg" alt="图片不存在">
+                    <img src="${root}/images/lbt02.jpg" alt="图片不存在">
                 </div>
                 <div class="item">
-                    <img src="http://hovertree.com/texiao/bootstrap/8/img/lbt03.jpg" alt="图片不存在">
+                    <img src="${root}/images/lbt03.jpg" alt="图片不存在">
                 </div>
             </div>
 
@@ -224,6 +224,9 @@
     function onindex() {
         window.location.href = "${root}/storehome";
     }
+    function onsearch() {
+        window.location.href = "${root}/search/index";
+    }
     function onmap() {
         window.location.href = "${root}/map";
     }
@@ -256,22 +259,6 @@
         isloginout = true;
         window.location.href = "${root}/j_spring_security_logout";
 
-    }
-
-    function PostData() {
-        var form = new FormData(document.getElementById("searcher"));
-        $.ajax({
-            url: "${root}/search",
-            type: "POST",//方法类型
-            dataType: "json",//预期服务器返回的数据类型
-            data: form,
-            processData: false,
-            contentType: false,
-
-            success: function(msg) {
-                console.log(msg);
-            }
-        });
     }
 
     function showSecondMenu() {
