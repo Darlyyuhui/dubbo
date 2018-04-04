@@ -1,4 +1,4 @@
-<%--
+<%@ page import="com.darly.dubbo.framework.common.CompressUtil" %><%--
   Created by IntelliJ IDEA.
   User: Darly
   Date: 2017/11/27
@@ -78,6 +78,7 @@
             processData: false,
             contentType: false,
             success: function(msg) {
+
                 if (msg.resCode ==200){
                     var json = { data: [] };
                     json.data = msg.result;

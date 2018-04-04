@@ -47,12 +47,16 @@ public class SearchEngineController  extends BaseSecurityController {
      */
     @RequestMapping(value = {"/search"}, method = RequestMethod.POST)
     public void searchEngine( HttpServletRequest request, HttpServletResponse response) {
-        response.setHeader("Access-Control-Allow-Origin", "*");
         String arg = request.getParameter("KeyWord");
+        String way = request.getParameter("way");
         Map<String, Object> resultMap = new HashMap<String, Object>();
         resultMap.put(ResponseUtil.RES_KEY_CODE, "200");
         resultMap.put(ResponseUtil.RES_KEY_RESULT,searchEngineApi.searchEngine(arg).get("values"));
         resultMap.put(ResponseUtil.RES_KEY_DESC, "測試正常");
-        ResponseUtil.printWriteResponse(request.getParameter("callback"), resultMap, response);
+        if (StringDiyUtils.isEmpty(way)){
+            ResponseUtil.printWriteResponsenotCompress(request.getParameter("callback"), resultMap, response);
+        }else {
+            ResponseUtil.printWriteResponse(request.getParameter("callback"), resultMap, response);
+        }
     }
 }

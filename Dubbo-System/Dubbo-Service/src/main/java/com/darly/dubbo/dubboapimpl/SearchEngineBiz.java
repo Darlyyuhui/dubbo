@@ -2,6 +2,7 @@ package com.darly.dubbo.dubboapimpl;
 
 import com.darly.dubbo.cfg.ApplicationConst;
 import com.darly.dubbo.framework.base.BaseController;
+import com.darly.dubbo.framework.common.StringDiyUtils;
 import com.darly.dubbo.lucene.bean.SystemLucene;
 import com.darly.dubbo.searchengine.analyzer.lucene.IKAnalyzer;
 import com.darly.dubbo.searchengine.api.SearchEngineApi;
@@ -38,6 +39,10 @@ public class SearchEngineBiz extends BaseController implements SearchEngineApi {
     public ModelMap searchEngine(String key) {
         ModelMap map = new ModelMap();
         List<SystemLucene> values = new ArrayList<SystemLucene>();
+        if (StringDiyUtils.isEmpty(key)){
+            map.addAttribute("values",values);
+            return map;
+        }
         long start = System.currentTimeMillis();
         logger.info("开始搜索时间：" + start);
         //定义索引目录

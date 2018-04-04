@@ -7,10 +7,7 @@ import com.darly.dubbo.mobile.api.MobileUserApi;
 import com.darly.dubbo.mobile.cfg.MobileBaseController;
 import com.darly.dubbo.mobile.session.SessionData;
 import com.darly.dubbo.mobile.session.SessionUtil;
-import com.darly.dubbo.security.securitycfg.UserDetailServer;
 import com.darly.dubbo.security.user.bean.User;
-import org.apache.zookeeper.server.SessionTracker;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.encoding.Md5PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -21,18 +18,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.PrintWriter;
 import java.io.UnsupportedEncodingException;
-import java.net.HttpURLConnection;
-import java.net.URL;
-import java.net.URLConnection;
-import java.net.URLEncoder;
 import java.util.Date;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Scanner;
+
 
 /**
  * Author : ZhangYuHui

@@ -1,6 +1,8 @@
 package com.darly.dubbo.mobile.cfg;
 
 
+import com.darly.dubbo.framework.common.CompressUtil;
+
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.OutputStream;
@@ -48,6 +50,7 @@ public class ResponseUtil {
 	
 	@Deprecated
 	public static void writeResponse(String jsonpStr, Object obj, HttpServletResponse response) {
+		response.setHeader("Access-Control-Allow-Origin", "*");
 		response.setContentType("text/json;charset=UTF-8");
 		OutputStream os = null;
 		try {
@@ -56,7 +59,8 @@ public class ResponseUtil {
 			if (jsonpStr != null && !"".equals(jsonpStr)) {
 				str = jsonpStr + "(" + str + ")";
 			}
-			os.write(str.getBytes("UTF-8"));
+			//這裡採用壓縮技術
+			os.write(CompressUtil.compress(str.getBytes("UTF-8")));
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
@@ -70,8 +74,9 @@ public class ResponseUtil {
 			}
 		}
 	}
-	
-	public static void printWriteResponse(String jsonpStr, Object obj, HttpServletResponse response) {
+
+	public static void printWriteResponsenotCompress(String jsonpStr, Object obj, HttpServletResponse response) {
+		response.setHeader("Access-Control-Allow-Origin", "*");
 		response.setContentType("text/json;charset=UTF-8");
 		PrintWriter out = null;
 		try {
@@ -81,6 +86,27 @@ public class ResponseUtil {
 				str = jsonpStr + "(" + str + ")";
 			}
 			out.write(str);
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			if (out != null) {
+				out.flush();
+				out.close();
+			}
+		}
+	}
+
+	public static void printWriteResponse(String jsonpStr, Object obj, HttpServletResponse response) {
+		response.setHeader("Access-Control-Allow-Origin", "*");
+		response.setContentType("text/json;charset=ISO_8859_1");
+		PrintWriter out = null;
+		try {
+			out = response.getWriter();
+			String str = JsonUtil.toJson(obj);
+			if (jsonpStr != null && !"".equals(jsonpStr)) {
+				str = jsonpStr + "(" + str + ")";
+			}
+			out.write(CompressUtil.compreser(str.getBytes("UTF-8")));
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {

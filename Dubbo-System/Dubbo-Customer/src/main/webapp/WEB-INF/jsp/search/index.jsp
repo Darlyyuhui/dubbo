@@ -33,7 +33,7 @@
     </style>
 </head>
 <body style="height: 100%">
-<div style="height: 35%;">
+<div style="height: 15%;">
 </div>
 <div align="center">
     <img style="padding: 20px" src="${resourceUrl}/images/login/ic_darly_logo_index.png">
