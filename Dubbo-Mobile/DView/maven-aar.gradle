@@ -1,0 +1,79 @@
+apply plugin: 'com.github.dcendents.android-maven'
+apply plugin: 'com.jfrog.bintray'
+// 根节点添加
+def siteUrl = 'https://github.com/Darlyyuhui/dubbo'    // project homepage
+def gitUrl = 'https://github.com/Darlyyuhui/dubbo.git' // project git
+// 根节点添加
+group = 'com.darly.dview'
+// 根节点添加
+version = "0.0.1"
+install {
+    repositories.mavenInstaller {
+        pom {
+            project {
+                packaging 'aar'
+                name 'Dview' //项目描述
+                url siteUrl
+                licenses {
+                    license {
+                        name 'The Apache Software License, Version 2.0'
+                        url 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+                    }
+                }
+                developers {
+                    developer {
+                        id 'darlyyuhui'
+                        name 'darly fronch'
+                        email 'darlyyuhui@hotmail.com'
+                    }
+                }
+                scm {
+                    connection gitUrl
+                    developerConnection gitUrl
+                    url siteUrl
+                }
+            }
+        }
+    }
+}
+task sourcesJar(type: Jar) {
+    from android.sourceSets.main.java.srcDirs
+    classifier = 'sources'
+}
+task javadoc(type: Javadoc) {
+    options {
+        encoding "UTF-8"
+        charSet 'UTF-8'
+        author true
+        version true
+    }
+    source = android.sourceSets.main.java.srcDirs
+    classpath += project.files(android.getBootClasspath().join(File.pathSeparator))
+}
+task javadocJar(type: Jar, dependsOn: javadoc) {
+    classifier = 'javadoc'
+    from javadoc.destinationDir
+}
+artifacts {
+    archives javadocJar
+    archives sourcesJar
+}
+
+//Properties properties = new Properties()
+//properties.load(project.file('local.properties').newDataInputStream())
+bintray {
+// userOrg=properties.getProperty("bintray.user")
+//    user = properties.getProperty("bintray.user") //读取 local.properties 文件里面的 bintray.user
+//    key = properties.getProperty("bintray.apikey") //读取 local.properties 文件里面的 bintray.apikey
+    user = "darlyyuhui"
+    key = "39d1571dcca51e4f5980aaf4b457b447b862e0bc"
+    configurations = ['archives']
+    pkg {
+        repo = "darly"
+        name = "dview" //发布到JCenter上的项目名字，必须填写，对应com.squareup.okhttp3:okhttp:3.4.1中的okhttp
+        websiteUrl = siteUrl
+        vcsUrl = gitUrl
+        licenses = ["Apache-2.0"]
+        publish = true
+    }
+}

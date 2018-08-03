@@ -1,25 +1,84 @@
-apply plugin: 'maven'
+//apply plugin: 'maven'
+//
+//// 2.maven-信息
+//ext {// ext is a gradle closure allowing the declaration of global properties
+//    ARTIFACT_ID = 'dview'
+//    GROUP_ID = 'com.darly.dview'
+//}
+//
+//// 3.maven-输出路径
+//uploadArchives{
+//    repositories.mavenDeployer{
+//        println repositoryUrl
+//        repository(url:repositoryUrl){
+//            authentication(userName:repositoryUserName,password:repositoryPassword)
+//        }
+//        pom.project{
+//            groupId project.GROUP_ID
+//            artifactId project.ARTIFACT_ID
+//            version android.defaultConfig.versionName
+//        }
+//    }
+//}
 
-// 2.maven-信息
-ext {// ext is a gradle closure allowing the declaration of global properties
-    ARTIFACT_ID = 'dview'
-    GROUP_ID = 'com.darly.dview'
-}
-
-// 3.maven-输出路径
-uploadArchives{
-    repositories.mavenDeployer{
-        println repositoryUrl
-        repository(url:repositoryUrl){
-            authentication(userName:repositoryUserName,password:repositoryPassword)
-        }
-        pom.project{
-            groupId project.GROUP_ID
-            artifactId project.ARTIFACT_ID
-            version android.defaultConfig.versionName
+// 根节点添加
+apply plugin: 'com.github.dcendents.android-maven'
+apply plugin: 'com.jfrog.bintray'
+// 根节点添加
+version = "0.0.1"
+// 根节点添加
+def siteUrl = 'https://github.com/Darlyyuhui/dubbo'    // project homepage
+def gitUrl = 'https://github.com/Darlyyuhui/dubbo.git' // project git
+// 根节点添加
+group = "'com.darly.dview"
+// JCenter根节点添加
+install {
+    repositories.mavenInstaller {
+        // This generates POM.xml with proper parameters
+        pom {
+            project {
+                packaging 'aar'
+                name 'dview'
+                url siteUrl
+                // Set your license
+                licenses {
+                    license {
+                        name 'The Apache Software License, Version 2.0'
+                        url 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+                    }
+                }
+                developers {
+                    developer { //填写的一些基本信息
+                        id 'darlyyuhui'
+                        name 'darly fronch'
+                        email 'darlyyuhui@hotmail.com'
+                    }
+                }
+                scm {
+                    connection gitUrl
+                    developerConnection gitUrl
+                    url siteUrl
+                }
+            }
         }
     }
 }
+
+//配置bintray参数
+bintray {
+    user = "darlyyuhui"
+    key = "39d1571dcca51e4f5980aaf4b457b447b862e0bc"
+    configurations = ['archives']
+    pkg {
+        repo = "darly"               //跟上面创建的Maven仓库名字保持一致
+        name = "dview"                //发布到JCenter上的项目名字
+        websiteUrl = siteUrl
+        vcsUrl = gitUrl
+        licenses = ["Apache-2.0"]
+        publish = true
+    }
+}
+
 //以下代码会生成jar包源文件，如果是不开源码，请不要输入这段
 //aar包内包含注释
 task sourcesJar(type: Jar) {
