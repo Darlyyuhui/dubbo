@@ -25,7 +25,7 @@
 apply plugin: 'com.github.dcendents.android-maven'
 apply plugin: 'com.jfrog.bintray'
 // 根节点添加
-version = "0.0.1"
+version = "1.0.4"
 // 根节点添加
 def siteUrl = 'https://github.com/Darlyyuhui/dubbo'    // project homepage
 def gitUrl = 'https://github.com/Darlyyuhui/dubbo.git' // project git

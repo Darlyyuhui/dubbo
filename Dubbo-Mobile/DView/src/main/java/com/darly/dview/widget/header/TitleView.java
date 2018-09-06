@@ -13,9 +13,10 @@ import com.darly.dview.R;
 
 /**
  * 自定义标题栏控件
- * @author  Darly/张宇辉/2017/11/23 14:49
- * @version  1.0/com.darly.dview.widget.header
- * Copyright (c) 2017 Organization D.L. zhangyuhui All rights reserved.
+ *
+ * @author Darly/张宇辉/2017/11/23 14:49
+ * @version 1.0/com.darly.dview.widget.header
+ *          Copyright (c) 2017 Organization D.L. zhangyuhui All rights reserved.
  */
 
 public class TitleView extends FrameLayout {
@@ -160,9 +161,16 @@ public class TitleView extends FrameLayout {
     public void removeBackground(int resid) {
         if (resid == 0) {
             background.setBackgroundResource(R.color.transparent);
-        }else {
+        } else {
             background.setBackgroundResource(resid);
         }
     }
 
+
+    public void setTextColor(int resid) {
+        if (resid != 0) {
+            title_view_operation_text.setTextColor(resid);
+            title_view_ok.setTextColor(resid);
+        }
+    }
 }
