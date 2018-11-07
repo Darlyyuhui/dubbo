@@ -1,1 +1,1 @@
-include ':DView', ':Common', ':ChartLib', ':Video'
+include ':DView', ':Common'

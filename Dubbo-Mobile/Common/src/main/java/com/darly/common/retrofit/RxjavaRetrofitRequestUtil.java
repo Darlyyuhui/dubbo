@@ -8,9 +8,13 @@ import com.darly.common.DLog;
 import java.io.UnsupportedEncodingException;
 import java.lang.reflect.Field;
 import java.net.URLEncoder;
+import java.security.cert.CertificateException;
+import java.security.cert.X509Certificate;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
+
+import javax.net.ssl.X509TrustManager;
 
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
@@ -42,6 +46,28 @@ public class RxjavaRetrofitRequestUtil {
 
     private void initClient() {
         builder = new OkHttpClient.Builder();
+        try {
+            final X509TrustManager trustManager = new X509TrustManager() {
+                @Override
+                public void checkClientTrusted(X509Certificate[] chain, String authType) throws CertificateException {
+
+                }
+
+                @Override
+                public void checkServerTrusted(X509Certificate[] chain, String authType) throws CertificateException {
+
+                }
+
+                @Override
+                public X509Certificate[] getAcceptedIssuers() {
+                    return new X509Certificate[]{};
+                }
+            };
+            final SSLSocketFactoryCompat compat = new SSLSocketFactoryCompat(trustManager);
+            builder.sslSocketFactory(compat,trustManager);
+        }catch (Exception e){
+            throw new RuntimeException(e);
+        }
         //设置请求超时时间
         builder.readTimeout(REQUEST_TIME, TimeUnit.SECONDS);//设置读取超时时间
         builder.writeTimeout(REQUEST_TIME, TimeUnit.SECONDS);//设置写的超时时间
