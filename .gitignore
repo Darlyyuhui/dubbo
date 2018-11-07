@@ -1,4 +1,4 @@
-Dubbo-System/Dubbo-Customer/target/
+﻿Dubbo-System/Dubbo-Customer/target/
 Dubbo-System/Dubbo-Web/target/
 Dubbo-System/Dubbo-Service/target/
 Dubbo-System/Dubbo-Api/target/
@@ -9,18 +9,8 @@ Dubbo-Mobile/.idea/
 zookeeper-3.5.3-beta/log/version-2/log.9db
 zookeeper-3.5.3-beta/log/
 nginxredis/nginx-1.13.6/logs/
-<<<<<<< HEAD
 Dubbo-Maven/
-Dubbo-Mobile-Trasing/.idea/
-=======
->>>>>>> parent of 538a6a1... {修改静态形位置}
 Dubbo-System/Dubbo-Web/src/profiles/dev/props/spring-jdbc.properties
 Dubbo-System/Dubbo-Customer/src/profiles/dev/props/dubbo-consumer.properties
 Dubbo-System/Dubbo-Web/src/profiles/dev/props/dubbo-producer.properties
 nginxredis/nginx-1.13.6/conf/nginx.conf
-Dubbo-Mobile-Trasing/build.gradle
-Dubbo-Mobile/build.gradle
-Dubbo-Mobile/DView/build.gradle
-Dubbo-Mobile/Common/build.gradle
-Dubbo-Mobile/gradle/wrapper/gradle-wrapper.properties
-Dubbo-Mobile/gradle.properties

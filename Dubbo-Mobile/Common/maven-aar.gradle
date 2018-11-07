@@ -6,7 +6,7 @@ def gitUrl = 'https://github.com/Darlyyuhui/dubbo.git' // project git
 // 根节点添加
 group = 'com.darly.common'
 // 根节点添加
-version = "1.0.0"
+version = "1.0.4"
 install {
     repositories.mavenInstaller {
         pom {
